@@ -126,7 +126,7 @@ namespace EquipMainUi.Setting.TransferData
                 || IsUpperDupl
                 || IsLowerDupl)
             {
-                InterLockMgr.AddInterLock("Slot 위치 중복되어 수정이 필요합니다.");                    
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "因Slot 为止重复，需修改." : "Slot 위치 중복되어 수정이 필요합니다.");
                 return;
             }
 

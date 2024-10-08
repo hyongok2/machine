@@ -107,12 +107,12 @@ namespace EquipMainUi.Monitor
         }
         private Dictionary<byte, string> _alarmCode = new Dictionary<byte, string>()
         {
-            { 0x80, "정상"      },
-            { 0x84, "전원불량"  },
-            { 0xA0, "과전류"    },
-            { 0xC0, "Motor이상" },            
-            { 0x00, "통신이상"  },
-            { 0x01, "최초실행"  }
+            { 0x80, GG.boChinaLanguage ? "正常" : "정상"      },
+            { 0x84, GG.boChinaLanguage ? "电源不良" : "전원불량"  },
+            { 0xA0, GG.boChinaLanguage ? "过电流" : "과전류"    },
+            { 0xC0, GG.boChinaLanguage ? "Motor 问题 发生" : "Motor이상" },
+            { 0x00, GG.boChinaLanguage ? "发生通讯问题" : "통신이상"  },
+            { 0x01, GG.boChinaLanguage ? "第一次运行" : "최초실행"  }
         };
         private int _numFFU = 0;
         public const int MAX_SPEED = 1400;
@@ -204,7 +204,10 @@ namespace EquipMainUi.Monitor
                 if (oldStatus != newStatus)
                     ffuStatusLog += string.Format("ID:{0} 상태 변경 됨 ([{1}]->[{2}])/", f.ID, oldStatus, newStatus);
 
-                if (f.OldAlarmCode == _alarmCode.FirstOrDefault(s => s.Value == "최초실행").Key)
+                string strChinaLanguage = "";
+                strChinaLanguage = GG.boChinaLanguage ? "第一次运行" : "최초실행";
+
+                if (f.OldAlarmCode == _alarmCode.FirstOrDefault(s => s.Value == strChinaLanguage).Key)
                     f.OldAlarmCode = f.AlarmCode;
             }
             if (ffuStatusLog != "EFU Status : ")

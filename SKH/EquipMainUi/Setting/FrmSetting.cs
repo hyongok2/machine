@@ -106,6 +106,81 @@ namespace EquipMainUi.Setting
                 tabCtrl_PCSetting.ItemSize = new Size(166, 30);
                 FillEziSetting(equip.StepMotors);
             }
+            ChangeChinaLanguage();
+        }
+
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                // Motor Setting
+                dgvDefinedPos.Columns[0].HeaderText = "Motor名称";       // 모터이름
+                dgvDefinedPos.Columns[1].HeaderText = "位置名称";       // 위치이름
+                dgvDefinedPos.Columns[2].HeaderText = "位置";       // 위치
+                dgvDefinedPos.Columns[3].HeaderText = "速度";       // 속도
+                dgvDefinedPos.Columns[4].HeaderText = "加速度";       // 가속도
+                dgvDefinedPos.Columns[5].HeaderText = "位置下线点";       // 위치 하한
+                dgvDefinedPos.Columns[6].HeaderText = "位置上线点";       // 위치 상한
+                dgvDefinedPos.Columns[7].HeaderText = "速度上线点";       // 속도 상한
+                dgvDefinedPos.Columns[8].HeaderText = "加速度下线点";       // 가속도 하한
+                dgvDefinedPos.Columns[9].HeaderText = "加速度上线点";       // 가속도 상한
+                dgvDefinedPos.Columns[10].HeaderText = "移动";      // 이동
+
+                // Align Motor Setting
+                dgvEziDefinedPos.Columns[0].HeaderText = "Motor 名称";       // 모터이름
+                dgvEziDefinedPos.Columns[1].HeaderText = "位置名称";       // 위치이름
+                dgvEziDefinedPos.Columns[2].HeaderText = "位置";       // 위치
+                dgvEziDefinedPos.Columns[3].HeaderText = "速度";       // 속도
+                dgvEziDefinedPos.Columns[4].HeaderText = "加速度";       // 가속도
+                dgvEziDefinedPos.Columns[5].HeaderText = "位置下线点";       // 위치 하한
+                dgvEziDefinedPos.Columns[6].HeaderText = "位置上线点";       // 위치 상한
+                dgvEziDefinedPos.Columns[7].HeaderText = "速度上线点";       // 속도 상한
+                dgvEziDefinedPos.Columns[8].HeaderText = "加速度下线点";       // 가속도 하한
+                dgvEziDefinedPos.Columns[9].HeaderText = "加速度上线点";       // 가속도 상한
+                dgvEziDefinedPos.Columns[10].HeaderText = "移动";      // 이동
+
+                // Analog
+                btnTempSetSave.Text = "保存温度设置";                          // 온도 설정 저장
+
+                // Alarm Setting
+                label20.Text = "鼠标右键(右) Click 时, 可变更选择的报警权限(Heavy,Warn,Unused)";	// * 우 클릭 시 해당 알람 설정 변경 권한 변경 가능(User 등급 제외)
+                button4.Text = "保存报警设置";	// 알람 설정 저장
+
+                // EFU Setting
+                label137.Text = "单元 : RPM";		// 단위 : RPM
+                groupBox4.Text = "Port 设定";	// Port설정
+                label179.Text = "正常";		// 정상
+                label180.Text = "电源不良, 过电流, Motor 问题 发生";		// 전원불량, 과전류, Motor이상
+                label181.Text = "发生通讯问题";		// 통신이상
+                //
+                label146.Text = "当前值";		// 상태
+                label143.Text = "当前值";		// 현재값
+                label145.Text = "设定值";		// 설정값
+                label264.Text = "值确认";		// 확인
+                //
+                label433.Text = "当前值";		// 상태
+                label263.Text = "当前值";		// 현재값
+                label266.Text = "设定值";		// 설정값
+                label265.Text = "值确认";		// 확인
+                //
+                label463.Text = "当前值";		// 상태
+                label460.Text = "当前值";		// 현재값
+                label462.Text = "设定值";		// 설정값
+                label461.Text = "值确认";		// 확인
+
+                label12.Text = "(右) Click 鼠标右键, 操作";      // 아래에 우클릭 하여 조작
+
+                tabp1St_ETCCtrl.Text = "ETC 操作";      // ETC 조작
+                label277.Text = "前面";		        // 전면
+                label276.Text = "背面";		        // 후면
+                btnSave.Text = "Motor 设置储存";              // 모터 설정 저장
+
+                label257.Text = "温度可设置范围 (设备 Off 设置)";                 // 온도 설정 가능 범위 (설비 Off 설정)
+                label241.Text = "■ 定义的位置";                 // ■ 정의된 위치
+                btnEziMotorSettingSave.Text = "Motor 设置储存";     // 모터 설정 저장
+
+                button3.Text = "Delay 设置储存";          // Delay 설정 저장
+            }
         }
 
         private void SetWaferHistoryForm()
@@ -587,12 +662,12 @@ namespace EquipMainUi.Setting
         {
             if (_equip.IsHomePositioning || _equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             if (LoginMgr.Instance.LoginedUser.Level == EM_LV_LST.USER)
             {
-                InterLockMgr.AddInterLock("인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<User 权限>\n(User权限无法变更设备设置 .)" : "인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
 
@@ -636,7 +711,7 @@ namespace EquipMainUi.Setting
             if (GG.Equip.HsmsPc.StartCommand(GG.Equip, EmHsmsPcCommand.ECID_CHANGE, 0) == false)
             {
                 errorCnt++;
-                resultMsg += "[To CIM] ECID CHANGE CMD 실패";
+                resultMsg += GG.boChinaLanguage ? "[To CIM] ECID CHANGE CMD 失败" : "[To CIM] ECID CHANGE CMD 실패";
             }
             while (GG.Equip.HsmsPc.IsCommandAck(EmHsmsPcCommand.ECID_CHANGE) == false)
             {
@@ -646,23 +721,23 @@ namespace EquipMainUi.Setting
             _timeMsg.DoClose();
 
             if (errorCnt == 0)
-                CheckMgr.AddCheckMsg(true, "설정값을 PMAC에 적용하였습니다.");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "设置值应用到了 PMAC." : "설정값을 PMAC에 적용하였습니다.");
             else if (errorCnt == errorState.Length)
-                CheckMgr.AddCheckMsg(true, "설정값 저장 중 다음의 문제가 발생했습니다\n\n" + resultMsg);
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "储存设置值时发生了以下问题\n\n" : "설정값 저장 중 다음의 문제가 발생했습니다\n\n" + resultMsg);
             else
-                CheckMgr.AddCheckMsg(true, "설정값 저장 중 문제 있는 축/작업 제외, 일부만 저장되었습니다.\n\n" + resultMsg);
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "设置值储存中有问题的 轴/作业除外, 只储存了一部分.\n\n" : "설정값 저장 중 문제 있는 축/작업 제외, 일부만 저장되었습니다.\n\n" + resultMsg);
             return;
         }
         private void btnEziMotorSettingSave_Click(object sender, EventArgs e)
         {
             if (_equip.IsHomePositioning || _equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             if (LoginMgr.Instance.LoginedUser.Level == EM_LV_LST.USER)
             {
-                InterLockMgr.AddInterLock("인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<User 权限>\n(User权限无法变更设备设置 .)" : "인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
 
@@ -712,11 +787,11 @@ namespace EquipMainUi.Setting
             //_timeMsg.DoClose();
 
             if (errorCnt == 0)
-                CheckMgr.AddCheckMsg(true, "설정값을 저장 하였습니다");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "储存了设置值" : "설정값을 저장 하였습니다");
             else if (errorCnt == errorState.Length)
-                CheckMgr.AddCheckMsg(true, "설정값 저장 중 다음의 문제가 발생했습니다\n\n" + resultMsg);
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "储存设置值时发生了以下问题\n\n" : "설정값 저장 중 다음의 문제가 발생했습니다\n\n" + resultMsg);
             else
-                CheckMgr.AddCheckMsg(true, "설정값 저장 중 문제 있는 축/작업 제외, 일부만 저장되었습니다.\n\n" + resultMsg);
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "设置值储存中有问题的 轴/作业除外, 只储存了一部分.\n\n" : "설정값 저장 중 문제 있는 축/작업 제외, 일부만 저장되었습니다.\n\n" + resultMsg);
             return;
         }
 
@@ -734,7 +809,7 @@ namespace EquipMainUi.Setting
         {
             if (_equip.IsHomePositioning || _equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             if (e.ColumnIndex == 5)
@@ -753,7 +828,7 @@ namespace EquipMainUi.Setting
         {
             if (_equip.IsHomePositioning || _equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
 
@@ -870,33 +945,33 @@ namespace EquipMainUi.Setting
         {
             if (_equip.IsHomePositioning || _equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             if (LoginMgr.Instance.LoginedUser.Level == EM_LV_LST.USER)
             {
-                InterLockMgr.AddInterLock("인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<User 权限>\n(User权限无法变更设备设置 .)" : "인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             if (btnl3rdDelayCtrl.Selected == true)
             {
                 _equip.CtrlSetting.Ctrl = pDelayGrid.SelectedObject as PcCtrlSetting.CtrlSetting;
-                CheckMgr.AddCheckMsg(true, "Control 설정 저장을 완료하였습니다.");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "Control 设置储存已完毕" : "Control 설정 저장을 완료하였습니다.");
             }
             else if (btnl3rdDelayServer.Selected == true)
             {
                 _equip.CtrlSetting.Insp = pDelayGrid.SelectedObject as PcCtrlSetting.InspServerSetting;
-                CheckMgr.AddCheckMsg(true, "Server 설정 저장을 완료하였습니다.");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "Server 设置储存已完成." : "Server 설정 저장을 완료하였습니다.");
             }
             else if (btnl3rdDelayMotor.Selected == true)
             {
                 _equip.CtrlSetting.Motor = pDelayGrid.SelectedObject as PcCtrlSetting.MotorSetting;
-                CheckMgr.AddCheckMsg(true, "Motor 설정 저장을 완료하였습니다.");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "Motor设置储存已完成 ." : "Motor 설정 저장을 완료하였습니다.");
             }
             else if (btnl3rdDelayCim.Selected == true)
             {
                 _equip.CtrlSetting.Hsms = pDelayGrid.SelectedObject as PcCtrlSetting.HsmsSetting;
-                CheckMgr.AddCheckMsg(true, "CIM 설정 저장을 완료하였습니다.");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "CIM 设置储存已完成." : "CIM 설정 저장을 완료하였습니다.");
             }
 
             _equip.CtrlSetting.Save();
@@ -979,11 +1054,11 @@ namespace EquipMainUi.Setting
             //}
             if (AlarmMgr.Instance.SaveAlarmINIFile(dgvAlarmSetting) == true)
             {
-                CheckMgr.AddCheckMsg(true, "알람 설정 저장 완료");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "Alarm 设置储存完毕" : "알람 설정 저장 완료");
             }
             else
             {
-                CheckMgr.AddCheckMsg(false, "알람 설정 저장 실패");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "Alarm 设置储存失败" : "알람 설정 저장 실패");
             }
         }
         private void dgvAlarmSetting_MouseClick(object sender, MouseEventArgs e)
@@ -1061,12 +1136,15 @@ namespace EquipMainUi.Setting
                 {
                     txtEFUStatus[EFUIndex].Text = _equip.EFUCtrler.GetAlarmMsg(f.AlarmCode);
 
+                    string strChinaLanguage1 = GG.boChinaLanguage ? "正常" : "정상";
+                    string strChinaLanguage2 = GG.boChinaLanguage ? "发生通讯问题" : "통신이상";
+
                     string txtAlarmCode = txtEFUStatus[EFUIndex].Text;
-                    if (txtAlarmCode == "정상")
+                    if (txtAlarmCode == strChinaLanguage1)
                     {
                         btnEFUState[EFUIndex].BackColor = Color.Green;
                     }
-                    else if (txtAlarmCode == "통신이상")
+                    else if (txtAlarmCode == strChinaLanguage2)
                     {
                         btnEFUState[EFUIndex].BackColor = Color.Black;
                     }
@@ -1092,7 +1170,7 @@ namespace EquipMainUi.Setting
         {
             if (LoginMgr.Instance.LoginedUser.Level == EM_LV_LST.USER)
             {
-                InterLockMgr.AddInterLock("인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<User 权限>\n(User权限无法变更设备设置 .)" : "인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             Button btn = sender as Button;
@@ -1110,7 +1188,7 @@ namespace EquipMainUi.Setting
             int speed = int.Parse(txtSetValue.Text != "" ? txtSetValue.Text : "10");
             if (speed < 10 || speed > 1400)
             {
-                InterLockMgr.AddInterLock(string.Format("가능 RPM 범위는 10~%d 입니다\n", EFUController.MAX_SPEED.ToString()));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("可以 RPM 范围是 10~%d \n", EFUController.MAX_SPEED.ToString()) : string.Format("가능 RPM 범위는 10~%d 입니다\n", EFUController.MAX_SPEED.ToString()));
                 return false;
             }
 
@@ -1183,7 +1261,7 @@ namespace EquipMainUi.Setting
             {
                 if (_equip.Efem.LoadPort1.RFR.IsOpen() == true)
                 {
-                    CheckMgr.AddCheckMsg(false, "이미 연결 중입니다.");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "已经连接中" : "이미 연결 중입니다.");
                     return;
                 }
                 _equip.Efem.LoadPort1.RFR.Stop();
@@ -1191,22 +1269,22 @@ namespace EquipMainUi.Setting
                 if (_equip.Efem.LoadPort1.RFR.ReOpen(cbRFID1Port.Text) == true)
                 {
                     _equip.InitSetting.RFR1Port = cbRFID1Port.Text;
-                    CheckMgr.AddCheckMsg(true, "연결 및 저장 성공");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "连接及储存成功" : "연결 및 저장 성공");
                     return;
                 }
 
-                CheckMgr.AddCheckMsg(false, "연결 및 저장 실패");                
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "连接及储存失败" : "연결 및 저장 실패");
             }
             else if (btn == btnRFID1Close)
             {
                 _equip.Efem.LoadPort1.RFR.Stop();
-                CheckMgr.AddCheckMsg(false, "연결 해제");                
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "解除连接" : "연결 해제");
             }
             if (btn == btnRFID2Open)
             {
                 if (_equip.Efem.LoadPort2.RFR.IsOpen() == true)
                 {
-                    CheckMgr.AddCheckMsg(false, "이미 연결 중입니다.");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "已经连接中" : "이미 연결 중입니다.");
                     return;
                 }
                 _equip.Efem.LoadPort2.RFR.Stop();
@@ -1214,22 +1292,22 @@ namespace EquipMainUi.Setting
                 if (_equip.Efem.LoadPort2.RFR.ReOpen(cbRFID2Port.Text) == true)
                 {
                     _equip.InitSetting.RFR2Port = cbRFID2Port.Text;
-                    CheckMgr.AddCheckMsg(true, "연결 및 저장 성공");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "连接及储存成功" : "연결 및 저장 성공");
                     return;
                 }
 
-                CheckMgr.AddCheckMsg(false, "연결 및 저장 실패");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "连接及储存失败" : "연결 및 저장 실패");
             }
             else if (btn == btnRFID2Close)
             {
                 _equip.Efem.LoadPort2.RFR.Stop();
-                CheckMgr.AddCheckMsg(false, "연결 해제");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "解除连接" : "연결 해제");
             }
             else if (btn == btnOCROpen)
             {
                 if (_equip.OCR.IsConnected == true)
                 {
-                    CheckMgr.AddCheckMsg(false, "이미 연결 중입니다.");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "已经连接中" : "이미 연결 중입니다.");
                     return;
                 }
 
@@ -1239,7 +1317,7 @@ namespace EquipMainUi.Setting
                 if (IPAddress.TryParse(txtOCRIP.Text, out ip) == false
                     || int.TryParse(txtOCRPort.Text, out port) == false)
                 {
-                    CheckMgr.AddCheckMsg(false, "입력데이터 이상");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "输入的 Data 异常" : "입력데이터 이상");
                     txtOCRIP.Text = "";
                     txtOCRPort.Text = "";
                     return;
@@ -1252,22 +1330,22 @@ namespace EquipMainUi.Setting
                 {
                     _equip.InitSetting.OcrIP = ip.ToString();
                     _equip.InitSetting.OcrPort = port;
-                    CheckMgr.AddCheckMsg(true, "연결 및 저장 성공");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "连接及储存成功" : "연결 및 저장 성공");
                     return;
                 }
 
-                CheckMgr.AddCheckMsg(false, "연결 및 저장 실패");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "连接及储存失败" : "연결 및 저장 실패");
             }
             else if (btn == btnOCRClose)
             {
                 _equip.OCR.Close();
-                CheckMgr.AddCheckMsg(false, "연결 해제");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "解除连接" : "연결 해제");
             }
             else if (btn == btnBCR1Open)
             {
                 if (_equip.BCR1.IsOpen() == true)
                 {
-                    CheckMgr.AddCheckMsg(false, "이미 연결 중입니다.");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "已经连接中" : "이미 연결 중입니다.");
                     return;
                 }
                 _equip.BCR1.Stop();
@@ -1275,39 +1353,39 @@ namespace EquipMainUi.Setting
                 if (_equip.BCR1.ReOpen(cbBCR1Port.Text) == true)
                 {
                     _equip.InitSetting.BCR1Port = cbBCR1Port.Text;
-                    CheckMgr.AddCheckMsg(true, "연결 및 저장 성공");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "连接及储存成功" : "연결 및 저장 성공");
                     return;
                 }
 
-                CheckMgr.AddCheckMsg(false, "연결 및 저장 실패");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "连接及储存失败" : "연결 및 저장 실패");
             }
             else if (btn == btnBCR1Open)
             {
                 _equip.BCR1.Stop();
-                CheckMgr.AddCheckMsg(false, "연결 해제");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "解除连接" : "연결 해제");
             }
             else if (btn == btnBCR2Open)
             {
                 if (_equip.BCR2.IsOpen() == true)
                 {
-                    CheckMgr.AddCheckMsg(false, "이미 연결 중입니다.");
-                    return;
+                   CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "已经连接中" : "이미 연결 중입니다.");
+                   return;
                 }
                 _equip.BCR2.Stop();
 
                 if (_equip.BCR2.ReOpen(cbBCR2Port.Text) == true)
                 {
                     _equip.InitSetting.BCR2Port = cbBCR2Port.Text;
-                    CheckMgr.AddCheckMsg(true, "연결 및 저장 성공");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "连接及储存成功" : "연결 및 저장 성공");
                     return;
                 }
 
-                CheckMgr.AddCheckMsg(false, "연결 및 저장 실패");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "连接及储存失败" : "연결 및 저장 실패");
             }
             else if (btn == btnBCR2Open)
             {
                 _equip.BCR2.Stop();
-                CheckMgr.AddCheckMsg(false, "연결 해제");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "解除连接" : "연결 해제");
             }
         }
 
@@ -1656,9 +1734,9 @@ namespace EquipMainUi.Setting
                 _equip.Lamp.Deadline[iter] = hour;
             }
             if (_equip.UsingTimeSetting.Save())
-                CheckMgr.AddCheckMsg(true, "램프 설정 시간이 저장되었습니다.");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "Lamp 设置时间已保存." : "램프 설정 시간이 저장되었습니다.");
             else
-                CheckMgr.AddCheckMsg(false, "램프 설정 시간이 저장되지 않았습니다.");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "Lamp 设置时间未保存." : "램프 설정 시간이 저장되지 않았습니다.");
         }
         //User Setting
         private void InitContextMenu()
@@ -1837,12 +1915,12 @@ namespace EquipMainUi.Setting
 
             if (_equip.ModeSelectKey.IsAuto == true)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(AUTO MODE 状态是无法 Door Open)" : "인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
                 return;
             }
             if (_equip.IsHomePositioning || _equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             if (btnd == btnDoorTop1) { CmdDoorOpenSol(_equip.TopDoor01, btnd, !_equip.TopDoor01.IsSolOnOff); }
@@ -2276,11 +2354,11 @@ namespace EquipMainUi.Setting
         {
             if (LoginMgr.Instance.LoginedUser.Level == EM_LV_LST.USER)
             {
-                InterLockMgr.AddInterLock("인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<User 权限>\n(User权限无法变更设备设置 .)" : "인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             string cstID;
-            DialogResult result = MessageBox.Show("선택한 데이터를 삭제하시겠습니까?", "caption", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show(GG.boChinaLanguage ? "要删除选择的Data吗?" : "선택한 데이터를 삭제하시겠습니까?", "caption", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 switch (selectedBtn.Name)
@@ -2341,7 +2419,7 @@ namespace EquipMainUi.Setting
         {
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("Auto 상태에서 Shift 불가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto 状态下无法 Shift " : "Auto 상태에서 Shift 불가능합니다");
                 return;
             }
 
@@ -2364,7 +2442,7 @@ namespace EquipMainUi.Setting
         {
             if (LoginMgr.Instance.LoginedUser.Level == EM_LV_LST.USER)
             {
-                InterLockMgr.AddInterLock("인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<User 权限>\n(User权限无法变更设备设置 .)" : "인터락<유저 권한>\nUser 권한으로는 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             PopupFrmTransferDataEdit();

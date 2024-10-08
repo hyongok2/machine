@@ -22,8 +22,21 @@ namespace EquipMainUi.RecipeManagement
             InitList();
 
             ExtensionUI.AddClickEventLog(this);
-
+            ChangeChinaLanguage();
             pGridSelectedRcp.SelectedObject = new Recipe();
+        }
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                label131.Text = "■ 当前Recipe";		        // ■ 현재 레시피
+                label1.Text = "■ 选择的Recipe";	            // ■ 선택한 레시피
+                btnSetRecipe1.Text = "LPM1 SET";		    // LPM1 세팅
+                btnSetRecipe2.Text = "LPM2 SET";		    // LPM2 세팅
+                btnInsert.Text = "生成";		            // 생성
+                btnUpdate.Text = "修改";	                // 수정
+                btnDelete.Text = "删除";		                // 삭제
+            }
         }
 
         private void InitList()
@@ -39,14 +52,14 @@ namespace EquipMainUi.RecipeManagement
         {
             if(GG.Equip.EquipRunMode == Struct.EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<레시피 변경>", "오토런 중에는 제어에서 관리하는 레시피 생성/수정/삭제 가 불가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Recipe 变更>" : "인터락<레시피 변경>", GG.boChinaLanguage ? "Auto Run 时，控制管理的 Recipe 无法 生成/修改/删除 " : "오토런 중에는 제어에서 관리하는 레시피 생성/수정/삭제 가 불가능합니다");
                 return;
             }
             Recipe r = (Recipe)pGridSelectedRcp.SelectedObject;
             
             if (RecipeDataMgr.IsExist(r.Name) == true)
             {
-                MessageBox.Show("이미 존재하는 레시피입니다");
+                MessageBox.Show(GG.boChinaLanguage ? "已经存在的 Recipe." : "이미 존재하는 레시피입니다");
                 return;
             }
 
@@ -58,19 +71,19 @@ namespace EquipMainUi.RecipeManagement
         {
             if (GG.Equip.EquipRunMode == Struct.EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<레시피 변경>", "오토런 중에는 제어에서 관리하는 레시피 생성/수정/삭제 가 불가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Recipe 变更>" : "인터락<레시피 변경>", GG.boChinaLanguage ? "Auto Run 时，控制管理的 Recipe 无法 生成/修改/删除 " : "오토런 중에는 제어에서 관리하는 레시피 생성/수정/삭제 가 불가능합니다");
                 return;
             }
             string sel = lblSelectedRecipe.Text;            
 
             if (sel == string.Empty || RecipeDataMgr.IsExist(sel) == false)
             {
-                MessageBox.Show("레시피를 다시 선택해주세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                 return;
             }
 
-            Recipe src = (Recipe)pGridSelectedRcp.SelectedObject;                        
-            MessageBox.Show(src.Update() ? "성공" : "실패");
+            Recipe src = (Recipe)pGridSelectedRcp.SelectedObject;
+            MessageBox.Show(src.Update() ? GG.boChinaLanguage ? "成功" : "성공" : GG.boChinaLanguage ? "失败" : "실패");
 
             UpdateRecipeInfo();
         }
@@ -79,18 +92,18 @@ namespace EquipMainUi.RecipeManagement
         {
             if (GG.Equip.EquipRunMode == Struct.EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<레시피 변경>", "오토런 중에는 제어에서 관리하는 레시피 생성/수정/삭제 가 불가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Recipe 变更>" : "인터락<레시피 변경>", GG.boChinaLanguage ? "Auto Run 时，控制管理的 Recipe 无法 生成/修改/删除 " : "오토런 중에는 제어에서 관리하는 레시피 생성/수정/삭제 가 불가능합니다");
                 return;
             }
             Recipe src = (Recipe)pGridSelectedRcp.SelectedObject;
 
             if (RecipeDataMgr.IsExist(src.Name) == false)
             {
-                MessageBox.Show("레시피를 다시 선택해주세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                 return;
             }
 
-            MessageBox.Show(RecipeDataMgr.Delete(src.Name) ? "성공" : "실패");
+            MessageBox.Show(RecipeDataMgr.Delete(src.Name) ? GG.boChinaLanguage ? "成功" : "성공" : GG.boChinaLanguage ? "失败" : "실패");
 
             UpdateRecipeInfo();
         }
@@ -99,7 +112,7 @@ namespace EquipMainUi.RecipeManagement
         {
             if (GG.Equip.EquipRunMode == Struct.EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<레시피 설정>", "오토런 중에는 제어에서 관리하는 레시피 설정이 불가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Recipe 设置>" : "인터락<레시피 설정>", GG.boChinaLanguage ? "Auto Run 时， 控制管理的 Recipe 无法设置 " : "오토런 중에는 제어에서 관리하는 레시피 설정이 불가능합니다");
                 return;
             }
 
@@ -108,7 +121,7 @@ namespace EquipMainUi.RecipeManagement
 
             if (src == null || RecipeDataMgr.IsExist(src.Name) == false)
             {
-                MessageBox.Show("레시피를 다시 선택해주세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                 return;
             }
 

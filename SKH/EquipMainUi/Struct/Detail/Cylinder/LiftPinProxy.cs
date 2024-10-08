@@ -25,7 +25,7 @@ namespace EquipMainUi.Struct.Detail.Cylinder
                 && equip.IsHeavyAlarm == true
                 )
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<HEAVY ALARM>\n(HEAVY ALARM 상태입니다. {0} 동작이 불가능 합니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<HEAVY ALARM>\n(HEAVY ALARM 状态. {0} 无法动作.)", Name) : string.Format("인터락<HEAVY ALARM>\n(HEAVY ALARM 상태입니다. {0} 동작이 불가능 합니다.)", Name));
                 return true;
             }
 
@@ -35,7 +35,7 @@ namespace EquipMainUi.Struct.Detail.Cylinder
                 && equip.IsDoorOpen
                 )
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 {0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<DOOR>\n(设备状态在 DOOR OPEN 状态时禁止 {0} 移动.)", Name) : string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 {0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Door Open 상태에서 {0} 이동 금지됨", Name);
                 return true;
             }
@@ -44,13 +44,13 @@ namespace EquipMainUi.Struct.Detail.Cylinder
             {
                 if (equip.RobotArmDefect.IsOn == true || equip.IsEFEMInputArm.IsOn == true)
                 {
-                    string str = string.Format("{0} {1} 상태, 리프트핀 상승 불가", equip.RobotArmDefect.IsOn ? "로봇 암 감지" : "", equip.IsEFEMInputArm.IsOn ? "EFEM 로봇투입 신호 ON" : "");
+                    string str = GG.boChinaLanguage ? string.Format("{0} {1} 状态, Lift Pin无法上升", equip.RobotArmDefect.IsOn ? "Robot Arm 感应" : "", equip.IsEFEMInputArm.IsOn ? "EFEM Robot 投入信号ON" : "") : string.Format("{0} {1} 상태, 리프트핀 상승 불가", equip.RobotArmDefect.IsOn ? "로봇 암 감지" : "", equip.IsEFEMInputArm.IsOn ? "EFEM 로봇투입 신호 ON" : "");
                     if (equip.IsHomePositioning || equip.EquipRunMode == EmEquipRunMode.Auto)
                     {
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0290_ROBOT_ARM_DETECT_ERROR);
                     }
                     else
-                        InterLockMgr.AddInterLock("인터락<LIFT PIN>\n" + str);
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<LIFT PIN>\n" + str : "인터락<LIFT PIN>\n" + str);
 
                     equip.IsInterlock = true;
                     Logger.Log.AppendLine(LogLevel.Warning, str);
@@ -59,13 +59,13 @@ namespace EquipMainUi.Struct.Detail.Cylinder
 
                 if (equip.Vacuum.IsVacuumOn == true)
                 {
-                    string str = "Vacuum ON 상태, 리프트핀 상승 불가";
+                    string str = GG.boChinaLanguage ? "Vacuum ON 状态, Lift Pin 无法上升" : "Vacuum ON 상태, 리프트핀 상승 불가";
                     if (equip.IsHomePositioning || equip.EquipRunMode == EmEquipRunMode.Auto)
                     {
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0110_VACUUM_ON_LIFTPIN_CANT_UP);
                     }
                     else
-                        InterLockMgr.AddInterLock("인터락<LIFT PIN>\n" + str);
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<LIFT PIN>\n" + str : "인터락<LIFT PIN>\n" + str);
 
                     equip.IsInterlock = true;
                     Logger.Log.AppendLine(LogLevel.Warning, str);
@@ -88,7 +88,7 @@ namespace EquipMainUi.Struct.Detail.Cylinder
                     {
                         if (equip.IsCenteringStepping)
                             equip.IsInterlock = true;
-                        InterLockMgr.AddInterLock(string.Format("인터락<INSPECTION X축>\n {0} 이동은 INSPECTION X축 로딩 위치에서만 가능합니다.)", this.Name));
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<INSPECTION X>\n {0} 移动是 INSPECTION X轴 Loading Position时才可以.)", this.Name) : string.Format("인터락<INSPECTION X축>\n {0} 이동은 INSPECTION X축 로딩 위치에서만 가능합니다.)", this.Name));
                     }
 
                     Logger.Log.AppendLine(LogLevel.Warning, string.Format("INSP X축 로딩 위치에서만 {0} 조작 가능", this.Name));
@@ -110,7 +110,7 @@ namespace EquipMainUi.Struct.Detail.Cylinder
                     {
                         if (equip.IsCenteringStepping)
                             equip.IsInterlock = true;
-                        InterLockMgr.AddInterLock(string.Format("인터락<INSPECTION Y축>\n {0} 이동은 INSPECTION Y축 로딩 위치에서만 가능합니다.)", this.Name));
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<INSPECTION Y>\n {0} 移动是 INSPECTION Y轴 Loading Position时才可以.)", this.Name) : string.Format("인터락<INSPECTION Y축>\n {0} 이동은 INSPECTION Y축 로딩 위치에서만 가능합니다.)", this.Name));
                     }
 
                     Logger.Log.AppendLine(LogLevel.Warning, string.Format("INSP Y축 로딩 위치에서만 {0} 조작 가능", this.Name));
@@ -132,7 +132,7 @@ namespace EquipMainUi.Struct.Detail.Cylinder
                     {
                         if (equip.IsCenteringStepping)
                             equip.IsInterlock = true;
-                        InterLockMgr.AddInterLock(string.Format("인터락<Theta축>\n {0} 이동은 Theta축 로딩 위치에서만 가능합니다.)", this.Name));
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<Theta 轴>\n {0} 移动是 Theta轴 Loading Position时才可以.)", this.Name) : string.Format("인터락<Theta축>\n {0} 이동은 Theta축 로딩 위치에서만 가능합니다.)", this.Name));
                     }
 
                     Logger.Log.AppendLine(LogLevel.Warning, string.Format("Theta축 로딩 위치에서만 {0} 조작 가능", this.Name));
@@ -143,13 +143,13 @@ namespace EquipMainUi.Struct.Detail.Cylinder
             {
                 if (equip.RobotArmDefect.IsOn == true || equip.IsEFEMInputArm.IsOn == true)
                 {
-                    string str = string.Format("{0} {1} 상태, 리프트핀 하강 불가", equip.RobotArmDefect.IsOn ? "로봇 암 감지" : "", equip.IsEFEMInputArm.IsOn ? "EFEM 로봇투입 신호 ON" : "");
+                    string str = GG.boChinaLanguage ? string.Format("{0} {1} 状态, Lift Pin 无法下降 ,", equip.RobotArmDefect.IsOn ? "Robot Arm 感应" : "", equip.IsEFEMInputArm.IsOn ? "EFEM Robot 投入信号 ON" : "") : string.Format("{0} {1} 상태, 리프트핀 하강 불가", equip.RobotArmDefect.IsOn ? "로봇 암 감지" : "", equip.IsEFEMInputArm.IsOn ? "EFEM 로봇투입 신호 ON" : "");
                     if (equip.IsHomePositioning || equip.EquipRunMode == EmEquipRunMode.Auto)
                     {
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0290_ROBOT_ARM_DETECT_ERROR);
                     }
                     else
-                        InterLockMgr.AddInterLock("인터락<LIFT PIN>\n" + str);
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<LIFT PIN>\n" + str : "인터락<LIFT PIN>\n" + str);
 
                     equip.IsInterlock = true;
                     Logger.Log.AppendLine(LogLevel.Warning, str);

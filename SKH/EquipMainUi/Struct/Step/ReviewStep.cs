@@ -73,7 +73,7 @@ namespace EquipMainUi.Struct.Step
                 if (_stepNum > 0 &&
                     (DateTime.Now - StepStartTime).TotalMilliseconds > equip.CtrlSetting.Ctrl.AutoStepTimeout)
                 {
-                    string err = string.Format("[REVIEW STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
+                    string err = GG.boChinaLanguage ? string.Format("[REVIEW STEP] = {0} 中，发生Auto Step Timeover", _stepNum.ToString()) : string.Format("[REVIEW STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0289_AUTO_STEP_OVERTIME);
                     InterLockMgr.AddInterLock("AutoStep Timeover\n" + err);
                     Logger.Log.AppendLine(LogLevel.Error, "{0} ({1}s)", err, (DateTime.Now - StepStartTime).TotalSeconds);
@@ -239,7 +239,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (_stepNum != EmRV_NO.S000_REVIEW_WAIT)
             {
-                InterLockMgr.AddInterLock("인터락<실행중>\n(REVIEW STEP 진행중 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(REVIEW STEP 进行中，介入开始命令.)" : "인터락<실행중>\n(REVIEW STEP 진행중 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "REVIEW STEP 진행중 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
                 return false;

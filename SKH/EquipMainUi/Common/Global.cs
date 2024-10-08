@@ -23,7 +23,9 @@ namespace EquipMainUi
         public static PreAlignerTypes PreAlignerType = PreAlignerTypes.DIT;
         public static bool IsDitPreAligner => PreAlignerType == PreAlignerTypes.DIT;
 
-        public static bool TestMode = true;
+        public const bool boChinaLanguage = true; // True = Chinese Language Use , False = Korea Language Use
+
+        public static bool TestMode = false;
         public static bool InspTestMode = TestMode;
         public static bool CimTestMode = false;
         public static bool OHTTestMode = false;
@@ -137,8 +139,8 @@ Y022	Y022	Y022	PRE_ALIGN_CYLINDER_UP_DOWN
 Y023	Y023	Y023	SPARE_SOL_2
 Y024	Y024	Y024	AUTO_TEACH_SOL1
 Y025	Y025	Y025	SAFETY_CIRCUIT_RESET
-Y026	Y026	Y026	EFEM_DOOR1_OPEN_SOL
-Y027	Y027	Y027	EFEM_DOOR2_OPEN_SOL
+Y026	Y026	Y026	
+Y027	Y027	Y027	
 Y028	Y028	Y028	TOP_DOOR1_OPEN_SOL
 Y029	Y029	Y029	TOP_DOOR2_OPEN_SOL
 Y02A	Y02A	Y02A	TOP_DOOR3_OPEN_SOL
@@ -167,8 +169,8 @@ Y03F	Y03F	Y03F	SPARE_SOL_3
 X040	X040	X040	IONIZER_ABNORMAL_ALARM
 X041	X041	X041	
 X042	X042	X042	
-X043	X043	X043	EFEM_DOOR1_SENSOR
-X044	X044	X044	EFEM_DOOR2_SENSOR
+X043	X043	X043	
+X044	X044	X044	
 X045	X045	X045	
 X046	X046	X046	PRE_ALIGN_ROBOT_READY_IN
 X047	X047	X047	PRE_ALIGN_VAC_PRESURE_STATUS

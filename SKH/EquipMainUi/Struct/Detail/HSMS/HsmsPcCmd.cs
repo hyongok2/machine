@@ -35,7 +35,7 @@ namespace EquipMainUi.Struct.Detail.HSMS
                 Logger.CIMLog.AppendLine(LogLevel.Error, "제어↔HSMS PC {0} 시그널 TIME OVER [현재 스텝 : {1}]", Name, Step.ToString());
                 if(Name == "CTRL_MODE_CHANGE")
                 {
-                    InterLockMgr.AddInterLock("<CIM MODE 변경 실패>", "CIM 프로그램이 실행되지 않고 있거나 CIM프로그램 통신이 원할하지 않습니다");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<CIM MODE 变更失败>" : "<CIM MODE 변경 실패>", GG.boChinaLanguage ? "CIM Program未执行或者 CIM Program 通讯不流畅" : "CIM 프로그램이 실행되지 않고 있거나 CIM프로그램 통신이 원할하지 않습니다");
                 }
                 //AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0723_HSMS_PC_COMMAND_SIGNAL_TIMEOVER);
                 YB_CMD.vBit = false;

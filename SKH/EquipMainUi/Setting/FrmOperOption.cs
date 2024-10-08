@@ -19,6 +19,7 @@ namespace EquipMainUi
 {
     public partial class FrmOperOption : Form
     {
+        private bool _isCloseEnable { get; set; }
         Color _clrBlue = Color.FromArgb(144, 200, 246);
         Color _clrRed = Color.FromArgb(255, 100, 100);
 
@@ -27,6 +28,7 @@ namespace EquipMainUi
         public FrmOperOption(Equipment equip)
         {
             InitializeComponent();
+            ChangeChinaLanguage();
 
             Equip = equip;
 
@@ -37,6 +39,57 @@ namespace EquipMainUi
 
             ExtensionUI.AddClickEventLog(this);
             tmrUiUpdate.Start();
+        }
+
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                // 제목
+                label8.Text = "■ RFID 直接输入 (Read 失败, 重复ID)";                        // ■ RF 직접입력 (실패 or 중복ID)
+                label11.Text = "■ Aligner OCR 使用";                       // ■ Aligner OCR 사용
+                label12.Text = "■ Aligner BCR 使用";                       // ■ Aligner BCR 사용
+                label14.Text = "■ Air Knife 使用";                       // ■ Air Knife 사용 모드
+                label1.Text = "■ Recipe Error 时, 使用1号 Recipe";                        // ■ 레시피 이상 시 1번 사용
+                label5.Text = "■ EFEM 使用";                        // ■ EFEM 사용
+                label310.Text = "■ 无视检查应答";                      // ■ 검사 응답 무시
+                btnUseInspMotorControl.Text = "控制 -> 检查 Motor 控制权";        // 검사 모터 제어
+                label4.Text = "■ Interlock 解除";                        // ■ InterLock 해제
+                label9.Text = "■ Door Interlock 解除";                        // ■ Door InterLock 해제
+                label13.Text = "■ Aligner Single Motor Auto Run";                       // ■  Aligner 단동 오토런
+
+                // 버튼
+                // 사용 버튼
+                btnEFEMCstIDUserInputModeOn.Text = "使用";
+                btnOCRUseOn.Text = "使用";
+                btnBCRUseOn.Text = "使用";
+                btnEFEMLongOn.Text = "使用";
+                btndLongrunMode_On.Text = "使用";
+                btnUseRecipeEx_On.Text = "使用";
+                btnInternalTestMode_On.Text = "使用";
+                btnInspAckIgnore_On.Text = "使用";
+                btnInterlockOff_On.Text = "使用";
+                btnBuzzerAllOn.Text = "使用";
+                btnDoorInterlockOff_On.Text = "使用";
+                btnAutoOnlyAlignerUse.Text = "使用";
+                // 미사용 버튼
+                btnEFEMCstIDUserInputModeOff.Text = "未使用";
+                btnOCRUseOff.Text = "未使用";
+                btnBCRUseOff.Text = "未使用";
+                btnEFEMLongOff.Text = "未使用";
+                btndLongrunMode_Off.Text = "未使用";
+                btnUseRecipeEx_Off.Text = "未使用";
+                btnInternalTestMode_Off.Text = "未使用";
+                btnInspAckIgnore_Off.Text = "未使用";
+                btnInterlockOff_Off.Text = "未使用";
+                btnDoorInterlockOff_Off.Text = "未使用";
+                btnBuzzerAllOff.Text = "未使用";
+                btnAutoOnlyAlignerUnuse.Text = "未使用";
+                // 나머지                        
+                btnAlignerHome.Text = "原点";                // 홈
+                btnAutoAlignerStart.Text = "开始";           // 시작
+                btnAutoAlignerStop.Text = "临时停止";            // 정지
+            }
         }
 
         private void tmrUiUpdate_Tick(object sender, EventArgs e)
@@ -181,13 +234,13 @@ namespace EquipMainUi
                 if (Equip.IsNoGlassMode == true ||
                     (Equip.IsWaferDetect != EmGlassDetect.ALL))
                 {
-                    InterLockMgr.AddInterLock("인터락<GLASS DETECT ERROR>\n정상적인 글라스 상태가 아닐 경우 글라스 배출을 선택 할 수 없습니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<GLASS DETECT ERROR>\n(不是正常 Glass状态时, 无法选择Glass排出.)" : "인터락<GLASS DETECT ERROR>\n정상적인 글라스 상태가 아닐 경우 글라스 배출을 선택 할 수 없습니다.");
                     Logger.Log.AppendLine(LogLevel.Warning, "글라스 감지 에러! 글라스 배출 선택 불가!");
                     return;
                 }
                 if (Equip.IsHomePosition == false)
                 {
-                    InterLockMgr.AddInterLock("인터락<HOME POSITION>\n홈 포지션 상태일 경우만 글라스 배출 선택 가능합니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HOME POSITION>\n(只有在Home Position 状态时，可选择 Glass排出 .)" : "인터락<HOME POSITION>\n홈 포지션 상태일 경우만 글라스 배출 선택 가능합니다.");
                     Logger.Log.AppendLine(LogLevel.Warning, "홈 포지션 상태 아님! 글라스 배출 선택 불가!");
                     return;
                 }
@@ -231,9 +284,27 @@ namespace EquipMainUi
         {
             ButtonDelay2 btn = sender as ButtonDelay2;
             if (btn == btnInterlockOff_On)
-                Equip.IsUseInterLockOff = true;
-            else if (btn == btnInterlockOff_Off)
+            {
+                FormPWInput frmLogin = new FormPWInput("비밀번호를 입력하세요");
+                frmLogin.ShowDialog();
+
+                if (frmLogin.Passwd == "0801")
+                {
+                    _isCloseEnable = true;
+                    Equip.IsUseInterLockOff = true;
+                    return;
+                }
+                else
+                    return;
+            }
+            if (btn != btnInterlockOff_On)
+            {
+                _isCloseEnable = true;
                 Equip.IsUseInterLockOff = false;
+                return;
+            }
+            else
+                return;
         }
 
         private void btnDoorInterLockOff_Click(object sender, EventArgs e)
@@ -342,7 +413,7 @@ namespace EquipMainUi
                 if ((GG.Equip.Efem.LoadPort1.LoadType == EmLoadType.Manual && GG.Equip.Efem.LoadPort1.ProgressWay == EmProgressWay.Mapping) == false
                     || (GG.Equip.Efem.LoadPort2.LoadType == EmLoadType.Manual && GG.Equip.Efem.LoadPort2.ProgressWay == EmProgressWay.Mapping) == false)
                 {
-                    InterLockMgr.AddInterLock("LongRun모드", "두 LOADPORT 모두 매뉴얼투입, Map Data 모드여야 가능합니다");
+                    InterLockMgr.AddInterLock("LongRun모드", GG.boChinaLanguage ? "两个类型 LOADPORT 都 Manual 投入, Map Data Mode状态下可以" : "두 LOADPORT 모두 매뉴얼투입, Map Data 모드여야 가능합니다");
                     return;
                 }
                 GG.EfemLongRun = true;                
@@ -364,14 +435,14 @@ namespace EquipMainUi
                 if (GG.Equip.Efem.Robot.Status.IsLowerArmVacOn == true || GG.Equip.Efem.Robot.Status.IsUpperArmVacOn == true
                     || GG.Equip.Efem.Aligner.Status.IsWaferExist == true || GG.Equip.IsWaferDetect != EmGlassDetect.NOT)
                 {
-                    InterLockMgr.AddInterLock("Wafer 감지상태에서 No Wafer Mode불가능합니다");                                        
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer 感应状态是，无法 No Wafer Mode" : "Wafer 감지상태에서 No Wafer Mode불가능합니다");
                     return;
                 }        
 
                 GG.EfemNoWafer = true;
                 GG.Equip.IsWaferDetect = EmGlassDetect.NOT;                           
                 GG.InspTestMode = true;
-                CheckMgr.AddCheckMsg(true, "검사 응답 무시는 자동으로 켜집니다");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "无视检查应答模式会自动开启" : "검사 응답 무시는 자동으로 켜집니다");
             }
             else if (btn == btnNoWaferOff)
             {
@@ -404,27 +475,26 @@ namespace EquipMainUi
             if (GG.Equip.CtrlSetting.UseBCR == false && GG.Equip.CtrlSetting.UseOCR == false)
             {
                 GG.Equip.CtrlSetting.UseBCR = true;
-                InterLockMgr.AddInterLock("OCR, BCR 중 하나는 사용해야합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "在OCR, BCR (中)得使用一个才可以" : "OCR, BCR 중 하나는 사용해야합니다");
             }
 
             if (GG.Equip.CtrlSetting.UseBCR == false && GG.Equip.CtrlSetting.UseOnlyReadOCR == true)
             {
                 GG.Equip.CtrlSetting.UseBCR = true;
-                InterLockMgr.AddInterLock("OCR 검증 모드는 OCR,BCR 모두 사용으로 해야합니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "OCR 验证 Mode是 OCR, BCR 都使用才可以" : "OCR 검증 모드는 OCR,BCR 모두 사용으로 해야합니다.");
             }
 
             if (GG.Equip.CtrlSetting.UseOCR == false && GG.Equip.CtrlSetting.UseOnlyReadOCR == true)
             {
-                InterLockMgr.AddInterLock("OCR 검증 모드는 OCR,BCR 모두 사용으로 해야합니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "OCR 验证 Mode是 OCR, BCR 都使用才可以" : "OCR 검증 모드는 OCR,BCR 모두 사용으로 해야합니다.");
             }
-
             GG.Equip.CtrlSetting.Save();
         }
 
         private void btnUseInspMotorControl_Click(object sender, EventArgs e)
         {
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
-                InterLockMgr.AddInterLock("Auto 상태에선 검사 서버에서 제어할 수 없습니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto 状态下，检查 Server里是无法控制的." : "Auto 상태에선 검사 서버에서 제어할 수 없습니다");
             else
                 GG.Equip.InspPc.SetInspectServerMotorInterlockOff(!IsptAddrB.YB_MotorInterlockOffState.vBit);
         }
@@ -478,29 +548,25 @@ namespace EquipMainUi
             {
                 if (lblInspCount.Text == "" || Convert.ToInt16(lblInspCount.Text) < 2 || Convert.ToInt16(lblInspCount.Text) > 13)
                 {
-                    //MessageBox.Show("2 ~ 13 중에서 값을 입력해주세요.");
+                    MessageBox.Show("2 ~ 13 중에서 값을 입력해주세요.");
                     return;
                 }
                 else
                 {
-                    lblInspCount.Enabled = true;
-                    GG.Equip.CtrlSetting.ReviewJudgeMode = false;
-                    GG.Equip.CtrlSetting.NextInspCount = 0;
-                    GG.Equip.CtrlSetting.Save();
-                    //lblInspCount.Enabled = false;
-                    //GG.Equip.CtrlSetting.NextInspCount = Convert.ToInt16(lblInspCount.Text);
-                    //GG.Equip.CtrlSetting.ReviewJudgeMode = true;
-                    //lblCurrentCount.Text = GG.Equip.CtrlSetting.NextInspCount.ToString();
+                    lblInspCount.Enabled = false;
+                    GG.Equip.CtrlSetting.NextInspCount = Convert.ToInt16(lblInspCount.Text);
+                    GG.Equip.CtrlSetting.ReviewJudgeMode = true;
+                    lblCurrentCount.Text = GG.Equip.CtrlSetting.NextInspCount.ToString();
                 }
             }
-            //else if (btn == btnReviewJudgeModeOff)
-            //{
-            //    lblInspCount.Enabled = true;
-            //    GG.Equip.CtrlSetting.ReviewJudgeMode = false;
-            //    GG.Equip.CtrlSetting.NextInspCount = 0;
-            //}
-            //Logger.Log.AppendLine(LogLevel.Info, "ReviewJudgeMode " + (GG.Equip.CtrlSetting.ReviewJudgeMode == true ? "Use" : "Unuse"));
-            //GG.Equip.CtrlSetting.Save();
+            else if (btn == btnReviewJudgeModeOff)
+            {
+                lblInspCount.Enabled = true;
+                GG.Equip.CtrlSetting.ReviewJudgeMode = false;
+                GG.Equip.CtrlSetting.NextInspCount = 0;
+            }
+            Logger.Log.AppendLine(LogLevel.Info, "ReviewJudgeMode " + (GG.Equip.CtrlSetting.ReviewJudgeMode == true ? "Use" : "Unuse"));
+            GG.Equip.CtrlSetting.Save();
         }
 
         private void lblInspCount_KeyPress(object sender, KeyPressEventArgs e)

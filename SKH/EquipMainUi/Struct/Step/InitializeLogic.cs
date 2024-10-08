@@ -265,7 +265,7 @@ namespace EquipMainUi.Struct.Step
             }
             if (IsRunning())
             {
-                InterLockMgr.AddInterLock("다른 포트가 이미 진행 중입니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "别的 Port已经进行中" : "다른 포트가 이미 진행 중입니다");
                 return false;
             }
 

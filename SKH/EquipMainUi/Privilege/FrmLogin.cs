@@ -45,25 +45,25 @@ namespace EquipMainUi.Setting
                 case FrmLoginType.Login:
                     lblPwTitle.Visible = true;
                     txtPw.Visible = true;
-                    lblNotice.Text = "ID와 비밀번호를 입력하세요";
+                    lblNotice.Text = GG.boChinaLanguage ? "输入您的 ID 和密码" : "ID와 비밀번호를 입력하세요";
                     break;
                 case FrmLoginType.Create:
                     lblNameTitle.Visible = true;
                     txtName.Visible = true;
                     lblPwTitle.Visible = true;
                     txtPw.Visible = true;
-                    lblNotice.Text = "새로운 ID와 비밀번호를 입력하세요";
+                    lblNotice.Text = GG.boChinaLanguage ? "输入新的 ID 和密码" : "새로운 ID와 비밀번호를 입력하세요";
                     break;
                 case FrmLoginType.Update:
                     lblPwTitle.Visible = true;
                     txtPw.Visible = true;
-                    lblNotice.Text = "새 비밀번호를 입력하세요";
+                    lblNotice.Text = GG.boChinaLanguage ? "请输入您的新密码" : "새 비밀번호를 입력하세요";
                     break;
                 case FrmLoginType.Remove:
-                    lblNotice.Text = "해당 ID를 지우시겠습니까?";
+                    lblNotice.Text = GG.boChinaLanguage ? "您确定要清除该 ID 吗？" : "해당 ID를 지우시겠습니까?";
                     break;
                 case FrmLoginType.LevelChange:
-                    lblNotice.Text = "해당 ID의 등급 변경";
+                    lblNotice.Text = GG.boChinaLanguage ? "修改对应ID的成绩" : "해당 ID의 등급 변경";
                     cboLevel.Visible = true;
                     break;
                 default:
@@ -116,7 +116,7 @@ namespace EquipMainUi.Setting
             if (LoginMgr.Instance.Login(_equip, id, password))
                 this.Close();
             else
-                MessageBox.Show("로그인 실패");
+                MessageBox.Show(GG.boChinaLanguage ? "登录失败" : "로그인 실패");
         }
         private void DoCreate()
         {
@@ -129,7 +129,7 @@ namespace EquipMainUi.Setting
                 this.Close();
             }
             else
-                MessageBox.Show("생성 실패");
+                MessageBox.Show(GG.boChinaLanguage ? "生成失败" : "생성 실패");
         }
         private void DoUpdate()
         {
@@ -142,7 +142,7 @@ namespace EquipMainUi.Setting
                 this.Close();
             }
             else
-                MessageBox.Show("수정 실패");
+                MessageBox.Show(GG.boChinaLanguage ? "修改失败" : "수정 실패");
         }
         private void DoRemove()
         {
@@ -156,7 +156,7 @@ namespace EquipMainUi.Setting
                 this.Close();
             }
             else
-                MessageBox.Show("삭제 실패");
+                MessageBox.Show(GG.boChinaLanguage ? "删除失败" : "삭제 실패");
         }
         private void DoLevelChange()
         {
@@ -171,10 +171,10 @@ namespace EquipMainUi.Setting
                     this.Close();
                 }
                 else
-                    MessageBox.Show("ID가 존재하지않음");
+                    MessageBox.Show(GG.boChinaLanguage ? "ID不存在" : "ID가 존재하지않음");
             }
             else
-                MessageBox.Show("등급 변경 실패, 현재 등급이 낮습니다");
+                MessageBox.Show(GG.boChinaLanguage ? "变更等级失败，当前等级低" : "등급 변경 실패, 현재 등급이 낮습니다");
         }
         private void GetLevelValue(out string id, out EM_LV_LST level)
         {

@@ -75,7 +75,7 @@ namespace EquipMainUi.Struct.Step
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0290_ROBOT_ARM_DETECT_ERROR);
                     equip.IsInterlock = true;
 
-                    InterLockMgr.AddInterLock("로봇암 투입 중 로봇암 투입 가능 신호가 해제 되었습니다. 로봇 INIT 명령 후 운영옵션에서 EFEM 사용모드를 켜주세요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Robot Arm 投入中, Robot Arm 可投入信号被解除. Robot INIT 命令后, 在运营 Option使用 EFEM 打开 Mode" : "로봇암 투입 중 로봇암 투입 가능 신호가 해제 되었습니다. 로봇 INIT 명령 후 운영옵션에서 EFEM 사용모드를 켜주세요");
                     Logger.Log.AppendLine(LogLevel.NoLog, "신호 AVI Ready (PinUP:{0}, CenteringBack:{1}, ThetaLd:{2}, XLd:{3}, YLd:{4}",
                         equip.LiftPin.IsForward, equip.Centering.IsCenteringBackward(equip), equip.Theta.IsMoveOnPosition(ThetaServo.LoadingPos),
                         equip.StageX.IsMoveOnPosition(StageXServo.LoadingPos), equip.StageY.IsMoveOnPosition(StageYServo.LoadingPos));
@@ -93,7 +93,7 @@ namespace EquipMainUi.Struct.Step
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0290_ROBOT_ARM_DETECT_ERROR);
                     equip.IsInterlock = true;
 
-                    InterLockMgr.AddInterLock("로봇암 투입 중 로봇암 투입 가능 신호가 해제 되었습니다. 로봇 INIT 명령 후 운영옵션에서 EFEM 사용모드를 켜주세요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Robot Arm 投入中, Robot Arm 可投入信号被解除. Robot INIT 命令后, 在运营 Option使用 EFEM 打开 Mode" : "로봇암 투입 중 로봇암 투입 가능 신호가 해제 되었습니다. 로봇 INIT 명령 후 운영옵션에서 EFEM 사용모드를 켜주세요");
                     Logger.Log.AppendLine(LogLevel.NoLog, "신호 AVI Ready (PinUP:{0}, CenteringBack:{1}, ThetaLd:{2}, XLd:{3}, YLd:{4}",
                         equip.LiftPin.IsForward, equip.Centering.IsCenteringBackward(equip), equip.Theta.IsMoveOnPosition(ThetaServo.LoadingPos),
                         equip.StageX.IsMoveOnPosition(StageXServo.LoadingPos), equip.StageY.IsMoveOnPosition(StageYServo.LoadingPos));             
@@ -111,7 +111,7 @@ namespace EquipMainUi.Struct.Step
 
             if (isDoorSolOn && equip.ModeSelectKey.IsAuto)
             {
-                InterLockMgr.AddInterLock("Door Sol이 켜진 상태에서 Auto Mode로\n전환 되었습니다.", "Teach Mode로 전환 후 Door Sol을 끄고 진행 해 주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Door Sol开启的状态下转换为Auto Mode." : "Door Sol이 켜진 상태에서 Auto Mode로\n전환 되었습니다.", GG.boChinaLanguage ? "转换为Teach Mode后，请关掉 Door Sol以后进行" : "Teach Mode로 전환 후 Door Sol을 끄고 진행 해 주세요");
             }
 
             //             if (GG.UseManualIonizer == false && isDoorOpen == true && GG.TestMode == false && equip.Ionizer.IsIonizerOn)
@@ -128,14 +128,14 @@ namespace EquipMainUi.Struct.Step
                 {
                     equip.TempCtrlReseted = false;
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0286_CP_BOX_TEMPERATURE_HIGH_ERROR);
-                    InterLockMgr.AddInterLock("<INTERLOCK>\nCP BOX 온도 이상! 상태 확인 필요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<Interlock>\n(CP BOX 温度发生问题 ! 需要确认状态)" : "<INTERLOCK>\nCP BOX 온도 이상! 상태 확인 필요");
                 }
 
                 if (equip.ADC.CurPCRackTemp >= equip.AnalogSetting.Pc_Rack_Temp)
                 {
                     equip.TempCtrlReseted = false;
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0287_PC_RACK1_TEMPERATURE_HIGH_ERROR);
-                    InterLockMgr.AddInterLock("<INTERLOCK>\nPC RACK 온도 이상! 상태 확인 필요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<Interlock>\n(PC RACK 温度发生问题 ! 需要确认状态)" : "<INTERLOCK>\nPC RACK 온도 이상! 상태 확인 필요");
                 }
             }
             //else if (equip.TemperatureError.YB_OnOff.vBit == true)

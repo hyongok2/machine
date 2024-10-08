@@ -227,17 +227,17 @@ namespace EquipMainUi.Struct
         {
             if (pos > this.SoftPlusLimit)
             {
-                InterLockMgr.AddInterLock(string.Format("{0} 위치값이 최대값({1})보다 큽니다.", pos, this.SoftPlusLimit));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("{0} 位置值比最大值  {1}大 .", pos, this.SoftPlusLimit) : string.Format("{0} 위치값이 최대값({1})보다 큽니다.", pos, this.SoftPlusLimit));
                 return true;
             }
             if (pos < this.SoftMinusLimit)
             {
-                InterLockMgr.AddInterLock(string.Format("{0} 위치값이 최소값({1})보다 작습니다.", pos, this.SoftMinusLimit));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("{0} 位置值比最小值  {1}小 .", pos, this.SoftMinusLimit) : string.Format("{0} 위치값이 최소값({1})보다 작습니다.", pos, this.SoftMinusLimit));
                 return true;
             }
             if (spd > this.SoftSpeedLimit)
             {
-                InterLockMgr.AddInterLock(string.Format("{0} 이동 속도 최대값({1})보다 큽니다.", spd, this.SoftSpeedLimit));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("{0} 移动速度比最大值 {1}大.", spd, this.SoftSpeedLimit) : string.Format("{0} 이동 속도 최대값({1})보다 큽니다.", spd, this.SoftSpeedLimit));
                 return true;
             }
             return false;
@@ -447,7 +447,7 @@ namespace EquipMainUi.Struct
         {
             if (equip.IsPause)
             {
-                InterLockMgr.AddInterLock(
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<PAUSE>\n(设备状态在 PAUSE 状态下， 轴={0}, 方向={1}, 速度= {2} ，禁止操作. )", Name, jog, speed) :
                     string.Format("인터락<PAUSE>\n(설비 상태가 PAUSE 상태에서 축={0},방향={1}, 속도={2} 조작이 금지됩니다.)", Name, jog, speed));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Puase 상태에서 축={0},방향={1}, 속도={2} 조작 금지됨", Name, jog, speed);
                 return false;
@@ -455,8 +455,8 @@ namespace EquipMainUi.Struct
 
             if (equip.IsImmediatStop)
             {
-                InterLockMgr.AddInterLock(
-                    string.Format("인터락<EMERGENCY>\n(설비 상태가 EMERGENCY 상태에서 축={0},방향={1}, 속도={2} 조작이 금지됩니다.)", Name, jog, speed));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<EMERGENCY>\n(设备状态在 EMERGENCY 状态下， 轴={0} ,方向={1}, 速度= {2}，禁止操作 .)", Name, jog, speed) :
+                   string.Format("인터락<EMERGENCY>\n(설비 상태가 EMERGENCY 상태에서 축={0},방향={1}, 속도={2} 조작이 금지됩니다.)", Name, jog, speed));
                 Logger.Log.AppendLine(
                     LogLevel.Warning, "설비 상태가 Emegency 상태에서 축={0},방향={1}, 속도={2} 조작 금지됨", Name, jog, speed);
                 return false;
@@ -464,8 +464,8 @@ namespace EquipMainUi.Struct
 
             if (IsStepEnd == false)
             {
-                InterLockMgr.AddInterLock(
-                    string.Format("인터락<실행중>\n(축={0}이 이동중에 있어 조작이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<执行中>\n(轴={0}在移动中，禁止操作.)", Name) :
+                   string.Format("인터락<실행중>\n(축={0}이 이동중에 있어 조작이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "축={0}, 이동중 조작 금지!", Name);
                 return false;
             }
@@ -720,13 +720,13 @@ namespace EquipMainUi.Struct
         {
             if (_homeStep != 0)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<실행중>\n({0} 홈이동중에 {1} 이동 명령이 들어왔습니다.)", Name, actionName));
+                InterLockMgr.AddInterLock(string.Format(GG.boChinaLanguage ? "Interlock<执行中>\n({0} 移动中，介入了 {1} 移动命令.)" : "인터락<실행중>\n({0} 홈이동중에 {1} 이동 명령이 들어왔습니다.)", Name, actionName));
                 Logger.Log.AppendLine(LogLevel.Warning, "{0} 홈이동중에 {1} 이동 명령이 들어옴.", Name, actionName);
                 return true;
             }
             if (_ptpStep != 0)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<실행중>\n({0}축 {2}으로 이동중에 {1} 이동 명령이 들어왔습니다)", Name, actionName, _ptpPosition));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<执行中>\n({0}轴往 {2}移动中介入了 {1} 移动命令)", Name, actionName, _ptpPosition) : string.Format("인터락<실행중>\n({0}축 {2}으로 이동중에 {1} 이동 명령이 들어왔습니다)", Name, actionName, _ptpPosition));
                 Logger.Log.AppendLine(LogLevel.Warning, "{0}축 {2}으로 이동중에 {1} 이동 명령이 들어옴.", Name, actionName, _ptpPosition);
                 return true;
             }
@@ -738,7 +738,7 @@ namespace EquipMainUi.Struct
             string str = string.Empty;
             if (this.SoftMinusLimit > _ptpPosition || _ptpPosition > this.SoftPlusLimit)
             {
-                str = string.Format("{0} 위치값 이상 이동 불가 입력:{2} ~ ({1} ~ {3})", this.Name, this.SoftMinusLimit, _ptpPosition, this.SoftPlusLimit);
+                str = GG.boChinaLanguage ? string.Format("{0} 位置值异常, 输入不可移动:{2} ~ ({1} ~ {3})", this.Name, this.SoftMinusLimit, _ptpPosition, this.SoftPlusLimit) : string.Format("{0} 위치값 이상 이동 불가 입력:{2} ~ ({1} ~ {3})", this.Name, this.SoftMinusLimit, _ptpPosition, this.SoftPlusLimit);
                 InterLockMgr.AddInterLock(str);
                 Logger.Log.AppendLine(LogLevel.Warning, str);
                 return true;
@@ -746,7 +746,7 @@ namespace EquipMainUi.Struct
 
             if (0 >= _ptpSpeed || _ptpSpeed > this.SoftSpeedLimit)
             {
-                str = string.Format("{0} 속도값 이상 이동 불가 입력:{2} ~ ({1} ~ {3})", this.Name, 0, _ptpSpeed, this.SoftSpeedLimit);
+                str = GG.boChinaLanguage ? string.Format("{0} 速度值异常,输入不可移动 :{2} ~ ({1} ~ {3})", this.Name, 0, _ptpSpeed, this.SoftSpeedLimit) : string.Format("{0} 속도값 이상 이동 불가 입력:{2} ~ ({1} ~ {3})", this.Name, 0, _ptpSpeed, this.SoftSpeedLimit);
                 InterLockMgr.AddInterLock(str);
                 Logger.Log.AppendLine(LogLevel.Warning, str);
                 return true;
@@ -754,7 +754,7 @@ namespace EquipMainUi.Struct
 
             if (this.SoftAccelMinusLimit > _ptpAccel || _ptpAccel > this.SoftAccelPlusLimit)
             {
-                str = string.Format("{0} 가속시간값 이상 이동 불가 입력:{2} ~ ({1} ~ {3})", this.Name, this.SoftAccelMinusLimit, _ptpAccel, this.SoftAccelPlusLimit);
+                str = GG.boChinaLanguage ? string.Format("{0} 加速时间值异常, 输入不可移动:{2} ~ ({1} ~ {3})", this.Name, this.SoftAccelMinusLimit, _ptpAccel, this.SoftAccelPlusLimit) : string.Format("{0} 가속시간값 이상 이동 불가 입력:{2} ~ ({1} ~ {3})", this.Name, this.SoftAccelMinusLimit, _ptpAccel, this.SoftAccelPlusLimit);
                 InterLockMgr.AddInterLock(str);
                 Logger.Log.AppendLine(LogLevel.Warning, str);
                 return true;
@@ -889,42 +889,42 @@ namespace EquipMainUi.Struct
         {
             if (equip.IsPause)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<PAUSE>\n(설비 상태가 PAUSE일 경우 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<PAUSE>\n(设备状态在 PAUSE时， 轴={0} 禁止移动.)", Name) : string.Format("인터락<PAUSE>\n(설비 상태가 PAUSE일 경우 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Pause 상태에서 축={0} 이동 금지됨", Name);
                 return false;
             }
 
             if (equip.IsDoorOpen && equip.IsUseInterLockOff == false && equip.IsUseDoorInterLockOff == false /*&& equip.IsEnableGripSwOn == EmGrapSw.MIDDLE_ON*/)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<DOOR>\n(设备状态在 DOOR OPEN状态下，轴 ={0} 禁止移动. )", Name) : string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Door Open 상태에서 축={0} 이동 금지됨", Name);
                 return false;
             }
 
             if (IsHomeCompleteBit == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<HOME BIT ERROR>\n(축={0} 모터 HomeCompleteBit OFF 상태입니다. 모터 홈 동작이 필요합니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<HOME BIT ERROR>\n(轴={0} Motor HomeCompleteBit OFF 状态. 需要Motor Home 动作.)", Name) : string.Format("인터락<HOME BIT ERROR>\n(축={0} 모터 HomeCompleteBit OFF 상태입니다. 모터 홈 동작이 필요합니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "HOME BIT ERROR 상태, 포지션 이동 불가. 축={0} 이동 금지됨", Name);
                 return false;
             }
 
             if (equip.IsImmediatStop)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<EMERGENCY>\n(설비 상태가 EMERGENCY 상태에서 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<EMERGENCY>\n(设备状态 EMERGENCY 状态下 轴={0} 禁止移动.)", Name) : string.Format("인터락<EMERGENCY>\n(설비 상태가 EMERGENCY 상태에서 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Emergency 상태에서 축={0} 이동 금지됨", Name);
                 return false;
             }
 
             if (IsHomeCompleteBit == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<HOME BIT ERROR>\n(축={0} 모터 HomeCompleteBit OFF 상태입니다. 모터 홈 동작이 필요합니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<HOME BIT ERROR>\n(轴={0} Motor HomeCompleteBit OFF 状态. 需要Motor Home 动作.)", Name) : string.Format("인터락<HOME BIT ERROR>\n(축={0} 모터 HomeCompleteBit OFF 상태입니다. 모터 홈 동작이 필요합니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "HOME BIT ERROR 상태, 포지션 이동 불가. 축={0} 이동 금지됨", Name);
                 return false;
             }
 
             if (IsHWNegativeLimit || IsHWPositiveLimit)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<LIMIT SENSOR>\n(축={0} 모터 위치가 리밋센서에 감지되었습니다.\n리밋 센서 감지 상태일 경우 조그 및 홈 이동만 가능합니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<LIMIT SENSOR>\n(轴={0} Motor 位置被 Limit Sensor感应到了.\n Limit Sensor 感应状态时，只能移动 Jog or Home .)", Name) : string.Format("인터락<LIMIT SENSOR>\n(축={0} 모터 위치가 리밋센서에 감지되었습니다.\n리밋 센서 감지 상태일 경우 조그 및 홈 이동만 가능합니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "리밋 감지상태에서 포지션 이동 불가. 축={0} 이동 금지됨", Name);
                 return false;
             }
@@ -1009,7 +1009,7 @@ namespace EquipMainUi.Struct
                 && equip.IsDoorOpen
                 && cmd != MoveCommand.JOG)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<Door Open>\n(Door Open상태에서 축={0} 이동 금지됨)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<Door Open>\n(Door Open状态下 轴={0} 禁止移动)", Name) : string.Format("인터락<Door Open>\n(Door Open상태에서 축={0} 이동 금지됨)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "Door Open상태에서 축={0} 이동 금지됨", Name);
                 equip.IsInterlock = true;
                 return true;
@@ -1020,7 +1020,7 @@ namespace EquipMainUi.Struct
                 && equip.IsUseDoorInterLockOff == false
                 && (equip.IsEnableGripMiddleOn && equip.EquipRunMode == EmEquipRunMode.Manual) == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<DOOR>\n(设备状态 DOOR OPEN 状态下 轴={0} 禁止移动.)", Name) : string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Door Open 상태에서 축={0} 이동 금지됨", Name);
                 equip.IsInterlock = true;
 
@@ -1029,7 +1029,7 @@ namespace EquipMainUi.Struct
             if (equip.IsWaferDetect != EmGlassDetect.NOT && equip.IsNoGlassMode == false
                 && equip.Vacuum.IsVacuumSolOn == true && equip.Vacuum.IsVacuumOn == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<VACUUM>\n(Wafer Detect Sensor가 감지 될 때 Vacuum Off 상태라면 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<VACUUM>\n(Wafer Detect Sensor感应时 Vacuum Off 状态的话，轴={0} 禁止移动.)", Name) : string.Format("인터락<VACUUM>\n(Wafer Detect Sensor가 감지 될 때 Vacuum Off 상태라면 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "Wafer Detect Sensor가 감지 될 때 Vacuum Off 상태라면 축={0} 이동 금지됨", Name);
                 equip.IsInterlock = true;
 
@@ -1038,7 +1038,7 @@ namespace EquipMainUi.Struct
             if (equip.StandCentering.IsForward == true
                 && equip.IsUseInterLockOff == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<Centering>\nCentering이 전진상태 일 때 축={0} 이동이 금지됩니다.", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<Centering>\n(Centering在 前进(前) 状态时，轴={0} 禁止移动.)", Name) : string.Format("인터락<Centering>\nCentering이 전진상태 일 때 축={0} 이동이 금지됩니다.", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "Centering이 전진상태 일 때 축={0} 이동이 금지됩니다. 축={0} 이동 금지됨", Name);
                 equip.IsInterlock = true;
 
@@ -1050,14 +1050,14 @@ namespace EquipMainUi.Struct
             // JJY 하기 조건 주석 해제 필요
             if (equip.IsEFEMInputArm.IsOn == true || equip.RobotArmDefect.IsOn == true)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<ROBOT ARM DETECT>\n(ROBOT ARM 감지 상태 or 투입신호 ON 상태에서 이동이 금지됩니다.)", Name));                
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<ROBOT ARM DETECT>\n(ROBOT ARM 感应状态 or 投入信号 ON状态下，禁止移动 .)", Name) : string.Format("인터락<ROBOT ARM DETECT>\n(ROBOT ARM 감지 상태 or 투입신호 ON 상태에서 이동이 금지됩니다.)", Name));
                 equip.IsInterlock = true;
                 return true;
             }
 
             if (equip.LiftPin.IsForward)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<LIFT PIN>\n(LIFT PIN UP 상태에서 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<LIFT PIN>\n(LIFT PIN 上升状态下， 轴={0} 禁止移动)", Name) : string.Format("인터락<LIFT PIN>\n(LIFT PIN UP 상태에서 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "LIFT PIN UP 상태에서 축={0} 이동 금지됨", Name);
                 equip.IsInterlock = true;
 
@@ -1077,7 +1077,7 @@ namespace EquipMainUi.Struct
                 if (equip.IsWaferDetect != EmGlassDetect.NOT && equip.IsNoGlassMode == false
                     && equip.Vacuum.IsVacuumSolOn && equip.Vacuum.IsVacuumOff)
                 {
-                    InterLockMgr.AddInterLock(string.Format("인터락<VACUUM>\n({0}축 이동 중에 Vacuum Off가 금지 됩니다.)", Name));
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<VACUUM>\n({0}轴移动中 ，禁止 Vacuum Off.)", Name) : string.Format("인터락<VACUUM>\n({0}축 이동 중에 Vacuum Off가 금지 됩니다.)", Name));
                     Logger.Log.AppendLine(LogLevel.Warning, "{0}축 이동 중에 Vacuum Off가 금지됨", Name);
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0111_EMS_STOP_VACUUM_OFF_ERROR);
                     equip.IsInterlock = true;

@@ -765,16 +765,16 @@ namespace EquipMainUi.Struct
                 case EmHsmsCtrlAck.OK:
                     break;
                 case EmHsmsCtrlAck.OVERLAP:
-                    InterLockMgr.AddInterLock("<CIM Mode 변경 실패>", "동일한 모드로 변경 요청");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<CIM Mode 变更失败>" : "<CIM Mode 변경 실패>", GG.boChinaLanguage ? "请求变更为同样 Mode" : "동일한 모드로 변경 요청");
                     break;
                 case EmHsmsCtrlAck.NOT_GEM_DEFINE:
-                    InterLockMgr.AddInterLock("<CIM Mode 변경 실패>", "상위 GEM DEFINE이 내려오지 않은 상태에서 변경 요청");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<CIM Mode 变更失败>" : "<CIM Mode 변경 실패>", GG.boChinaLanguage ? "上流 GEM DEFINE没有下达的状态下，邀请变更" : "상위 GEM DEFINE이 내려오지 않은 상태에서 변경 요청");
                     break;
                 case EmHsmsCtrlAck.NOT_VALUE:
-                    InterLockMgr.AddInterLock("<CIM Mode 변경 실패>", "올바르지 않은 CTRL Mode로 변경 요청");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<CIM Mode 变更失败>" : "<CIM Mode 변경 실패>", GG.boChinaLanguage ? "请求变更为不正确的 CTRL Mode" : "올바르지 않은 CTRL Mode로 변경 요청");
                     break;
                 case EmHsmsCtrlAck.TERMINAL_MSG:
-                    InterLockMgr.AddInterLock("<CIM Mode 변경 실패>", "CIM Program 터미널 메시지를 닫고 재시도 해주세요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<CIM Mode 变更失败>" : "<CIM Mode 변경 실패>", GG.boChinaLanguage ? "请关掉 CIM Program Terminal Message，再进行尝试" : "CIM Program 터미널 메시지를 닫고 재시도 해주세요");
                     break;
             }
             Logger.CIMLog.AppendLine(LogLevel.Info, "CIM Mode 변경 요청 {0}", result.ToString());

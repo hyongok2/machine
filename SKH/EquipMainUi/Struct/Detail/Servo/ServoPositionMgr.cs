@@ -13,33 +13,33 @@ namespace EquipMainUi.Struct.Detail.Servo
             equip.StageX.Setting.Section = equip.StageX.Name;
             equip.StageX.Setting.LstServoPosiInfo = new Setting.ServoPosiInfo[]
             {
-                new ServoPosiInfo() {No = 0, Name = "원점 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
-                new ServoPosiInfo() {No = 1, Name = "로딩 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
-                new ServoPosiInfo() {No = 2, Name = "Align 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
-                new ServoPosiInfo() {No = 3, Name = "검사 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
-                new ServoPosiInfo() {No = 4, Name = "리뷰 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
+                new ServoPosiInfo() {No = 0, Name = GG.boChinaLanguage ? "原点位置" : "원점 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
+                new ServoPosiInfo() {No = 1, Name = GG.boChinaLanguage ? "Loading 位置" : "로딩 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
+                new ServoPosiInfo() {No = 2, Name = GG.boChinaLanguage ? "Align 位置" : "Align 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
+                new ServoPosiInfo() {No = 3, Name = GG.boChinaLanguage ? "检查 Ready 位置" : "검사 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
+                new ServoPosiInfo() {No = 4, Name = GG.boChinaLanguage ? "Review Ready 位置" : "리뷰 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageX},
             };
             if (equip.StageX.Setting.Load() == false) errCnt++;
 
             equip.StageY.Setting.Section = equip.StageY.Name;
             equip.StageY.Setting.LstServoPosiInfo = new Setting.ServoPosiInfo[]
             {
-                new ServoPosiInfo() {No = 0, Name = "원점 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
-                new ServoPosiInfo() {No = 1, Name = "로딩 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
-                new ServoPosiInfo() {No = 2, Name = "Align 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
-                new ServoPosiInfo() {No = 3, Name = "검사 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
-                new ServoPosiInfo() {No = 4, Name = "리뷰 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
+                new ServoPosiInfo() {No = 0, Name = GG.boChinaLanguage ? "原点位置" : "원점 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
+                new ServoPosiInfo() {No = 1, Name = GG.boChinaLanguage ? "Loading 位置" : "로딩 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
+                new ServoPosiInfo() {No = 2, Name = GG.boChinaLanguage ? "Align 位置" : "Align 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
+                new ServoPosiInfo() {No = 3, Name = GG.boChinaLanguage ? "检查 Ready 位置" : "검사 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
+                new ServoPosiInfo() {No = 4, Name = GG.boChinaLanguage ? "Review Ready 位置" : "리뷰 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.StageY},
             };
             if (equip.StageY.Setting.Load() == false) errCnt++;
 
             equip.Theta.Setting.Section = equip.Theta.Name;
             equip.Theta.Setting.LstServoPosiInfo = new Setting.ServoPosiInfo[]
             {
-                new ServoPosiInfo() {No = 0, Name = "원점 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
-                new ServoPosiInfo() {No = 1, Name = "로딩 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
-                new ServoPosiInfo() {No = 2, Name = "Align 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
-                new ServoPosiInfo() {No = 3, Name = "검사 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
-                new ServoPosiInfo() {No = 4, Name = "리뷰 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
+                new ServoPosiInfo() {No = 0, Name = GG.boChinaLanguage ? "原点位置" : "원점 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
+                new ServoPosiInfo() {No = 1, Name = GG.boChinaLanguage ? "Loading 位置" : "로딩 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
+                new ServoPosiInfo() {No = 2, Name = GG.boChinaLanguage ? "Align 位置" : "Align 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
+                new ServoPosiInfo() {No = 3, Name = GG.boChinaLanguage ? "检查 Ready 位置" : "검사 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
+                new ServoPosiInfo() {No = 4, Name = GG.boChinaLanguage ? "Review Ready 位置" : "리뷰 Ready 위치", Position = 0, Speed = 0, Accel = 300f, Servo = equip.Theta},
             };
             if (equip.Theta.Setting.Load() == false) errCnt++;
 
@@ -49,27 +49,27 @@ namespace EquipMainUi.Struct.Detail.Servo
                 equip.AlignerX.Setting.Section = equip.AlignerX.Name;
                 equip.AlignerX.Setting.LstServoPosiInfo = new Setting.ServoPosiInfo[]
                 {
-                    new ServoPosiInfo() {No = 0, Name = "원점 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerX},
-                    new ServoPosiInfo() {No = 1, Name = "로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerX},
-                    new ServoPosiInfo() {No = 2, Name = "언로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerX},
+                    new ServoPosiInfo() {No = 0, Name = GG.boChinaLanguage ? "原点位置" : "원점 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerX},
+                    new ServoPosiInfo() {No = 1, Name = GG.boChinaLanguage ? "Loading 位置" : "로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerX},
+                    new ServoPosiInfo() {No = 2, Name = GG.boChinaLanguage ? "Unloading 位置" : "언로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerX},
                 };
                 if (equip.AlignerX.Setting.Load() == false) errCnt++;
 
                 equip.AlignerY.Setting.Section = equip.AlignerY.Name;
                 equip.AlignerY.Setting.LstServoPosiInfo = new Setting.ServoPosiInfo[]
                 {
-                    new ServoPosiInfo() {No = 0, Name = "원점 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerY},
-                    new ServoPosiInfo() {No = 1, Name = "로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerY},
-                    new ServoPosiInfo() {No = 2, Name = "언로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerY},
+                    new ServoPosiInfo() {No = 0, Name = GG.boChinaLanguage ? "原点位置" : "원점 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerY},
+                    new ServoPosiInfo() {No = 1, Name = GG.boChinaLanguage ? "Loading 位置" : "로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerY},
+                    new ServoPosiInfo() {No = 2, Name = GG.boChinaLanguage ? "Unloading 位置" : "언로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerY},
                 };
                 if (equip.AlignerY.Setting.Load() == false) errCnt++;
 
                 equip.AlignerT.Setting.Section = equip.AlignerT.Name;
                 equip.AlignerT.Setting.LstServoPosiInfo = new Setting.ServoPosiInfo[]
                 {
-                    new ServoPosiInfo() {No = 0, Name = "원점 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerT},
-                    new ServoPosiInfo() {No = 1, Name = "로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerT},
-                    new ServoPosiInfo() {No = 2, Name = "언로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerT},
+                    new ServoPosiInfo() {No = 0, Name = GG.boChinaLanguage ? "原点位置" : "원점 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerT},
+                    new ServoPosiInfo() {No = 1, Name = GG.boChinaLanguage ? "Loading 位置" : "로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerT},
+                    new ServoPosiInfo() {No = 2, Name = GG.boChinaLanguage ? "Unloading 位置" : "언로딩 위치", Position = 0, Speed = 0, Accel = 300f, StepMotor = equip.AlignerT},
                 };
                 if (equip.AlignerT.Setting.Load() == false) errCnt++;
             }

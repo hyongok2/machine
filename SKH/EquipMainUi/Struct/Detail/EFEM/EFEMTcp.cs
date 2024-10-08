@@ -144,7 +144,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 //// 연결 시도
                 //m_ClientSocket.Connect(efemIp, efemPort);
 
-                m_ClientSocket.EndConnect(result);
+                //m_ClientSocket.EndConnect(result);
 
                 // 연결 성공
                 isConnected = _isConnected = true;
@@ -504,7 +504,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
 
             if (command == EmEfemCommand.NONE_)
             {
-                InterLockMgr.AddInterLock("EXCEPTION", "이상 Complete 신호 발생, PORT:{0},RECV MSG:{1}", port.ToString(), recvPacket.ToString());
+                InterLockMgr.AddInterLock("EXCEPTION", GG.boChinaLanguage ? "Error Complete 信号发生, PORT:{0},RECV MSG:{1}" : "이상 Complete 신호 발생, PORT:{0},RECV MSG:{1}", port.ToString(), recvPacket.ToString());
                 return;
             }
             else

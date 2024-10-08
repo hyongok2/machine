@@ -42,25 +42,25 @@ namespace EquipMainUi.Setting
 
         public class InspServerSetting : BaseSetting
         {
-            [IniAttribute("InspServerSetting", "SignalTimeout", 0), DescriptionAttribute("(ms) 제어 to 검사 신호 오버타임")]
+            [IniAttribute("InspServerSetting", "SignalTimeout", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) 控制 -> 检查，信号超时" : "(ms) 제어 to 검사 신호 오버타임")]
             public int SignalTimeout { get; set; }
-            [IniAttribute("InspServerSetting", "EventTimeout", 0), DescriptionAttribute("(ms) 검사 to 제어 신호 오버타임")]
+            [IniAttribute("InspServerSetting", "EventTimeout", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) 检查 -> 控制 信号超时" : "(ms) 검사 to 제어 신호 오버타임")]
             public int EventTimeout { get; set; }
             [IniAttribute("InspServerSetting", "Insp Complete OverTime", 10000), DescriptionAttribute("(ms)")]
             public int InspectionCompleteEventTimeout { get; set; }
             [IniAttribute("InspServerSetting", "AlignOvertime", 0), DescriptionAttribute("(ms)")]
             public int AlignOvertime { get; set; }
-            [IniAttribute("InspServerSetting", "AlignTryCount", 1), DescriptionAttribute("Align 재시도 횟수 (초과시 알람)")]
+            [IniAttribute("InspServerSetting", "AlignTryCount", 1), DescriptionAttribute(GG.boChinaLanguage ? "Align 重试次数(超过重试次数时报警)" : "Align 재시도 횟수 (초과시 알람)")]
             public int AlignTryCount { get; set; }
-            [IniAttribute("InspServerSetting", "ScanTimeover", 0), DescriptionAttribute("(ms) 검사 스캔 오버타임")]
+            [IniAttribute("InspServerSetting", "ScanTimeover", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) Scan 信号超时" : "(ms) 검사 스캔 오버타임")]
             public int ScanOvertime { get; set; }
             [IniAttribute("InspServerSetting", "JudgeCompleteTimeOver", 0), DescriptionAttribute("(ms)")]
             public int JudgeCompleteTimeOver { get; set; }
-            [IniAttribute("InspServerSetting", "ReviewStartDelay", 0), DescriptionAttribute("(ms) Scan 완료 후 리뷰 시작 전 까지 딜레이")]
+            [IniAttribute("InspServerSetting", "ReviewStartDelay", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) Scan 完毕后, Review 开始前为止, Delay" : "(ms) Scan 완료 후 리뷰 시작 전 까지 딜레이")]
             public int ReviewStartDelay { get; set; }            
             [IniAttribute("InspServerSetting", "ReviewOvertime", 0), DescriptionAttribute("(ms)")]
             public int ReviewOvertime { get; set; }
-            [IniAttribute("InspServerSetting", "TTTMMeasureCycle", 1), DescriptionAttribute("웨이퍼 n장 마다 TTTM 측정 진행 (장)")]
+            [IniAttribute("InspServerSetting", "TTTMMeasureCycle", 1), DescriptionAttribute(GG.boChinaLanguage ? "每n张Wafer 进行测量 TTTM" : "웨이퍼 n장 마다 TTTM 측정 진행 (장)")]
             public int TTTMMeasureCycle { get; set; }
             [IniAttribute("InspServerSetting", "TTTMOverTime", 0), DescriptionAttribute("(ms)")]
             public int TTTMOvertime { get; set; }
@@ -73,56 +73,56 @@ namespace EquipMainUi.Setting
             [IniAttribute("CtrlSetting", "CylinderBWDOvertime", 0), DescriptionAttribute("(ms)")]
             public int CylinderBWDOvertime { get; set; }
 
-            [IniAttribute("CtrlSetting", "CenteringForwardWait", 0), DescriptionAttribute("(ms) 전진 후 대기 시간")]
+            [IniAttribute("CtrlSetting", "CenteringForwardWait", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) 前进后，待机时间" : "(ms) 전진 후 대기 시간")]
             public int CenteringForwardWait { get; set; }
 
-            [IniAttribute("CtrlSetting", "BlowerTime", 0), DescriptionAttribute("(ms) Vacuum Off Step 시 Blow 시간")]
+            [IniAttribute("CtrlSetting", "BlowerTime", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) Vacuum Off Step 时, Blow 时间" : "(ms) Vacuum Off Step 시 Blow 시간")]
             public int BlowerTime { get; set; }
 
-            [IniAttribute("CtrlSetting", "VacuumOnWaitTime", 0), DescriptionAttribute("(ms) Vacuum On 대기 시간")]
+            [IniAttribute("CtrlSetting", "VacuumOnWaitTime", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) Vacuum On 待机时间" : "(ms) Vacuum On 대기 시간")]
             public int VacuumOnWaitTime { get; set; }
 
-            [IniAttribute("CtrlSetting", "AutoStepTimeout", 0), DescriptionAttribute("(ms) 자동 동작 중 한 스텝에서 설정 시간만큼 멈춰있을 경우 알람 (Scan,Review 제외)")]
+            [IniAttribute("CtrlSetting", "AutoStepTimeout", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) 自动动作中，在一个Step中停止了设定的时间为止时报警 (Scan, Review 除外)" : "(ms) 자동 동작 중 한 스텝에서 설정 시간만큼 멈춰있을 경우 알람 (Scan,Review 제외)")]
             public int AutoStepTimeout { get; set; }
 
-            [IniAttribute("CtrlSetting", "RFReadTryTimes", 0), DescriptionAttribute("LPM RF Reader 읽기 시도 횟수")]
+            [IniAttribute("CtrlSetting", "RFReadTryTimes", 0), DescriptionAttribute(GG.boChinaLanguage ? "LPM RF Reader 尝试读取次数" : "LPM RF Reader 읽기 시도 횟수")]
             public int RFReadTryTimes { get; set; }
 
-            [IniAttribute("CtrlSetting", "OCRReadTryTimes", 0), DescriptionAttribute("PreAligner OCR 읽기 시도 횟수")]
+            [IniAttribute("CtrlSetting", "OCRReadTryTimes", 0), DescriptionAttribute(GG.boChinaLanguage ? "PreAligner OCR 尝试读取次数" : "PreAligner OCR 읽기 시도 횟수")]
             public int OCRReadTryTimes { get; set; }
 
-            [IniAttribute("CtrlSetting", "BCRReadTryTimes", 0), DescriptionAttribute("PreAligner BCR 읽기 시도 횟수")]
+            [IniAttribute("CtrlSetting", "BCRReadTryTimes", 0), DescriptionAttribute(GG.boChinaLanguage ? "PreAligner BCR 尝试读取次数" : "PreAligner BCR 읽기 시도 횟수")]
             public int BCRReadTryTimes { get; set; }
 
-            [IniAttribute("CtrlSetting", "PreAlignTryTimes", 0), DescriptionAttribute("PreAligner Align 시도 횟수")]
+            [IniAttribute("CtrlSetting", "PreAlignTryTimes", 0), DescriptionAttribute(GG.boChinaLanguage ? "PreAligner 尝试Align次数" : "PreAligner Align 시도 횟수")]
             public int PreAlignTryTimes { get; set; }
-            [IniAttribute("CtrlSetting", "PreAlignerXLimit", 0), DescriptionAttribute("(mm) Pre-Aligner 보정값 X Limit")]
+            [IniAttribute("CtrlSetting", "PreAlignerXLimit", 0), DescriptionAttribute(GG.boChinaLanguage ? "(mm) Pre-Aligner 补正值 X Limit" : "(mm) Pre-Aligner 보정값 X Limit")]
             public int PreAlignerXLimit { get; set; }
-            [IniAttribute("CtrlSetting", "PreAlignerYLimit", 0), DescriptionAttribute("(mm) Pre-Aligner 보정값 Y Limit")]
+            [IniAttribute("CtrlSetting", "PreAlignerYLimit", 0), DescriptionAttribute(GG.boChinaLanguage ? "(mm) Pre-Aligner 补正值 Y Limit" : "(mm) Pre-Aligner 보정값 Y Limit")]
             public int PreAlignerYLimit { get; set; }
-            [IniAttribute("CtrlSetting", "PreAlignerTLimit", 0), DescriptionAttribute("(mm) Pre-Aligner 보정값 T Limit")]
+            [IniAttribute("CtrlSetting", "PreAlignerTLimit", 0), DescriptionAttribute(GG.boChinaLanguage ? "(mm) Pre-Aligner 补正值 T Limit" : "(mm) Pre-Aligner 보정값 T Limit")]
             public int PreAlignerTLimit { get; set; }
-            [IniAttribute("CtrlSetting", "Ionizer Decay Time", 0), DescriptionAttribute("(ms) 설정 Decay Time 시간 안에 알람 기준 설정값 내(±)로 조정되지 않을 때 알람 발생")]
+            [IniAttribute("CtrlSetting", "Ionizer Decay Time", 0), DescriptionAttribute(GG.boChinaLanguage ? "(ms) 设定的时间里，未能调整到设定的报警基准时间内时，发生报警" : "(ms) 설정 Decay Time 시간 안에 알람 기준 설정값 내(±)로 조정되지 않을 때 알람 발생")]
             public int IonizerDecayTime { get; set; }
-            [IniAttribute("CtrlSetting", "Ionizer Electronic Standard Value", 0), DescriptionAttribute("(V) 설정 Decay Time 시간 안에 알람 기준 설정값 이하로 조정되지 않을 때 알람 발생")]
+            [IniAttribute("CtrlSetting", "Ionizer Electronic Standard Value", 0), DescriptionAttribute(GG.boChinaLanguage ? "(V) 设定的时间里，未能调整到设定的报警基准时间以下时，发生报警" : "(V) 설정 Decay Time 시간 안에 알람 기준 설정값 이하로 조정되지 않을 때 알람 발생")]
             public int IonizerStaticElecAlarmStd { get; set; }
-            [IniAttribute("CtrlSetting", "EFEM Reconnect Cycle Time", 10), DescriptionAttribute("(sec) EFEM TCP 통신이 끊겼을 때 설정한 시간(초)마다 재연결 시도")]
+            [IniAttribute("CtrlSetting", "EFEM Reconnect Cycle Time", 10), DescriptionAttribute(GG.boChinaLanguage ? "(sec) EFEM 通讯断开时, 每设置的时间（秒）尝试重新连接" : "(sec) EFEM TCP 통신이 끊겼을 때 설정한 시간(초)마다 재연결 시도")]
             public int EFEMReconnectCycleTime { get; set; }
             // Joo 경로: D:\DitCtrl\Exec\Ctrl\Setting // PcCtrlSetting.ini 파일
-            [IniAttribute("CtrlSetting", "DeepLearningDelayTime", 60000), DescriptionAttribute("(ms) Deep Learning Review 판정 시 대기 시간")]
+            [IniAttribute("CtrlSetting", "DeepLearningDelayTime", 60000), DescriptionAttribute(GG.boChinaLanguage ? "(ms) Deep Learning Review 等待决定的时间" : "(ms) Deep Learning Review 판정 시 대기 시간")]
             public int DeepLearningDelayTime { get; set; }
-            [IniAttribute("CtrlSetting", "Rf Read Delay Time", 500), DescriptionAttribute("(ms) RF Read 대기 시간 - 재시도 시 현재 진행 LPM 파악 하기 위해")]
+            [IniAttribute("CtrlSetting", "Rf Read Delay Time", 500), DescriptionAttribute(GG.boChinaLanguage ? "(ms) RF Read 等待时间 - 重试时为了解当前进度 LPM" : "(ms) RF Read 대기 시간 - 재시도 시 현재 진행 LPM 파악 하기 위해")]
             public int RfReadDelayTime { get; set; }
         }
 
         public class AnalogSetting : BaseSetting
         {
             [Browsable(true)]
-            [DisplayNameAttribute("Cp Box Temperture Limit"), IniAttribute("CtrlSetting", "CpBoxAlarmTemp", 40), DescriptionAttribute("(℃) 설정한 온도 이상 감지되면 알람 발생")]
+            [DisplayNameAttribute("Cp Box Temperture Limit"), IniAttribute("CtrlSetting", "CpBoxAlarmTemp", 40), DescriptionAttribute(GG.boChinaLanguage ? "(℃) 设定温度感应异常时，发生Alarm" : "(℃) 설정한 온도 이상 감지되면 알람 발생")]
             public int CpBoxAlarmTemp { get; set; }
 
             [Browsable(true)]
-            [DisplayNameAttribute("PC Rack Box Temperture Limit"), IniAttribute("CtrlSetting", "PcRackBoxAlarmTemp", 40), DescriptionAttribute("(℃) 설정한 온도 이상 감지되면 알람 발생")]
+            [DisplayNameAttribute("PC Rack Box Temperture Limit"), IniAttribute("CtrlSetting", "PcRackBoxAlarmTemp", 40), DescriptionAttribute(GG.boChinaLanguage ? "(℃) 设定温度感应异常时，发生Alarm" : "(℃) 설정한 온도 이상 감지되면 알람 발생")]
             public int PcRackAlarmTemp { get; set; }
         }
         
@@ -139,17 +139,17 @@ namespace EquipMainUi.Setting
             [IniAttribute("HsmsSetting", "WaferMapPath", "\\")]
             public string WaferMapPath { get; set; }
 
-            [IniAttribute("HsmsSetting", "Cassette Load Confirm Timeover", 30), DescriptionAttribute("(sec) 설정한 시간 초과시 타임오버 알람 발생")]
+            [IniAttribute("HsmsSetting", "Cassette Load Confirm Timeover", 30), DescriptionAttribute(GG.boChinaLanguage ? "(sec) 设置的时间超时时，发生超时 Alarm" : "(sec) 설정한 시간 초과시 타임오버 알람 발생")]
             public int CstLoadConfirmTimeover { get; set; }
-            [IniAttribute("HsmsSetting", "PP Select Timeover", 30), DescriptionAttribute("(sec) 설정한 시간 초과시 타임오버 알람 발생")]
+            [IniAttribute("HsmsSetting", "PP Select Timeover", 30), DescriptionAttribute(GG.boChinaLanguage ? "(sec) 设置的时间超时时，发生超时 Alarm" : "(sec) 설정한 시간 초과시 타임오버 알람 발생")]
             public int PPSelectTimeover { get; set; }
-            [IniAttribute("HsmsSetting", "Cassette Load Start Cmd Timeover", 30), DescriptionAttribute("(sec) 설정한 시간 초과시 타임오버 알람 발생")]
+            [IniAttribute("HsmsSetting", "Cassette Load Start Cmd Timeover", 30), DescriptionAttribute(GG.boChinaLanguage ? "(sec) 设置的时间超时时，发生超时 Alarm" : "(sec) 설정한 시간 초과시 타임오버 알람 발생")]
             public int CstLoadStartCmdTimeover { get; set; }
-            [IniAttribute("HsmsSetting", "Cassette Lot Start Confirm Timeover", 30), DescriptionAttribute("(sec) 설정한 시간 초과시 타임오버 알람 발생")]
+            [IniAttribute("HsmsSetting", "Cassette Lot Start Confirm Timeover", 30), DescriptionAttribute(GG.boChinaLanguage ? "(sec) 设置的时间超时时，发生超时 Alarm" : "(sec) 설정한 시간 초과시 타임오버 알람 발생")]
             public int CstLotStartConfirmTimeover { get; set; }
-            [IniAttribute("HsmsSetting", "WaferLoadConfirmtWait", 30), Description("(sec) 설정한 시간 초과시 타임오버 알람 발생")]
+            [IniAttribute("HsmsSetting", "WaferLoadConfirmtWait", 30), Description(GG.boChinaLanguage ? "(sec) 设置的时间超时时，发生超时 Alarm" : "(sec) 설정한 시간 초과시 타임오버 알람 발생")]
             public int WaferLoadConfirmWait { get; set; }
-            [IniAttribute("HsmsSetting", "WaferMapRequestWait", 30), Description("(sec) 설정한 시간 초과시 타임오버 알람 발생")]
+            [IniAttribute("HsmsSetting", "WaferMapRequestWait", 30), Description(GG.boChinaLanguage ? "(sec) 设置的时间超时时，发生超时 Alarm" : "(sec) 설정한 시간 초과시 타임오버 알람 발생")]
             public int WaferMapRequestWait { get; set; }
         }
 
@@ -172,7 +172,7 @@ namespace EquipMainUi.Setting
         [IniAttribute("Setting", "LPM2LoadType", 0)]
         public int SerialCheckCycle { get; set; }
         // Joo 경로: D:\DitCtrl\Exec\Ctrl\Setting // PcCtrlSetting.ini 파일
-        [IniAttribute("Setting", "ReviewJudgeMode", false)]
+        [IniAttribute("Setting", "ReviewJudgeMode", 0)]
         public bool ReviewJudgeMode { get; set; }
 
         [IniAttribute("Setting", "NextInspCount", 0)]

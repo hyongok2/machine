@@ -40,7 +40,7 @@ namespace EquipMainUi.Test
                 if (IPAddress.TryParse(txtIP.Text, out ip) == false
                     || int.TryParse(txtPort.Text, out port) == false)
                 {
-                    MessageBox.Show("입력데이터 이상");
+                    MessageBox.Show(GG.boChinaLanguage ? "输入的 Data 发生问题!" : "입력데이터 이상");
                     txtIP.Text = "";
                     txtPort.Text = "";
                     return;

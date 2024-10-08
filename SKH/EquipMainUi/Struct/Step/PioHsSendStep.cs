@@ -65,7 +65,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (StepPioSend != 0)
             {
-                InterLockMgr.AddInterLock("인터락<실행중>\n(SEND PIO 진행중 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(SEND PIO进行中，介入开始命令 .)" : "인터락<실행중>\n(SEND PIO 진행중 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "SEND PIO 진행중 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
                 return false;

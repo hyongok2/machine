@@ -42,12 +42,12 @@ namespace EquipMainUi.Setting
         {
             if (GG.Equip.ModeSelectKey.IsAuto == true)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(AUTO MODE 状态下，无法 Door Open.)" : "인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
                 return;
             }
             if (GG.Equip.IsHomePositioning || GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             CmdDoorOpenSol(GG.Equip.TopDoor01, btnDoorTop1, !GG.Equip.TopDoor01.IsSolOnOff);
@@ -57,12 +57,12 @@ namespace EquipMainUi.Setting
         {
             if (GG.Equip.ModeSelectKey.IsAuto == true)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(AUTO MODE 状态下，无法 Door Open.)" : "인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
                 return;
             }
             if (GG.Equip.IsHomePositioning || GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<动作中>\n(设备动作中. 无法变更设备设置.)" : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
             CmdDoorOpenSol(GG.Equip.TopDoor03, btnDoorTop4, !GG.Equip.TopDoor03.IsSolOnOff);

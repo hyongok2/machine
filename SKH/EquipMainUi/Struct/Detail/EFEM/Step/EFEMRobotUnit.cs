@@ -319,7 +319,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                 else
                 {
                     if (_efem.IsHomeComplete == false) return;
-                    if (GG.PassLightCurtain == false && _efem.LPMLightCurtain.Detect.IsOn && GG.TestMode == false) return;
+                    if (GG.PassLightCurtain == false && _efem.LPMLightCurtain.Detect.IsOn && GG.TestMode == false) return; //라이트커튼 제거
                     if (GG.Equip.IsAllHomeComplete == false) return;
 
                     GetLPMWaferLogic(equip);
@@ -458,7 +458,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                 //        _seqStepNum = EmEFEMRobotSeqStep.S220_CHECK_LIGHT_CURTAIN_OFF;
                 //    break;
                 case EmEFEMRobotSeqStep.S220_CHECK_LIGHT_CURTAIN_OFF:
-                    if (GG.PassLightCurtain || _efem.LPMLightCurtain.Detect.IsOn == false)
+                    if (GG.PassLightCurtain || _efem.LPMLightCurtain.Detect.IsOn == false) //라이트커튼 제거
                     {
                         _seqStepNum = EmEFEMRobotSeqStep.S210_CHECK_LPM_READY;
                     }
@@ -859,7 +859,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                     {
                         _waferSkipWait.Stop();
                         Logger.Log.AppendLine(LogLevel.Info, "[Wafer Skip] Because Robot Arm cannot vacuum on");
-                        _frmRetryMsg.RequestPopup("ROBOT Wafer Pick 실패", "다음 중 선택하세요");
+                        _frmRetryMsg.RequestPopup(GG.boChinaLanguage ? "ROBOT晶片拾取失败" : "ROBOT Wafer Pick 실패", GG.boChinaLanguage ? "请在下列选项中选择" : "다음 중 선택하세요");
                         _seqStepNum = EmEFEMRobotSeqStep.S230_WAIT_USER_SELECT_PROGRESS;
                     }
                     break;
@@ -909,7 +909,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                     if (_efem.Aligner.Status.IsWaferExist == true)
                     {
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0622_EFEM_SEQ_ABNORMAL);
-                        InterLockMgr.AddInterLock("정상적인 시퀀스가 아닙니다. Lower Arm, Aligner 중 웨이퍼정보가 안맞는 것이 있는지 확인하고 제거 후 진행해야합니다");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "不是正常的 Sequence. 确认Lower Arm, Aligner 当中 是否有错误的Wafer Info, 需排除后进行." : "정상적인 시퀀스가 아닙니다. Lower Arm, Aligner 중 웨이퍼정보가 안맞는 것이 있는지 확인하고 제거 후 진행해야합니다");
                         _efem.ChangeMode(EmEfemRunMode.Pause);
                     }
 
@@ -1362,7 +1362,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                     }
                     break;
                 case EmEFEMRobotSeqStep.S811_CHECK_LIGHT_CURTAIN_OFF:
-                    if (GG.PassLightCurtain || _efem.LPMLightCurtain.Detect.IsOn == false)
+                    if (GG.PassLightCurtain || _efem.LPMLightCurtain.Detect.IsOn == false) //라이트커튼 제거
                     {
                         _unldPort = TransferDataMgr.GetCst(this.UpperWaferKey).LoadPortNo;
                         pioSend = _unldPort == 2 ? PioSendLpm2 : PioSendLpm1;

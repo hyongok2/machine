@@ -14,7 +14,7 @@ namespace EquipMainUi.Monitor
         SEND_PARAM = 0x30, //'0'
         SP = 0x20, //'SP'
         READER1 = 0x31, //'1'
-        READER2 = 0x32, //'2'
+        //READER2 = 0x32, //'2' //RFID제거
 
         RECV_CMD = 0x41, ///A'
         RECV_CMD_ERROR = 0x45, //'E'
@@ -31,10 +31,10 @@ namespace EquipMainUi.Monitor
         public event DataEvent dataSend = null;
 
         string commandReader1 = "D0                1E";  //command + sp * 16 + Check sum
-        string commandReader2 = "D0                2F";
+        //string commandReader2 = "D0                2F"; //RFID제거
 
         private string _reader1ReadValue;
-        private string _reader2ReadValue;
+        //private string _reader2ReadValue; //RFID제거
 
         public RFIDController(string portName, int readTimeout = 5000)
         {
@@ -46,7 +46,7 @@ namespace EquipMainUi.Monitor
             _rfidSP.BaudRate = (int)9600;
 
             _reader1ReadValue = string.Empty;
-            _reader2ReadValue = string.Empty;
+            //_reader2ReadValue = string.Empty; //RFID제거
 
             _rfidSP.DataReceived += new SerialDataReceivedEventHandler(RFIDDataReceived);
         }
@@ -138,23 +138,23 @@ namespace EquipMainUi.Monitor
                 RecvData(ex.Message);
             }
         }
-        private string _rfid1ID, _rfid2ID;
-        private bool _reader1Success, _reader2Success;
+        private string _rfid1ID /*,_rfid2ID*/; //RFID제거
+        private bool _reader1Success /*,_reader2Success*/; //RFID제거
         public string [] GetReaderReadID
         {
             get
             {
-                return new string[2] { _rfid1ID, _rfid2ID };
+                return new string[1] { _rfid1ID /*,_rfid2ID */}; //RFID제거
             }
         }
         public bool IsReader1Success()
         {
             return _reader1Success;
         }
-        public bool IsReader2Success()
-        {
-            return _reader2Success;
-        }
+        //public bool IsReader2Success() //RFID제거
+        //{
+        //    return _reader2Success;
+        //}
         private void RecvData(string str)
         {
             //정상 수신
@@ -168,16 +168,16 @@ namespace EquipMainUi.Monitor
                     _rfid1ID = _rfid1ID.Trim();
                     _reader1Success = true;
                     dataReceive?.Invoke("Reader 1 Read : " + _rfid1ID);
-                    _rfid2ID = string.Empty;
+                    //_rfid2ID = string.Empty;
                 }
-                else if(str[18] == '2')
-                {
-                    _rfid2ID = str.Substring(2, 16);
-                    _rfid2ID = _rfid2ID.Trim();
-                    _reader2Success = true;
-                    dataReceive?.Invoke("Reader 2 Read : " + _rfid2ID);
-                    _rfid1ID = string.Empty;
-                }
+                //else if(str[18] == '2') //RFID제거
+                //{
+                //    _rfid2ID = str.Substring(2, 16);
+                //    _rfid2ID = _rfid2ID.Trim();
+                //    _reader2Success = true;
+                //    dataReceive?.Invoke("Reader 2 Read : " + _rfid2ID);
+                //    _rfid1ID = string.Empty;
+                //}
             }
             else if(str[0] == 'E' && str[1] == '2')
             {
@@ -186,11 +186,11 @@ namespace EquipMainUi.Monitor
                     _rfid1ID = "CAN NOT READ RFID READR1";
                     dataReceive?.Invoke(_rfid1ID);
                 }
-                else if(str[18] == '2')
-                {
-                    _rfid2ID = "CAN NOT READ RFID READR2";
-                    dataReceive?.Invoke(_rfid2ID);
-                }
+                //else if(str[18] == '2') //RFID제거
+                //{
+                //    _rfid2ID = "CAN NOT READ RFID READR2";
+                //    dataReceive?.Invoke(_rfid2ID);
+                //}
             }
             else
             {
@@ -202,14 +202,14 @@ namespace EquipMainUi.Monitor
 
         public void ScanTagCmd(RFIDCmd reader)
         {
-            byte[] cmd = (reader == RFIDCmd.READER1) ? Encoding.UTF8.GetBytes(commandReader1) : Encoding.UTF8.GetBytes(commandReader2);
+            byte[] cmd = (reader == RFIDCmd.READER1) ? Encoding.UTF8.GetBytes(commandReader1) : Encoding.UTF8.GetBytes(commandReader1);
 
-            //if (reader == RFIDCmd.READER1)
-            //    _reader1Success = false;
+            if (reader == RFIDCmd.READER1)
+                _reader1Success = false;
             //else if (reader == RFIDCmd.READER2)
             //    _reader2Success = false;
             _reader1Success = false;
-            _reader2Success = false;
+            //_reader2Success = false; //RFID제거
 
             try
             {
@@ -224,10 +224,10 @@ namespace EquipMainUi.Monitor
         public void ScanTagCmd(int readCount = 1)
         {
             _reader1Success = false;
-            _reader2Success = false;
+            //_reader2Success = false; //RFID제거
 
             byte[] cmd1 = Encoding.UTF8.GetBytes(commandReader1);
-            byte[] cmd2 = Encoding.UTF8.GetBytes(commandReader2);
+            //byte[] cmd2 = Encoding.UTF8.GetBytes(commandReader2); //RFID제거
 
             PlcTimerEx rfidReadTimeover = new PlcTimerEx("RFID Read Delay");
             int step = 10;
@@ -241,17 +241,17 @@ namespace EquipMainUi.Monitor
                         {
                             _rfidSP.Write(cmd1, 0, cmd1.Length);
                         }
-                        else
-                        {
-                            _rfidSP.Write(cmd2, 0, cmd2.Length);
-                        }
+                        //else //RFID제거
+                        //{
+                        //    _rfidSP.Write(cmd2, 0, cmd2.Length);
+                        //}
                         rfidReadTimeover.Start(0, 500);
 
                         step = 20;
                     }
                     else if (step == 20)
                     {
-                        if (_reader1Success || _reader2Success)//성공했으면
+                        if (_reader1Success /*|| _reader2Success*/)//성공했으면 //RFID제거
                         {
                             rfidReadTimeover.Stop();
                             break;

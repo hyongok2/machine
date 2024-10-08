@@ -20,7 +20,7 @@ namespace EquipMainUi.PreAligner.Recipe
                 string connString = "mongodb://localhost";
                 MongoClient cli = new MongoClient(connString);
 
-                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix");
+                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix_Wuxi");
 
                 _recipes = dbSKHynix.GetCollection<PreAlignerRecipe>("PreAlignerRecipes");
 

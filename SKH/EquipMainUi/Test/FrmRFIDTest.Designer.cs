@@ -81,13 +81,13 @@
             // 
             // btnScan2
             // 
-            this.btnScan2.Location = new System.Drawing.Point(320, 29);
-            this.btnScan2.Name = "btnScan2";
-            this.btnScan2.Size = new System.Drawing.Size(75, 61);
-            this.btnScan2.TabIndex = 0;
-            this.btnScan2.Text = "Reader2 Scan";
-            this.btnScan2.UseVisualStyleBackColor = true;
-            this.btnScan2.Click += new System.EventHandler(this.btnScan2_Click);
+            //this.btnScan2.Location = new System.Drawing.Point(320, 29); //RFID 제거
+            //this.btnScan2.Name = "btnScan2";
+            //this.btnScan2.Size = new System.Drawing.Size(75, 61);
+            //this.btnScan2.TabIndex = 0;
+            //this.btnScan2.Text = "Reader2 Scan";
+            //this.btnScan2.UseVisualStyleBackColor = true;
+            //this.btnScan2.Click += new System.EventHandler(this.btnScan2_Click);
             // 
             // FrmRFIDTest
             // 

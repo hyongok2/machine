@@ -122,9 +122,6 @@ namespace EquipMainUi.Struct
         public OffCheckSwitch TopDoor03                             /**/ = new OffCheckSwitch();
         public OffCheckSwitch TopDoor04                             /**/ = new OffCheckSwitch();
 
-        public OffCheckSwitch EfemDoor01                             /**/ = new OffCheckSwitch();
-        public OffCheckSwitch EfemDoor02                             /**/ = new OffCheckSwitch();
-
         public Sensor WaferDetectSensorLiftpin1                            /**/ = new Sensor();
         public Sensor WaferDetectSensorLiftpin2                            /**/ = new Sensor();
         public Sensor WaferDetectSensorStage1                            /**/ = new Sensor();
@@ -308,7 +305,7 @@ namespace EquipMainUi.Struct
             }
             if (this.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("오토런 상태일 때에는 물류/비물류 모드 변경 불가, Manual로 전환 후 변경 해주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto Run 状态时，无法变更 物流/非物流 Mode , 转换为Manual后进行变更" : "오토런 상태일 때에는 물류/비물류 모드 변경 불가, Manual로 전환 후 변경 해주세요");
                 return false;
             }
             //if(GG.CimTestMode)
@@ -330,12 +327,12 @@ namespace EquipMainUi.Struct
             }
             if (type == EmLoadType.OHT && (Efem.LoadPort1.OHTpio.IsRunning || Efem.LoadPort2.OHTpio.IsRunning))
             {
-                InterLockMgr.AddInterLock("인터락<물류 모드 변경>", string.Format("물류 진행 중일 때 변경 불가능"));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<物流模式变更>" : "인터락<물류 모드 변경>", GG.boChinaLanguage ? string.Format("当进行物流时无法变更") : string.Format("물류 진행 중일 때 변경 불가능"));
                 return false;
             }
             if (this.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("오토런 상태일 때에는 물류/비물류 모드 변경 불가, Manual로 전환 후 변경 해주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto Run 状态时，无法变更物流 /非物流 Mode , 转换为Manual后进行变更" : "오토런 상태일 때에는 물류/비물류 모드 변경 불가, Manual로 전환 후 변경 해주세요");
                 return false;
             }
             GG.Equip.Efem.LoadPort2.LoadType = GG.Equip.Efem.LoadPort1.LoadType = type;
@@ -348,7 +345,7 @@ namespace EquipMainUi.Struct
                 GG.Equip.LoadTypeChangeReport();
             }
 
-            CheckMgr.AddCheckMsg(true, string.Format("카세트 로드 방식 변경\n[{0}]", type == EmLoadType.OHT ? "물류" : "비물류"));
+            CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? string.Format("卡夹 Load方式变更\n[{0}]", type == EmLoadType.OHT ? GG.boChinaLanguage ? "物流" : "물류" : GG.boChinaLanguage ? "非物流" : "비물류") : string.Format("카세트 로드 방식 변경\n[{0}]", type == EmLoadType.OHT ? "물류" : "비물류"));
             Logger.Log.AppendLine(LogLevel.Info, string.Format("카세트 로드 방식 변경\n[{0}]", type == EmLoadType.OHT ? "물류" : "비물류"));
 
             return true;
@@ -476,7 +473,7 @@ namespace EquipMainUi.Struct
                      */
                     if (IsWaferDetect != EmGlassDetect.NOT)
                     {
-                        InterLockMgr.AddInterLock("인터락<GLASS>\n(GLASS가 감지됨니다. NO GLASS 모드로 변경이 불가능합니다.)");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<GLASS>\n(感应到GLASS. 无法变更为NO GLASS Mode.)" : "인터락<GLASS>\n(GLASS가 감지됨니다. NO GLASS 모드로 변경이 불가능합니다.)");
                         Logger.Log.AppendLine(LogLevel.Warning, "GLASS가 감지됨니다. NO GLASS 모든 변경 불가.");
                         return;
                     }
@@ -565,15 +562,12 @@ namespace EquipMainUi.Struct
             BCR2.SetReadValueRegex(@"^[0-9,A-Z,a-z]{7}-[0-9,A-Z,a-z]{4}$", @"^[0-9,A-Z,a-z]{7}-[0-9,A-Z,a-z]{2}$");
             Efem.LoadPort1.RFR = new RFIDController(InitSetting.RFR1Port);
             Efem.LoadPort2.RFR = new RFIDController(InitSetting.RFR2Port);
-            //jjy
             AlarmSolutionMgr.Load();
 
             if (GG.IsDitPreAligner)
             {
                 PreAligner = new PreAlignerBundle();
                 //if (GG.TestMode == false)
-
-                //jjy
                 PreAligner.InitCamera();
                 PreAligner.LightController.Initialize(GG.Equip.InitSetting.LightControllerPort);
                 PreAligner.SetDebugImagePath(System.IO.Path.Combine(GG.StartupPath, GG.Equip.InitSetting.ControlLogBasePath, "PreAlign"));
@@ -582,15 +576,15 @@ namespace EquipMainUi.Struct
                     if (PreAligner != null)
                     {
                         if (GG.Equip.PreAligner.OpenLightController(GG.Equip.InitSetting.LightControllerPort) == false)
-                            connErr.AppendLine("Pre Aligner Light Controller Open 실패");
+                            connErr.AppendLine(GG.boChinaLanguage ? "Pre Aligner Light Controller 连接失败" : "Pre Aligner Light Controller Open 실패");
                         if (GG.Equip.PreAligner.OpenCamera() == false)
-                            connErr.AppendLine("Pre Aligner Camera Connect 실패");
+                            connErr.AppendLine(GG.boChinaLanguage ? "Pre Aligner Camera 连接失败" : "Pre Aligner Camera Connect 실패");
                     }
                 }
 
                 if (GG.EZI.Open() == 0)
                 {
-                    connErr.AppendLine("Pre Aligner Ezi Step Motor 연결 실패");
+                    connErr.AppendLine(GG.boChinaLanguage ? "Pre Aligner Ezi Step Motor 连接失败" : "Pre Aligner Ezi Step Motor 연결 실패");
                 }
 
                 FixedDitAlignerRecipeName = "DEF";
@@ -598,19 +592,36 @@ namespace EquipMainUi.Struct
 
             if (GG.TestMode == false)
             {
-                if (EFUCtrler.Start() == false)
-                    connErr.AppendLine("EFU 연결 실패");
-                //jjy
-                //if (OCR.Open(InitSetting.OcrIP, InitSetting.OcrPort) == false)
-                //    connErr.AppendLine("OCR 연결 실패");
-                if (Efem.LoadPort1.RFR.Open() == false)
-                    connErr.AppendLine("RF1 연결 실패");
-                if (Efem.LoadPort2.RFR.Open() == false)
-                    connErr.AppendLine("RF2 연결 실패");
-                if (BCR1.Open() == false)
-                    connErr.AppendLine("BCR1 연결 실패");
-                if (BCR2.Open() == false)
-                    connErr.AppendLine("BCR2 연결 실패");
+                if (GG.boChinaLanguage)
+                {
+                    if (EFUCtrler.Start() == false)
+                        connErr.AppendLine("");
+                    if (OCR.Open(InitSetting.OcrIP, InitSetting.OcrPort) == false)
+                        connErr.AppendLine("");
+                    if (Efem.LoadPort1.RFR.Open() == false)
+                        connErr.AppendLine("");
+                    if (Efem.LoadPort2.RFR.Open() == false)
+                        connErr.AppendLine("");
+                    if (BCR1.Open() == false)
+                        connErr.AppendLine("");
+                    if (BCR2.Open() == false)
+                        connErr.AppendLine("");
+                }
+                else
+                {
+                    if (EFUCtrler.Start() == false)
+                        connErr.AppendLine(GG.boChinaLanguage ? "EFU 连接失败" : "EFU 연결 실패");
+                    if (OCR.Open(InitSetting.OcrIP, InitSetting.OcrPort) == false)
+                        connErr.AppendLine(GG.boChinaLanguage ? "OCR 连接失败" : "OCR 연결 실패");
+                    if (Efem.LoadPort1.RFR.Open() == false)
+                        connErr.AppendLine(GG.boChinaLanguage ? "RF1 连接失败" : "RF1 연결 실패");
+                    if (Efem.LoadPort2.RFR.Open() == false)
+                        connErr.AppendLine(GG.boChinaLanguage ? "RF2 连接失败" : "RF2 연결 실패");
+                    if (BCR1.Open() == false)
+                        connErr.AppendLine(GG.boChinaLanguage ? "BCR1 连接失败" : "BCR1 연결 실패");
+                    if (BCR2.Open() == false)
+                        connErr.AppendLine(GG.boChinaLanguage ? "BCR2 连接失败" : "BCR2 연결 실패");
+                }
             }
 
             PreAlignerSeq.InitUserInterface(this);
@@ -619,7 +630,7 @@ namespace EquipMainUi.Struct
             Efem.Aligner.InitUserInterface(this);
             Efem.Robot.InitUserInterface(this);
             if (Efem.Proxy.Connect(this) == false)
-                connErr.AppendLine("EFEM 연결 실패");
+                connErr.AppendLine(GG.boChinaLanguage ? "EFEM 连接失败" : "EFEM 연결 실패");
             Efem.Proxy.Initailize(this);
             PioLPM1.Initalize(this, EmEfemPort.LOADPORT1);
             PioLPM2.Initalize(this, EmEfemPort.LOADPORT2);
@@ -671,8 +682,9 @@ namespace EquipMainUi.Struct
 
 
             if (Efem.Robot.TargetLoadPort != 0)
-                CheckMgr.AddCheckMsg(true, string.Format("LoadPort{0} 진행중이었습니다. 해당 LoadPort 먼저 {1}. 내부에 Wafer가 없는 경우 시작 시 다시 설정합니다.",
-                    Efem.Robot.TargetLoadPort, Efem.LoadPort((EmEfemPort)Efem.Robot.TargetLoadPort).LoadType == EmLoadType.OHT ? "시작됩니다" : "투입하세요"));
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? string.Format("在进行LoadPort{0} 中, 当前（Load Port）优先 {1}. 内部没有 Wafer的情况开始时重新设置.",
+                   Efem.Robot.TargetLoadPort, Efem.LoadPort((EmEfemPort)Efem.Robot.TargetLoadPort).LoadType == EmLoadType.OHT ? GG.boChinaLanguage ? "开始" : "시작됩니다" : GG.boChinaLanguage ? "插入" : "투입하세요") : string.Format("LoadPort{0} 진행중이었습니다. 해당 LoadPort 먼저 {1}. 내부에 Wafer가 없는 경우 시작 시 다시 설정합니다.",
+                   Efem.Robot.TargetLoadPort, Efem.LoadPort((EmEfemPort)Efem.Robot.TargetLoadPort).LoadType == EmLoadType.OHT ? "시작됩니다" : "투입하세요"));
 
             if (GG.TestMode == true)
             {
@@ -722,7 +734,7 @@ namespace EquipMainUi.Struct
 
             if (_mode == EmCimMode.None && GG.CimTestMode == false)
             {
-                InterLockMgr.AddInterLock("CIM 프로그램 연결 상태를 확인 하세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "请确认CIM Program 连接状态" : "CIM 프로그램 연결 상태를 확인 하세요");
                 SetOHTMode(EmLoadType.Manual, false);
                 return;
             }
@@ -797,11 +809,6 @@ namespace EquipMainUi.Struct
             TopDoor02.YB_OnOff = AddressMgr.GetAddress("TOP_DOOR2_OPEN_SOL", 0);
             TopDoor03.YB_OnOff = AddressMgr.GetAddress("TOP_DOOR3_OPEN_SOL", 0);
             TopDoor04.YB_OnOff = AddressMgr.GetAddress("TOP_DOOR4_OPEN_SOL", 0);
-
-            EfemDoor01.XB_OnOff = AddressMgr.GetAddress("EFEM_DOOR1_SENSOR", 0);
-            EfemDoor02.XB_OnOff = AddressMgr.GetAddress("EFEM_DOOR2_SENSOR", 0);
-            EfemDoor01.YB_OnOff = AddressMgr.GetAddress("EFEM_DOOR1_OPEN_SOL", 0);
-            EfemDoor02.YB_OnOff = AddressMgr.GetAddress("EFEM_DOOR2_OPEN_SOL", 0);
 
             WaferDetectSensorLiftpin1.XB_OnOff                         /**/ = AddressMgr.GetAddress("WAFER_PIN_DETECT_SENSOR_1", 0);
             WaferDetectSensorLiftpin2.XB_OnOff                         /**/ = AddressMgr.GetAddress("WAFER_PIN_DETECT_SENSOR_2", 0);
@@ -892,7 +899,7 @@ namespace EquipMainUi.Struct
             #endregion
 
             //EFEM
-            Efem.LPMLightCurtain.Detect.XB_OnOff = AddressMgr.GetAddress("LIGTH_CURTAIN_DETECT_1", 0);
+            Efem.LPMLightCurtain.Detect.XB_OnOff = AddressMgr.GetAddress("LIGTH_CURTAIN_DETECT_1", 0); //라이트커튼 제거
             Efem.LPMLightCurtain.Muting1.YB_OnOff = AddressMgr.GetAddress("LIGHT_CURTAIN_MUTING_1", 0);
             Efem.LPMLightCurtain.Muting2.YB_OnOff = AddressMgr.GetAddress("LIGHT_CURTAIN_MUTING_2", 0);
             Efem.LPMLightCurtain.ResetOut.YB_OnOff = AddressMgr.GetAddress("LIGHT_CURTAIN_RESET", 0);
@@ -1337,12 +1344,12 @@ namespace EquipMainUi.Struct
 
             if (this.ModeSelectKey.IsAuto == true)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(AUTO MODE状态下 无法 Door Open.)" : "인터락<AUTO MODE>\n(AUTO MODE 상태에서는 Door Open이 불가능합니다.)");
                 return;
             }
             if (this.IsHomePositioning || this.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<设备动作中>\n设备动作中. 无法变更设备设置." : "인터락<동작중>\n설비가 동작중입니다. 설비 설정을 변경 할 수 없습니다.");
                 return;
             }
 
@@ -1369,7 +1376,7 @@ namespace EquipMainUi.Struct
                     if (this.IsUseInterLockOff == false)
                         if (this.Vacuum.IsVacuumSolOn)
                         {
-                            InterLockMgr.AddInterLock("인터락<VACUUM>\n(Vacuum Sol On상태에서 블로워를 수행 할 수 없습니다.)");
+                            InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<VACUUM>\n(Vacuum Sol On状态下，无法执行 Blower.)" : "인터락<VACUUM>\n(Vacuum Sol On상태에서 블로워를 수행 할 수 없습니다.)");
                             Logger.Log.AppendLine(LogLevel.Warning, "Vacuum Sol On상태에서 블로워를 수행 할 수 없습니다");
                             return true;
 
@@ -1575,35 +1582,35 @@ namespace EquipMainUi.Struct
         {
             if (IsPause == true)
             {
-                InterLockMgr.AddInterLock("인터락<PAUSE>\n(Pause 상태에서 Home Position 이동을 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<PAUSE>\n(Pause 状态下，无法移动 Home Position .)" : "인터락<PAUSE>\n(Pause 상태에서 Home Position 이동을 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Info, "Pause 상태에서 Home 이동 안됨");
                 return false;
             }
 
             if (IsDoorOpen == true && GG.TestMode == false && IsUseInterLockOff == false && IsUseDoorInterLockOff == false)
             {
-                InterLockMgr.AddInterLock("인터락<DOOR>\n(DOOR Open 상태에서 Home Position 이동을 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<DOOR>\n(DOOR Open 状态下，无法移动 Home Position .)" : "인터락<DOOR>\n(DOOR Open 상태에서 Home Position 이동을 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Info, "DOOR Open 상태에서 Home 이동 안됨");
                 return false;
             }
 
             if (IsEmergency == true && GG.TestMode == false)
             {
-                InterLockMgr.AddInterLock("인터락<EMERGENCY>\n(EMERGENCY 상태에서 Home Position 이동을 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EMERGENCY>\n(EMERGENCY 状态下，无法移动 Home Position .)" : "인터락<EMERGENCY>\n(EMERGENCY 상태에서 Home Position 이동을 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Info, "EMERGENCY 상태에서 Home 이동 안됨");
                 return false;
             }
 
             if (IsHomePositioning == true)
             {
-                InterLockMgr.AddInterLock("인터락<실행 중>\n(Home Position 동작 중입니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(Home Position 动作中.)" : "인터락<실행 중>\n(Home Position 동작 중입니다.)");
                 Logger.Log.AppendLine(LogLevel.Info, "Home Position 이동중 !!!!!");
                 return false;
             }
 
             if (EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AutoMode일때 Home Position 이동을 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(AutoMode时，无法移动 Home Position .)" : "인터락<AUTO MODE>\n(AutoMode일때 Home Position 이동을 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "AutoMode일때 Home Position 이동 안됨 ");
                 return false;
             }
@@ -1922,12 +1929,12 @@ namespace EquipMainUi.Struct
                     PioRecv.IsRunning == true)
                     )
                 {
-                    InterLockMgr.AddInterLock("인터락<PIO 중>\nPIO 진행 중! 설비 내부를 확인하고 다음 동작을 하세요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<PIO 中>\n(PIO 进行中! 确认设备内部后进行下一个动作)" : "인터락<PIO 중>\nPIO 진행 중! 설비 내부를 확인하고 다음 동작을 하세요");
                 }
 
                 if (value == false && IsHeavyAlarm == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<HEAVY ALARM>\n(중알람 발생시 PAUSE 해지가 불가능 합니다.)");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HEAVY ALARM>\n(Heavy Alarm 发生时，不可解除 PAUSE .)" : "인터락<HEAVY ALARM>\n(중알람 발생시 PAUSE 해지가 불가능 합니다.)");
                     return;
                 }
                 if (value == false && EquipRunMode == EmEquipRunMode.Auto && IsCycleStop == EmCycleStop.Complete)
@@ -1991,7 +1998,7 @@ namespace EquipMainUi.Struct
         {
             if (useSelectGlassCrackMode == true && this.IsUseSelectInspOrder == false)
             {
-                InterLockMgr.AddInterLock("글라스 타입 설정 먼저 해야됩니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "先进行Glass Type设置 ." : "글라스 타입 설정 먼저 해야됩니다.");
                 return;
             }
 
@@ -2045,14 +2052,14 @@ namespace EquipMainUi.Struct
             {
                 if (IsHeavyAlarm == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<HEAVY ALARM>\n(HEAVY ALARM 상태에서 AUTO 변경을 할 수 없습니다.)");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HEAVY ALARM>\n(HEAVY ALARM 状态下，无法变更 AUTO .)" : "인터락<HEAVY ALARM>\n(HEAVY ALARM 상태에서 AUTO 변경을 할 수 없습니다.)");
                     Logger.Log.AppendLine(LogLevel.Info, "HEAVY ALARM 상태에서 AUTO 변경이 안됨");
                     return false;
                 }
 
                 if (IsHomePositioning == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<HOME 진행 중>\n(HOME 진행 중 시작 불가");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HOME 进行中>\n(HOME 进行中，无法开始)" : "인터락<HOME 진행 중>\n(HOME 진행 중 시작 불가");
                     Logger.Log.AppendLine(LogLevel.Warning, "HOME 진행 중 시작 불가");
 
                     IsInterlock = true;
@@ -2063,7 +2070,7 @@ namespace EquipMainUi.Struct
                 {
                     if (ModeSelectKey.IsAuto == false)
                     {
-                        InterLockMgr.AddInterLock("인터락<TEACH MODE>\n(TEACH 모드에서 AUTO RUN 수행을 할 수 없습니다.)");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<TEACH MODE>\n(TEACH Mode下，无法执行 AUTO RUN .)" : "인터락<TEACH MODE>\n(TEACH 모드에서 AUTO RUN 수행을 할 수 없습니다.)");
                         Logger.Log.AppendLine(LogLevel.Warning, "TEACH 모드에서 AUTO START 불가함");
 
                         IsInterlock = true;
@@ -2075,21 +2082,21 @@ namespace EquipMainUi.Struct
                 if (GG.TestMode == false
                     && IsDoorOpen == true && IsUseInterLockOff == false && IsUseDoorInterLockOff == false)
                 {
-                    InterLockMgr.AddInterLock("인터락<DOOR>\n(DOOR Open 상태에서 Auto Run 시작을 할 수 없습니다.)");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<DOOR>\n(DOOR Open 状态下，无法开始 Auto Run .)" : "인터락<DOOR>\n(DOOR Open 상태에서 Auto Run 시작을 할 수 없습니다.)");
                     Logger.Log.AppendLine(LogLevel.Info, "DOOR Open 상태에서 Auto Run 시작 안됨");
                     return false;
                 }
 
                 if (IsEmergency == true && GG.TestMode == false)
                 {
-                    InterLockMgr.AddInterLock("인터락<EMERGENCY>\n(EMERGENCY 상태에서  Auto Run 시작을 할 수 없습니다.)");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EMERGENCY>\n(EMERGENCY 状态下，无法开始 Auto Run .)" : "인터락<EMERGENCY>\n(EMERGENCY 상태에서  Auto Run 시작을 할 수 없습니다.)");
                     Logger.Log.AppendLine(LogLevel.Info, "EMERGENCY 상태에서 Auto Run 시작 안됨");
                     return false;
                 }
 
                 if (IsHomePositioning == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<HOME>\n(HOME 중 시작 불가)");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HOME>\n(HOME 动作中，无法开始 )" : "인터락<HOME>\n(HOME 중 시작 불가)");
                     Logger.Log.AppendLine(LogLevel.Info, "HOME 중 시작 불가");
                     return false;
                 }
@@ -2098,7 +2105,7 @@ namespace EquipMainUi.Struct
                 {
                     GG.Equip.IsInterlock = true;
                     string msg = "EFEM 통신 이상으로 설비 HOME 불가. Operation Option창에서 설비 홈 진행 후 Auto 진행하거나 개별 Start해야합니다.";
-                    InterLockMgr.AddInterLock(msg);
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "因EFEM通讯异常设备无法HOME.在Operation Option窗口进行设备Home后，进行Auto或进行个别Start." : msg);
                     return false;
                 }
 
@@ -2106,25 +2113,15 @@ namespace EquipMainUi.Struct
                 {
                     GG.Equip.IsInterlock = true;
                     string msg = "웨이퍼 이송 중입니다. Auto Run 시작을 할 수 없습니다.";
-                    InterLockMgr.AddInterLock(msg);
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer 移送中. 无法开始Auto Run ." : msg);
                     return false;
-                }
-
-                if (Efem.LoadPort1.LoadType == EmLoadType.OHT || Efem.LoadPort2.LoadType == EmLoadType.OHT)
-                {
-                    if ((EfemDoor01.IsOnOff == false || EfemDoor02.IsOnOff == false) && GG.TestMode == false)
-                    {
-                        string msg = "OHT 모드 일 때에는 EFEM Door를 닫고 시작해야 합니다";
-                        InterLockMgr.AddInterLock(msg);
-                        return false;
-                    }
                 }
 
                 if (Efem.Robot.Status.IsMoving || Efem.LoadPort1.Status.IsBusy || Efem.LoadPort2.Status.IsBusy ||
                     (StageX.IsMoving && !StageX.IsServoError) || (StageY.IsMoving && !StageY.IsServoError) || (Theta.IsMoving && !Theta.IsServoError))
                 {
                     string msg = "설비 이니셜 도중에 오토런 전환을 할 수 없습니다 잠시 후 다시 시도해 주세요";
-                    InterLockMgr.AddInterLock(msg);
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "设备Initial途中时无法转换 Auto Run请稍后再进行尝试. " : msg);
                     return false;
                 }
 
@@ -2183,7 +2180,7 @@ namespace EquipMainUi.Struct
                 {
                     //   InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AUTO 모드 또는 PAUSE 상태일 경우에만, Manual 모드로 변경 할 수 있습니다.)");
                     FormMessageOkCanleBox frmManual = new FormMessageOkCanleBox();
-                    frmManual.Message = "AUTO 모드 또는 PAUSE 상태일 경우에만, Manual 모드로 변경 할 수 있습니다. 설비를 정지 하시겠습니까?";
+                    frmManual.Message = GG.boChinaLanguage ? "只有在 AUTO 模式或 PAUSE 状态下才能切换到手动模式。 您确定要停止机器吗？" : "AUTO 모드 또는 PAUSE 상태일 경우에만, Manual 모드로 변경 할 수 있습니다. 설비를 정지 하시겠습니까?";
                     frmManual.ShowDialog();
                     if (frmManual.Dlg_Result == true)
                     {
@@ -2208,7 +2205,7 @@ namespace EquipMainUi.Struct
                     Efem.Robot.PioRecvAVI.Initailize();
                     PioSend.Initailize();
                     PioRecv.Initailize();
-                    InterLockMgr.AddInterLock("인터락<상하류 PIO>\nPIO 중 매뉴얼 전환으로 PIO신호 리셋합니다. 정지 상태 확인 후 다시 매뉴얼 전환 하세요");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<上下流 PIO>\n(PIO中，需转换 Manual将PIO信号进行 Reset. 确认停止状态后，进行转换Manual )" : "인터락<상하류 PIO>\nPIO 중 매뉴얼 전환으로 PIO신호 리셋합니다. 정지 상태 확인 후 다시 매뉴얼 전환 하세요");
                     return false;
                 }
 
@@ -2374,30 +2371,6 @@ namespace EquipMainUi.Struct
                     if (TopDoor03.IsOnOff) AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0026_TOP_DOOR_03_OPEN);
                     if (TopDoor04.IsOnOff) AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0027_TOP_DOOR_04_OPEN);
                 }
-
-
-                if (this.Efem.LoadPort1.LoadType == EmLoadType.Manual && this.Efem.LoadPort2.LoadType == EmLoadType.Manual)
-                {
-                    //항상 도어 열수 있는 상태
-                    EfemDoorSolOnOff(false);
-                }
-                else if (this.Efem.LoadPort1.LoadType == EmLoadType.OHT || this.Efem.LoadPort2.LoadType == EmLoadType.OHT)
-                {
-                    //OHT 모드 일 때에는 메뉴얼 상태에서만 도어 열수 있음
-                    if (this.EquipRunMode == EmEquipRunMode.Manual)
-                    {
-                        EfemDoorSolOnOff(false);
-                    }
-                    //OHT모드이고 메뉴얼 상태가 아닐 때에는 EFEM도어 상태 상시 체크, 그리고 도어 열리면 안됨
-                    else
-                    {
-                        if (EfemDoor01.IsOnOff == false) AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0029_EFEM_DOOR_01_OPEN);
-                        if (EfemDoor02.IsOnOff == false) AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0030_EFEM_DOOR_02_OPEN);
-
-                        EfemDoorSolOnOff(true);
-                    }
-                }
-
             }
             if (GG.TestMode == false)
             {
@@ -2417,12 +2390,6 @@ namespace EquipMainUi.Struct
 
 
             return true;
-        }
-
-        private void EfemDoorSolOnOff(bool solOn)
-        {
-            EfemDoor01.OnOff(this, solOn);
-            EfemDoor02.OnOff(this, solOn);
         }
 
         private void SerialConnectCheck()
@@ -2445,10 +2412,10 @@ namespace EquipMainUi.Struct
                 {
                     GG.Equip.BCR2.Open();
                 }
-                //if (GG.Equip.OCR.IsConnected == false)
-                //{
-                //    GG.Equip.OCR.Open(GG.Equip.InitSetting.OcrIP, GG.Equip.InitSetting.OcrPort);
-                //}
+                if (GG.Equip.OCR.IsConnected == false)
+                {
+                    GG.Equip.OCR.Open(GG.Equip.InitSetting.OcrIP, GG.Equip.InitSetting.OcrPort);
+                }
             }
         }
 
@@ -2461,30 +2428,30 @@ namespace EquipMainUi.Struct
                 this.PMac.StartCommand(this, EmPMacmd.IMMEDIATE_STOP, 0);
                 this.Motors.ToList().ForEach(m => m.Reset());
                 AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0001_EMERGENCY_1_ERROR);
-                InterLockMgr.AddInterLock("인터락<EMERGENCY>\n 1 EMS 상태입니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EMERGENCY>\n(1 EMS 状态.)" : "인터락<EMERGENCY>\n 1 EMS 상태입니다.");
             }
             if (this.EmsOutside2.IsOn)
             {
                 this.PMac.StartCommand(this, EmPMacmd.IMMEDIATE_STOP, 0);
                 this.Motors.ToList().ForEach(m => m.Reset());
                 AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0002_EMERGENCY_2_ERROR);
-                InterLockMgr.AddInterLock("인터락<EMERGENCY>\n 2 EMS 상태입니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EMERGENCY>\n(2 EMS 状态.)" : "인터락<EMERGENCY>\n 2 EMS 상태입니다.");
             }
             if (this.EmsOutside3.IsOn)
             {
                 this.PMac.StartCommand(this, EmPMacmd.IMMEDIATE_STOP, 0);
                 this.Motors.ToList().ForEach(m => m.Reset());
                 AlarmMgr.Instance.Happen(this, EM_AL_LST.AL_0003_EMERGENCY_3_ERROR);
-                InterLockMgr.AddInterLock("인터락<EMERGENCY>\n 3 EMS 상태입니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EMERGENCY>\n(3 EMS 状态.)" : "인터락<EMERGENCY>\n 3 EMS 상태입니다.");
             }
             //190905 EFEM EMO 팝업창 추가
             if (GG.EfemNoUse == false && GG.Equip.Efem.Status.IsEMO == true)
             {
-                InterLockMgr.AddInterLock("인터락<EFEM EMERGENCY>\n EFEM EMS 상태입니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EFEM EMERGENCY>\n(EFEM EMS 状态.)" : "인터락<EFEM EMERGENCY>\n EFEM EMS 상태입니다.");
             }
             if (GG.TestMode == false && GG.EfemNoUse == false && GG.Equip.Efem.Status.IsDoorClose == false && GG.Equip.IsUseDoorInterLockOff == false)
             {
-                InterLockMgr.AddInterLock("인터락<EFEM EMERGENCY>\n EFEM DOOR OPEN 상태입니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EFEM EMERGENCY>\n(EFEM DOOR OPEN 状态.)" : "인터락<EFEM EMERGENCY>\n EFEM DOOR OPEN 상태입니다.");
             }
         }
 
@@ -2625,7 +2592,7 @@ namespace EquipMainUi.Struct
                 {
                     if (IsPause)
                     {
-                        InterLockMgr.AddInterLock("인터락<PAUSE>\n PAUSE 상태입니다. 리뷰 수동동작이 불가능합니다.");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<PAUSE>\n(PAUSE 状态. Review无法手动动作.)" : "인터락<PAUSE>\n PAUSE 상태입니다. 리뷰 수동동작이 불가능합니다.");
                         _reviewManual = EmReviewManual.None;
                         return;
                     }
@@ -3153,7 +3120,7 @@ namespace EquipMainUi.Struct
                         IsPause = false;
                         IsNeedRestart = false;
 
-                        InterLockMgr.AddInterLock("비정상 정지로 재시작이 필요합니다");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "因非正常停止，需再开始" : "비정상 정지로 재시작이 필요합니다");
                         Logger.CIMLog.AppendLine(LogLevel.Info, "Pause 상태 해제 실패");
                         return false;
                     }
@@ -3205,46 +3172,46 @@ namespace EquipMainUi.Struct
             EFEMLPMUnit LoadPort = portNo == 1 ? Efem.LoadPort1 : Efem.LoadPort2;
 
             if (IsHeavyAlarm)
-                return "비정상 정지 발생\n알람리셋 필요";
+                return GG.boChinaLanguage ? "发生非正常停止\n需 Alarm Reset " : "비정상 정지 발생\n알람리셋 필요";
 
             else if (WaferTransLogic.IsRunning())
-                return "웨이퍼 리커버리 진행 중";
+                return GG.boChinaLanguage ? "(Wafer Recovery) 进行中" : "웨이퍼 리커버리 진행 중";
 
             else if (StMain.StepNum == EmMN_NO.WAIT || (LoadPort.SeqStepNum == Detail.EFEM.Step.EmEFEMLPMSeqStep.S000_END && Efem.Robot.HomeStepNum == Detail.EFEM.Step.EmEFEMRobotHomeStep.H000_END))
-                return "오토런 시작 대기 중";
+                return GG.boChinaLanguage ? "(Auto Run) 开始 待机中" : "오토런 시작 대기 중";
 
             else if (StMain.StepNum == EmMN_NO.HOME_WAIT || (Efem.Aligner.HomeStepNum > EmEFEMAlignerHomeStep.H000_END && Efem.Aligner.HomeStepNum < EmEFEMAlignerHomeStep.H100_HOME_COMPLETE)
                 || LoadPort.HomeStepNum > Detail.EFEM.Step.EmEFEMLPMHomeStep.H000_END && LoadPort.HomeStepNum != Detail.EFEM.Step.EmEFEMLPMHomeStep.H100_HOME_COMPLETE
                 || (Efem.Robot.HomeStepNum > Detail.EFEM.Step.EmEFEMRobotHomeStep.H005_EFEM_AUTO_CHANGE && Efem.Robot.HomeStepNum < Detail.EFEM.Step.EmEFEMRobotHomeStep.H100_HOME_COMPLETE))
-                return "Initial 진행 중";
+                return GG.boChinaLanguage ? "(Initialize) 进行中" : "Initial 진행 중";
 
             else if (!LoadPort.OHTpio.IsRunning
                 && (LoadPort.SeqStepNum == Detail.EFEM.Step.EmEFEMLPMSeqStep.S110_WAIT_LOAD_BUTTON_PUSH
                 || LoadPort.SeqStepNum == Detail.EFEM.Step.EmEFEMLPMSeqStep.S200_START_OHT_COMMUNICATION
                 || LoadPort.SeqStepNum == Detail.EFEM.Step.EmEFEMLPMSeqStep.S210_WAIT_CST_OHT_LOAD))
-                return "카세트 투입 대기 중";
+                return GG.boChinaLanguage ? "(cassette) 投入待机中" : "카세트 투입 대기 중";
 
             else if (LoadPort.OHTpio.IsRunning)
-                return "카세트 투입/배출 중";
+                return GG.boChinaLanguage ? "(Cassette) 投入/排出中" : "카세트 투입/배출 중";
 
             else if (LoadPort.SeqStepNum == Detail.EFEM.Step.EmEFEMLPMSeqStep.S380_OPEN_READY)
-                return "카세트 검사 시작 대기 중";
+                return GG.boChinaLanguage ? "(cassette) 检查开始待机中" : "카세트 검사 시작 대기 중";
 
             else if (!LoadPort.OHTpio.IsRunning &&
                 (LoadPort.SeqStepNum == EmEFEMLPMSeqStep.S670_WAIT_UNLD_BUTTON_PUSH
                 || LoadPort.SeqStepNum == EmEFEMLPMSeqStep.S650_WAIT_UNLD_BUTTON_PUSH
                 || LoadPort.SeqStepNum == EmEFEMLPMSeqStep.S690_OHT_ULD_COMMUNICATION_START
                 || LoadPort.SeqStepNum == EmEFEMLPMSeqStep.S700_OHT_ULD_COMPLETE_WAIT))
-                return "카세트 배출 대기 중";
+                return GG.boChinaLanguage ? "(cassette) 排出待机中" : "카세트 배출 대기 중";
             else if (Efem.Aligner.SeqStepNum == EmEFEMAlignerSeqStep.S440_WAFER_MAP_DOWNLOAD_WAIT)
-                return "웨이퍼 맵 다운로드 대기 중";
+                return GG.boChinaLanguage ? "(Wafer Map Download) 待机中" : "웨이퍼 맵 다운로드 대기 중";
             else if (LoadPort.SeqStepNum == EmEFEMLPMSeqStep.S410_CST_LOAD_CONFIRM_WAIT)
-                return "카세트 로드 컨펌 대기 중";
+                return GG.boChinaLanguage ? "(CST Load Confirm) 待机中" : "카세트 로드 컨펌 대기 중";
             else if (LoadPort.SeqStepNum == EmEFEMLPMSeqStep.S520_LOT_START_CONFIRM_WAIT)
-                return "랏 스타트 컨펌 대기 중";
+                return GG.boChinaLanguage ? "(Lot Start Confirm) 待机中" : "랏 스타트 컨펌 대기 중";
 
             else
-                return "카세트 검사 진행 중";
+                return GG.boChinaLanguage ? "Cassette 检查进行中" : "카세트 검사 진행 중";
         }
     }
 }

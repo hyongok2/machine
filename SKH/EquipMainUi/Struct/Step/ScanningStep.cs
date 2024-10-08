@@ -65,7 +65,7 @@ namespace EquipMainUi.Struct.Step
                 if (_stepNum > 0 &&
                     (DateTime.Now - StepStartTime).TotalMilliseconds > equip.CtrlSetting.Ctrl.AutoStepTimeout)
                 {
-                    string err = string.Format("★[SCAN STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
+                    string err = GG.boChinaLanguage ? string.Format("★[SCAN STEP] = {0} 中，发生 Auto Step Timeover ", _stepNum.ToString()) : string.Format("★[SCAN STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0289_AUTO_STEP_OVERTIME);
                     InterLockMgr.AddInterLock("AutoStep Timeover\n" + err);
                     Logger.Log.AppendLine(LogLevel.Error, "{0} ({1}s)", err, (DateTime.Now - StepStartTime).TotalSeconds);

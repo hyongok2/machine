@@ -206,7 +206,9 @@ namespace EquipMainUi.Struct.Detail.OHT
         }
         private void LdLogic(Equipment equip)
         {
+            //라이트커튼 제거
             LightCurtainIO = GG.Equip.Efem.LPMLightCurtain.Detect.IsOn != true;
+
             SeqLogging(equip);
             if (OhtTimeover && _ohtStep > EmOHTSendStep.S010_WAIT_CS_0_ON)
             {

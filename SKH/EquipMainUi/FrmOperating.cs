@@ -32,6 +32,7 @@ namespace EquipMainUi
             ExtensionUI.AddClickEventLog(this);
 
             tmrUiUpdate.Start();
+            ChangeChinaLanguage();
 
             ucrlPtpX.Spd = equip.StageX.SoftJogSpeedLimit;
             ucrlPtpTheta.Spd = equip.Theta.SoftJogSpeedLimit;
@@ -41,7 +42,35 @@ namespace EquipMainUi
 
             tabCtrl_Operator.SelectedTab = tabp_BaseOper;
         }
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                cmbInspXSelPos.Text = "位置选择";                   // 위치 선택
+                cmbInspYSelPos.Text = "位置选择";                   // 위치 선택
+                cmbThetaSelPos.Text = "位置选择";                   // 위치 선택
+                btnInspXMoveLoading.Text = "位置移动";              // Ptp 이동
+                btnInspYMoveLoading.Text = "位置移动";              // Ptp 이동
+                btnThetaMoveLoading.Text = "位置移动";              // Ptp 이동
+                label27.Text = "■ Lift Pin";               // ■ 리프트핀
+                btnLiftPinUp.Text = "上升";                     // 상승
+                btnLiftPinDown.Text = "下降";                   // 하강
+                label7.Text = "■ Centering";               // ■ 센터링
+                label62.Text = "■ Standard Centering";     // ■ 기준 센터링
+                btnOrgStdForward.Text = "前进";                 // 전진
+                btnOrgStdBack.Text = "后退";                    // 후진
+                label5.Text = "■ Ionizer";                  // ■ 이오나이저	// ionizer
+                label6.Text = "■ Ionizer remote";           // ■ 이오나이저 remote
+                label10.Text = "■ Ionizer Air";             // ■ 이오나이저 Air
 
+                lblInspX.Text = "■ Stage X";         // ■ Stage X축
+                label79.Text = "■ Stage Y";      //■ Stage Y축
+                label78.Text = "■ Theta";      //■ Theta 축
+                label24.Text = "速度";      // 속도
+                label20.Text = "速度";      // 속도
+                label3.Text = "速度";      // 속도
+            }
+        }
         protected override void OnShown(EventArgs e)
         {
             if(this.Parent != null)
@@ -450,7 +479,7 @@ namespace EquipMainUi
                 #endregion
                 btnMutingOn.OnOff = _equip.Efem.LPMLightCurtain.IsMuting;
                 btnMutingOff.OnOff = !_equip.Efem.LPMLightCurtain.IsMuting;
-                lblLightCurtainDetect.BackColor = _equip.Efem.LPMLightCurtain.Detect.IsOn ? Color.Red : Color.Transparent;
+                lblLightCurtainDetect.BackColor = _equip.Efem.LPMLightCurtain.Detect.IsOn ? Color.Red : Color.Transparent; //라이트커튼 제거
                 ucrlRobotEasyController1.UIUpdate();
                 UpdateEFEM();
                 #region Base Operation
@@ -502,40 +531,40 @@ namespace EquipMainUi
             switch (GG.Equip.WaferTransLogic.SeqStepNum)
             {
                 case Struct.Step.EmWaferTransferSeqStep.S000_END:
-                    summaryStr = "복귀 완료";
+                    summaryStr = GG.boChinaLanguage ? "复位完毕" : "복귀 완료";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S005_INITIAL_START:
                     summaryStr = "";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S007_ROBOT_INITIAL_WAIT:
-                    summaryStr = "로봇 이니셜 진행 중";
+                    summaryStr = GG.boChinaLanguage ? "(Robot) 初始化进行中" : "로봇 이니셜 진행 중";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S010_ALL_INITIAL_WAIT:
-                    summaryStr = "스테이지, 얼라이너, 로드포트\n이니셜 진행 중";
+                    summaryStr = GG.boChinaLanguage ? "Stage, Aligner, LPM\n初始化进行中" : "스테이지, 얼라이너, 로드포트\n이니셜 진행 중";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S020_LPM_OPEN_WAIT:
-                    summaryStr = "로드포트 도어 오픈 중";
+                    summaryStr = GG.boChinaLanguage ? "(Load Port Door Open) 进行中" : "로드포트 도어 오픈 중";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S030_START:
-                    summaryStr = "시작";
+                    summaryStr = GG.boChinaLanguage ? "开始" : "시작";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S040_PICK_START:
-                    summaryStr = "로봇 PICK 시작";
+                    summaryStr = GG.boChinaLanguage ? "(Robot) PICK 开始" : "로봇 PICK 시작";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S050_PICK_END_WAIT:
-                    summaryStr = "로봇 PICK 진행 중";
+                    summaryStr = GG.boChinaLanguage ? "(Robot) PICK 进行中" : "로봇 PICK 진행 중";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S060_DELAY:
-                    summaryStr = "PICK 이후 딜레이";
+                    summaryStr = GG.boChinaLanguage ? "PICK 以后 Delay" : "PICK 이후 딜레이";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S070_PLACE_START:
-                    summaryStr = "로봇 PLACE 시작";
+                    summaryStr = GG.boChinaLanguage ? "(Robot) Place 开始" : "로봇 PLACE 시작";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S080_PLACE_END_WAIT:
-                    summaryStr = "로봇 PLACE 진행 중";
+                    summaryStr = GG.boChinaLanguage ? "(Robot) Place 进行中" : "로봇 PLACE 진행 중";
                     break;
                 case Struct.Step.EmWaferTransferSeqStep.S090_END:
-                    summaryStr = "완료";
+                    summaryStr = GG.boChinaLanguage ? "完毕" : "완료";
                     break;
             }
             lblRecoverySummary.Text = summaryStr;
@@ -581,7 +610,7 @@ namespace EquipMainUi
                     || ucrlPtpX.GetSpd(out spd) == false
                     || ucrlPtpX.GetAcc(out acc) == false)
                 {
-                    InterLockMgr.AddInterLock("입력값 이상");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "输入值发生问题!" : "입력값 이상");
                     return;
                 }
 
@@ -597,7 +626,7 @@ namespace EquipMainUi
                     || ucrlPtpY1.GetSpd(out spd) == false
                     || ucrlPtpY1.GetAcc(out acc) == false)
                 {
-                    InterLockMgr.AddInterLock("입력값 이상");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "输入值发生问题!" : "입력값 이상");
                     return;
                 }
 
@@ -613,7 +642,7 @@ namespace EquipMainUi
                     || ucrlPtpTheta.GetSpd(out spd) == false
                     || ucrlPtpTheta.GetAcc(out acc) == false)
                 {
-                    InterLockMgr.AddInterLock("입력값 이상");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "输入值发生问题!" : "입력값 이상");
                     return;
                 }
 
@@ -820,7 +849,7 @@ namespace EquipMainUi
                 || degree < -359
                 || degree > 359)
             {
-                InterLockMgr.AddInterLock("PreAligner Rotation -359~359 입력");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "PreAligner Rotation 请输入-359~359 " : "PreAligner Rotation -359~359 입력");
                 return;
             }
 
@@ -937,7 +966,7 @@ namespace EquipMainUi
                 {
                     if (GG.Equip.Efem.Robot.Status.IsUpperArmVacOn && cbUpper.Checked == false)
                     {
-                        InterLockMgr.AddInterLock("Upper Arm에 웨이퍼가 존재 할 때 AVI포트로부터 단독 복귀가 불가능 합니다.");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Upper Arm上存在 Wafer时,从 AVI Port无法单独复位." : "Upper Arm에 웨이퍼가 존재 할 때 AVI포트로부터 단독 복귀가 불가능 합니다.");
                         return;
                     }
                     //if(GG.Equip.IsWaferUnloadingState == false)
@@ -1005,7 +1034,7 @@ namespace EquipMainUi
                 {
                     temp += string.Format("[{0}] ", errPort[i]);
                 }
-                InterLockMgr.AddInterLock(string.Format("{0}\nWafer Key 정보가 정확하지 않거나 LoadPort Wafer Key와 달라 복귀가 불가능합니다\n(수동으로 웨이퍼를 이송하거나 Wafer Key를 확인 해 주세요)", temp));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("{0}\nWafer Key Info不准确或 和LoadPort Wafer Key不同无法复位\n(手动移送 Wafer或确认Wafer Key)", temp) : string.Format("{0}\nWafer Key 정보가 정확하지 않거나 LoadPort Wafer Key와 달라 복귀가 불가능합니다\n(수동으로 웨이퍼를 이송하거나 Wafer Key를 확인 해 주세요)", temp));
             }
             else
             {

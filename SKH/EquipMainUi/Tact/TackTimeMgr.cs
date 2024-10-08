@@ -120,7 +120,7 @@ namespace EquipMainUi.Monitor
 
             new TactTimeSpan("Insp Unld Signal Complete",	/**/EM_TT_LST.T155_INSP_UNLOADING_SIGNAL_COMPLETE_START,/**/EM_TT_LST.T155_INSP_UNLOADING_SIGNAL_COMPLETE_END),
 
-            new TactTimeSpan("Robot Exchange(대기)",        /**/EM_TT_LST.T160_PIO_SEND_WAIT_START,             /**/EM_TT_LST.T160_PIO_SEND_WAIT_END),
+            new TactTimeSpan(GG.boChinaLanguage ? "Robot Exchange(等待)" : "Robot Exchange(대기)",        /**/EM_TT_LST.T160_PIO_SEND_WAIT_START,             /**/EM_TT_LST.T160_PIO_SEND_WAIT_END),
             new TactTimeSpan("Robot Exchange(OUT)",         /**/EM_TT_LST.T170_PIO_SEND_ACTUAL_START,           /**/EM_TT_LST.T170_PIO_SEND_ACTUAL_END),
 
             //new TactTimeSpan("Total",		                /**/EM_TT_LST.T020_LIFT_PIN_DOWN_START,	            /**/EM_TT_LST.T155_INSP_UNLOADING_SIGNAL_COMPLETE_END)

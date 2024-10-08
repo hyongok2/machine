@@ -133,7 +133,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
             LPMLightCurtain.LogicWorking(equip);
             if (GG.EfemLongRun == false && equip.IsBuzzerAllOff == false)
             {
-                if (LPMLightCurtain.IsMuting == false && LPMLightCurtain.Detect.IsOn == true)
+                if (LPMLightCurtain.IsMuting == false && LPMLightCurtain.Detect.IsOn == true) //라이트커튼 제거
                 {
                     if (GG.TestMode == false)
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0870_LPM_LIGHT_CURTAIN_DETECTED);
@@ -401,7 +401,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
             {
                 if (Proxy.IsConnected == false)
                 {
-                    InterLockMgr.AddInterLock("EFEM 통신 상태 이상으로 시작 불가");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "因EFEM通讯状态异常无法开始 " : "EFEM 통신 상태 이상으로 시작 불가");
                     return false;
                 }
                 if (GG.TestMode == false && _equip.IsUseDoorInterLockOff == false)
@@ -409,19 +409,19 @@ namespace EquipMainUi.Struct.Detail.EFEM
                     #region INTERLOCK
                     if (Status.IsAutoMode == false)
                     {
-                        InterLockMgr.AddInterLock("EFEM TEACH 모드에서 시작이 불가 합니다.");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "EFEM TEACH Mode下无法开始." : "EFEM TEACH 모드에서 시작이 불가 합니다.");
                         return false;
                     }
 
 
                     if (Status.IsDoorClose == false)
                     {
-                        InterLockMgr.AddInterLock("도어가 열린 상태이 있는 상태에서 설비 동작이 불가합니다.");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Door开启状态下设备无法动作." : "도어가 열린 상태이 있는 상태에서 설비 동작이 불가합니다.");
                         return false;
                     }
                     if (Status.IsModeSwitchAuto == false)
                     {
-                        InterLockMgr.AddInterLock("Mode Select Key Auto 상태에서만 동작 가능합니다.");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "只在Mode Select Key Auto 状态时可以动作." : "Mode Select Key Auto 상태에서만 동작 가능합니다.");
                         return false;
                     }
                     //if (Status.IsError == true)
@@ -431,7 +431,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
                     //}
                     if (Status.IsEMO == true)
                     {
-                        InterLockMgr.AddInterLock("EMO 상태에서 설비 동작이 불가합니다.");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "EMO状态下设备无法动作." : "EMO 상태에서 설비 동작이 불가합니다.");
                         return false;
                     }
                     #endregion INTERLOCK
@@ -441,7 +441,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
             {
                 if (GG.Equip.IsHeavyAlarm == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<HEAVY ALARM>\n(HEAVY ALARM 상태에서 AUTO 변경을 할 수 없습니다.)");                    
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HEAVY ALARM>\n(HEAVY ALARM 状态下，不能进行 AUTO变更 .)" : "인터락<HEAVY ALARM>\n(HEAVY ALARM 상태에서 AUTO 변경을 할 수 없습니다.)");
                     return false;
                 }
             }

@@ -156,8 +156,8 @@ namespace EquipMainUi.Struct.Step
             {
                 if (equip.IsHomePosition == false)
                 {
-                    InterLockMgr.AddInterLock("<Interlock> HOME 조건 미충족",
-                        string.Format("각 모터 홈위치, 리프트핀 하강위치, Vacuum On(글라스있는경우), Centering 후진 위치가 맞는지 확인 필요"));
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<Interlock> 未能满足HOME 条件" : "<Interlock> HOME 조건 미충족",
+                      GG.boChinaLanguage ? "每个 Motor Home Position, Lift Pin Down Position, Vacuum On(有Glass的情况),需确认 Centering 后退(後) Position是否正确" : string.Format("각 모터 홈위치, 리프트핀 하강위치, Vacuum On(글라스있는경우), Centering 후진 위치가 맞는지 확인 필요"));
                 }
                 else
                     Logger.Log.AppendLine(LogLevel.Info, "Home Position 이동 완료");
@@ -175,7 +175,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (_stepNum != EmHM_NO.S000_STEP_WAIT)
             {
-                InterLockMgr.AddInterLock(",인터락<실행중>\n(HOME STEP 진행중 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(HOME STEP 进行中收到开始命令.)" : ",인터락<실행중>\n(HOME STEP 진행중 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "HOME STEP 진행중 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
                 return false;

@@ -227,7 +227,7 @@ namespace EquipMainUi.Struct.BaseUnit
                 && equip.IsHeavyAlarm == true
                 )
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<HEAVY ALARM>\n(HEAVY ALARM 상태입니다. {0} 동작이 불가능 합니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock <HEAVY ALARM> 状态.\n 不可能进行 {0} 动作.", Name) : string.Format("인터락<HEAVY ALARM>\n(HEAVY ALARM 상태입니다. {0} 동작이 불가능 합니다.)", Name));
                 return true;
             }
 
@@ -237,7 +237,7 @@ namespace EquipMainUi.Struct.BaseUnit
                 && equip.IsDoorOpen
                 )
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 {0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("设备状态 <DOOR OPEN> 状态下禁止移动 {0} .", Name) : string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 {0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Door Open 상태에서 {0} 이동 금지됨", Name);
                 return true;
             }
@@ -254,7 +254,7 @@ namespace EquipMainUi.Struct.BaseUnit
                             AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0201_LIFT_PIN_IS_NOT_UP_POSITION_STATE_ERROR);
                         }
                         else
-                            InterLockMgr.AddInterLock("인터락<LIFT PIN>\n(센터링 이동은 LIFT PIN 상승 위치에서만 가능합니다.)");
+                            InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock <LIFT PIN> 状态.\n Centering Move是，LIFT PIN 上升位置时可行." : "인터락<LIFT PIN>\n(센터링 이동은 LIFT PIN 상승 위치에서만 가능합니다.)");
 
                         equip.IsInterlock = true;
                         Logger.Log.AppendLine(LogLevel.Warning, "Lift Pin 상승 위치에서만 센터링 가능");
@@ -278,7 +278,7 @@ namespace EquipMainUi.Struct.BaseUnit
                     {
                         if (equip.IsCenteringStepping)
                             equip.IsInterlock = true;
-                        InterLockMgr.AddInterLock(string.Format("인터락<INSPECTION X축>\n {0} 이동은 INSPECTION X축 로딩 위치에서만 가능합니다.)", this.Name));
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock <INSPECTION X> 状态.\n {0} 移动是 INSPECTION X轴在Loading位置时可行.", this.Name) : string.Format("인터락<INSPECTION X축>\n {0} 이동은 INSPECTION X축 로딩 위치에서만 가능합니다.)", this.Name));
                     }
 
                     Logger.Log.AppendLine(LogLevel.Warning, string.Format("INSP X축 로딩 위치에서만 {0} 조작 가능", this.Name));
@@ -300,7 +300,7 @@ namespace EquipMainUi.Struct.BaseUnit
                     {
                         if (equip.IsCenteringStepping)
                             equip.IsInterlock = true;
-                        InterLockMgr.AddInterLock(string.Format("인터락<INSPECTION Y축>\n {0} 이동은 INSPECTION Y축 로딩 위치에서만 가능합니다.)", this.Name));
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock <INSPECTION Y> 状态.\n {0} 移动是 INSPECTION Y轴在Loading位置时可行.", this.Name) : string.Format("인터락<INSPECTION Y축>\n {0} 이동은 INSPECTION Y축 로딩 위치에서만 가능합니다.)", this.Name));
                     }
 
                     Logger.Log.AppendLine(LogLevel.Warning, string.Format("INSP Y축 로딩 위치에서만 {0} 조작 가능", this.Name));
@@ -322,7 +322,7 @@ namespace EquipMainUi.Struct.BaseUnit
                     {
                         if (equip.IsCenteringStepping)
                             equip.IsInterlock = true;
-                        InterLockMgr.AddInterLock(string.Format("인터락<Theta축>\n {0} 이동은 Theta축 로딩 위치에서만 가능합니다.)", this.Name));
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock <INSPECTION Theta> 状态.\n {0} 移动是 INSPECTION Theta轴在Loading位置时可行.", this.Name) : string.Format("인터락<Theta축>\n {0} 이동은 Theta축 로딩 위치에서만 가능합니다.)", this.Name));
                     }
 
                     Logger.Log.AppendLine(LogLevel.Warning, string.Format("Theta축 로딩 위치에서만 {0} 조작 가능", this.Name));

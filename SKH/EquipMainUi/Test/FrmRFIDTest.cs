@@ -66,9 +66,9 @@ namespace EquipMainUi
         {
             _rfid.ScanTagCmd(RFIDCmd.READER1);
         }
-        private void btnScan2_Click(object sender, EventArgs e)
-        {
-            _rfid.ScanTagCmd(RFIDCmd.READER2);
-        }
+        //private void btnScan2_Click(object sender, EventArgs e)  //RFID 제거
+        //{
+        //    _rfid.ScanTagCmd(RFIDCmd.READER2);
+        //}
     }
 }

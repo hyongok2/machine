@@ -394,12 +394,12 @@ namespace EquipMainUi.PreAligner
         {
             if(homeStep != EmPreAlignINIT.H000_WAIT)
             {
-                InterLockMgr.AddInterLock("인터락<Pre Aligner 홈 동작>\n프리얼라이너 홈 동작이 이미 진행 중>");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Pre Aligner Home 动作>\n(Pre Aligner Home动作已经进行中)" : "인터락<Pre Aligner 홈 동작>\n프리얼라이너 홈 동작이 이미 진행 중>");
                 return false;
             }
             if(GG.IsDitPreAligner == false)
             {
-                InterLockMgr.AddInterLock("인터락<Pre Aligner 홈 동작>\n프리얼라이너를 직접 제어하지 않은 설비에서는 진행할 수 없습니다>");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Pre Aligner Home 动作>\n(不直接控制Pre Aligner的设备上是，无法进行)" : "인터락<Pre Aligner 홈 동작>\n프리얼라이너를 직접 제어하지 않은 설비에서는 진행할 수 없습니다>");
                 return false;
             }
             return true;

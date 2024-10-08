@@ -16,6 +16,7 @@ namespace EquipMainUi.Setting
 {
     public partial class FrmWaferHistory : Form
     {
+        string[] strChinaLanguage = { "완료", "미완료", "미진행", "슬롯", "얼라인", "검사", "리뷰", "시작시간", "완료시간", "웨이퍼 개수", "로드 시간", "언로드 시간" };
         public FrmWaferHistory()
         {
             InitializeComponent();
@@ -24,6 +25,33 @@ namespace EquipMainUi.Setting
             tbCycle.Text = GG.Equip.CtrlSetting.Mongo.DeleteDays.ToString();
             
             timer1.Start();
+            ChangeChinaLanguage();
+        }
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                label2.Text = "搜索期间";       // 검색 기간
+                label5.Text = "最长储存日数";       // 저장 최대 일수
+                label6.Text = "最多储存 Cassette 数量";       // 저장 최대 카세트 개수
+
+                label3.Text = "CST ID";       // 카세트 아이디
+                label4.Text = "Wafer ID";       // 웨이퍼 아이디
+                groupBox1.Text = "自动删除";	// 자동 삭제
+
+                strChinaLanguage[0] = "完成";        // 완료
+                strChinaLanguage[1] = "不完整";        // 미완료
+                strChinaLanguage[2] = "无进展";        // 미진행
+                strChinaLanguage[3] = "Slot";        // 슬롯
+                strChinaLanguage[4] = "Align";        // 얼라인
+                strChinaLanguage[5] = "测试";        // 검사
+                strChinaLanguage[6] = "Review";        // 리뷰
+                strChinaLanguage[7] = "开始时间";        // 시작시간
+                strChinaLanguage[8] = "结束时间";        // 완료시간
+                strChinaLanguage[9] = "Wafer 数量";        // 웨이퍼 개수
+                strChinaLanguage[10] = "Load 时间";       // 로드 시간
+                strChinaLanguage[11] = "Unload 时间";       // 언로드 시간
+            }
         }
         private void tmrUiUpdate(object sender, EventArgs e)
         {
@@ -98,16 +126,16 @@ namespace EquipMainUi.Setting
 
                 lvHistory.Columns.Add("CST ID");
                 lvHistory.Columns.Add("Wafer ID");
-                lvHistory.Columns.Add("슬롯");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[3] : "슬롯");
                 lvHistory.Columns.Add("Notch");
                 lvHistory.Columns.Add("OCR ID");
                 lvHistory.Columns.Add("BCR1 ID");
                 lvHistory.Columns.Add("BCR2 ID");
-                lvHistory.Columns.Add("얼라인");
-                lvHistory.Columns.Add("검사");
-                lvHistory.Columns.Add("리뷰");
-                lvHistory.Columns.Add("시작 시간");
-                lvHistory.Columns.Add("완료 시간");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[4] : "얼라인");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[5] : "검사");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[6] : "리뷰");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[7] : "시작 시간");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[8] : "완료 시간");
 
                 for (int i = (curPage-1)*50; i < curPage*50; i++)
                 {
@@ -120,13 +148,22 @@ namespace EquipMainUi.Setting
                     lvi.SubItems.Add(waferdata[i].OCRID);
                     lvi.SubItems.Add(waferdata[i].BCRID1);
                     lvi.SubItems.Add(waferdata[i].BCRID2);
-                    lvi.SubItems.Add(waferdata[i].IsAlignComplete == true ? "완료" : "미진행");
-                    lvi.SubItems.Add(waferdata[i].IsInspComplete == true ? "완료" : "미진행");
-                    lvi.SubItems.Add(waferdata[i].IsReviewComplete == true ? "완료" : "미진행");
+                    if (GG.boChinaLanguage)
+                    {
+                        lvi.SubItems.Add(waferdata[i].IsAlignComplete == true ? strChinaLanguage[0] : strChinaLanguage[2]);
+                        lvi.SubItems.Add(waferdata[i].IsInspComplete == true ? strChinaLanguage[0] : strChinaLanguage[2]);
+                        lvi.SubItems.Add(waferdata[i].IsReviewComplete == true ? strChinaLanguage[0] : strChinaLanguage[2]);
+                    }
+                    else
+                    {
+                        lvi.SubItems.Add(waferdata[i].IsAlignComplete == true ? GG.boChinaLanguage ? "完成" : "완료" : GG.boChinaLanguage ? "未进步" : "미진행");
+                        lvi.SubItems.Add(waferdata[i].IsInspComplete == true ? GG.boChinaLanguage ? "完成" : "완료" : GG.boChinaLanguage ? "未进步" : "미진행");
+                        lvi.SubItems.Add(waferdata[i].IsReviewComplete == true ? GG.boChinaLanguage ? "完成" : "완료" : GG.boChinaLanguage ? "未进步" : "미진행");
+                    }
                     lvi.SubItems.Add(waferdata[i].OutputDate.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"));
                     if(waferdata[i].InputDate.Year == 1)
                     {
-                        lvi.SubItems.Add("미완료");
+                        lvi.SubItems.Add(GG.boChinaLanguage ? strChinaLanguage[1] : "미완료");
                     }
                     else
                     {
@@ -164,9 +201,9 @@ namespace EquipMainUi.Setting
                 lvHistory.Clear();
 
                 lvHistory.Columns.Add("CST ID");
-                lvHistory.Columns.Add("웨이퍼 개수");
-                lvHistory.Columns.Add("로드 시간");
-                lvHistory.Columns.Add("언로드 시간");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[9] : "웨이퍼 개수");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[10] : "로드 시간");
+                lvHistory.Columns.Add(GG.boChinaLanguage ? strChinaLanguage[11] : "언로드 시간");
 
                 for (int i = (curPage - 1) * 50; i < curPage * 50; i++)
                 {
@@ -177,7 +214,7 @@ namespace EquipMainUi.Setting
                     lvi.SubItems.Add(cstdata[i].InputDate.ToString("yyyy-MM-dd HH:mm:ss"));
                     if(cstdata[i].OutputDate.Year == 1)
                     {
-                        lvi.SubItems.Add("미완료");
+                        lvi.SubItems.Add(GG.boChinaLanguage ? strChinaLanguage[1] : "미완료");
                     }
                     else
                     {
@@ -207,7 +244,7 @@ namespace EquipMainUi.Setting
 
             GG.Equip.CtrlSetting.Save();
 
-            Struct.CheckMgr.AddCheckMsg(true, "저장 완료");
+            Struct.CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "储存完毕" : "저장 완료");
         }
 
         private void lvHistory_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -228,7 +265,7 @@ namespace EquipMainUi.Setting
                         return;
                     }
                 }
-                InterLockMgr.AddInterLock("Wafer 세부 데이터를 찾을 수 없습니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "无法找到Wafer 细部Data" : "Wafer 세부 데이터를 찾을 수 없습니다");
             }
         }
 

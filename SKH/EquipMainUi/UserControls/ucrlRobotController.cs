@@ -89,7 +89,7 @@ namespace EquipMainUi.UserControls
             if (int.TryParse(tbSlot.Text, out slot) == false
                 || slot < 1 || slot > 13)
             {
-                InterLockMgr.AddInterLock("Slot 1~13 까지 가능");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Slot 1~13 为止可以" : "Slot 1~13 까지 가능");
                 tbSlot.Text = "";
                 return;
             }

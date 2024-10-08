@@ -246,7 +246,6 @@
             this.tabOperator = new System.Windows.Forms.TabControl();
             this.tabPageOperator = new System.Windows.Forms.TabPage();
             this.btnLogPath = new System.Windows.Forms.Button();
-            this.btnEfemDoorOpen = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnReviewSkipCopy = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.btnReviewManual_Copy = new Dit.Framework.UI.UserComponent.ButtonDelay2();
@@ -267,7 +266,6 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.label50 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.ucrlLPMOption = new EquipMainUi.UserControls.ucrlLPMOption();
             this.label32 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -289,6 +287,7 @@
             this.lblCimStatus = new System.Windows.Forms.Label();
             this.lblLoginID = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.btnExpanding = new Dit.Framework.UI.UserComponent.ButtonDelay2();
+            this.ucrlLPMOption = new EquipMainUi.UserControls.ucrlLPMOption();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlEquipDraw.SuspendLayout();
@@ -1460,9 +1459,9 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.lstvAlarmHistory);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(611, 405);
+            this.tabPage4.Size = new System.Drawing.Size(611, 403);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "리셋 알람";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1475,7 +1474,7 @@
             this.lstvAlarmHistory.HideSelection = false;
             this.lstvAlarmHistory.Location = new System.Drawing.Point(0, 0);
             this.lstvAlarmHistory.Name = "lstvAlarmHistory";
-            this.lstvAlarmHistory.Size = new System.Drawing.Size(611, 405);
+            this.lstvAlarmHistory.Size = new System.Drawing.Size(611, 403);
             this.lstvAlarmHistory.TabIndex = 443;
             this.lstvAlarmHistory.UseCompatibleStateImageBehavior = false;
             this.lstvAlarmHistory.View = System.Windows.Forms.View.Details;
@@ -3576,7 +3575,6 @@
             this.tabPageOperator.BackColor = System.Drawing.SystemColors.MenuBar;
             this.tabPageOperator.Controls.Add(this.btnLogPath);
             this.tabPageOperator.Controls.Add(this.btnDeleteAllInfo);
-            this.tabPageOperator.Controls.Add(this.btnEfemDoorOpen);
             this.tabPageOperator.Controls.Add(this.panel21);
             this.tabPageOperator.Location = new System.Drawing.Point(4, 29);
             this.tabPageOperator.Name = "tabPageOperator";
@@ -3594,31 +3592,6 @@
             this.btnLogPath.Text = "카세트 IN OUT 로그";
             this.btnLogPath.UseVisualStyleBackColor = true;
             this.btnLogPath.Click += new System.EventHandler(this.btnLogPath_Click);
-            // 
-            // btnEfemDoorOpen
-            // 
-            this.btnEfemDoorOpen.BackColor = System.Drawing.Color.Transparent;
-            this.btnEfemDoorOpen.Delay = 2;
-            this.btnEfemDoorOpen.Flicker = false;
-            this.btnEfemDoorOpen.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            this.btnEfemDoorOpen.ForeColor = System.Drawing.Color.Black;
-            this.btnEfemDoorOpen.IsLeftLampOn = false;
-            this.btnEfemDoorOpen.IsRightLampOn = false;
-            this.btnEfemDoorOpen.LampAliveTime = 500;
-            this.btnEfemDoorOpen.LampSize = 1;
-            this.btnEfemDoorOpen.LeftLampColor = System.Drawing.Color.Red;
-            this.btnEfemDoorOpen.Location = new System.Drawing.Point(158, 6);
-            this.btnEfemDoorOpen.Name = "btnEfemDoorOpen";
-            this.btnEfemDoorOpen.OnOff = false;
-            this.btnEfemDoorOpen.RightLampColor = System.Drawing.Color.DarkGreen;
-            this.btnEfemDoorOpen.Size = new System.Drawing.Size(141, 60);
-            this.btnEfemDoorOpen.TabIndex = 449;
-            this.btnEfemDoorOpen.TabStop = false;
-            this.btnEfemDoorOpen.Text = "EFEM 도어 OPEN\r\n가능 상태";
-            this.btnEfemDoorOpen.Text2 = "";
-            this.btnEfemDoorOpen.UseVisualStyleBackColor = false;
-            this.btnEfemDoorOpen.VisibleLeftLamp = false;
-            this.btnEfemDoorOpen.VisibleRightLamp = false;
             // 
             // panel21
             // 
@@ -3959,15 +3932,6 @@
             this.label47.TabIndex = 468;
             this.label47.Text = "LP2";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ucrlLPMOption
-            // 
-            this.ucrlLPMOption.LoadPort = EquipMainUi.Struct.Detail.EFEM.EmEfemPort.ROBOT;
-            this.ucrlLPMOption.Location = new System.Drawing.Point(112, 22);
-            this.ucrlLPMOption.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.ucrlLPMOption.Name = "ucrlLPMOption";
-            this.ucrlLPMOption.Size = new System.Drawing.Size(194, 49);
-            this.ucrlLPMOption.TabIndex = 467;
             // 
             // label32
             // 
@@ -4326,6 +4290,15 @@
             this.btnExpanding.VisibleRightLamp = false;
             this.btnExpanding.Click += new System.EventHandler(this.btnExpanding_Click);
             // 
+            // ucrlLPMOption
+            // 
+            this.ucrlLPMOption.LoadPort = EquipMainUi.Struct.Detail.EFEM.EmEfemPort.ROBOT;
+            this.ucrlLPMOption.Location = new System.Drawing.Point(112, 35);
+            this.ucrlLPMOption.Margin = new System.Windows.Forms.Padding(3, 12, 3, 12);
+            this.ucrlLPMOption.Name = "ucrlLPMOption";
+            this.ucrlLPMOption.Size = new System.Drawing.Size(194, 76);
+            this.ucrlLPMOption.TabIndex = 467;
+            // 
             // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -4659,7 +4632,6 @@
         internal System.Windows.Forms.Label label35;
         internal System.Windows.Forms.Label lblPioLowerStep;
         internal System.Windows.Forms.Label label39;
-        internal Dit.Framework.UI.UserComponent.ButtonDelay2 btnEfemDoorOpen;
         private System.Windows.Forms.RadioButton rdOHT;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label28;

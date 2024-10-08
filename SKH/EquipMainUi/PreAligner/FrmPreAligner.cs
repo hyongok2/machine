@@ -63,6 +63,8 @@ namespace EquipMainUi.PreAligner
                 }
             }
 
+            ChangeChinaLanguage();
+
             timer = new Timer();
             timer.Tick += Timer_Tick;
             AutoCloseDelay.Start(60, 0);
@@ -78,7 +80,39 @@ namespace EquipMainUi.PreAligner
                 this.Close();
             }
         }
-
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                tabAlignResult.Text = "Align 结果";              // Align결과
+                tabDefectResult.Text = "检查结果";             // 검사 결과
+                tabOperator.Text = "Motor 操作";                 // 모터 조작
+                label3.Text = "■ Align 结果";                      // ■ Align 결과
+                label2.Text = "Recipe 目录";                      // 레시피 목록
+                label1.Text = "选择的 Recipe ";                      // 선택한 레시피
+                btnFixedRecipe.Text = "Recipe 固定";              // 레시피 고정
+                btnCreateDefaultRecipe.Text = "(Default) 值";      // Default 값
+                btnStartNotchROISetting.Text = "(Notch ROI) 设置";     // Notch ROI 설정
+                btnInsert.Text = "生成";                           // 생성
+                btnUpdate.Text = "修改";                           // 수정
+                btnDelete.Text = "删除";                           // 삭제
+                label36.Text = "当前位置";                     // 현재위치
+                label37.Text = "当前位置";                     // 현재위치
+                label38.Text = "当前位置";                     // 현재위치
+                cbAlignX.Text = "位置选择";                    // 위치 선택
+                cbAlignY.Text = "位置选择";                    // 위치 선택
+                cbAlignT.Text = "位置选择";                    // 위치 선택
+                btnAlignXPtpMove.Text = "位置移动";            // Ptp 이동
+                btnAlignYPtpMove.Text = "位置移动";            // Ptp 이동
+                btnAlignTPtpMove.Text = "位置移动";            // Ptp 이동
+                btnAlignTJogPlus.Text = "(+)逆时针";            // (+)반시계
+                btnAlignTJogMinus.Text = "顺时针(-)";           // 시계(-)
+                label80.Text = "OCR Cylinder";                     // OCR 실린더
+                btnOcrUp.Text = "上升";                    // 상승
+                btnOcrDown.Text = "下降";                  // 하강
+                groupBox3.Text = "Sequence";                // 시퀀스
+            }
+        }
         public void InitailizeMapView(int width, int height, int channel, BigBitmap img = null)
         {
             MapView.Initialize(0, 0, 0, EmRotate.R_000, 0, 0, width, height);
@@ -223,7 +257,7 @@ namespace EquipMainUi.PreAligner
                 r.Name = "Defalut";
                 if (PreAlignerRecipeDataMgr.IsExist(r.Name) == true)
                 {
-                    MessageBox.Show("새로운 Recipe를 생성해주세요");
+                    MessageBox.Show(GG.boChinaLanguage ? "请创建一个新配方。" : "새로운 Recipe를 생성해주세요");
                     return;
                 }
                 PreAlignerRecipeDataMgr.Insert((PreAlignerRecipe)r.Clone());
@@ -341,10 +375,10 @@ namespace EquipMainUi.PreAligner
                     sb.AppendFormat("WaferID : {0}\n", GG.Equip.PreAligner.WaferID);
                     sb.AppendFormat("Recipe : {0}\n", GG.Equip.PreAligner.CurRecipe.Name);
                     sb.AppendFormat("Result : {0}\n", GG.Equip.PreAligner.ProcessingResult.ToString());
-                    sb.AppendFormat("검사여부 : {0}\n", param.UseInspect);
-                    sb.AppendFormat("결함수 : {0}\n", param.DefectCount);
+                    sb.AppendFormat(GG.boChinaLanguage ? "检查与否 : {0}\n" : "검사여부 : {0}\n", param.UseInspect);
+                    sb.AppendFormat(GG.boChinaLanguage ? "缺陷数 : {0}\n" : "결함수 : {0}\n", param.DefectCount);
                     sb.AppendFormat("Processing Time : {0}ms\n", GG.Equip.PreAligner.ProcessingTime);
-                    sb.AppendFormat("점수 : {0} ", param.NotchMatchScore.ToString("F2"));
+                    sb.AppendFormat(GG.boChinaLanguage ? "点数 : {0} " : "점수 : {0} ", param.NotchMatchScore.ToString("F2"));
 
                     g.DrawString(sb.ToString(), fontText, Brushes.Red, 10, 10);
                 }
@@ -387,9 +421,9 @@ namespace EquipMainUi.PreAligner
             if (GG.Equip.PreAligner.OpenCamera() == false)
             {
                 if (GG.Equip.PreAligner.FrameGrabber.IsConnected == true)
-                    CheckMgr.AddCheckMsg(false, "이미 연결돼있습니다");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "已经连接了" : "이미 연결돼있습니다");
                 else
-                    CheckMgr.AddCheckMsg(false, "연결 할 수 없습니다 5분 뒤에 시도하세요");
+                    CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "无法连接，五分钟后尝试" : "연결 할 수 없습니다 5분 뒤에 시도하세요");
                 return;
             }
         }
@@ -548,7 +582,7 @@ namespace EquipMainUi.PreAligner
             if (int.TryParse(txtExposureTime.Text, out exTime))
                 GG.Equip.PreAligner.FrameGrabber.ExposureTime = exTime;
             else
-                MessageBox.Show("값이상 (35배수)");
+                MessageBox.Show(GG.boChinaLanguage ? "值发生问题 (35倍数)" : "값이상 (35배수)");
         }
 
         public void SetEnabled(Panel pnl, bool value)
@@ -663,7 +697,7 @@ namespace EquipMainUi.PreAligner
             {
                 if (GG.Equip.PreAligner.CurRecipe == null)
                 {
-                    MessageBox.Show("레시피를 다시 \"SET\" 해주세요");
+                    MessageBox.Show(GG.boChinaLanguage ? "请把Recipe重新 Set ." : "레시피를 다시 \"SET\" 해주세요");
                     return;
                 }
                 GG.Equip.PreAligner.Start("Manual");
@@ -720,13 +754,13 @@ namespace EquipMainUi.PreAligner
 
             if (PreAlignerRecipeDataMgr.IsExist(r.Name) == true)
             {
-                MessageBox.Show("이미 존재하는 레시피입니다");
+                MessageBox.Show(GG.boChinaLanguage ? "已经存在的 Recipe." : "이미 존재하는 레시피입니다");
                 return;
             }
 
             if (r.Name == null || r.Name == string.Empty)
             {
-                MessageBox.Show("이름을 입력하세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请输入名称" : "이름을 입력하세요");
                 return;
             }
 
@@ -740,12 +774,12 @@ namespace EquipMainUi.PreAligner
 
             if (sel == string.Empty || PreAlignerRecipeDataMgr.IsExist(sel) == false)
             {
-                MessageBox.Show("레시피를 다시 선택해주세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                 return;
             }
 
             PreAlignerRecipe src = (PreAlignerRecipe)pGridSelectedRecipe.SelectedObject;
-            MessageBox.Show(src.Update() ? "성공" : "실패");
+            MessageBox.Show(src.Update() ? GG.boChinaLanguage ? "成功" : "성공" : GG.boChinaLanguage ? "失败" : "실패");
 
             UpdateRecipeInfo();
         }
@@ -756,11 +790,11 @@ namespace EquipMainUi.PreAligner
 
             if (PreAlignerRecipeDataMgr.IsExist(src.Name) == false)
             {
-                MessageBox.Show("레시피를 다시 선택해주세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                 return;
             }
 
-            MessageBox.Show(PreAlignerRecipeDataMgr.Delete(src.Name) ? "성공" : "실패");
+            MessageBox.Show(PreAlignerRecipeDataMgr.Delete(src.Name) ? GG.boChinaLanguage ? "成功" : "성공" : GG.boChinaLanguage ? "失败" : "실패");
 
             UpdateRecipeInfo();
         }
@@ -777,13 +811,13 @@ namespace EquipMainUi.PreAligner
                 var recp = PreAlignerRecipeDataMgr.GetRecipe(selectedRecipe);
                 if (recp == null)
                 {
-                    MessageBox.Show("레시피를 다시 선택해주세요");
+                    MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                     return;
                 }
                 GG.Equip.FixedDitAlignerRecipeName = selectedRecipe;
                 GG.Equip.UseFixedDitAlignerRecipe = true;
                 UpdateRequestAlignerPGrid = true;
-                MessageBox.Show(string.Format("{0} 레시피 고정", recp.Name));
+                MessageBox.Show(string.Format(GG.boChinaLanguage ? "{0} Recipe 固定" : "{0} 레시피 고정", recp.Name));
             }
         }
 
@@ -793,7 +827,7 @@ namespace EquipMainUi.PreAligner
             var recp = PreAlignerRecipeDataMgr.GetRecipe(selectedRecipe);
             if (recp == null)
             {
-                MessageBox.Show("레시피를 다시 선택해주세요");
+                MessageBox.Show(GG.boChinaLanguage ? "请重新选择Recipe." : "레시피를 다시 선택해주세요");
                 return;
             }
             GG.Equip.PreAligner.SetCurRecipe(recp);

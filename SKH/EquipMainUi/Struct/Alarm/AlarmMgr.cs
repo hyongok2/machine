@@ -1687,7 +1687,7 @@ namespace EquipMainUi.Struct
                 }
                 else
                 {
-                    InterLockMgr.AddInterLock("알람 설정 변경 권한 보다 낮게 설정 할 수 없습니다. 권한 변경 후 설정 하십시오");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "无法设置为低于警报设置变更权限。请变更权限后进行设置" : "알람 설정 변경 권한 보다 낮게 설정 할 수 없습니다. 권한 변경 후 설정 하십시오");
 
                     foreach (Form openForm in Application.OpenForms)
                     {

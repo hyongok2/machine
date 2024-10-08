@@ -28,13 +28,13 @@ namespace EquipMainUi.Struct.Detail.Cylinder
                     && (equip.IsRobotArmDetect == true || equip.IsEFEMInputArm.IsOn == true)
                     )
                 {
-                    string str = string.Format("PIO 준비 상태 및 {0} {1} 상태, 센터링 전진 불가", equip.RobotArmDefect.IsOn ? "로봇 암 감지" : "", equip.IsEFEMInputArm.IsOn ? "EFEM 로봇투입 신호 ON" : "");
+                    string str = GG.boChinaLanguage ? string.Format("PIO 准备状态及 {0} {1} 状态, Centering 不可以前进", equip.RobotArmDefect.IsOn ? "Robot Arm 感应" : "", equip.IsEFEMInputArm.IsOn ? "EFEM Robot 投入信号 ON" : "") : string.Format("PIO 준비 상태 및 {0} {1} 상태, 센터링 전진 불가", equip.RobotArmDefect.IsOn ? "로봇 암 감지" : "", equip.IsEFEMInputArm.IsOn ? "EFEM 로봇투입 신호 ON" : "");
                     if (equip.IsHomePositioning || equip.EquipRunMode == EmEquipRunMode.Auto)
                     {
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0290_ROBOT_ARM_DETECT_ERROR);
                     }
                     else
-                        InterLockMgr.AddInterLock("인터락<CENTERING>\n" + str);
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Centering>\n" : "인터락<CENTERING>\n" + str);
 
                     equip.IsInterlock = true;
                     Logger.Log.AppendLine(LogLevel.Warning, str);

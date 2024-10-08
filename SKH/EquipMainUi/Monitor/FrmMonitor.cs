@@ -135,8 +135,38 @@ namespace EquipMainUi.Monitor
             //    btnShowX080_X09F.Enabled = false;
             EFEMStatInit();
             EFEMPIOInit();
+            ChangeChinaLanguage();
         }
-
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                label77.Text = "Ecat Reconnect (命令-回应)";	    // Ecat Reconnect(명령 - 응답)
+                label74.Text = "PMac Reset (命令-回应)";	    // PMac Reset (명령-응답)
+                label61.Text = "紧急停止 (命令-回应)";	    // 긴급 정지 (명령-응답)
+                label130.Text = "停止检查 (命令-回应)";	    // 검사 정지 (명령-응답)
+                label9.Text = "停止Review (命令-回应)";	    // 리뷰 정지 (명령-응답)
+                label112.Text = "名称";	    // 명칭
+                label113.Text = "状态";	    // 상태
+                label139.Text = "Motor 原点命令";	    // 모터 홈 명령
+                label138.Text = "Motor 原点 命令 回应";	    // 모터 홈 명령 응답
+                label104.Text = "位置 (mm)";	    // 위치(mm)
+                label112.Text = "速度 (mm/s)";	    // 속도(mm/s)
+                label125.Text = "负荷率 (%)";	    // 부하율(%)
+                label116.Text = "名称";	    // 명칭
+                label111.Text = "名称";	    // 명칭
+                label107.Text = "移动位置 (mm)";	    // 이동 위치 (mm)
+                label103.Text = "移动速度 (mm/s)";	    // 이동 속도 (mm/s)
+                label97.Text = "移动加速度 (ms)";	    // 이동 가속도 (ms)
+                label95.Text = "移动命令";	    // 이동 명령
+                label134.Text = "位置移动 Step";	    // 포지션 이동 스텝
+                label7.Text = "Motor Jog 命令 (-)";	    // 모터 조그 명령 ( - )
+                label6.Text = "Motor Jog 命令 (+)";	    // 모터 조그 명령 ( + )
+                label132.Text = "Motor Jog 速度 (mm)";	    // 모터 조그 속도 (mm)
+                label55.Text = "命令";	    // 명령
+                label72.Text = "C : PC , P : PMac";          // C : 제어PC , P : PMac
+            }
+        }
 
 
         private void tmrUiUpdate_Tick(object sender, EventArgs e)
@@ -466,10 +496,10 @@ namespace EquipMainUi.Monitor
             // 항목 설정
             string[,] equipToPmac = new string[,]
             {
-                {"설비 자동 상태",        _equip.PMac.YB_IsAutoMode.GetPlcAddressBitString()},
-                {"설비 중알람 상태",      _equip.PMac.YB_CheckAlarmStatus.GetPlcAddressBitString()},
-                {"상류 PIO 중",          _equip.PMac.YB_UpperInterfaceWorking.GetPlcAddressBitString()},
-                {"하류 PIO 중",          _equip.PMac.YB_LowerInterfaceWorking.GetPlcAddressBitString()},
+                {GG.boChinaLanguage? "设备自动状态" : "설비 자동 상태",        _equip.PMac.YB_IsAutoMode.GetPlcAddressBitString()},
+                {GG.boChinaLanguage? "设备 Heavy Alarm 状态" : "설비 중알람 상태",      _equip.PMac.YB_CheckAlarmStatus.GetPlcAddressBitString()},
+                {GG.boChinaLanguage? "上流PIO 中" : "상류 PIO 중",          _equip.PMac.YB_UpperInterfaceWorking.GetPlcAddressBitString()},
+                {GG.boChinaLanguage? "下流 PIO 中" : "하류 PIO 중",          _equip.PMac.YB_LowerInterfaceWorking.GetPlcAddressBitString()},
             };
 
             string[,] pmacToEquip = new string[,]
@@ -477,8 +507,8 @@ namespace EquipMainUi.Monitor
                 {"PMAC READY", _equip.PMac.XB_PmacReady.GetPlcAddressBitString()},
                 {"PMAC ALIVE", _equip.PMac.XB_PmacAlive.GetPlcAddressBitString()},
                 {"ECAT ALIVE", _equip.PMac.XB_EcatCommAlive.GetPlcAddressBitString()},
-                {"검사 진행중", _equip.PMac.XB_InspRunning.GetPlcAddressBitString()},
-                {"리뷰 진행중", _equip.PMac.XB_ReviewRunning.GetPlcAddressBitString()},
+                {GG.boChinaLanguage? "检查进行中" : "검사 진행중", _equip.PMac.XB_InspRunning.GetPlcAddressBitString()},
+                {GG.boChinaLanguage? "Review 进行中" : "리뷰 진행중", _equip.PMac.XB_ReviewRunning.GetPlcAddressBitString()},
             };
 
             // Set Dgv
@@ -558,14 +588,14 @@ namespace EquipMainUi.Monitor
             {
                 if (login.Passwd == _pmacCmdEnablePasswd.ToString())
                 {
-                    CheckMgr.AddCheckMsg(true, "PMAC 명령 가능 모드로 전환되었습니다.");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "转换成PMAC 可以命令 Mode了." : "PMAC 명령 가능 모드로 전환되었습니다.");
                     login.Close();
                     _isPmacCmdEnable = true;
                     lblPmacCmdEnable.BackColor = Color.Green;
                     setPmacBtnEnable(true);
                     return;
                 }
-                CheckMgr.AddCheckMsg(false, "비밀번호가 틀립니다.");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "密码错误" : "비밀번호가 틀립니다.");
             }
             else if (login.DialogResult == DialogResult.Cancel)
                 return;

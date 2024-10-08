@@ -138,33 +138,33 @@ namespace EquipMainUi.Setting
             }
             catch (Exception ex)
             {
-                sb.AppendLine("Pmac IP의 형식이 잘 못 되었습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "PMac IP的形式错误" : "Pmac IP의 형식이 잘 못 되었습니다");
             }
 
             IPAddress ipAddr;
             if (IPAddress.TryParse(OcrIP, out ipAddr) == false)
-                sb.AppendLine("Ocr IP의 형식이 잘 못 되었습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "OCR IP的形式错误" : "Ocr IP의 형식이 잘 못 되었습니다");
 
             if (NumFFU == 0)
-                sb.AppendLine("NumFFU는 0보다 커야합니다");
+                sb.AppendLine(GG.boChinaLanguage ? "NumFFU 要比0大" : "NumFFU는 0보다 커야합니다");
 
             if (RFR1Port == string.Empty)
-                sb.AppendLine("RF Reader1 Port 값이 비어있습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "RF Reader1 Port 值为空" : "RF Reader1 Port 값이 비어있습니다");
 
-            if (RFR2Port == string.Empty)
-                sb.AppendLine("RF Reader2 Port 값이 비어있습니다");
+            //if (rfr2port == string.empty) //RFID제거
+            //    sb.appendline(gg.bochinalanguage ? "rf reader2 port 值为空" : "rf reader2 port 값이 비어있습니다");
 
             if (BCR1Port == string.Empty)
-                sb.AppendLine("BCR 1 Port 값이 비어있습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "BCR 1 Port 值为空" : "BCR 1 Port 값이 비어있습니다");
 
             if (BCR2Port == string.Empty)
-                sb.AppendLine("BCR 2 Port 값이 비어있습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "BCR 2 Port 值为空" : "BCR 2 Port 값이 비어있습니다");
 
             if (LightControllerPort == string.Empty)
-                sb.AppendLine("LightControllerPort 값이 비어있습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "LightControllerPort 值为空" : "LightControllerPort 값이 비어있습니다");
 
             if (EziStepMotorPort == string.Empty)
-                sb.AppendLine("EziStepMotorPort 값이 비어있습니다");
+                sb.AppendLine(GG.boChinaLanguage ? "EziStepMotorPort 值为空" : "EziStepMotorPort 값이 비어있습니다");
 
             //if (Enum.GetNames(typeof(GG.EquipmentID)).FirstOrDefault(i => string.Compare(i, EquipmentID, true) == 0) == null)
             //{
@@ -177,7 +177,7 @@ namespace EquipMainUi.Setting
 
             if (sb.Length != 0)
             {
-                MessageBox.Show(string.Format("{0} {1} 확인하세요", sb.ToString(), PATH_SETTING));
+                MessageBox.Show(string.Format(GG.boChinaLanguage ? "{0} {1} 请确认" : "{0} {1} 확인하세요", sb.ToString(), PATH_SETTING));
                 return false;
             }
             return true;

@@ -187,7 +187,7 @@ namespace EquipMainUi
             
             if (int.TryParse(tbDegree.Text, out degree) == false)
             {
-                InterLockMgr.AddInterLock("degree 0~359");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "数试请输入0~359" : "degree 0~359");
                 return;
             }
 

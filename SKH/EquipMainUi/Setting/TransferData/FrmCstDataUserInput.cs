@@ -29,6 +29,9 @@ namespace EquipMainUi.Setting.TransferData
         public string ReturnValue;
         public int LastSlotNo = -1;
 
+        string strChinaLanguage1 = "";
+        string strChinaLanguage2 = "";
+
         private void CommonInit()
         {
             InitializeComponent();
@@ -42,8 +45,43 @@ namespace EquipMainUi.Setting.TransferData
             _port = port;
 
             lblTitle.Text = _port.ToString() + " Cassette 정보 입력";
+            ChangeChinaLanguage();
         }
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                lblTitle.Text = _port.ToString() + " 输入Cassette 情报";         // Cassette 정보 입력
+                label7.Text = "直接输入";                               // 직접입력
+                btnChangeCstID.Text = "ID 变更";        	            // ID 변경
+                btnDelete.Text = "删除现有情报";        	                // 기존정보 삭제
+                btnRead.Text = "重新读取";                              // 다시읽기
+                lblCaution.Text = "用已经进行的 Cassette，确认左侧现在的Cassette Info设置";                           // 이미 진행했던 카세트로 좌측의 현재 카세트 정보를 확인하여 설정바랍니다.
+                strChinaLanguage1 = "用已经进行的CST确认左侧现有CST，在右侧进行设置\n(Load Port上没有的，以没有Check解除)";                         // 이미 진행했던 카세트로 좌측의 기존 카세트 정보를 확인하여 우측에 진행 설정바랍니다.\n(LoadPort에 없는 건 없는 것으로 체크해제)
+                strChinaLanguage2 = "新的CST,请进行设置";                         // 새로운 카세트입니다. 진행 설정바랍니다.
 
+                lblLeftTitle.Text = "现有 Cassette 状态";        		            // 기존 카세트 상태
+                label12.Text = "进行设置";                              // 진행 설정
+
+                dataGridViewCheckBoxColumn1.HeaderText = "Wafer 存在";    // Wafer있음
+                // 다시 번역 요청 필요
+                colComplete.HeaderText = "检查结束";                    // 검사완료
+                colComaback.HeaderText = "返回完成";                    // 복귀완료
+                colCurPos.HeaderText = "当前位置";                      // 현재위치
+
+                colWaferExist.HeaderText = "Wafer 存在";                  // Wafer있음
+                colNotch.HeaderText = "Notch 方向";            	        // Notch방향
+                colNoComback.HeaderText = "进行";                   // 진행
+
+                btnCopyIncompleteWafer.Text = "未检查的Wafer再检查 ▶▶";            	// 미검사 웨이퍼 재검사 ▶▶
+                btnCopyAllWafer.Text = "全部再检查 ▶▶";                      // 전체 재검사 ▶▶
+                btnOK.Text = "确认";                                // 확인
+            }
+            else
+            {
+                lblTitle.Text = _port.ToString() + " Cassette 정보 입력";
+            }
+        }
         public void RequestPopup(string selectedCstId, ref List<WaferInfo> waferInfos)
         {
             try
@@ -52,7 +90,7 @@ namespace EquipMainUi.Setting.TransferData
                 bool exist;
                 _wafers = waferInfos;
                 txtRead1.Text = _rf.GetReaderReadID[0];
-                txtRead2.Text = _rf.GetReaderReadID[1];
+                //txtRead2.Text = _rf.GetReaderReadID[1]; //RFID제거
                 if (_rf.GetReaderReadID[0] != string.Empty || _rf.GetReaderReadID[1] != string.Empty)
                 {
                     txtInput1.Text = rand;
@@ -95,7 +133,7 @@ namespace EquipMainUi.Setting.TransferData
             if (TransferDataMgr.IsExistCst(_selectedCstID))
             {
                 _isNewCst = false;
-                lblCaution.Text = "이미 진행했던 카세트로 좌측의 기존 카세트 정보를 확인하여 우측에 진행 설정바랍니다.\n(LoadPort에 없는 건 없는 것으로 체크해제)";
+                lblCaution.Text = GG.boChinaLanguage ? strChinaLanguage1 : "이미 진행했던 카세트로 좌측의 기존 카세트 정보를 확인하여 우측에 진행 설정바랍니다.\n(LoadPort에 없는 건 없는 것으로 체크해제)";
                 btnDelete.Enabled = true;
                 dgvOldWaferInfo.Rows.Clear();
                 List<WaferInfo> wafers = TransferDataMgr.GetWafersIn(_selectedCstID);                
@@ -125,7 +163,7 @@ namespace EquipMainUi.Setting.TransferData
             else
             {
                 _isNewCst = true;
-                lblCaution.Text = "새로운 카세트입니다. 진행 설정바랍니다.";
+                lblCaution.Text = GG.boChinaLanguage ? strChinaLanguage2 : "새로운 카세트입니다. 진행 설정바랍니다.";
                 btnDelete.Enabled = false;
             }
         }
@@ -167,7 +205,7 @@ namespace EquipMainUi.Setting.TransferData
             string a = string.Empty;
             string b = string.Empty;
             txtRead1.Text = "";
-            txtRead2.Text = "";
+            //txtRead2.Text = ""; //RFID제거
             ReturnValue = string.Empty;
             _rf.ScanTagCmd(2);
             lblNotify.Text = "Reading";
@@ -177,7 +215,7 @@ namespace EquipMainUi.Setting.TransferData
         public void UpdateReadValue()
         {
             txtInput1.Text = txtRead1.Text = _rf.GetReaderReadID[0];
-            txtRead2.Text = _rf.GetReaderReadID[1];
+            //txtRead2.Text = _rf.GetReaderReadID[1]; //RFID제거
         }
         public bool IsReadComplete(int idx)
         {
@@ -229,7 +267,7 @@ namespace EquipMainUi.Setting.TransferData
 
             if (IsFormatOK(_selectedCstID) == false)
             {
-                lblNotify.Text = "Cassette ID Format 이상";
+                lblNotify.Text = GG.boChinaLanguage ? "Cassette ID Format 问题 发生" : "Cassette ID Format 이상";
                 return;
             }
             ReturnValue = _selectedCstID;
@@ -239,11 +277,11 @@ namespace EquipMainUi.Setting.TransferData
 
             if (_isNewCst && (isNoRun || isNoExistYesRunError))
             {
-                MessageBox.Show("1. 적어도 하나의 Wafer는 검사를 진행해야합니다\n2. Wafer없음에서 진행할 수 없습니다");
+                MessageBox.Show(GG.boChinaLanguage ? "1. 最少一个Wafer，要进行检查\n2. 无Wafer时是无法进行的" : "1. 적어도 하나의 Wafer는 검사를 진행해야합니다\n2. Wafer없음에서 진행할 수 없습니다");
             }
             else if (_isNewCst == false && (isNoExistYesRunError))
             {
-                MessageBox.Show("1. 적어도 하나의 Wafer는 검사를 진행해야합니다");
+                MessageBox.Show(GG.boChinaLanguage ? "1. 最少一个Wafer，要进行检查" : "1. 적어도 하나의 Wafer는 검사를 진행해야합니다");
             }
             else
             {
@@ -367,7 +405,7 @@ namespace EquipMainUi.Setting.TransferData
 
             if (IsFormatOK(id) == false)
             {
-                lblNotify.Text = "Cassette ID Format 이상";
+                lblNotify.Text = GG.boChinaLanguage ? "Cassette ID Format 问题 发生" : "Cassette ID Format 이상";
                 return;
             }
 
@@ -408,7 +446,7 @@ namespace EquipMainUi.Setting.TransferData
 
             if (oldwafers.Count == 0)
             {
-                InterLockMgr.AddInterLock("기존 데이터에 이상이 있습니다. 수동으로 선택해주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "现有的Data有问题. 请手动选择" : "기존 데이터에 이상이 있습니다. 수동으로 선택해주세요");
                 return;
             }
 

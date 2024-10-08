@@ -165,7 +165,7 @@ namespace EquipMainUi.Struct.Step
                 {
                     //10월 21일 기술5팀 최영훈C 요청으로 삭제
                     //AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0540_AVI_RETRY_INPUT_WAIT);
-                    _frmRetryMsg.RequestPopup("AVI 검사 재시도", "재시도 또는 홈 완료 후 첫 검사 진행입니다\n다음 중 선택하세요");
+                    _frmRetryMsg.RequestPopup(GG.boChinaLanguage ? "AVI 检查 重试" : "AVI 검사 재시도", GG.boChinaLanguage ? "重试或原点完毕后，第一次进行检查\n从以下中进行选择" : "재시도 또는 홈 완료 후 첫 검사 진행입니다\n다음 중 선택하세요");
                     _stepNum = EmMN_NO.USER_INPUT_WAIT;
                     equip.IsForcedComeback = true; // KYH 230913 : 강제 배출시에만 살린다.
                 }

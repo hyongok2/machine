@@ -108,7 +108,7 @@ namespace EquipMainUi.Struct.Step
                 if (_stepNum > 0 &&
                     (DateTime.Now - StepStartTime).TotalMilliseconds > equip.CtrlSetting.Ctrl.AutoStepTimeout)
                 {
-                    string err = string.Format("[LOADING STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
+                    string err = GG.boChinaLanguage ? string.Format("[LOADING STEP] = {0} 动作中, 发生Auto Step Timeover ", _stepNum.ToString()) : string.Format("[LOADING STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0289_AUTO_STEP_OVERTIME);
                     InterLockMgr.AddInterLock("AutoStep Timeover\n" + err);
                     Logger.Log.AppendLine(LogLevel.Error, "{0} ({1}s)", err, (DateTime.Now - StepStartTime).TotalSeconds);
@@ -147,7 +147,7 @@ namespace EquipMainUi.Struct.Step
                 else
                 {
                     equip.IsPause = true;
-                    InterLockMgr.AddInterLock("리프트핀 센서 이상");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Lift Pin Sensor 发生问题!" : "리프트핀 센서 이상");
                 }
             }
             else if (_stepNum == EmLD_NO.S015_LIFTPIN_DOWN)
@@ -447,7 +447,7 @@ namespace EquipMainUi.Struct.Step
                         equip.IsPause = true;
                         equip.Efem.ChangeMode(EmEfemRunMode.Pause);
                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0318_INSPECTION_ALARM_SIGNAL_NO_RECIPE);
-                        CheckMgr.AddCheckMsg(true, "검사기에 레시피가 없습니다. 생성 후 Pause해제하세요");
+                        CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "检查机无 Recipe. 生成后解除 Pause " : "검사기에 레시피가 없습니다. 생성 후 Pause해제하세요");
                         _stepNum = EmLD_NO.S005_PAUSE_OFF_WAIT;
                         return;
                     }
@@ -604,7 +604,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (_stepNum != EmLD_NO.S000_LOADING_WAIT)
             {
-                InterLockMgr.AddInterLock("인터락<실행중>\n(LOADING STEP 진행중 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(LOADING STEP 进行中，介入开始命令.)" : "인터락<실행중>\n(LOADING STEP 진행중 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "LOADING STEP 진행중 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
 
@@ -623,7 +623,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (_stepNum != EmLD_NO.S000_LOADING_WAIT)
             {
-                InterLockMgr.AddInterLock("LOADING STEP 진행중 재검사 시작 명령이 들어옴.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "LOADING STEP 进行中，介入再检查开始命令." : "LOADING STEP 진행중 재검사 시작 명령이 들어옴.");
                 Logger.Log.AppendLine(LogLevel.Warning, "LOADING STEP 진행중 재검사 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
 
@@ -631,7 +631,7 @@ namespace EquipMainUi.Struct.Step
             }
             if (equip.IsReserveReInsp != EmReserveReInsp.START)
             {
-                InterLockMgr.AddInterLock("시퀀스 이상! 재검사 시작 전 LOADING STEP 진행");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Sequence 发生问题! 开始再检查前, LOADING STEP 进行" : "시퀀스 이상! 재검사 시작 전 LOADING STEP 진행");
                 Logger.Log.AppendLine(LogLevel.Warning, "시퀀스 이상! 재검사 시작 전 LOADING STEP 진행");
                 equip.IsInterlock = true;
             }

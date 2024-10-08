@@ -32,10 +32,11 @@ namespace EquipMainUi.Monitor
             LstMainTactTimeSpan = TactTimeMgr.Instance.LstMainTactTimeSpan;
             LstEFEMTactTimeSpan = EFEMTactMgr.Instance.LstMainTactTimeSpan;
             btnEFEMTotal_Click(null, null);
+            btnInspTotal.Text = GG.boChinaLanguage ? "检查 TactTime" : "검사 TactTime";
         }
         private void btnlInspTotal_Click(object sender, EventArgs e)
         {
-            lblTactTitle.Text = "■ 검사 TACT";
+            lblTactTitle.Text = GG.boChinaLanguage ? "■ 检查 Tact" : "■ 검사 TACT";
             lstTact.SuspendLayout();
 
             lstTact.Items.Clear();
@@ -47,10 +48,10 @@ namespace EquipMainUi.Monitor
             lstGlassInfo.SuspendLayout();
 
             lstGlassInfo.Items.Clear();
-            lstGlassInfo.Items.Add((new ListViewItem(new string[] { "웨이퍼 ID", "", "", "", "", "", "", "", "", "", "" })));
-            lstGlassInfo.Items.Add((new ListViewItem(new string[] { "물류 Tact", "", "", "", "", "", "", "", "", "", "" })));
-            lstGlassInfo.Items.Add((new ListViewItem(new string[] { "검사 Tact", "", "", "", "", "", "", "", "", "", "" })));
-            lstGlassInfo.Items.Add((new ListViewItem(new string[] { "리뷰 Tact", "", "", "", "", "", "", "", "", "", "" })));
+            lstGlassInfo.Items.Add((new ListViewItem(new string[] { GG.boChinaLanguage ? "Wafer ID" : "웨이퍼 ID", "", "", "", "", "", "", "", "", "", "" })));
+            lstGlassInfo.Items.Add((new ListViewItem(new string[] { GG.boChinaLanguage ? "物流 Tact" : "물류 Tact", "", "", "", "", "", "", "", "", "", "" })));
+            lstGlassInfo.Items.Add((new ListViewItem(new string[] { GG.boChinaLanguage ? "检查 Tact" : "검사 Tact", "", "", "", "", "", "", "", "", "", "" })));
+            lstGlassInfo.Items.Add((new ListViewItem(new string[] { GG.boChinaLanguage ? "Review Tact" : "리뷰 Tact", "", "", "", "", "", "", "", "", "", "" })));
             _showTact = 0;
         }
         private void btnEFEMTotal_Click(object sender, EventArgs e)
@@ -69,7 +70,7 @@ namespace EquipMainUi.Monitor
             lstGlassInfo.Items.Clear();
             lstGlassInfo.Items.Add((new ListViewItem(new string[] { "Casette ID", "", "", "", "", "", "", "", "", "", "" })));
             lstGlassInfo.Items.Add((new ListViewItem(new string[] { "Slot No", "", "", "", "", "", "", "", "", "", "" })));
-            lstGlassInfo.Items.Add((new ListViewItem(new string[] { "Total(Open,Close포함/검사기미포함)", "", "", "", "", "", "", "", "", "", "" })));
+            lstGlassInfo.Items.Add((new ListViewItem(new string[] { GG.boChinaLanguage ? "Total(Open,Close包括/检查机不包含)" : "Total(Open,Close포함/검사기미포함)", "", "", "", "", "", "", "", "", "", "" })));
             _showTact = 1;
         }
         private void btnlLoading_Click(object sender, EventArgs e)

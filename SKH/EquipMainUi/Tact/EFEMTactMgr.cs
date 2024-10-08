@@ -92,12 +92,12 @@ namespace EquipMainUi.Tact
 
         public List<EFEMTactTimeSpan> LstMainTactTimeSpan = new List<EFEMTactTimeSpan>()
         {
-            new EFEMTactTimeSpan("LPM 오픈",                          /**/EFEM_TACT_VALUE.T000_LPM_OPEN_START,                           /**/EFEM_TACT_VALUE.T000_LPM_OPEN_END),
+            new EFEMTactTimeSpan(GG.boChinaLanguage ? "LPM Open" : "LPM 오픈",                          /**/EFEM_TACT_VALUE.T000_LPM_OPEN_START,                           /**/EFEM_TACT_VALUE.T000_LPM_OPEN_END),
 
             new EFEMTactTimeSpan("LPM ▶ Robot",                 /**/EFEM_TACT_VALUE.T010_ROBOT_PICK_FROM_LPM_START ,                /**/EFEM_TACT_VALUE.T010_ROBOT_PICK_FROM_LPM_END),
 
             new EFEMTactTimeSpan("Robot ▶ Aligner",              /**/EFEM_TACT_VALUE.T020_ROBOT_PLACE_TO_ALIGNER_START,               /**/EFEM_TACT_VALUE.T020_ROBOT_PLACE_TO_ALIGNER_END),
-            new EFEMTactTimeSpan("프리 얼라인",                  /**/EFEM_TACT_VALUE.T030_ALIGNER_ALIGNMENT_START,                   /**/EFEM_TACT_VALUE.T030_ALIGNER_ALIGNMENT_END),
+            new EFEMTactTimeSpan(GG.boChinaLanguage ? "PreAligner" : "프리 얼라인",                  /**/EFEM_TACT_VALUE.T030_ALIGNER_ALIGNMENT_START,                   /**/EFEM_TACT_VALUE.T030_ALIGNER_ALIGNMENT_END),
             new EFEMTactTimeSpan("Aligner ▶ Robot",              /**/EFEM_TACT_VALUE.T040_ROBOT_PICK_FROM_ALIGNER_START,               /**/EFEM_TACT_VALUE.T040_ROBOT_PICK_FROM_ALIGNER_END),
 
             //new EFEMTactTimeSpan("이전 Wafer 완료 대기",                  /**/EFEM_TACT_VALUE.T050_PREVIOUS_WAFER_WAIT_START,                   /**/EFEM_TACT_VALUE.T050_PREVIOUS_WAFER_WAIT_END),
@@ -112,11 +112,11 @@ namespace EquipMainUi.Tact
             //new EFEMTactTimeSpan("AVI ▶ Robot (AVI PIO 제외)",                  /**/EFEM_TACT_VALUE.T100_PICK_FROM_AVI_START,                       /**/EFEM_TACT_VALUE.T100_PICK_FROM_AVI_END),
             //new EFEMTactTimeSpan("다음 Wafer Exchange 대기",   /**/EFEM_TACT_VALUE.T110_WAIT_NEXT_WAFER_PIO_COMPLETE_START,       /**/EFEM_TACT_VALUE.T110_WAIT_NEXT_WAFER_PIO_COMPLETE_END),
 
-            new EFEMTactTimeSpan("검사기 Total(PIO, 대기시간 포함)", /**/EFEM_TACT_VALUE.T050_PREVIOUS_WAFER_WAIT_START, /**/EFEM_TACT_VALUE.T110_WAIT_NEXT_WAFER_PIO_COMPLETE_END),
+            new EFEMTactTimeSpan(GG.boChinaLanguage ? "检查机 Total(PIO, 包括等待时间)" : "검사기 Total(PIO, 대기시간 포함)", /**/EFEM_TACT_VALUE.T050_PREVIOUS_WAFER_WAIT_START, /**/EFEM_TACT_VALUE.T110_WAIT_NEXT_WAFER_PIO_COMPLETE_END),
 
             new EFEMTactTimeSpan("Robot ▶ LPM",           /**/EFEM_TACT_VALUE.T120_ROBOT_PLACE_TO_LPM_START,                   /**/EFEM_TACT_VALUE.T120_ROBOT_PLACE_TO_LPM_END),
 
-            new EFEMTactTimeSpan("LPM 클로즈",                          /**/EFEM_TACT_VALUE.T130_LPM_CLOSE_START,                           /**/EFEM_TACT_VALUE.T130_LPM_CLOSE_END),
+            new EFEMTactTimeSpan(GG.boChinaLanguage ? "LPM Close" : "LPM 클로즈",                          /**/EFEM_TACT_VALUE.T130_LPM_CLOSE_START,                           /**/EFEM_TACT_VALUE.T130_LPM_CLOSE_END),
         };
         private EFEMTactMgr()
         {

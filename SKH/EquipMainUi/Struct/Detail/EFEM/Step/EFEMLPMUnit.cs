@@ -667,7 +667,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                         if (this.CstKey == null)
                         {
                             AlarmMgr.Instance.Happen(equip, this.Port == EmEfemPort.LOADPORT1 ? EM_AL_LST.AL_0655_EFEM_LPM1_NO_DATA : EM_AL_LST.AL_0656_EFEM_LPM2_NO_DATA);
-                            InterLockMgr.AddInterLock("카세트 정보가 없습니다. 수동 생성하여 진행가능합니다.");
+                            InterLockMgr.AddInterLock(GG.boChinaLanguage ? "无CST 情报. 可以手动生成进行." : "카세트 정보가 없습니다. 수동 생성하여 진행가능합니다.");
                             return;
                         }
                         //모든 웨이퍼가 복귀 했다고 판단 시 && 검사와 리뷰가 정상적으로 진행된 웨이퍼가 한장 이상 있을 시
@@ -895,42 +895,42 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                     _rfReadCount++;
                     _rfReadCstId = string.Empty;
                     if ((_rfReadCount % 2 == 1))
-                        RFR.ScanTagCmd(Monitor.RFIDCmd.READER2);
+                        RFR.ScanTagCmd(Monitor.RFIDCmd.READER1); //RFID제거(2->1)
                     else
                         RFR.ScanTagCmd(Monitor.RFIDCmd.READER1);
                     _RFIDReadWait.Start(1);
                     _seqStepNum = EmEFEMLPMSeqStep.S320_WAIT_READ_RF_ID;
                     break;
                 case EmEFEMLPMSeqStep.S320_WAIT_READ_RF_ID:
-                    string read1, read2, rand;
-                    read1 = read2 = rand = string.Empty;
-                    rand = this.Port == EmEfemPort.LOADPORT1 ? "LongRun_Lpm1" : "LongRun_Lpm2";//jys:: id랜덤생성 > string.Format("r{0}_{1}", (int)Port, DateTime.Now.ToString("yyMMddHHmmssfff"));
+                    string read1/*, read2*/, rand;
+                    read1 = /*read2 =*/ rand = string.Empty;
+                    rand = this.Port == EmEfemPort.LOADPORT1 ? "LongRun_Lpm1" : "LongRun_Lpm1";//jys:: id랜덤생성 > string.Format("r{0}_{1}", (int)Port, DateTime.Now.ToString("yyMMddHHmmssfff"));
 
-                    if (RFR.IsReader1Success() || RFR.IsReader2Success()/*rf check*/)
+                    if (RFR.IsReader1Success() /*|| RFR.IsReader2Success()/*rf check*/) //RFID제거
                     {
                         if (RFR.IsReader1Success())
                         {
                             read1 = RFR.GetReaderReadID[0];
                         }
-                        else
-                        {
-                            read2 = RFR.GetReaderReadID[1];
-                        }
+                        //else //RFID제거
+                        //{
+                        //    read2 = RFR.GetReaderReadID[1];
+                        //}
                         if (GG.EfemLongRun == true)
                         {
                             _rfReadCstId = rand;
                             _seqStepNum = EmEFEMLPMSeqStep.S340_FIRST_CST_INFO_CHECK;
                         }
-                        else
+                        else 
                         {
-                            _rfReadCstId = RFR.IsReader2Success() ? read2 : read1;
+                            _rfReadCstId = RFR.IsReader1Success() ? read1 : read1; //RFID제거
                             _seqStepNum = EmEFEMLPMSeqStep.S340_FIRST_CST_INFO_CHECK;
                         }
 
                         if (GG.EfemLongRun == false
                             && TransferDataMgr.IsExistCst(_rfReadCstId) == true && GG.Equip.CtrlSetting.IsRFKeyIn)
                         {
-                            _frmRfUserMsgBox.RequestPopup(read1, read2);
+                            _frmRfUserMsgBox.RequestPopup(read1/*, read2*/); //RFID제거
                             _seqStepNum = EmEFEMLPMSeqStep.S330_RFID_USER_CHECK;
                         }
                     }
@@ -1024,9 +1024,9 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                             && oldWaferCstId != GG.Equip.Efem.OtherLoadPort(this.Port)._rfReadCstId)
                         {
                             string msg = "설비 내 웨이퍼의 CST ID와 진행하려는 포트의 CST ID가 다릅니다. CST ID가 맞는 카세트를 먼저 진행해야합니다";
-                            InterLockMgr.AddInterLock(msg,
-                                "설비 내 웨이퍼 ID\r\n현재 CST ID:\t{0}\r\nRobot-Upper:\t{1}\r\nAVI:\t{2}\r\nAligner:\t{3}\r\nRobot-Lower:\t{4}",
-                                _rfReadCstId, GG.Equip.Efem.Robot.UpperWaferKey.CstID, GG.Equip.TransferUnit.LowerWaferKey.CstID,
+                            InterLockMgr.AddInterLock(GG.boChinaLanguage ? "设备内 Wafer的 CST ID和要进行的  Port的 CST ID不同. 需先进行CST ID正确的 CST" : msg, GG.boChinaLanguage ? "设备内 Wafer ID\r\n现在 CST ID :\t{0}\r\nRobot-Upper:\t{1}\r\nAVI:\t{2}\r\nAligner:\t{3}\r\nRobot-Lower:\t{4}" :
+                                 "설비 내 웨이퍼 ID\r\n현재 CST ID:\t{0}\r\nRobot-Upper:\t{1}\r\nAVI:\t{2}\r\nAligner:\t{3}\r\nRobot-Lower:\t{4}",
+                                 _rfReadCstId, GG.Equip.Efem.Robot.UpperWaferKey.CstID, GG.Equip.TransferUnit.LowerWaferKey.CstID,
                                 GG.Equip.Efem.Aligner.LowerWaferKey.CstID, GG.Equip.Efem.Robot.LowerWaferKey.CstID);
                             _seqStepNum = EmEFEMLPMSeqStep.S110_WAIT_LOAD_BUTTON_PUSH;
                             return;
@@ -1044,7 +1044,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                         //중간에 재시작 했을 때, 해당 카세트에서 검사, 리뷰 까지 모두 마친 웨이퍼가 1장 이상 있을 떄 이 조건으로 이동 됨.
                         if(TransferDataMgr.IsExistPerfectCompleteWafer(_rfReadCstId))
                         {
-                            _frmRetryMsg.RequestPopup("검사 도중 정지 후 재시작", "재시도, 배출 중 선택 해주세요");
+                            _frmRetryMsg.RequestPopup(GG.boChinaLanguage ? "检查时停止并重新启动" : "검사 도중 정지 후 재시작", GG.boChinaLanguage ? "重试，请在排出中选择。" : "재시도, 배출 중 선택 해주세요");
 
                             _seqStepNum = EmEFEMLPMSeqStep.S355_RETRY_CST_PROGRESS;
                         }
@@ -1330,7 +1330,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                             else if (ProcessMappingData(equip, CstKey.ID, out mapRet, false) == false)
                             {
                                 AlarmMgr.Instance.Happen(equip, this.Port == EmEfemPort.LOADPORT1 ? EM_AL_LST.AL_0663_LPM1_WAFER_STATUS_ABNORMAL : EM_AL_LST.AL_0664_LPM2_WAFER_STATUS_ABNORMAL);
-                                InterLockMgr.AddInterLock("Wafer상태 이상 (새로운 웨이퍼 생성)", "{0}\r\n{1}", Port.ToString(), mapRet);
+                                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer Status Error (生成新的Wafer)" : "Wafer상태 이상 (새로운 웨이퍼 생성)", "{0}\r\n{1}", Port.ToString(), mapRet);
                                 equip.IsInterlock = true;
                             }
                             UpdateNextWaferKey();
@@ -1373,7 +1373,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                                 if (ProcessMappingData(equip, CstKey.ID, out mapRet, true) == false)
                                 {
                                     AlarmMgr.Instance.Happen(equip, this.Port == EmEfemPort.LOADPORT1 ? EM_AL_LST.AL_0663_LPM1_WAFER_STATUS_ABNORMAL : EM_AL_LST.AL_0664_LPM2_WAFER_STATUS_ABNORMAL);
-                                    InterLockMgr.AddInterLock("Wafer상태 이상 (웨이퍼 재생성)", "{0}\r\n{1}", Port.ToString(), mapRet);
+                                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer Status Error (再生成Wafer)" : "Wafer상태 이상 (웨이퍼 재생성)", "{0}\r\n{1}", Port.ToString(), mapRet);
                                     equip.IsInterlock = true;
                                 }
                             }
@@ -1652,7 +1652,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                 }
                 else
                 {
-                    InterLockMgr.AddInterLock("No Wafer Mode인데 웨이퍼 감지 됩니다");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "是No Wafer Mode但感应到了 Wafer" : "No Wafer Mode인데 웨이퍼 감지 됩니다");
                     this.SetRunMode(EmEfemRunMode.Stop);
                     equip.IsInterlock = true;
                 }
@@ -2169,7 +2169,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                             || _efem.Robot.LowerWaferKey.CstID == CstKey.ID
                             || _efem.Aligner.LowerWaferKey.CstID == CstKey.ID
                             || GG.Equip.TransferUnit.LowerWaferKey.CstID == CstKey.ID)
-                            InterLockMgr.AddInterLock("진행 중인 카세트는 배출할 수 없습니다.");
+                            InterLockMgr.AddInterLock(GG.boChinaLanguage ? "进行中的 CST无法排出." : "진행 중인 카세트는 배출할 수 없습니다.");
                         else
                         {
                             PioSend.Initailize();
@@ -2226,7 +2226,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                     {
                         if (((equip.IsSkipWaferLPM == 1 && this.Port == EmEfemPort.LOADPORT1) || (equip.IsSkipWaferLPM == 2 && this.Port == EmEfemPort.LOADPORT2)) && this.ProgressWay != EmProgressWay.User)
                         {
-                            _frmRetryMsg.RequestPopup("사용자 선택", "웨이퍼가 검사를 진행하지 않고 '배출' 버튼을 통해 복귀하였습니다ㅣ\n'다음 장 웨이퍼 진행'  '카세트 배출' 중 선택 해주세요");
+                            _frmRetryMsg.RequestPopup(GG.boChinaLanguage ? "用户选择" : "사용자 선택", GG.boChinaLanguage ? "晶片未进行检查，通过'排出'按钮返回。ㅣ\n 请在'进行下一个晶片'或'排出盒'中选择。" : "웨이퍼가 검사를 진행하지 않고 '배출' 버튼을 통해 복귀하였습니다ㅣ\n'다음 장 웨이퍼 진행' 또는 '카세트 배출' 중 선택 해주세요");
                             _seqStepNum = EmEFEMLPMSeqStep.S605_USER_CONFIRM_NEXT_WAFER;
                         }
                         else
@@ -2278,7 +2278,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                             if (NextIdx == -1 || NextIdx == 13)
                             {
                                 //마지막 웨이퍼이므로 오류 메시지 출력 후 배출
-                                CheckMgr.AddCheckMsg(true, "진행할 웨이퍼가 없어 자동 배출 됩니다");
+                                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "没有要进行的 Wafer会自动排出" : "진행할 웨이퍼가 없어 자동 배출 됩니다");
                                 equip.IsSkipWaferLPM = -1;
                                 equip.IsSkipWaferSlotNo = -1;
                                 Logger.Log.AppendLine(LogLevel.Info, "웨이퍼 검사 진행하지 않고 배출 선택 후 해당 카세트 배출");
@@ -2472,7 +2472,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                         _isCsUldtReportEnd = true;
 
                         //완료 알람 팝업
-                        CheckMgr.AddCheckMsg(true, string.Format("{0} 카세트 전체 검사 완료", this.Port.ToString()));
+                        CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? string.Format("{0} CST 全体检查完毕", this.Port.ToString()) : string.Format("{0} 카세트 전체 검사 완료", this.Port.ToString()));
                         Logger.Log.AppendLine("비물류 모드 / {0} 카세트 전체 완료 / Cst ID : {1}", this.Port.ToString(), _tempCstInfo.CstID);
 
                         _seqStepNum = EmEFEMLPMSeqStep.S645_CASSETTE_UNLOAD_REPORT_COMPLETE_WAIT;

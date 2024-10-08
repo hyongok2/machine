@@ -337,15 +337,15 @@
             <Grid x:Name="gWaferInfo" Margin="-419,507,683,-55">
                 <StackPanel Margin="11,11,0,45" Orientation="Horizontal">
                     <Image Height="18" Source="Images/imgAlign.png" Margin="0,16,0,-9" Width="20"/>
-                    <TextBlock Margin="5,13,-3,-7" VerticalAlignment="Center" Text="얼라인 완료" FontSize="14" Foreground="Black" Width="79"/>
+                    <TextBlock Margin="5,13,-3,-7" VerticalAlignment="Center" Text="Aligner 完畢" FontSize="14" Foreground="Black" Width="105"/>
                 </StackPanel>
                 <StackPanel Margin="11,11,0,15" Orientation="Horizontal">
                     <Image Height="15" Source="Images/imgInsp.png" Margin="0,41,0,-1" Width="20"/>
-                    <TextBlock Margin="5,39,-3,-3" VerticalAlignment="Center" Text="검사 완료" FontSize="14" Foreground="Black" Width="77"/>
+                    <TextBlock Margin="5,39,-3,-3" VerticalAlignment="Center" Text="inspection 完畢" FontSize="14" Foreground="Black" Width="105"/>
                 </StackPanel>
                 <StackPanel Margin="11,13,0,-17" Orientation="Horizontal">
                     <Image Height="15" Source="Images/imgReview.png" Margin="0,68,0,2" Width="20"/>
-                    <TextBlock Margin="5,65,-3,1" VerticalAlignment="Center" Text="전체 완료" FontSize="14" Foreground="Black" Width="71"/>
+                    <TextBlock Margin="5,65,-3,1" VerticalAlignment="Center" Text="检查完成" FontSize="14" Foreground="Black" Width="105"/>
                 </StackPanel>
                 <TextBlock Margin="0,-2,39,63" VerticalAlignment="Center" Text="■ Wafer Info"  FontSize="14" Foreground="Black" FontWeight="Bold"/>
             </Grid>

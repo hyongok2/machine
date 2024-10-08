@@ -15,11 +15,25 @@ namespace EquipMainUi.Struct
         public FrmAlarmSolution(AlarmSolutionMgr mgr)
         {
             InitializeComponent();
+            ChangeChinaLanguage();
 
             solutionMgr = mgr;
             LoadAlarmList();
         }
 
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                groupBox1.Text = "发生原因";	        // 발생 원인
+                groupBox2.Text = "措施方法";	        // 조치 방법
+                groupBox3.Text = "做笔记";	        // 메모
+                btnModify.Text = "修改内容";	        // 수정
+                colIndex.Text = "数字";		        // 번호
+                colAlarmName.Text = "报警名称";		    // 알람명
+            }
+
+        }
         private void LoadAlarmList()
         {
             foreach (var alarm in solutionMgr.GetAlarmList)

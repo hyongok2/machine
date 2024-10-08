@@ -1154,7 +1154,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
         {
             if (equip.Efem.Robot.Status.IsMoving == true)
             {
-                InterLockMgr.AddInterLock("Robot Moving 상태 입니다 이동불가");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Robot Moving 状态，不可移动 " : "Robot Moving 상태 입니다 이동불가");
                 equip.IsInterlock = true;
                 return false;
             }
@@ -1163,7 +1163,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 // 공통
                 if (data.Arm == EmEfemRobotArm.Upper ? equip.Efem.Robot.Status.IsUpperArmVacOn : equip.Efem.Robot.Status.IsLowerArmVacOn)
                 {
-                    InterLockMgr.AddInterLock("Robot에 Wafer가 존재할 때 PICK 명령 금지");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Robot存在 Wafer时禁止 PICK 命令" : "Robot에 Wafer가 존재할 때 PICK 명령 금지");
                     equip.IsInterlock = true;
                     return false;
                 }
@@ -1172,13 +1172,13 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 {
                     if (equip.Efem.Aligner.Status.IsWaferExist == false)
                     {
-                        InterLockMgr.AddInterLock("Aligner에 Wafer가 존재하지 않을 때 PICK 명령 금지");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Aligner不存在 Wafer时禁止PICK 命令" : "Aligner에 Wafer가 존재하지 않을 때 PICK 명령 금지");
                         equip.IsInterlock = true;
                         return false;
                     }
                     if(equip.Efem.Aligner.IsInitDone == false)
                     {
-                        InterLockMgr.AddInterLock("Aligner가 이니셜이 완료되지 않았을 때 PICK 명령 금지, 프리얼라이너 이니셜 먼저 진행");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Aligner为完毕 Initial时,禁止 PICK 命令,(先)进行PreAligner Initial " : "Aligner가 이니셜이 완료되지 않았을 때 PICK 명령 금지, 프리얼라이너 이니셜 먼저 진행");
                         equip.IsInterlock = true;
                         return false;
                     }
@@ -1187,7 +1187,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 {
                     if (equip.IsWaferDetect == EmGlassDetect.NOT)
                     {
-                        InterLockMgr.AddInterLock("AVI에 Wafer가 존재 하지 않을 때 PICK 명령 금지");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "AVI不存在Wafer时, 禁止PICK 命令" : "AVI에 Wafer가 존재 하지 않을 때 PICK 명령 금지");
                         equip.IsInterlock = true;
                         return false;
                     }
@@ -1198,20 +1198,20 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 // 공통
                 if (data.Arm == EmEfemRobotArm.Upper ? equip.Efem.Robot.Status.IsUpperArmVacOn == false : equip.Efem.Robot.Status.IsLowerArmVacOn == false)
                 {
-                    InterLockMgr.AddInterLock("Robot에 Wafer가 없을 때 PLACE 명령 금지");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Robot没有 Wafer时禁止 PLACE 命令" : "Robot에 Wafer가 없을 때 PLACE 명령 금지");
                     equip.IsInterlock = true;
                     return false;
                 }
 
                 if (data.TargetPort == EmEfemPort.ALIGNER && equip.Efem.Aligner.Status.IsWaferExist == true)
                 {
-                    InterLockMgr.AddInterLock("Aligner에 Wafer가 존재할 때 PLACE 명령 금지");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Aligner存在 Wafer时禁止PLACE 命令" : "Aligner에 Wafer가 존재할 때 PLACE 명령 금지");
                     equip.IsInterlock = true;
                     return false;
                 }
                 else if (data.TargetPort == EmEfemPort.EQUIPMENT && equip.IsWaferDetect != EmGlassDetect.NOT)
                 {
-                    InterLockMgr.AddInterLock("AVI에 Wafer가 존재할 때 PLACE 명령 금지");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "AVI存在 Wafer时禁止 PLACE 命令" : "AVI에 Wafer가 존재할 때 PLACE 명령 금지");
                     equip.IsInterlock = true;
                     return false;
                 }
@@ -1220,7 +1220,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 {
                     if (equip.Efem.Aligner.IsInitDone == false)
                     {
-                        InterLockMgr.AddInterLock("Aligner가 이니셜이 완료되지 않았을 때 PLACE 명령 금지, 프리얼라이너 이니셜 먼저 진행");
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Aligner没有完毕 Initial时, 禁止PLACE 命令, 先进行PreAligner Initial " : "Aligner가 이니셜이 완료되지 않았을 때 PLACE 명령 금지, 프리얼라이너 이니셜 먼저 진행");
                         equip.IsInterlock = true;
                         return false;
                     }
@@ -1228,13 +1228,13 @@ namespace EquipMainUi.Struct.Detail.EFEM
             }
             else if (data.TargetPort == EmEfemPort.LOADPORT1 && GG.Equip.Efem.LoadPort1.Status.IsDoorClose == true)
             {
-                InterLockMgr.AddInterLock(string.Format("LOADPORT1 CLOSE 상태에서 {0} 불가", data.Transfer));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("LOADPORT1 CLOSE 状态下 {0} 不可", data.Transfer) : string.Format("LOADPORT1 CLOSE 상태에서 {0} 불가", data.Transfer));
                 equip.IsInterlock = true;
                 return false;
             }
             else if (data.TargetPort == EmEfemPort.LOADPORT2 && GG.Equip.Efem.LoadPort2.Status.IsDoorClose == true)
             {
-                InterLockMgr.AddInterLock(string.Format("LOADPORT2 CLOSE 상태에서 {0} 불가", data.Transfer));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("LOADPORT2 CLOSE 状态下 {0} 不可", data.Transfer) : string.Format("LOADPORT2 CLOSE 상태에서 {0} 불가", data.Transfer));
                 equip.IsInterlock = true;
                 return false;
             }
@@ -1273,7 +1273,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
 
             if (0 > degree || 360 <= degree)
             {
-                InterLockMgr.AddInterLock("PreAligner 회전은 0~359도만 가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "PreAligner 旋转可以 0~359° 为止" : "PreAligner 회전은 0~359도만 가능합니다");
                 return false;
             }
 
@@ -1287,33 +1287,33 @@ namespace EquipMainUi.Struct.Detail.EFEM
         {
             if (IsConnected == false && equip.IsAutoOnlyAligner == false)
             {
-                InterLockMgr.AddInterLock("EFEM 연결 상태가 아닌데 명령이 들어왔습니다.","({0}:{1})", port, cmd);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "EFEM 不是连接状态但命令来了" : "EFEM 연결 상태가 아닌데 명령이 들어왔습니다.", "({0}:{1})", port, cmd);
                 return false;
             }
             if (GG.EfemNoUse == true && (port == EmEfemPort.ROBOT && cmd == EmEfemCommand.INIT_) == false && equip.IsAutoOnlyAligner == false)
             {
-                InterLockMgr.AddInterLock("EFEM 미사용 모드 상태입니다, 로봇 Initialize만 가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "EFEM 未使用 Mode状态, 只可以Robot Initialize" : "EFEM 미사용 모드 상태입니다, 로봇 Initialize만 가능합니다");
                 return false;
             }
             if (HS.ContainsKey(port) == false)
             {
-                InterLockMgr.AddInterLock("없는 Port입니다", "({0}:{1})", port, cmd);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Port不存在." : "없는 Port입니다", "({0}:{1})", port, cmd);
                 return false;
             }
             if (HS[port].HasCmd(cmd) == false)
             {
-                InterLockMgr.AddInterLock("해당 Port에 지원하지 않는 명령입니다.", "({0}:{1})", port, cmd);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "该 Port不支持的命令." : "해당 Port에 지원하지 않는 명령입니다.", "({0}:{1})", port, cmd);
                 return false;
             }
             if (HS[port].IsStepRunning(cmd) == true)
             {
-                InterLockMgr.AddInterLock("해당 명령이 진행 중입니다.", "({0}:{1})", port, cmd);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "该命令进行中" : "해당 명령이 진행 중입니다.", "({0}:{1})", port, cmd);
                 return false;
             }
             if (HS[port].IsMovingCommand(cmd) == true
                 && HS[port].IsProcessingMovingCmd == true && HS[port].LastStatusCmd != EmEfemCommand.STAT_)
             {
-                InterLockMgr.AddInterLock("해당 Port가 동작중입니다.", "({0}: 마지막 동작Cmd:{1}, 마지막 기타Cmd:{2})", port, HS[port].LastActionCmd, HS[port].LastStatusCmd);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "该 Port动作中" : "해당 Port가 동작중입니다.", GG.boChinaLanguage ? "({0}: 最后动作Cmd:{1}, 最后其它Cmd:{2})" : "({0}: 마지막 동작Cmd:{1}, 마지막 기타Cmd:{2})", port, HS[port].LastActionCmd, HS[port].LastStatusCmd);
                 return false;
             }
             StartCmdLogging(port, cmd, param);
@@ -1386,13 +1386,13 @@ namespace EquipMainUi.Struct.Detail.EFEM
         {
             if (GG.Equip.IsDoorOpen && GG.Equip.IsUseInterLockOff == false && GG.Equip.IsUseDoorInterLockOff == false /*&& GG.Equip.IsEnableGripSwOn == EmGrapSw.MIDDLE_ON*/)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 {0}-{1} 금지됩니다.)", name, action));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<Door>\n(设备状态 DOOR OPEN 时禁止 {0}-{1} .)", name, action) : string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 {0}-{1} 금지됩니다.)", name, action));
                 return false;
             }
 
             if (GG.Equip.IsImmediatStop)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<EMERGENCY>\n(설비 상태가 PAUSE or EMERGENCY 상태에서 {0}-{1} 이동이 금지됩니다.)", name, action));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<Door>\n(设备状态在 PAUSE or EMERGENCY 状态时 ，{0}-{1} 禁止移动.)", name, action) : string.Format("인터락<EMERGENCY>\n(설비 상태가 PAUSE or EMERGENCY 상태에서 {0}-{1} 이동이 금지됩니다.)", name, action));
                 return false;
             }
             return true;

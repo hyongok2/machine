@@ -23,7 +23,7 @@ namespace EquipMainUi.Struct.Detail
             {
                 if (equip.LiftPin.IsBackward == false && equip.LiftPin.IsBackwarding == false)
                 {
-                    InterLockMgr.AddInterLock("인터락<LIFTPIN>\nLiftPin 하강 위치 일 경우만 공압이 가능합니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<LIFT PIN>\n(LiftPin 只在下降位置时可空压.)" : "인터락<LIFTPIN>\nLiftPin 하강 위치 일 경우만 공압이 가능합니다.");
                     return;
                 }
             }
@@ -31,17 +31,17 @@ namespace EquipMainUi.Struct.Detail
             {
                 if (equip.StageX.IsMoving == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<Stage X>\nStage X 축이 움직 일 때 Vacuum Off 불가능합니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Stage X>\n(Stage X 轴移动时, Vacuum Off 不可.)" : "인터락<Stage X>\nStage X 축이 움직 일 때 Vacuum Off 불가능합니다.");
                     return;
                 }
                 if (equip.StageY.IsMoving == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<Stage Y>\nStage Y 축이 움직 일 때 Vacuum Off 불가능합니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Stage Y>\n(Stage Y 轴移动时， Vacuum Off 不可.)" : "인터락<Stage Y>\nStage Y 축이 움직 일 때 Vacuum Off 불가능합니다.");
                     return;
                 }
                 if (equip.Theta.IsMoving == true)
                 {
-                    InterLockMgr.AddInterLock("인터락<Theta>\nTheta 축이 움직 일 때 Vacuum Off 불가능합니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Theta>\n(Theta 轴移动时， Vacuum Off 不可.)" : "인터락<Theta>\nTheta 축이 움직 일 때 Vacuum Off 불가능합니다.");
                     return;
                 }
             }

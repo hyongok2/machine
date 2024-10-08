@@ -34,7 +34,7 @@ namespace EquipMainUi.Struct.TransferData
                 string connString = "mongodb://localhost";
                 MongoClient cli = new MongoClient(connString);
                 
-                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix");
+                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix_Wuxi");
 
                 cassettes = dbSKHynix.GetCollection<CassetteInfo>("Cassettes");
                 wafers = dbSKHynix.GetCollection<WaferInfo>("Wafers");
@@ -927,6 +927,7 @@ namespace EquipMainUi.Struct.TransferData
             }
             else if (srcUnit == null || srcUnit.LowerWaferKey == null)
             {
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "用Robot取出 Wafer 中， Source 没有情报" : "로봇으로 웨이퍼 취출 중 Source 정보 없음", "{0}->{1}", srcData.TargetPort.ToString(), destArm.ToString());
                 Logger.TransferDataLog.AppendLine(LogLevel.Warning, "WaferMove, No WaferInfo {0}->{1}", srcData.TargetPort.ToString(), destArm.ToString());
                 return;
             }

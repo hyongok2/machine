@@ -51,7 +51,7 @@ namespace EquipMainUi.Struct.Detail
         {
             if (this.IsHomeComplete() == true && GG.TestMode == false)
             {
-                return MovePosition(equip, 0, 5, 300);
+                return MovePosition(equip, 0, 1, 300);
             }
             else
             {
@@ -71,7 +71,7 @@ namespace EquipMainUi.Struct.Detail
             if (IsCanLoadingPos(posOffset) == false)
             {
                 AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0531_THETA_ABNORMAL_LOADING_POS);
-                InterLockMgr.AddInterLock("로딩위치로 사용불가능한 위치 입니다", string.Format("기준로딩위치:{0}, Offset:{1}, 허용범위(Ld,Ld+90,Ld+180,Ld+270)+-{1}", tryPos, posOffset, ThetaServo.AllowUnldRange));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "因Loading Position，所以是不可使用位置" : "로딩위치로 사용불가능한 위치 입니다", GG.boChinaLanguage ? string.Format("基准 Loading 位置:{0}, Offset:{1}, 允许范围(Ld,Ld+90,Ld+180,Ld+270)+-{1}", tryPos, posOffset, ThetaServo.AllowUnldRange) : string.Format("기준로딩위치:{0}, Offset:{1}, 허용범위(Ld,Ld+90,Ld+180,Ld+270)+-{1}", tryPos, posOffset, ThetaServo.AllowUnldRange));
                 equip.IsInterlock = true;
                 return false;
             }

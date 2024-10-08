@@ -146,7 +146,7 @@ namespace EquipMainUi.UserControls
                         if (fromPortCstID != lpmCstID)
                         {
                             tbToSlot.Text = "";
-                            InterLockMgr.AddInterLock("물류정보가 다르니 주의하세요", "{2} : {0}\n{3} : {1}",
+                            InterLockMgr.AddInterLock(GG.boChinaLanguage ? "物流情报不同请注意." : "물류정보가 다르니 주의하세요", "{2} : {0}\n{3} : {1}",
                                 fromPortCstID, lpmCstID, fromPortName, rbToLoad1.Checked ? "LoadPort1" : "LoadPort2");
                         }
                         else
@@ -178,7 +178,7 @@ namespace EquipMainUi.UserControls
                 return;
             if (GG.Equip.WaferTransLogic.IsRunning())
             {
-                InterLockMgr.AddInterLock("Wafer 이송 중입니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer 移送中" : "Wafer 이송 중입니다");
                 return;
             }
 
@@ -187,7 +187,7 @@ namespace EquipMainUi.UserControls
             if (int.TryParse(tbToSlot.Text, out slot) == false
                 || slot < 1 || slot > 13)
             {
-                InterLockMgr.AddInterLock("Slot 1~13 까지 가능");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Slot 1~13 为止可以" : "Slot 1~13 까지 가능");
                 tbToSlot.Text = "";
                 return;
             }
@@ -195,7 +195,7 @@ namespace EquipMainUi.UserControls
             EmEfemPort port = GG.Equip.WaferTransLogic.DBtoPort(dbPort);
             if (port == EmEfemPort.NONE || port == EmEfemPort.ROBOT)
             {
-                InterLockMgr.AddInterLock("Port설정을 다시하세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "请重新进行Port 设置" : "Port설정을 다시하세요");
                 return;
             }
 
@@ -230,12 +230,12 @@ namespace EquipMainUi.UserControls
                 || int.TryParse(tbToSlot.Text, out toSlot) == false
                 || toSlot < 1 || toSlot > 13)
             {
-                InterLockMgr.AddInterLock("Slot 1~13 까지 가능");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Slot 1~13 为止可以" : "Slot 1~13 까지 가능");
                 return;
             }
             if(GG.Equip.Efem.LoadPort1.Status.IsError || GG.Equip.Efem.LoadPort2.Status.IsError || GG.Equip.Efem.Robot.Status.IsAlarm)
             {
-                InterLockMgr.AddInterLock("로봇, 로드포트1 또는 로드포트2가 에러 상태일 때 TRANS 명령이 금지 됩니다\nROBOT LPM1 LPM2 중 RESET 버튼이 점등되어 있다면 눌러서 리셋 후 진행 하거나 BASE OPERATORATION의 웨이퍼 복귀 기능을 사용해주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Robot, LPM1 或者 LPM2是 Error 状态时, 禁止TRANS 命令.\nROBOT LPM1 LPM2 中 RESET Button点灯了的话，请按以下， Reset 后, 进行或者请使用 BASE OPERATORATION的 Wafer恢复功能 ." : "로봇, 로드포트1 또는 로드포트2가 에러 상태일 때 TRANS 명령이 금지 됩니다\nROBOT LPM1 LPM2 중 RESET 버튼이 점등되어 있다면 눌러서 리셋 후 진행 하거나 BASE OPERATORATION의 웨이퍼 복귀 기능을 사용해주세요");
             }
             EmEfemDBPort fromPort = GetPort(true);
             EmEfemDBPort toPort = GetPort(false);

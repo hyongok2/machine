@@ -13,7 +13,10 @@ namespace EquipMainUi.Struct.Detail
         public Switch Muting1 = new Switch();
         public Switch Muting2 = new Switch();
         public Switch ResetOut = new Switch(); // 리셋
+
+        //라이트커튼 제거
         public Sensor Detect = new Sensor(false); // B접, 감지시 OFF, 뮤팅 시 ON
+
         private Sensor _mutingOn = new Sensor(); // On 시 Flicker.
         private bool _isMutingOn;
 
@@ -28,9 +31,10 @@ namespace EquipMainUi.Struct.Detail
         public override void LogicWorking(Equipment equip)
         {
             ResetLogic(equip);
-            MutingLogic(equip);
+            MutingLogic(equip); //라이트커튼 제거
             MutingOnCheckLogic();
 
+            //라이트커튼 제거
             if (Detect.IsOn != _oldDetect)
             {
                 Logger.Log.AppendLine(LogLevel.NoLog, "LIGHT CURTAIN {0}!", Detect.IsOn ? "감지" : "감지해제");

@@ -64,7 +64,7 @@ namespace EquipMainUi.Struct.Step
                 case EmWaferRecoveryReadyLogic.S010_WAFER_RETURN_READY_START:
                     if (PlaceCmd == null)
                     {
-                        InterLockMgr.AddInterLock("<Wafer Recovery Error>", "Data is abnormal");
+                        InterLockMgr.AddInterLock("<Wafer Recovery Error>", GG.boChinaLanguage ? "Data有问题 ." : "Data is abnormal");
                         GG.Equip.IsInterlock = true;
                         return;
                     }
@@ -88,7 +88,7 @@ namespace EquipMainUi.Struct.Step
                 case EmWaferRecoveryReadyLogic.S020_WAEFR_RETURN_READY_COMPLETE_WAIT:
                     if (PlaceCmd == null)
                     {
-                        InterLockMgr.AddInterLock("<Wafer Recovery Error>", "Data is abnormal");
+                        InterLockMgr.AddInterLock("<Wafer Recovery Error>", GG.boChinaLanguage ? "Data有问题 ." : "Data is abnormal");
                         GG.Equip.IsInterlock = true;
                         return;
                     }
@@ -175,7 +175,7 @@ namespace EquipMainUi.Struct.Step
                     }
                     if (check)
                     {
-                        InterLockMgr.AddInterLock("{0} 이미 INITIAL 중입니다 잠시 후 시도해주세요", where);
+                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "{0} 已经 INITIAL 中. 稍后再试." : "{0} 이미 INITIAL 중입니다 잠시 후 시도해주세요", where);
                         _seqStepNum = EmWaferTransferSeqStep.S000_END;
                         break;
                     }
@@ -320,7 +320,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (IsRunning())
             {
-                InterLockMgr.AddInterLock("웨이퍼 이송이 이미 진행 중입니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer(移送)已经进行中" : "웨이퍼 이송이 이미 진행 중입니다");
                 return false;
             }
 
@@ -330,13 +330,13 @@ namespace EquipMainUi.Struct.Step
                 || toSlot < 1 || toSlot > 13
                 )
             {
-                InterLockMgr.AddInterLock("Wafer 이송 불가", "출발포트, 도착포트 또는 Slot 지정이 잘못되었습니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer 不可(移送)" : "Wafer 이송 불가", GG.boChinaLanguage ? "出发 Port, 到达 Port 或者 Slot 指定错误" : "출발포트, 도착포트 또는 Slot 지정이 잘못되었습니다");
                 return false;
             }
 
             if (MakeCmd(from, fromSlot, to, toSlot) == false)
             {
-                InterLockMgr.AddInterLock("Wafer 이송 불가", "{0}({1}) → {2}({3})", from.ToString(), fromSlot, to.ToString(), toSlot);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer 不可(移送)" : "Wafer 이송 불가", "{0}({1}) → {2}({3})", from.ToString(), fromSlot, to.ToString(), toSlot);
                 return false;
             }
 

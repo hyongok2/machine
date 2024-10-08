@@ -60,6 +60,15 @@
             this.btnOCRUseOff = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.btnOCRUseOn = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.label11 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.lblCurrentCount = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblInspCount = new System.Windows.Forms.TextBox();
+            this.btnReviewJudgeModeOff = new Dit.Framework.UI.UserComponent.ButtonDelay2();
+            this.btnReviewJudgeModeOn = new Dit.Framework.UI.UserComponent.ButtonDelay2();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel66 = new System.Windows.Forms.Panel();
             this.btnBuzzerAllOff = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.btnBuzzerAllOn = new Dit.Framework.UI.UserComponent.ButtonDelay2();
@@ -112,15 +121,6 @@
             this.btnInspAckIgnore_Off = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.btnInspAckIgnore_On = new Dit.Framework.UI.UserComponent.ButtonDelay2();
             this.label310 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btnReviewJudgeModeOn = new Dit.Framework.UI.UserComponent.ButtonDelay2();
-            this.btnReviewJudgeModeOff = new Dit.Framework.UI.UserComponent.ButtonDelay2();
-            this.lblInspCount = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblCurrentCount = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.gbOperOption.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -166,7 +166,7 @@
             // 
             // panel14
             // 
-            this.panel14.Location = new System.Drawing.Point(21, 271);
+            this.panel14.Location = new System.Drawing.Point(21, 272);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(200, 100);
             this.panel14.TabIndex = 0;
@@ -264,7 +264,7 @@
             // btnBCRUseOff
             // 
             this.btnBCRUseOff.BackColor = System.Drawing.Color.Transparent;
-            this.btnBCRUseOff.Delay = 10;
+            this.btnBCRUseOff.Delay = 1000;
             this.btnBCRUseOff.Flicker = false;
             this.btnBCRUseOff.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this.btnBCRUseOff.ForeColor = System.Drawing.Color.Black;
@@ -285,12 +285,12 @@
             this.btnBCRUseOff.UseVisualStyleBackColor = false;
             this.btnBCRUseOff.VisibleLeftLamp = false;
             this.btnBCRUseOff.VisibleRightLamp = false;
-            this.btnBCRUseOff.Click += new System.EventHandler(this.btnOCRUseOn_Click);
+            this.btnBCRUseOff.DelayClick += new System.EventHandler(this.btnOCRUseOn_Click);
             // 
             // btnBCRUseOn
             // 
             this.btnBCRUseOn.BackColor = System.Drawing.Color.Transparent;
-            this.btnBCRUseOn.Delay = 10;
+            this.btnBCRUseOn.Delay = 1000;
             this.btnBCRUseOn.Flicker = false;
             this.btnBCRUseOn.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this.btnBCRUseOn.ForeColor = System.Drawing.Color.Black;
@@ -311,7 +311,7 @@
             this.btnBCRUseOn.UseVisualStyleBackColor = false;
             this.btnBCRUseOn.VisibleLeftLamp = false;
             this.btnBCRUseOn.VisibleRightLamp = false;
-            this.btnBCRUseOn.Click += new System.EventHandler(this.btnOCRUseOn_Click);
+            this.btnBCRUseOn.DelayClick += new System.EventHandler(this.btnOCRUseOn_Click);
             // 
             // label12
             // 
@@ -652,7 +652,7 @@
             // btnOCRUseOff
             // 
             this.btnOCRUseOff.BackColor = System.Drawing.Color.Transparent;
-            this.btnOCRUseOff.Delay = 10;
+            this.btnOCRUseOff.Delay = 1000;
             this.btnOCRUseOff.Flicker = false;
             this.btnOCRUseOff.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this.btnOCRUseOff.ForeColor = System.Drawing.Color.Black;
@@ -673,12 +673,12 @@
             this.btnOCRUseOff.UseVisualStyleBackColor = false;
             this.btnOCRUseOff.VisibleLeftLamp = false;
             this.btnOCRUseOff.VisibleRightLamp = false;
-            this.btnOCRUseOff.Click += new System.EventHandler(this.btnOCRUseOn_Click);
+            this.btnOCRUseOff.DelayClick += new System.EventHandler(this.btnOCRUseOn_Click);
             // 
             // btnOCRUseOn
             // 
             this.btnOCRUseOn.BackColor = System.Drawing.Color.Transparent;
-            this.btnOCRUseOn.Delay = 10;
+            this.btnOCRUseOn.Delay = 1000;
             this.btnOCRUseOn.Flicker = false;
             this.btnOCRUseOn.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this.btnOCRUseOn.ForeColor = System.Drawing.Color.Black;
@@ -699,7 +699,7 @@
             this.btnOCRUseOn.UseVisualStyleBackColor = false;
             this.btnOCRUseOn.VisibleLeftLamp = false;
             this.btnOCRUseOn.VisibleRightLamp = false;
-            this.btnOCRUseOn.Click += new System.EventHandler(this.btnOCRUseOn_Click);
+            this.btnOCRUseOn.DelayClick += new System.EventHandler(this.btnOCRUseOn_Click);
             // 
             // label11
             // 
@@ -713,6 +713,123 @@
             this.label11.TabIndex = 9;
             this.label11.Text = "■ Aligner OCR 사용";
             this.label11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(10, 142);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(161, 12);
+            this.label18.TabIndex = 459;
+            this.label18.Text = "검사 진행 전, 수정 후 진행 하세요";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(10, 123);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 12);
+            this.label17.TabIndex = 458;
+            this.label17.Text = "**주의사항**";
+            // 
+            // lblCurrentCount
+            // 
+            this.lblCurrentCount.AutoSize = true;
+            this.lblCurrentCount.Location = new System.Drawing.Point(114, 100);
+            this.lblCurrentCount.Name = "lblCurrentCount";
+            this.lblCurrentCount.Size = new System.Drawing.Size(0, 12);
+            this.lblCurrentCount.TabIndex = 456;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 101);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 12);
+            this.label16.TabIndex = 457;
+            this.label16.Text = "현재 검사 진행 수 :";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 77);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 12);
+            this.label15.TabIndex = 456;
+            this.label15.Text = "검사 할 수 : ";
+            // 
+            // lblInspCount
+            // 
+            this.lblInspCount.Location = new System.Drawing.Point(81, 73);
+            this.lblInspCount.Name = "lblInspCount";
+            this.lblInspCount.Size = new System.Drawing.Size(71, 21);
+            this.lblInspCount.TabIndex = 456;
+            this.lblInspCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lblInspCount_KeyPress);
+            // 
+            // btnReviewJudgeModeOff
+            // 
+            this.btnReviewJudgeModeOff.BackColor = System.Drawing.Color.Transparent;
+            this.btnReviewJudgeModeOff.Delay = 10;
+            this.btnReviewJudgeModeOff.Flicker = false;
+            this.btnReviewJudgeModeOff.Font = new System.Drawing.Font("맑은 고딕", 12F);
+            this.btnReviewJudgeModeOff.ForeColor = System.Drawing.Color.Black;
+            this.btnReviewJudgeModeOff.IsLeftLampOn = false;
+            this.btnReviewJudgeModeOff.IsRightLampOn = false;
+            this.btnReviewJudgeModeOff.LampAliveTime = 500;
+            this.btnReviewJudgeModeOff.LampSize = 1;
+            this.btnReviewJudgeModeOff.LeftLampColor = System.Drawing.Color.Red;
+            this.btnReviewJudgeModeOff.Location = new System.Drawing.Point(92, 36);
+            this.btnReviewJudgeModeOff.Name = "btnReviewJudgeModeOff";
+            this.btnReviewJudgeModeOff.OnOff = false;
+            this.btnReviewJudgeModeOff.RightLampColor = System.Drawing.Color.DarkGreen;
+            this.btnReviewJudgeModeOff.Size = new System.Drawing.Size(84, 27);
+            this.btnReviewJudgeModeOff.TabIndex = 27;
+            this.btnReviewJudgeModeOff.TabStop = false;
+            this.btnReviewJudgeModeOff.Text = "미사용";
+            this.btnReviewJudgeModeOff.Text2 = "";
+            this.btnReviewJudgeModeOff.UseVisualStyleBackColor = false;
+            this.btnReviewJudgeModeOff.VisibleLeftLamp = false;
+            this.btnReviewJudgeModeOff.VisibleRightLamp = false;
+            this.btnReviewJudgeModeOff.Click += new System.EventHandler(this.btnReviewJudgeModeOn_Click);
+            // 
+            // btnReviewJudgeModeOn
+            // 
+            this.btnReviewJudgeModeOn.BackColor = System.Drawing.Color.Transparent;
+            this.btnReviewJudgeModeOn.Delay = 10;
+            this.btnReviewJudgeModeOn.Flicker = false;
+            this.btnReviewJudgeModeOn.Font = new System.Drawing.Font("맑은 고딕", 12F);
+            this.btnReviewJudgeModeOn.ForeColor = System.Drawing.Color.Black;
+            this.btnReviewJudgeModeOn.IsLeftLampOn = false;
+            this.btnReviewJudgeModeOn.IsRightLampOn = false;
+            this.btnReviewJudgeModeOn.LampAliveTime = 500;
+            this.btnReviewJudgeModeOn.LampSize = 1;
+            this.btnReviewJudgeModeOn.LeftLampColor = System.Drawing.Color.Red;
+            this.btnReviewJudgeModeOn.Location = new System.Drawing.Point(3, 36);
+            this.btnReviewJudgeModeOn.Name = "btnReviewJudgeModeOn";
+            this.btnReviewJudgeModeOn.OnOff = false;
+            this.btnReviewJudgeModeOn.RightLampColor = System.Drawing.Color.DarkGreen;
+            this.btnReviewJudgeModeOn.Size = new System.Drawing.Size(84, 27);
+            this.btnReviewJudgeModeOn.TabIndex = 27;
+            this.btnReviewJudgeModeOn.TabStop = false;
+            this.btnReviewJudgeModeOn.Text = "사용";
+            this.btnReviewJudgeModeOn.Text2 = "";
+            this.btnReviewJudgeModeOn.UseVisualStyleBackColor = false;
+            this.btnReviewJudgeModeOn.VisibleLeftLamp = false;
+            this.btnReviewJudgeModeOn.VisibleRightLamp = false;
+            this.btnReviewJudgeModeOn.Click += new System.EventHandler(this.btnReviewJudgeModeOn_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoEllipsis = true;
+            this.label14.BackColor = System.Drawing.Color.Gainsboro;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 8.25F);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(0, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(180, 29);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "■ 리뷰 판정 대기 중일 때 \r\n다음 장 자동 진행";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // panel66
             // 
@@ -1772,123 +1889,6 @@
             this.label310.Text = "■ 검사 응답 무시";
             this.label310.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // label14
-            // 
-            this.label14.AutoEllipsis = true;
-            this.label14.BackColor = System.Drawing.Color.Gainsboro;
-            this.label14.Font = new System.Drawing.Font("맑은 고딕", 8.25F);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(0, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(180, 29);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "■ 리뷰 판정 대기 중일 때 \r\n다음 장 자동 진행";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // btnReviewJudgeModeOn
-            // 
-            this.btnReviewJudgeModeOn.BackColor = System.Drawing.Color.Transparent;
-            this.btnReviewJudgeModeOn.Delay = 10;
-            this.btnReviewJudgeModeOn.Flicker = false;
-            this.btnReviewJudgeModeOn.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this.btnReviewJudgeModeOn.ForeColor = System.Drawing.Color.Black;
-            this.btnReviewJudgeModeOn.IsLeftLampOn = false;
-            this.btnReviewJudgeModeOn.IsRightLampOn = false;
-            this.btnReviewJudgeModeOn.LampAliveTime = 500;
-            this.btnReviewJudgeModeOn.LampSize = 1;
-            this.btnReviewJudgeModeOn.LeftLampColor = System.Drawing.Color.Red;
-            this.btnReviewJudgeModeOn.Location = new System.Drawing.Point(3, 36);
-            this.btnReviewJudgeModeOn.Name = "btnReviewJudgeModeOn";
-            this.btnReviewJudgeModeOn.OnOff = false;
-            this.btnReviewJudgeModeOn.RightLampColor = System.Drawing.Color.DarkGreen;
-            this.btnReviewJudgeModeOn.Size = new System.Drawing.Size(84, 27);
-            this.btnReviewJudgeModeOn.TabIndex = 27;
-            this.btnReviewJudgeModeOn.TabStop = false;
-            this.btnReviewJudgeModeOn.Text = "사용";
-            this.btnReviewJudgeModeOn.Text2 = "";
-            this.btnReviewJudgeModeOn.UseVisualStyleBackColor = false;
-            this.btnReviewJudgeModeOn.VisibleLeftLamp = false;
-            this.btnReviewJudgeModeOn.VisibleRightLamp = false;
-            this.btnReviewJudgeModeOn.Click += new System.EventHandler(this.btnReviewJudgeModeOn_Click);
-            // 
-            // btnReviewJudgeModeOff
-            // 
-            this.btnReviewJudgeModeOff.BackColor = System.Drawing.Color.Transparent;
-            this.btnReviewJudgeModeOff.Delay = 10;
-            this.btnReviewJudgeModeOff.Flicker = false;
-            this.btnReviewJudgeModeOff.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this.btnReviewJudgeModeOff.ForeColor = System.Drawing.Color.Black;
-            this.btnReviewJudgeModeOff.IsLeftLampOn = false;
-            this.btnReviewJudgeModeOff.IsRightLampOn = false;
-            this.btnReviewJudgeModeOff.LampAliveTime = 500;
-            this.btnReviewJudgeModeOff.LampSize = 1;
-            this.btnReviewJudgeModeOff.LeftLampColor = System.Drawing.Color.Red;
-            this.btnReviewJudgeModeOff.Location = new System.Drawing.Point(92, 36);
-            this.btnReviewJudgeModeOff.Name = "btnReviewJudgeModeOff";
-            this.btnReviewJudgeModeOff.OnOff = false;
-            this.btnReviewJudgeModeOff.RightLampColor = System.Drawing.Color.DarkGreen;
-            this.btnReviewJudgeModeOff.Size = new System.Drawing.Size(84, 27);
-            this.btnReviewJudgeModeOff.TabIndex = 27;
-            this.btnReviewJudgeModeOff.TabStop = false;
-            this.btnReviewJudgeModeOff.Text = "미사용";
-            this.btnReviewJudgeModeOff.Text2 = "";
-            this.btnReviewJudgeModeOff.UseVisualStyleBackColor = false;
-            this.btnReviewJudgeModeOff.VisibleLeftLamp = false;
-            this.btnReviewJudgeModeOff.VisibleRightLamp = false;
-            this.btnReviewJudgeModeOff.Click += new System.EventHandler(this.btnReviewJudgeModeOn_Click);
-            // 
-            // lblInspCount
-            // 
-            this.lblInspCount.Location = new System.Drawing.Point(81, 73);
-            this.lblInspCount.Name = "lblInspCount";
-            this.lblInspCount.Size = new System.Drawing.Size(71, 21);
-            this.lblInspCount.TabIndex = 456;
-            this.lblInspCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lblInspCount_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 77);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 12);
-            this.label15.TabIndex = 456;
-            this.label15.Text = "검사 할 수 : ";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(10, 101);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 12);
-            this.label16.TabIndex = 457;
-            this.label16.Text = "현재 검사 진행 수 :";
-            // 
-            // lblCurrentCount
-            // 
-            this.lblCurrentCount.AutoSize = true;
-            this.lblCurrentCount.Location = new System.Drawing.Point(114, 100);
-            this.lblCurrentCount.Name = "lblCurrentCount";
-            this.lblCurrentCount.Size = new System.Drawing.Size(0, 12);
-            this.lblCurrentCount.TabIndex = 456;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 123);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 12);
-            this.label17.TabIndex = 458;
-            this.label17.Text = "**주의사항**";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(10, 142);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(161, 12);
-            this.label18.TabIndex = 459;
-            this.label18.Text = "검사 진행 전, 수정 후 진행 하세요";
-            // 
             // FrmOperOption
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2006,14 +2006,14 @@
         private Dit.Framework.UI.UserComponent.ButtonDelay2 btnAutoAlignerStart;
         private Dit.Framework.UI.UserComponent.ButtonDelay2 btnAlignerHome;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblCurrentCount;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox lblInspCount;
         private Dit.Framework.UI.UserComponent.ButtonDelay2 btnReviewJudgeModeOff;
         private Dit.Framework.UI.UserComponent.ButtonDelay2 btnReviewJudgeModeOn;
         internal System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox lblInspCount;
+        private System.Windows.Forms.Label lblCurrentCount;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
     }
 }

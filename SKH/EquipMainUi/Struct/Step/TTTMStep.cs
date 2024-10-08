@@ -36,7 +36,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (_stepNum != EmTTTM_NO.S000_TTTM_WAIT)
             {
-                InterLockMgr.AddInterLock("인터락<실행중>\n(TTTM STEP 진행중 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(TTTM STEP 进行中介入开始命令.)" : "인터락<실행중>\n(TTTM STEP 진행중 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "TTTM STEP 진행중 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
 
@@ -44,7 +44,7 @@ namespace EquipMainUi.Struct.Step
             }
             if (equip.IsTTTMMode == false)
             {
-                InterLockMgr.AddInterLock("인터락<실행중>\n(TTTM Mode가 활성화 되어 있지 않은데 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(TTTM Mode没有被激活，开始命令仍然介入.)" : "인터락<실행중>\n(TTTM Mode가 활성화 되어 있지 않은데 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "TTTM Mode가 활성화 되어 있지 않은데 시작 명령이 들어옴.");
                 equip.IsInterlock = true;
                 return false;

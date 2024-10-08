@@ -437,17 +437,17 @@ namespace EquipMainUi.Struct.Detail.EziStep
         {
             if (IsStartedHomeStep)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor 홈>", "{0} 가 홈 진행 중일 때 홈 명령을 할 수 없습니다", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor Home>" : "인터락 <Step Motor 홈>", GG.boChinaLanguage ? "{0} 在原点进行中时, 不能进行原点命令" : "{0} 가 홈 진행 중일 때 홈 명령을 할 수 없습니다", this.Name);
                 return false;
             }
             if (IsStartedPtpStep == true)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor 홈>", "{0} 가 PTP 진행 중일 때 홈 명령을 할 수 없습니다", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor Home>" : "인터락 <Step Motor 홈>", GG.boChinaLanguage ? "{0} 在PTP进行中时，不能进行原点命令" : "{0} 가 PTP 진행 중일 때 홈 명령을 할 수 없습니다", this.Name);
                 return false;
             }
             if (IsMoving)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor 홈>", "{0} 가 이동 중일 때에는 홈 진행을 할 수 없습니다", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor Home>" : "인터락 <Step Motor 홈>", GG.boChinaLanguage ? "{0} 在移动中时，不能进行原点" : "{0} 가 이동 중일 때에는 홈 진행을 할 수 없습니다", this.Name);
                 return false;
             }
 
@@ -474,22 +474,22 @@ namespace EquipMainUi.Struct.Detail.EziStep
         {
             if (IsStartedHomeStep)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor PTP>", "{0} 가 홈 진행 중일 때 PTP 진행을 할 수 없습니다", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor PTP>" : "인터락 <Step Motor PTP>", GG.boChinaLanguage ? "{0} 在原点进行中时，不能进行PTP " : "{0} 가 홈 진행 중일 때 PTP 진행을 할 수 없습니다", this.Name);
                 return false;
             }
             if (IsStartedPtpStep == true)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor PTP>", "{0} 가 PTP 진행 중일 때 PTP 진행을 할 수 없습니다", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor PTP>" : "인터락 <Step Motor PTP>", GG.boChinaLanguage ? "{0} 在PTP进行中时，不能进行PTP " : "{0} 가 PTP 진행 중일 때 PTP 진행을 할 수 없습니다", this.Name);
                 return false;
             }
             if (IsMoving)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor PTP>", "{0} 가 이동 중일 때에는 PTP 진행을 할 수 없습니다", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor PTP>" : "인터락 <Step Motor PTP>", GG.boChinaLanguage ? "{0} 移动中时，不能进行PTP" : "{0} 가 이동 중일 때에는 PTP 진행을 할 수 없습니다", this.Name);
                 return false;
             }
             if(IsServoError)
             {
-                InterLockMgr.AddInterLock("인터락 <Step Motor PTP>", "{0}가 Servo Error 상태일 때에는 PTP 진행을 할 수 없습니다ㅣ", this.Name);
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<Step Motor PTP>" : "인터락 <Step Motor PTP>", GG.boChinaLanguage ? "{0}是 Servo Error 状态时，不能进行 PTP" : "{0}가 Servo Error 상태일 때에는 PTP 진행을 할 수 없습니다", this.Name);
                 return false;
             }
 
@@ -562,7 +562,7 @@ namespace EquipMainUi.Struct.Detail.EziStep
                 && GG.Equip.IsDoorOpen
                 && cmd != MoveCommand.JOG)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<Door Open>\n(Door Open상태에서 축={0} 이동 금지됨)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<Door Open>\n(Door Open状态下，轴={0} 禁止移动.)", Name) : string.Format("인터락<Door Open>\n(Door Open상태에서 축={0} 이동 금지됨)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "Door Open상태에서 축={0} 이동 금지됨", Name);
                 GG.Equip.IsInterlock = true;
                 return true;
@@ -573,7 +573,7 @@ namespace EquipMainUi.Struct.Detail.EziStep
                 && GG.Equip.IsUseDoorInterLockOff == false
                 && (GG.Equip.IsEnableGripMiddleOn && GG.Equip.EquipRunMode == EmEquipRunMode.Manual) == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<DOOR>\n(设备状态 DOOR OPEN 状态下， 轴={0} 禁止移动.)", Name) : string.Format("인터락<DOOR>\n(설비 상태가 DOOR OPEN 상태에서 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "설비 상태가 Door Open 상태에서 축={0} 이동 금지됨", Name);
                 GG.Equip.IsInterlock = true;
 
@@ -583,7 +583,7 @@ namespace EquipMainUi.Struct.Detail.EziStep
                 && false //얼라이너 버큠 오프라면)
                 && GG.Equip.IsUseInterLockOff == false)
             {
-                InterLockMgr.AddInterLock(string.Format("인터락<VACUUM>\n(Wafer Detect Sensor가 감지 될 때 Vacuum Off 상태라면 축={0} 이동이 금지됩니다.)", Name));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Interlock<VACUUM>\n(Wafer Detect Sensor被感应时 Vacuum Off 状态的话，轴={0} 禁止移动.)", Name) : string.Format("인터락<VACUUM>\n(Wafer Detect Sensor가 감지 될 때 Vacuum Off 상태라면 축={0} 이동이 금지됩니다.)", Name));
                 Logger.Log.AppendLine(LogLevel.Warning, "Wafer Detect Sensor가 감지 될 때 Vacuum Off 상태라면 축={0} 이동 금지됨", Name);
                 GG.Equip.IsInterlock = true;
 
@@ -595,7 +595,7 @@ namespace EquipMainUi.Struct.Detail.EziStep
             if (GG.Equip.InitSetting.EquipNo == 2 // jys:: 210121 1호기는 센서 동작 하지 않음
                 && GG.Equip.IsAlignerInputArm.IsOn)
             {
-                InterLockMgr.AddInterLock("인터락<EFEM Aligner Input> EFEM Robot Input 신호가 꺼져 있을 때 동작이 불가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<EFEM Aligner Input> EFEM Robot Input 信号关闭时不能动作" : "인터락<EFEM Aligner Input> EFEM Robot Input 신호가 꺼져 있을 때 동작이 불가능합니다");
                 return true;
             }
 
@@ -610,7 +610,7 @@ namespace EquipMainUi.Struct.Detail.EziStep
                     &&false//aligner vacuum 체크
                     )
                 {
-                    InterLockMgr.AddInterLock(string.Format("인터락<VACUUM>\n(글라스가 감지 될 때 {0}축 {1} 이동 중 Vacuum Off가 금지 됩니다.)", Name, cmd.ToString()));
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("Glass感应时 {0}轴 {1} 移动中 Vacuum Off会禁止.", Name, cmd.ToString()) : string.Format("인터락<VACUUM>\n(글라스가 감지 될 때 {0}축 {1} 이동 중 Vacuum Off가 금지 됩니다.)", Name, cmd.ToString()));
                     Logger.Log.AppendLine(LogLevel.Warning, "{0}축 이동 중에 Vacuum Off가 금지됨", Name);
                     AlarmMgr.Instance.Happen(GG.Equip, EM_AL_LST.AL_0111_EMS_STOP_VACUUM_OFF_ERROR);
                     GG.Equip.IsInterlock = true;

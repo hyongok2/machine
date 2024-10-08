@@ -59,8 +59,8 @@ namespace EquipMainUi.UserMessageBoxes
         {
             CommonInit();
             ReaderType = EmReaderTypes.RF;
-            _rf = rf;            
-            lblCaution.Text = "CST ID 길이 최대 30자";                        
+            _rf = rf;
+            lblCaution.Text = GG.boChinaLanguage ? "Cassette ID长度 最多30字" : "CST ID 길이 최대 30자";
             lblTitle.Text = port.ToString() + " RF Read";
         }
 
@@ -116,9 +116,9 @@ namespace EquipMainUi.UserMessageBoxes
                         _rf.ScanTagCmd(Monitor.RFIDCmd.READER1);
                         _tagFlag = false;
                     }
-                    else
+                    else 
                     {
-                        _rf.ScanTagCmd(Monitor.RFIDCmd.READER2);
+                        _rf.ScanTagCmd(Monitor.RFIDCmd.READER1);  //RFID 제거(2->1)
                         _tagFlag = true;
                     }
                     lblNotify.Text = "Reading";
@@ -140,15 +140,15 @@ namespace EquipMainUi.UserMessageBoxes
                     break;
                 case EmReaderTypes.RF:
                     txtInput1.Text = GG.TestMode == true ? DateTime.Now.ToString("yyMMddHHmmssfff") : txtRead1.Text = _rf.GetReaderReadID[0];
-                    txtRead2.Text = _rf.GetReaderReadID[1];
+                    //txtRead2.Text = _rf.GetReaderReadID[1];  //RFID 제거
                     if (txtRead1.Text != "")
                     {
                         rdUseReadData1.Checked = true;
                     }
-                    else if(txtRead2.Text != "")
-                    {
-                        rdUseReadData2.Checked = true;
-                    }
+                    //else if(txtRead2.Text != "")  //RFID 제거
+                    //{
+                    //    rdUseReadData2.Checked = true;
+                    //}
                     else
                     {
                         rdUseInput.Checked = true;
@@ -167,7 +167,7 @@ namespace EquipMainUi.UserMessageBoxes
                 case EmReaderTypes.OCR:
                     return idx == 0 ? _ocr.IsReadComplete : false;                
                 case EmReaderTypes.RF:
-                    return idx == 0 ? _rf.IsReader1Success() : _rf.IsReader2Success();
+                    return idx == 0 ? _rf.IsReader1Success() : _rf.IsReader1Success();
                 case EmReaderTypes.BCR:
                     return idx == 0 ? _bcr1.IsReadComplete : _bcr2.IsReadComplete;
                 default:
@@ -219,17 +219,17 @@ namespace EquipMainUi.UserMessageBoxes
         {
             if (rdUseReadData1.Checked && IsFormatOK(txtRead1.Text) == false)
             {
-                lblNotify.Text = "1번 데이터 이상";
+                lblNotify.Text = GG.boChinaLanguage ? "1号使用者输入 Data 问题 发生" : "1번 데이터 이상";
                 return;
             }
             if (rdUseReadData2.Checked && IsFormatOK(txtRead2.Text) == false)
             {
-                lblNotify.Text = "1번 데이터 이상";
+                lblNotify.Text = GG.boChinaLanguage ? "1号使用者输入 Data 问题 发生" : "1번 데이터 이상";
                 return;
             }
             if (rdUseInput.Checked && IsFormatOK(txtInput1.Text) == false)
             {
-                lblNotify.Text = "3자리 이상의 레시피 형식 문자 입력 필요(예 : TC5, TCH)";
+                lblNotify.Text = GG.boChinaLanguage ? "需输入3字以上的Recipe 形式文字(Ex: TC5, TCH)" : "3자리 이상의 레시피 형식 문자 입력 필요(예 : TC5, TCH)";
                 return;
             }
 

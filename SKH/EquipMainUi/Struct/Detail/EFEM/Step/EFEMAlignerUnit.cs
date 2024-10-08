@@ -388,7 +388,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                             && _checkForcedComeback)
                         {
                             //AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0921_ALIGNER_RETRY_INPUT_WAIT);
-                            _frmRetryMsg.RequestPopup("PreAligner 재시도", "재시도 또는 홈 완료 후 첫 PRE ALIGN 진행입니다 다음 중 선택하세요");
+                            _frmRetryMsg.RequestPopup(GG.boChinaLanguage ? "PreAlign 检查 重试" : "PreAligner 재시도", GG.boChinaLanguage ? "重试或原点完毕后, 第一次进行 PreAlign.\n从以下中进行选择" : "재시도 또는 홈 완료 후 첫 PRE ALIGN 진행입니다 다음 중 선택하세요");
                             _seqStepNum = EmEFEMAlignerSeqStep.S260_USER_INPUT_WAIT;
                         }
                         else
@@ -690,7 +690,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                                 }
                                 catch (Exception)
                                 {
-                                    InterLockMgr.AddInterLock("BCR Read 또는 기입한 값 오류", "BCR : {0}", _tempWaferInfo.WaferID);
+                                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "BCR Read 或输入值错误" : "BCR Read 또는 기입한 값 오류", "BCR : {0}", _tempWaferInfo.WaferID);
                                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0630_BCR_READ_ERROR);
                                 }
                             }
@@ -860,7 +860,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                         {
                             this.SetRunMode(EmEfemRunMode.Pause);
                             equip.IsPause = true;
-                            CheckMgr.AddCheckMsg(true, "PreAligner에 레시피가 없습니다. 생성 후 Pause해제하세요");
+                            CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "PreAligner里没有 Recipe. 生成后解除 Pause " : "PreAligner에 레시피가 없습니다. 생성 후 Pause해제하세요");
                             _seqStepNum = EmEFEMAlignerSeqStep.S240_ALIGN_START;
                         }
                         else if ((_efem.Proxy.IsDataProcessDone(equip, EmEfemPort.ALIGNER, EmEfemCommand.ALIGN) == true
@@ -900,7 +900,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                                         //알람 발생시키고 "웨이퍼리턴 하고 재시도" 하라고 안내 팝업창 띄우기
                                         _alignRetryCount = 0;
                                         AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0922_ALIGN_RETRY_TIMES_OVER);
-                                        InterLockMgr.AddInterLock("프리 얼라인 실패\nALIGNER에 위치한 웨이퍼를 카세트로 복귀(리커버리) 후 재시작 해주세요");
+                                        InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Pre Align Fail\nALIGNER位置的 Wafer放回 CST(Recovery) 后进行再开始" : "프리 얼라인 실패\nALIGNER에 위치한 웨이퍼를 카세트로 복귀(리커버리) 후 재시작 해주세요");
                                         return;
                                     }
                                 }

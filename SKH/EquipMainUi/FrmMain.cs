@@ -170,7 +170,7 @@ namespace EquipMainUi
             if (GG.TestMode == false)
             {
                 this.SetDesktopBounds(0, 0, 1920, 1080);
-                btnExpanding.Text = "접기";
+                btnExpanding.Text = GG.boChinaLanguage ? "折叠" : "접기";
                 _isExpending = true;
             }
             else
@@ -214,7 +214,8 @@ namespace EquipMainUi
 
                 GG.Equip.CtrlSetting.Save();
 
-                CheckMgr.AddCheckMsg(true, string.Format("웨이퍼 진행 방식 변경\n{0} -> {1}", old, GetProgressTypeToString(GG.Equip.Efem.LoadPort2.ProgressWay)));
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? string.Format("Wafer 进行方式变更\n{0} -> {1}", old, GetProgressTypeToString(GG.Equip.Efem.LoadPort2.ProgressWay)) 
+                    : string.Format("웨이퍼 진행 방식 변경\n{0} -> {1}", old, GetProgressTypeToString(GG.Equip.Efem.LoadPort2.ProgressWay)));
             };
             if(GG.Equip.CtrlSetting.LPMLoadType == 1)
             {
@@ -252,40 +253,80 @@ namespace EquipMainUi
             GG.Equip.CtrlSetting.InspRepeatMode = false;
             GG.Equip.CtrlSetting.InspRepeatCount = 0;
             GG.Equip.CtrlSetting.Save();
-        }
+            // China Language 1
+            if (GG.boChinaLanguage)
+            {
+                btnExit.Text = "终止";                          //  종료
+                label42.Text = "■ 进行方式";                          //  ■ 진행방식
+                label37.Text = "■ 选择检查进行方式";                          //  ■ 검사 진행 방식 선택
+                label28.Text = "物流";                          //  물류
+                label32.Text = "非物流";                          //  비물류
+                label13.Text = "仅上面张";                          //  윗장만
+                label19.Text = "仅下面张";                          //  아랫장만
+                label43.Text = "全部";                          //  모두
+                label45.Text = "直接选择";                          //  직접선택
+                btnReviewManual_Copy.Text = "被动 Review";             //수동 리뷰
+                btnReviewSkipCopy.Text = "Review Skip";                //리뷰 스킵
+                btnDeleteAllInfo.Text = "cassette, wafer, DB data 初始化";                 //카세트, 웨이퍼 DB 초기화
+                btnLogPath.Text = "cassette IN OUT LOG 打开文件夹";                       //카세트 IN OUT 로그
+                label9.Text = "■ 重新检查";                           //■ 재검사
+                btnReservReInsp.Text = "预约重新检查";                  //재검사 예약
+                btnReservInsp_Stop.Text = "停止检查";               //검사정지
+                btnReservReInspStart.Text = "开始重新检查";             //재검사 시작
+                btnReviewManual.Text = "被动 Review";                  //수동 리뷰
+                btnReviewSkip.Text = "Review Skip";                    //리뷰 스킵
+                label7.Text = "■ 设备";                           //■ 설비
+                label11.Text = "■ 操作";                          //■ 조작
+                btnInnerWork.Text = "内部作业";                     //내부작업
+                btnWorkingLight.Text = "设备内部灯光";                  //작업등
+                btnLpm2OHTLdComplete.Text = "投入完毕处理";             // 투입 완료 처리
+                btnLpm2OHTUldComplete.Text = "排出完毕处理";            // 배출 완료 처리
+                btnLpm2OHTStepReset.Text = "OHT 投入/排出 Step Reset";              // OHT 투입 / 배출 스텝 리셋
+                btnLpm1OHTLdComplete.Text = "投入完毕处理";             // 투입 완료 처리
+                btnLpm1OHTUldComplete.Text = "排出完毕处理";            // 배출 완료 처리
+                btnLpm1OHTStepReset.Text = "OHT 投入/排出 Step Reset";              // OHT 투입 / 배출 스텝 리셋
 
+                tabp_Progress.Text = "进行现状";                    // 진행 현황
+                tabp_Step.Text = "Step现状";                        // 스텝 화면
+                label40.Text = "■ 设备状态";                          // ■ 설비 상태
+                tabPage3.Text = "全部 Alarm";                         // 전체 알람
+                tabPage4.Text = "Reset Alarm";                         // 리셋 알람
+                tabPage5.Text = "EFEM Alarm";                         // EFEM 알람
+                labelWatch.Text = "Scan Time";                           // 스캔타임
+            }
+        }
         private string GetLoadTypeToString(EmLoadType type)
         {
-            if(type == EmLoadType.Manual)
+            if (type == EmLoadType.Manual)
             {
-                return "사용자 직접 로드/언로드";
+                return GG.boChinaLanguage ? "使用者直接 load/unload" : "사용자 직접 로드/언로드";
             }
             else
             {
-                return  "OHT를 통한 로드/언로드";
+                return GG.boChinaLanguage ? "通过OHT的 load/unload" : "OHT를 통한 로드/언로드";
             }
         }
         private string GetProgressTypeToString(EmProgressWay type)
         {
             if (type == EmProgressWay.Mapping)
             {
-                return "매핑된 웨이퍼 모두 검사";
+                return GG.boChinaLanguage ? "检查全部Mapping的 Wafer " : "매핑된 웨이퍼 모두 검사";
             }
-            else if(type == EmProgressWay.User)
+            else if (type == EmProgressWay.User)
             {
-                return "진행할 웨이퍼 사용자 직접 선택";
+                return GG.boChinaLanguage ? "使用者直接选择要进行的Wafer" : "진행할 웨이퍼 사용자 직접 선택";
             }
             else if (type == EmProgressWay.OnlyFirst)
             {
-                return "마지막 웨이퍼만 진행";
+                return GG.boChinaLanguage ? "只进行最后的 Wafer" : "마지막 웨이퍼만 진행";
             }
             else if (type == EmProgressWay.OnlyLast)
             {
-                return "첫번째 웨이퍼만 진행";
+                return GG.boChinaLanguage ? "只进行第一个Wafer" : "첫번째 웨이퍼만 진행";
             }
             else
             {
-                return "진행방식 설정 오류";
+                return GG.boChinaLanguage ? "进行方式设置有误" : "진행방식 설정 오류";
             }
         }
         private void InitTooltip(ToolTip t, string title)
@@ -457,13 +498,13 @@ namespace EquipMainUi
             Logger.Log.AppendLine(LogLevel.Info, "{0} 버튼 클릭", "HOME");
             if (GG.Equip.IsHomePositioning == true)
             {
-                InterLockMgr.AddInterLock("인터락<실행 중>\n(Home Position 동작 중입니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(Home Position 动作中.)" : "인터락<실행 중>\n(Home Position 동작 중입니다.)");
                 Logger.Log.AppendLine(LogLevel.Info, "Home Position 이동중 !!!!!");
                 return;
             }
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(AutoMode일때 Home Position 이동을 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(AutoMode时，无法移动 Home Position .)" : "인터락<AUTO MODE>\n(AutoMode일때 Home Position 이동을 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "AutoMode일때 Home Position 이동 안됨 ");
                 return;
             }
@@ -525,36 +566,36 @@ namespace EquipMainUi
             lblEFEMAutoMode.Text = GG.Equip.Efem.Status.IsModeSwitchAuto ? "Auto" : "Teach";
 
             string autoCond = string.Empty; //jys:: 9글자 제한(한글)
-            if (GG.Equip.IsEmergency) autoCond = "설비EMS정상화";
-            else if (GG.Equip.Efem.Status.IsEMO) autoCond = "EFEM-EMS정상화";
+            if (GG.Equip.IsEmergency) autoCond = GG.boChinaLanguage ? "设备 EMS 正常化" : "설비EMS정상화";
+            else if (GG.Equip.Efem.Status.IsEMO) autoCond = GG.boChinaLanguage ? "EFEM-EMS 正常化" : "EFEM-EMS정상화";
             else if (GG.Equip.IsDoorOpen) autoCond = "Door Close";
             else if (GG.Equip.Efem.Status.IsDoorClose == false) autoCond = "EFEM Door Close";
-            else if (GG.Equip.IsInnerWorkOn) autoCond = "내부작업 Off";
-            else autoCond = "AutoMode가능";
+            else if (GG.Equip.IsInnerWorkOn) autoCond = GG.boChinaLanguage ? "内部作业 OFF" : "내부작업 Off";
+            else autoCond = GG.boChinaLanguage ? "可以 Auto Mode " : "AutoMode가능";
             lblAutoCondition.Text = autoCond;
         }
 
         private void UpdateEquipStateList()
         {
             Dictionary<string, bool> modes = new Dictionary<string, bool>();
-            modes["PC응답무시"] = GG.InspTestMode;
+            modes[GG.boChinaLanguage ? "PC无视应答" : "PC응답무시"] = GG.InspTestMode;
             //modes["리뷰응답무시"] = GG.ReviTestMode;
             modes["Interlock Off"] = GG.Equip.IsUseInterLockOff;
             modes["DoorInterlock Off"] = GG.Equip.IsUseDoorInterLockOff;
-            modes["Pio Test 모드"] = GG.PioTestMode;
-            modes["No Wafer 모드"] = GG.EfemNoWafer;
-            modes["리뷰스킵예약"] = GG.Equip.IsReviewSkip == EmReviewSkip.Request;
-            modes["수동리뷰예약"] = GG.Equip.IsReviewManual == EmReviewManual.Request;
-//            modes["Recipe Auto Change Mode"] = GG.Equip.CtrlSetting.AutoRecipeChange == 1;
-            modes["검사기 Long Run 모드"] = GG.Equip.IsLongTest;
-            modes["IO TEST 모드 (로직정지)"] = GG.Equip.IsIoTestMode;
-            modes["Liftpin/Centering/VacuumBlower 제외"] = GG.Equip.IsUseLiftpinVacuumCenteringExMode;
-            modes["글라스 타입 설정 모드"] = GG.Equip.IsUseSelectInspOrder;
-            modes["EFEM 미사용 모드"] = GG.EfemNoUse;
-            modes["EFEM 롱런 모드"] = GG.EfemLongRun;
-            modes["CST ID 사용자 입력 모드"] = GG.Equip.CtrlSetting.IsRFKeyIn;
-            modes["OCR 미사용 모드"] = !GG.Equip.CtrlSetting.UseOCR;
-            modes["BCR 미사용 모드"] = !GG.Equip.CtrlSetting.UseBCR;
+            modes[GG.boChinaLanguage ? "Pio Test 模式" : "Pio Test 모드"] = GG.PioTestMode;
+            modes[GG.boChinaLanguage ? "No Wafer 模式" : "No Wafer 모드"] = GG.EfemNoWafer;
+            modes[GG.boChinaLanguage ? "Review Skip 预约" : "리뷰스킵예약"] = GG.Equip.IsReviewSkip == EmReviewSkip.Request;
+            modes[GG.boChinaLanguage ? "手动 Review 预约" : "수동리뷰예약"] = GG.Equip.IsReviewManual == EmReviewManual.Request;
+            //modes["Recipe Auto Change Mode"] = GG.Equip.CtrlSetting.AutoRecipeChange == 1;
+            modes[GG.boChinaLanguage ? "检查机 Long Run 模式" : "검사기 Long Run 모드"] = GG.Equip.IsLongTest;
+            modes[GG.boChinaLanguage ? "IO Test 模式 (Logic 停止)" : "IO TEST 모드 (로직정지)"] = GG.Equip.IsIoTestMode;
+            modes[GG.boChinaLanguage ? "Liftpin/Centering/VacuumBlower 除外" : "Liftpin/Centering/VacuumBlower 제외"] = GG.Equip.IsUseLiftpinVacuumCenteringExMode;
+            modes[GG.boChinaLanguage ? "Glass Type 设置模式" : "글라스 타입 설정 모드"] = GG.Equip.IsUseSelectInspOrder;
+            modes[GG.boChinaLanguage ? "EFEM 未使用模式" : "EFEM 미사용 모드"] = GG.EfemNoUse;
+            modes[GG.boChinaLanguage ? "EFEM Long Run 模式" : "EFEM 롱런 모드"] = GG.EfemLongRun;
+            modes[GG.boChinaLanguage ? "CST ID 使用者输入模式" : "CST ID 사용자 입력 모드"] = GG.Equip.CtrlSetting.IsRFKeyIn;
+            modes[GG.boChinaLanguage ? "OCR 未使用模式" : "OCR 미사용 모드"] = !GG.Equip.CtrlSetting.UseOCR;
+            modes[GG.boChinaLanguage ? "BCR 未使用模式" : "BCR 미사용 모드"] = !GG.Equip.CtrlSetting.UseBCR;
 
             KeyValuePair<string, bool> df = modes.FirstOrDefault(f => f.Value);
             bool someModeOn = modes.FirstOrDefault(f => f.Value).Value;
@@ -577,18 +618,18 @@ namespace EquipMainUi
 
         Dictionary<EmCycleStop, string> _cycleStopText = new Dictionary<EmCycleStop, string>()
         {
-            {EmCycleStop.None, "Cycle Stop\n(미사용)"},
-            {EmCycleStop.Request, "Cycle Stop\n(예약)"},
-            {EmCycleStop.Complete, "Cycle Stop\n(완료)"}
+            {EmCycleStop.None, GG.boChinaLanguage ? "Cycle Stop\n(未使用)" : "Cycle Stop\n(미사용)"},
+            {EmCycleStop.Request, GG.boChinaLanguage ? "Cycle Stop\n(预约)" : "Cycle Stop\n(예약)"},
+            {EmCycleStop.Complete, GG.boChinaLanguage ? "Cycle Stop\n(完毕)" : "Cycle Stop\n(완료)"}
         };
         //FrmTester - EmInspOrder 순서 모두 맞출 것.
         Dictionary<EmInspOrder, string> _glassTypeText = new Dictionary<EmInspOrder, string>()
         {
-            {EmInspOrder.ORIGIN, "원판 글라스"},
-            {EmInspOrder.FRONT_REAR, "분판 글라스"},
-            {EmInspOrder.REARONLY, "후면측 분판"},
-            {EmInspOrder.FRONTONLY, "전면측 분판"},
-            {EmInspOrder.NOT, "글라스 없음"}
+            {EmInspOrder.ORIGIN, GG.boChinaLanguage ? "原盘 Glass" : "원판 글라스"},
+            {EmInspOrder.FRONT_REAR, GG.boChinaLanguage ? "分盘 Glass" : "분판 글라스"},
+            {EmInspOrder.REARONLY, GG.boChinaLanguage ? "后面侧分盘" : "후면측 분판"},
+            {EmInspOrder.FRONTONLY, GG.boChinaLanguage ? "前面侧分盘" : "전면측 분판"},
+            {EmInspOrder.NOT, GG.boChinaLanguage ? "无Glass" : "글라스 없음"}
         };
         PlcTimerEx delayAlarmLogShow = new PlcTimerEx("", false);
         private void tmrUiUpdate_Tick(object sender, EventArgs e)
@@ -658,18 +699,15 @@ namespace EquipMainUi
                     && GG.Equip.StLoading.IsManualLoadingWait == true
                     && GG.Equip.IsWaferDetect == EmGlassDetect.NOT)
                 {
-                    CheckMgr.AddCheckMsg(true, "웨이퍼를 올리고 시작을 눌러주세요 (Detect Sensor 모두 감지 시 진행)");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "Wafer放上后按开始， Detect Sensor全部感应时进行 " : "웨이퍼를 올리고 시작을 눌러주세요 (Detect Sensor 모두 감지 시 진행)");
                 }
 
                 lblLpm1Pogress.Text = GG.Equip.GetLpmProgress(1);
                 lblLpm1.BackColor = GG.Equip.Efem.LoadPort1.Status.IsFoupExist ? _clrRed : Color.White;
                 lblLpm2Pogress.Text = GG.Equip.GetLpmProgress(2);
                 lblLpm2.BackColor = GG.Equip.Efem.LoadPort2.Status.IsFoupExist ? _clrRed : Color.White;
-
-                btnEfemDoorOpen.BackColor = (GG.Equip.EfemDoor01.IsSolOnOff && GG.Equip.EfemDoor02.IsSolOnOff) == false ? _clrRed : SystemColors.Control;
-                btnEfemDoorOpen.Text = btnEfemDoorOpen.BackColor == _clrRed ? "EFEM 도어 OPEN 가능" : "EFEM 도어 OPEN 불가능";
-
-                labelMode.Text = (GG.Equip.ModeSelectKey.IsAuto && GG.Equip.Efem.Status.IsModeSwitchAuto) ? "자동 모드" : "수동 모드";
+                
+                labelMode.Text = (GG.Equip.ModeSelectKey.IsAuto && GG.Equip.Efem.Status.IsModeSwitchAuto) ? GG.boChinaLanguage ? "自动模式" : "자동 모드" : GG.boChinaLanguage ? "手动模式" : "수동 모드";
                 lblLoginID.Flicker = LoginMgr.Instance.IsLogined() == false;
 
                 rdOHT.Enabled = (GG.Equip.CimMode == EmCimMode.Remote && GG.Equip.EquipRunMode == EmEquipRunMode.Manual) ? true : false;
@@ -978,8 +1016,8 @@ namespace EquipMainUi
                     openForm.Close();
 
                 _tt.IsBalloon = true;
-                _tt.SetToolTip(lblLoginID, "로그인을 해야 조작할 수 있습니다.");
-                _tt.Show("로그인을 해야 조작할 수 있습니다.", lblLoginID, 90, 20);
+                _tt.SetToolTip(lblLoginID, GG.boChinaLanguage ? "需登录才可操作." : "로그인을 해야 조작할 수 있습니다.");
+                _tt.Show(GG.boChinaLanguage ? "需登录才可操作." : "로그인을 해야 조작할 수 있습니다.", lblLoginID, 90, 20);
             }
         }
 
@@ -1039,6 +1077,7 @@ namespace EquipMainUi
         {
             try
             {
+                eqpView.ChangeChinaLanguage(GG.boChinaLanguage);
                 eqpView.SetRobotPos((int)GG.Equip.Efem.LastRobotPort);
 
                 eqpView.SetRobotVac(GG.Equip.Efem.Robot.Status.IsUpperArmVacOn, GG.Equip.Efem.Robot.Status.IsLowerArmVacOn);
@@ -1047,7 +1086,7 @@ namespace EquipMainUi
                 eqpView.ShowReviewRunningMsg = GG.Equip.PMac.XB_ReviewRunning.vBit;
                 eqpView.IsEFEMEMO = GG.EfemNoUse == false && GG.Equip.Efem.Status.IsEMO;
                 eqpView.IsRobotArmDetected = GG.Equip.RobotArmDefect.IsOn;
-                eqpView.IsLightCurtainDetected = GG.Equip.Efem.LPMLightCurtain.Detect.IsOn;
+                eqpView.IsLightCurtainDetected = GG.Equip.Efem.LPMLightCurtain.Detect.IsOn; //라이트커튼 제거
                 eqpView.IsLightCurtainMute = GG.Equip.Efem.LPMLightCurtain.IsMuting;
                 eqpView.UpdateLPMDoor(GG.Equip.Efem.LoadPort1.Status.IsDoorOpen, GG.Equip.Efem.LoadPort2.Status.IsDoorOpen);
                 eqpView.IsLPM1OHTMode = GG.Equip.Efem.LoadPort1.LoadType == EmLoadType.OHT;
@@ -1148,11 +1187,11 @@ namespace EquipMainUi
 
         private string CreateLPMNotifyMsg(EFEMLPMUnit lpm)
         {
-            if (lpm.IsRemoveFoupWaitStep) return "Foup 제거 후 로드 버튼을 누르세요";
-            if (lpm.IsUnldButtonWaitStep) return "로드 버튼 눌러서 라이트커튼 해제";
-            if (lpm.IsLdButtonWaitStep)   return "로드 버튼 눌러서 라이트커튼 해제";
-            if (lpm.IsLdFoupWaitStep)     return "Foup을 로드하고 로드 버튼을 누르세요";
-            if (lpm.IsWaitRobotStep)      return "진행 전 배출 시 로드 버튼을 누르세요";
+            if (lpm.IsRemoveFoupWaitStep) return GG.boChinaLanguage ? "Foup 除去后 请按 Load Button" : "Foup 제거 후 로드 버튼을 누르세요";
+            if (lpm.IsUnldButtonWaitStep) return GG.boChinaLanguage ? "按Load Button解除 Light Curtain " : "로드 버튼 눌러서 라이트커튼 해제";
+            if (lpm.IsLdButtonWaitStep) return GG.boChinaLanguage ? "按Load Button解除 Light Curtain " : "로드 버튼 눌러서 라이트커튼 해제";
+            if (lpm.IsLdFoupWaitStep) return GG.boChinaLanguage ? "Foup要 Load后，请按 Load Button" : "Foup을 로드하고 로드 버튼을 누르세요";
+            if (lpm.IsWaitRobotStep) return GG.boChinaLanguage ? "进行前排出时, 请按Load Button" : "진행 전 배출 시 로드 버튼을 누르세요";
             return "";
             // "웨이퍼가 안나간 경우 배출 가능 (로 ... < 길이 리밋
         }
@@ -1243,7 +1282,7 @@ namespace EquipMainUi
 
             if (_isExpending == false)
             {
-                btn.Text = "접기";
+                btn.Text = GG.boChinaLanguage ? "折叠" : "접기";
                 org.Width = 1920;
                 _isExpending = true;
                 foreach (Form openForm in Application.OpenForms)
@@ -1262,7 +1301,7 @@ namespace EquipMainUi
             }
             else
             {
-                btn.Text = "펼치기";
+                btn.Text = GG.boChinaLanguage ? "展开" : "펼치기";
                 org.Width = 485;
                 _isExpending = false;
             }
@@ -1337,14 +1376,14 @@ namespace EquipMainUi
                 {
                     GG.Equip.IsInterlock = true;
                     string msg = "웨이퍼정보와 실제 웨이퍼유무상태가 다릅니다 확인 후 시작가능합니다";
-                    InterLockMgr.AddInterLock(msg, "메인화면세부사항 - 우측 하단 Shift 창에서 정보 수정 또는 웨이퍼 제거");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer Info和实际 Wafer 有無不符.确认后可开始." : msg, GG.boChinaLanguage ? "Main 画面细部事项 - 在有下端 Shift 窗里可修改情报或除去Wafer " : "메인화면세부사항 - 우측 하단 Shift 창에서 정보 수정 또는 웨이퍼 제거");
                     return;
                 }
             }
 
             if (RecipeDataMgr.GetCurRecipeName(0) == string.Empty)
             {
-                InterLockMgr.AddInterLock("레시피관리에서 레시피 설정 후 시작가능합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Recipe 管理画面里设置 Recipe后可开始 ." : "레시피관리에서 레시피 설정 후 시작가능합니다");
                 return;
             }
 
@@ -1366,7 +1405,7 @@ namespace EquipMainUi
             
             if (GG.Equip.Efem.LoadPort1.SeqStepNum == Struct.Detail.EFEM.Step.EmEFEMLPMSeqStep.S535_REVIEW_JUDGE_ON || GG.Equip.Efem.LoadPort2.SeqStepNum == Struct.Detail.EFEM.Step.EmEFEMLPMSeqStep.S535_REVIEW_JUDGE_ON)
             {
-                InterLockMgr.AddInterLock("딥러닝 리뷰 판정 대기 중에는\nManual 전환 금지됩니다.");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "在等待深度学习审查决定期间，禁止手动转换" : "딥러닝 리뷰 판정 대기 중에는\nManual 전환 금지됩니다.");
             }
             else
             {
@@ -1378,7 +1417,7 @@ namespace EquipMainUi
                 if (GG.EfemLongRun)
                 {
                     GG.EfemLongRun = false;
-                    InterLockMgr.AddInterLock("매뉴얼 전환 시 EFEM Long Run모드는 해제됩니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Manual 转换时,会解除 EFEM Long Run Mode." : "매뉴얼 전환 시 EFEM Long Run모드는 해제됩니다.");
                 }
             }
         }
@@ -1391,7 +1430,7 @@ namespace EquipMainUi
                 {
                     if (GG.Equip.IsNeedRestart == true)
                     {
-                        DialogResult isOk = UserMessageBox.ShowMessageOkCanleBox("비정상 정지로 재시작이 필요합니다. ", "WARING");
+                        DialogResult isOk = UserMessageBox.ShowMessageOkCanleBox(GG.boChinaLanguage ? "非正常停止需再开始" : "비정상 정지로 재시작이 필요합니다. ", "WARING");
                         if (isOk == DialogResult.OK)
                         {
                             GG.Equip.ChangeRunMode(EmEquipRunMode.Manual);
@@ -1440,7 +1479,7 @@ namespace EquipMainUi
 
             if (GG.EfemNoUse == true)
             {
-                InterLockMgr.AddInterLock("EFEM 미사용 모드입니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "EFEM未使用 Mode " : "EFEM 미사용 모드입니다");
                 return;
             }
 
@@ -1536,11 +1575,11 @@ namespace EquipMainUi
         {
             if (GG.Equip.IsUseInternalTestMode)
             {
-                InterLockMgr.AddInterLock("내부 테스트모드 ON시 LongRun Test 변경 불가능 합니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "内部 Test Mode ON时, 无法变更Long Run Test" : "내부 테스트모드 ON시 LongRun Test 변경 불가능 합니다");
                 return;
             }
 
-            CheckMgr.AddCheckMsg(true, "LongRun 설정이 변경되었습니다.");
+            CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "LongRun 设置变更了." : "LongRun 설정이 변경되었습니다.");
             GG.Equip.IsLongTest = !GG.Equip.IsLongTest;
             GG.Equip.LongRunCount = 0;            
         }
@@ -1560,11 +1599,11 @@ namespace EquipMainUi
             {
                 //if (LoginMgr.Instance.IsCorrectInfo(login.ID, login.Passwd))
                 {
-                    CheckMgr.AddCheckMsg(true, "로그인을 성공하였습니다.");
+                    CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "登录成功." : "로그인을 성공하였습니다.");
                     login.Close();
                     return;
                 }
-                CheckMgr.AddCheckMsg(false, "로그인을 실패하였습니다.");
+                CheckMgr.AddCheckMsg(false, GG.boChinaLanguage ? "登录失败" : "로그인을 실패하였습니다.");
             }
             else if (login.DialogResult == DialogResult.Cancel)
                 return;
@@ -1629,7 +1668,8 @@ namespace EquipMainUi
         {
             if (GG.ReviewJudgeWait)
             {
-                InterLockMgr.AddInterLock("리뷰 판정 대기 중에는\n프로그램을 종료 할 수 없습니다.", "리뷰 판정 대기 완료 혹은\n리뷰 판정 Timeover 알람 발생 후\n다시 시도해 주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "等待評論中\n無法退出程序 等待回帖判定完成或\n評論判定 暫停 鬧鐘發生後\n請再試一次." : 
+                    "리뷰 판정 대기 중에는\n프로그램을 종료 할 수 없습니다.", "리뷰 판정 대기 완료 혹은\n리뷰 판정 Timeover 알람 발생 후\n다시 시도해 주세요");
             }
             else
             {
@@ -1712,13 +1752,13 @@ namespace EquipMainUi
                 if (GG.Equip.IsNoGlassMode == true ||
                     GG.Equip.IsWaferDetect == EmGlassDetect.NOT)
                 {
-                    InterLockMgr.AddInterLock("인터락<GLASS DETECT ERROR>\n정상적인 글라스 상태가 아닐 경우 글라스 배출을 선택 할 수 없습니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<GLASS DETECT ERROR>\n(不是正常的 Glass 状态时, 无法选择Glass排出 .)" : "인터락<GLASS DETECT ERROR>\n정상적인 글라스 상태가 아닐 경우 글라스 배출을 선택 할 수 없습니다.");
                     Logger.Log.AppendLine(LogLevel.Warning, "글라스 감지 에러! 글라스 배출 선택 불가!");
                     return;
                 }
                 if (GG.Equip.IsHomePosition == false)
                 {
-                    InterLockMgr.AddInterLock("인터락<HOME POSITION>\n홈 포지션 상태일 경우만 글라스 배출 선택 가능합니다.");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<HOME POSITION>\n(只有Home Position 状态的情况下，可以选择Glass排出 .)" : "인터락<HOME POSITION>\n홈 포지션 상태일 경우만 글라스 배출 선택 가능합니다.");
                     Logger.Log.AppendLine(LogLevel.Warning, "홈 포지션 상태 아님! 글라스 배출 선택 불가!");
                     return;
                 }
@@ -1739,14 +1779,14 @@ namespace EquipMainUi
 
             if (isServoMoving == true && GG.Equip.IsUseInterLockOff == false)
             {
-                InterLockMgr.AddInterLock("인터락<SERVO MOVING>\n(SERVO 동작중입니다. 내부작업을 수행 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<SERVO MOVING>\n(SERVO 动作中. 无法执行内部作业)" : "인터락<SERVO MOVING>\n(SERVO 동작중입니다. 내부작업을 수행 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "모터 동작중, 내부작업 불가!");
                 return;
             }
 
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto || GG.Equip.IsHomePositioning)
             {
-                InterLockMgr.AddInterLock("인터락<진행중>\n(오토 또는 홈 동작 중입니다. 내부작업을 수행 할 수 없습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<进行中>\n( Auto 或者 Home 动作中. 无法执行内部作业.)" : "인터락<진행중>\n(오토 또는 홈 동작 중입니다. 내부작업을 수행 할 수 없습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "홈 또는 오토 동작중, 내부작업 불가!");
                 return;
             }
@@ -1820,7 +1860,7 @@ namespace EquipMainUi
         {
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto && GG.Equip.IsPause == false)
             {
-                InterLockMgr.AddInterLock("인터락<AUTO MODE>\n(오토런 중에는 PAUSE 후 가능합니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<AUTO MODE>\n(Auto Run 动作中，需要 PAUSE才可以.)" : "인터락<AUTO MODE>\n(오토런 중에는 PAUSE 후 가능합니다.)");
                 return;
             }
 
@@ -1839,7 +1879,7 @@ namespace EquipMainUi
                 sr.WriteLine(GG.Equip.InitSetting.SwVersion);
                 sr.Flush();
                 sr.Close();
-                MessageBox.Show("다시 확인바랍니다");
+                MessageBox.Show(GG.boChinaLanguage ? "请再次确认" : "다시 확인바랍니다");
             }
         }
 
@@ -1885,7 +1925,7 @@ namespace EquipMainUi
         private void btnUseInspMotorControl_Click(object sender, EventArgs e)
         {
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
-                InterLockMgr.AddInterLock("Auto 상태에선 검사 서버에서 제어할 수 없습니다");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto 状态下，检查  Server里是无法控制的." : "Auto 상태에선 검사 서버에서 제어할 수 없습니다");
             else
                 GG.Equip.InspPc.SetInspectServerMotorInterlockOff(!IsptAddrB.YB_MotorInterlockOffState.vBit);            
         }
@@ -1946,7 +1986,7 @@ namespace EquipMainUi
             {
                 if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
                 {
-                    InterLockMgr.AddInterLock("Auto 상태에서 Shift 불가능합니다");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto状态下无法 Shift " : "Auto 상태에서 Shift 불가능합니다");
                     return;
                 }
 
@@ -2019,17 +2059,6 @@ namespace EquipMainUi
         private void lblEFEM_DoubleClick(object sender, EventArgs e)
         {
             GG.Equip.EFEMTcpReconnect();
-        }
-
-        private void lstEFEMAlarm_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (lstEFEMAlarm.SelectedItems.Count == 1)
-            {
-                ListView.SelectedListViewItemCollection items = lstEFEMAlarm.SelectedItems;
-                ListViewItem lvItem = items[0];
-                string msg = lvItem.SubItems[2].Text;
-                InterLockMgr.AddInterLock(msg);
-            }
         }
 
         private void lstEFEMAlarm_MouseDoubleClick_1(object sender, MouseEventArgs e)
@@ -2168,7 +2197,7 @@ namespace EquipMainUi
             if (LoginMgr.Instance.IsLogined())
             {
                 FormMessageOkCanleBox chk = new FormMessageOkCanleBox();
-                chk.Message = "로그아웃 하시겠습니까??";
+                chk.Message = GG.boChinaLanguage ? "是否要注销？" : "로그아웃 하시겠습니까??";
 
                 chk.ShowDialog();
 
@@ -2376,7 +2405,7 @@ namespace EquipMainUi
             }
             else
             {
-                InterLockMgr.AddInterLock("EQUIP STATE", "MANUAL 상태에서만 변경 가능합니다.");                
+                InterLockMgr.AddInterLock("EQUIP STATE", GG.boChinaLanguage ? "MANUAL 状态下才可变更." : "MANUAL 상태에서만 변경 가능합니다.");
             }
         }
         private void lblRFIDStat_DoubleClick(object sender, EventArgs e)
@@ -2586,7 +2615,7 @@ namespace EquipMainUi
 
             if (GG.Equip.EquipRunMode == EmEquipRunMode.Auto)
             {
-                InterLockMgr.AddInterLock("오토런 상태일 때에는 CIM 모드 변경 불가, Manual로 전환 후 변경 해주세요");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Auto Run 状态时，无法变更 CIM Mode , 需转换为Manual后进行变更." : "오토런 상태일 때에는 CIM 모드 변경 불가, Manual로 전환 후 변경 해주세요");
                 return;
             }
 
@@ -2597,8 +2626,8 @@ namespace EquipMainUi
                     GG.Equip.SetCimMode(EmCimMode.OffLine);
                     return;
                 }
-                    
-                InterLockMgr.AddInterLock("<CIM MODE 변경 실패>", "Offline으로 변경은 CIM 프로그램을 통해서 변경 해주세요");
+
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "<CIM MODE 变更失败>" : "<CIM MODE 변경 실패>", GG.boChinaLanguage ? "变更为Offline要通过 CIM Program进行变更" : "Offline으로 변경은 CIM 프로그램을 통해서 변경 해주세요");
                 //GG.Equip.HsmsPc.StartCommand(GG.Equip, EmHsmsPcCommand.CTRL_MODE_CHANGE, EmHsmsCtrlMode.OFFLINE);
             }
             else if (str == "Local")
@@ -2628,12 +2657,12 @@ namespace EquipMainUi
             if(GG.Equip.Efem.Robot.Status.IsLowerArmVacOn || GG.Equip.Efem.Robot.Status.IsUpperArmVacOn || GG.Equip.Efem.Aligner.Status.IsWaferExist ||
                 GG.Equip.IsWaferDetect != EmGlassDetect.NOT)
             {
-                CheckMgr.AddCheckMsg(true, "모든 웨이퍼가 카세트로 복귀 되었을때만 삭제가 가능합니다");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "所有 Wafer复原到 CST是才可删除" : "모든 웨이퍼가 카세트로 복귀 되었을때만 삭제가 가능합니다");
             }
 
             if(TransferDataMgr.DeleteAllCassette() && TransferDataMgr.DeleteAllWafer())
             {
-                CheckMgr.AddCheckMsg(true, "모든 카세트와 웨이퍼 정보 DB가 삭제되었습니다");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "所有 CST和Wafer情报  DB被删除" : "모든 카세트와 웨이퍼 정보 DB가 삭제되었습니다");
 
                 // KYH 230913-01 : ReviewFailCount, AutoMoveOutCount는 포트별로 가져야 한다.
                 //GG.Equip.CtrlSetting.ReviewFailCount = 0;
@@ -2644,7 +2673,7 @@ namespace EquipMainUi
             }
             else
             {
-                CheckMgr.AddCheckMsg(true, "모든 카세트와 웨이퍼 정보 삭제 실패");
+                CheckMgr.AddCheckMsg(true, GG.boChinaLanguage ? "所有CST和 Wafer情报删除失败 " : "모든 카세트와 웨이퍼 정보 삭제 실패");
             }
         }
 

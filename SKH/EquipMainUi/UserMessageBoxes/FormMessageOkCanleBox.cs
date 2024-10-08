@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EquipMainUi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,16 @@ public partial class FormMessageOkCanleBox : Form
     public FormMessageOkCanleBox()
     {
         InitializeComponent();
+        ChangeChinaLanguage();
+    }
+
+    private void ChangeChinaLanguage()
+    {
+        if (GG.boChinaLanguage)
+        {
+            btnOK.Text = "确认(&O)";            // 확인(&O)
+            btnCancel.Text = "取消(&C)";		// 취소(&C)
+        }
     }
 
     // 이벤트 오버라이드

@@ -82,7 +82,7 @@ namespace EquipMainUi.Struct.Detail
             if (IsCanLoadingPos(tryPos) == false)
             {
                 AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0501_STAGE_X_ABNORMAL_LOADING_POS);
-                InterLockMgr.AddInterLock("로딩위치로 사용불가능한 위치 입니다", string.Format("시도위치:{0}, 허용범위(Ld,Ld+90,Ld+180,Ld+270)+-{1}", tryPos, StageXServo.AllowUnldRange));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "因Loading Position，所以是不可使用位置" : "로딩위치로 사용불가능한 위치 입니다", GG.boChinaLanguage ? string.Format("试图 位置:{0}, 允许范围(Ld,Ld+90,Ld+180,Ld+270)+-{1}", tryPos, StageXServo.AllowUnldRange) : string.Format("시도위치:{0}, 허용범위(Ld,Ld+90,Ld+180,Ld+270)+-{1}", tryPos, StageXServo.AllowUnldRange));
                 equip.IsInterlock = true;
                 return false;
             }

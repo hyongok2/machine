@@ -675,6 +675,23 @@ namespace EquipView
             ImgAlignerWaferRingFrame.Visibility = ImgAlignerWaferRingFrame.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
         }
 
+        string strRemote = "예약";
+        string strProgress = "진행";
+
+        public void ChangeChinaLanguage(bool boChinaLanguage)
+        {
+            if (boChinaLanguage)
+            {
+                //gWaferInfo_Align.Text = "Align 完毕";         // Align 완료
+                //gWaferInfo_Insp.Text = "检查完毕";          // 검사 완료
+                //gWaferInfo_All.Text = "全体完毕";           // 전체 완료
+                textBlock8.Text = "作业者";               // 작업자
+                txtbInterlockMsg.Text = "互锁正在解锁 &#xA;注意冲撞";         // Interlock 해제 중 &#xA;충돌주의
+                strRemote = "预约";                     // 예약
+                strProgress = "进行";                   // 진행
+            }
+        }
+
         #region Robot Img
         double orgT = 0;
         public void MoveRobotFrame(int yPos, int rotation)

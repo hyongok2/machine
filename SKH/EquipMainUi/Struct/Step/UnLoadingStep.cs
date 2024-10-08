@@ -91,7 +91,7 @@ namespace EquipMainUi.Struct.Step
                 if (_stepNum > 0 &&
                     (DateTime.Now - StepStartTime).TotalMilliseconds > equip.CtrlSetting.Ctrl.AutoStepTimeout)
                 {
-                    string err = string.Format("[UNLOADING STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
+                    string err = GG.boChinaLanguage ? string.Format("[UNLOADING STEP] = {0} 进行中 AutoStep Timeover 发生", _stepNum.ToString()) : string.Format("[UNLOADING STEP] = {0} 중 AutoStep Timeover 발생", _stepNum.ToString());
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0289_AUTO_STEP_OVERTIME);
                     InterLockMgr.AddInterLock("AutoStep Timeover\n" + err);
                     Logger.Log.AppendLine(LogLevel.Error, "{0} ({1}s)", err, (DateTime.Now - StepStartTime).TotalSeconds);
@@ -296,16 +296,16 @@ namespace EquipMainUi.Struct.Step
                 bool stageDetect = equip.WaferDetectSensorStage1.IsOn;
                 if (equip.IsWaferDetect != EmGlassDetect.ALL)
                 {
-                    InterLockMgr.AddInterLock("웨이퍼 배출 시 웨이퍼 감지 센서가 모두 감지되어야 하는데 일부가 감지되지 않습니다", "LiftPin1 Sensor : {0}\nLiftPin2 Sensor : {1}\nDetect Sensor : {2}",
-                        pinDetect1 == true ? "감지" : "미감지",
-                        pinDetect2 == true ? "감지" : "미감지",
-                        stageDetect == true ? "감지" : "미감지");
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Wafer 排出时， Wafer 感应 Sensor需全部感应，但有 一部分 感应不到 " : "웨이퍼 배출 시 웨이퍼 감지 센서가 모두 감지되어야 하는데 일부가 감지되지 않습니다", "LiftPin1 Sensor : {0}\nLiftPin2 Sensor : {1}\nDetect Sensor : {2}",
+                       pinDetect1 == true ? GG.boChinaLanguage ? "感应" : "감지" : GG.boChinaLanguage ? "未感应" : "미감지",
+                       pinDetect2 == true ? GG.boChinaLanguage ? "感应" : "감지" : GG.boChinaLanguage ? "未感应" : "미감지",
+                       stageDetect == true ? GG.boChinaLanguage ? "感应" : "감지" : GG.boChinaLanguage ? "未感应" : "미감지");
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0621_UNLD_PIO_AVI_WAFER_DETECT_ABNORMAL);
                     equip.IsInterlock = true;
                 }
                 if (TransferDataMgr.IsExistWafer(equip.TransferUnit.LowerWaferKey) == false)
                 {
-                    InterLockMgr.AddInterLock(string.Format("웨이퍼 정보가 없어 배출각도를 알 수 없습니다[{0} / {1] Slot]", equip.TransferUnit.LowerWaferKey.CstID, equip.TransferUnit.LowerWaferKey.SlotNo));
+                    InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("没有Wafer Info所以不知道排出角度[{0} / {1] Slot]", equip.TransferUnit.LowerWaferKey.CstID, equip.TransferUnit.LowerWaferKey.SlotNo) : string.Format("웨이퍼 정보가 없어 배출각도를 알 수 없습니다[{0} / {1] Slot]", equip.TransferUnit.LowerWaferKey.CstID, equip.TransferUnit.LowerWaferKey.SlotNo));
                     AlarmMgr.Instance.Happen(equip, EM_AL_LST.AL_0660_NO_WAFER_INFO);
                     equip.IsInterlock = true;
                 }
@@ -462,7 +462,7 @@ namespace EquipMainUi.Struct.Step
         {
             if (_stepNum != EmUD_NO.S000_UNLOADING_WAIT)
             {
-                InterLockMgr.AddInterLock("인터락<실행중>\n(UNLOADING STEP 진행중 시작 명령이 들어왔습니다.)");
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? "Interlock<执行中>\n(UNLOADING STEP 进行中介入了开始命令.)" : "인터락<실행중>\n(UNLOADING STEP 진행중 시작 명령이 들어왔습니다.)");
                 Logger.Log.AppendLine(LogLevel.Warning, "UNLOADING STEP 진행중 시작 명령이 들어옴.");
 
                 equip.IsInterlock = true;

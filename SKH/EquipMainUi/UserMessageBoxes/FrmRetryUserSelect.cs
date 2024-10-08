@@ -22,6 +22,15 @@ namespace EquipMainUi.UserMessageBoxes
             this.TopMost = true;
             btnRetry.Text = retryButtonMsg;
             btnOut.Text = outButtonMsg;
+            ChangeChinaLanguage();
+        }
+        private void ChangeChinaLanguage()
+        {
+            if (GG.boChinaLanguage)
+            {
+                btnRetry.Text = "重试";       // 재시도
+                btnOut.Text = "排出";	      // 배출
+            }
         }
 
         public void RequestPopup(string title, string msg)

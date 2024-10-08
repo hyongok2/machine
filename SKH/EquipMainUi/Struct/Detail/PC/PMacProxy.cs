@@ -203,7 +203,7 @@ namespace EquipMainUi.Struct.Detail
         {
             if (LstPMacCmd[(int)cmd].Step != 0)
             {
-                InterLockMgr.AddInterLock(string.Format("UMAC와 {0} 기존 명령이 진행 중", cmd.ToString()));
+                InterLockMgr.AddInterLock(GG.boChinaLanguage ? string.Format("UMAC和 {0} 当前命令进行中", cmd.ToString()) : string.Format("UMAC와 {0} 기존 명령이 진행 중", cmd.ToString()));
                 Logger.Log.AppendLine(LogLevel.Warning, string.Format("UMAC와 {0} 기존 명령이 진행 중", cmd.ToString()));
                 return false;
             }
