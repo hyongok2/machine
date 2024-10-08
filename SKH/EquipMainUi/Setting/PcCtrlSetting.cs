@@ -172,7 +172,7 @@ namespace EquipMainUi.Setting
         [IniAttribute("Setting", "LPM2LoadType", 0)]
         public int SerialCheckCycle { get; set; }
         // Joo 경로: D:\DitCtrl\Exec\Ctrl\Setting // PcCtrlSetting.ini 파일
-        [IniAttribute("Setting", "ReviewJudgeMode", 0)]
+        [IniAttribute("Setting", "ReviewJudgeMode", false)]
         public bool ReviewJudgeMode { get; set; }
 
         [IniAttribute("Setting", "NextInspCount", 0)]
