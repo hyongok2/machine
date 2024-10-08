@@ -14,7 +14,7 @@ namespace EquipMainUi.Struct.Detail.EziStep
             motorType = EM_STEP_MOTOR_TYPE.THETA;
 
             SoftPlusLimit = 30;
-            SoftMinusLimit = -10;
+            SoftMinusLimit = -15;
 
             SoftSpeedLimit = 10;
             SoftJogSpeedLimit = 10;

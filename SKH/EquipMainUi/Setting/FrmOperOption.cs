@@ -285,7 +285,7 @@ namespace EquipMainUi
             ButtonDelay2 btn = sender as ButtonDelay2;
             if (btn == btnInterlockOff_On)
             {
-                FormPWInput frmLogin = new FormPWInput("비밀번호를 입력하세요");
+                FormPWInput frmLogin = new FormPWInput("Input Password");
                 frmLogin.ShowDialog();
 
                 if (frmLogin.Passwd == "0801")

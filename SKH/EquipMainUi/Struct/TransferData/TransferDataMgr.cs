@@ -34,7 +34,7 @@ namespace EquipMainUi.Struct.TransferData
                 string connString = "mongodb://localhost";
                 MongoClient cli = new MongoClient(connString);
                 
-                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix_Wuxi");
+                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix");
 
                 cassettes = dbSKHynix.GetCollection<CassetteInfo>("Cassettes");
                 wafers = dbSKHynix.GetCollection<WaferInfo>("Wafers");

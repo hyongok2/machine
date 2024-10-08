@@ -64,7 +64,7 @@ namespace EquipMainUi.PreAligner
         {
             try
             {
-                //_serialPort.Open();
+                _serialPort.Open();
             }
             catch (Exception ex)
             {

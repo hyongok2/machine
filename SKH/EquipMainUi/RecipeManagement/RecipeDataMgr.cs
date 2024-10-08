@@ -24,7 +24,7 @@ namespace EquipMainUi.RecipeManagement
                 string connString = "mongodb://localhost";
                 MongoClient cli = new MongoClient(connString);
 
-                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix_Wuxi");
+                var dbSKHynix = cli.GetServer().GetDatabase("SKHynix");
 
                 _recipes = dbSKHynix.GetCollection<Recipe>("Recipes");                
 

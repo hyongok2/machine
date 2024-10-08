@@ -51,7 +51,7 @@ namespace EquipMainUi.Struct.Detail
         {
             if (this.IsHomeComplete() == true && GG.TestMode == false)
             {
-                return MovePosition(equip, 0, 1, 300);
+                return MovePosition(equip, 0, 5, 300);
             }
             else
             {

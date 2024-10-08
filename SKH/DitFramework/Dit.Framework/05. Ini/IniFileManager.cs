@@ -177,8 +177,8 @@ namespace Dit.Framework.Ini
             }
             else if (info.GetGetMethod().ReturnType == typeof(bool))
             {
-                //bool value = ini.GetBoolean(iniAttri.Section, iniAttri.Key, (bool)iniAttri.DefValue);
-                //info.SetValue(data, value, null);
+                bool value = ini.GetBoolean(iniAttri.Section, iniAttri.Key, (bool)iniAttri.DefValue);
+                info.SetValue(data, value, null);
             }
             else if (info.GetGetMethod().ReturnType == typeof(DateTime))
             {

@@ -58,14 +58,14 @@ namespace EquipMainUi.PreAligner
         {
             try
             {
-                //FrameGrabber = new FrameGrabberBaslerGigE();
-                //FrameGrabber.Grabed += FrameGrabber_Grabed;
-                //FrameGrabber.CameraConnected += FrameGrabber_CameraConnected;
-                //FrameGrabber.CameraClosed += FrameGrabber_CameraClosed;
-                //FrameGrabber.GrabStarted += FrameGrabber_GrabStarted;
-                //FrameGrabber.GrabStopped += FrameGrabber_GrabStopped;
-                //FrameGrabber.ImgChannel = EmImageChannel.Ch1;
-                //FrameGrabber.Buffers.MaxFrameCount = 1;
+                FrameGrabber = new FrameGrabberBaslerGigE();
+                FrameGrabber.Grabed += FrameGrabber_Grabed;
+                FrameGrabber.CameraConnected += FrameGrabber_CameraConnected;
+                FrameGrabber.CameraClosed += FrameGrabber_CameraClosed;
+                FrameGrabber.GrabStarted += FrameGrabber_GrabStarted;
+                FrameGrabber.GrabStopped += FrameGrabber_GrabStopped;
+                FrameGrabber.ImgChannel = EmImageChannel.Ch1;
+                FrameGrabber.Buffers.MaxFrameCount = 1;
             }
             catch( Exception ex)
             {

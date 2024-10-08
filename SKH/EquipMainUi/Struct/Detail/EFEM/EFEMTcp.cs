@@ -144,7 +144,7 @@ namespace EquipMainUi.Struct.Detail.EFEM
                 //// 연결 시도
                 //m_ClientSocket.Connect(efemIp, efemPort);
 
-                //m_ClientSocket.EndConnect(result);
+                m_ClientSocket.EndConnect(result);
 
                 // 연결 성공
                 isConnected = _isConnected = true;
