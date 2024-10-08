@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29EBD889-4AE8-4CE1-A976-83C0ADBD3699}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dit.Framework</RootNamespace>
+    <AssemblyName>Dit.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>99. DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Modbus">
+      <HintPath>60. Modbus\Modbus.dll</HintPath>
+    </Reference>
+    <Reference Include="Modbus.Extensions">
+      <HintPath>60. Modbus\Modbus.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unme.Common">
+      <HintPath>99. DLL\Unme.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="00. Comm\AddressMgr.cs" />
+    <Compile Include="00. Comm\ComResult.cs" />
+    <Compile Include="00. Comm\ExtensionEnum.cs" />
+    <Compile Include="00. Comm\MemoryExtension.cs" />
+    <Compile Include="00. Comm\PcDateTime.cs" />
+    <Compile Include="00. Comm\PeriodChecker.cs" />
+    <Compile Include="00. Comm\UserExtension.cs" />
+    <Compile Include="00. Comm\UserTimeManager.cs" />
+    <Compile Include="03. Xml\XmlFileManagerT.cs" />
+    <Compile Include="05. Ini\BaseSetting.cs" />
+    <Compile Include="05. Ini\IniAttribute.cs" />
+    <Compile Include="05. Ini\IniDataSet.cs" />
+    <Compile Include="05. Ini\IniFileManager.cs" />
+    <Compile Include="05. Ini\IniReader.cs" />
+    <Compile Include="10. AsSocket\AsSocketClass.cs" />
+    <Compile Include="10. AsSocket\AsSocketClient.cs" />
+    <Compile Include="10. AsSocket\AsSocketServer.cs" />
+    <Compile Include="10. AsSocket\AsUdpSocketClient.cs" />
+    <Compile Include="10. AsSocket\EventArgs.cs" />
+    <Compile Include="10. AsSocket\StateObject.cs" />
+    <Compile Include="20. DNet\DNetEventArgs.cs" />
+    <Compile Include="20. DNet\DNetPacket.cs" />
+    <Compile Include="20. DNet\DNetClinetSession.cs" />
+    <Compile Include="20. DNet\DNetClinetSessionManager.cs" />
+    <Compile Include="20. DNet\DNetServerSession.cs" />
+    <Compile Include="20. DNet\DNetServerSessionManager.cs" />
+    <Compile Include="25. Ftp\FtpService.cs" />
+    <Compile Include="30. Log\LoggingEventArgs.cs" />
+    <Compile Include="30. Log\LogLevel.cs" />
+    <Compile Include="30. Log\SignalLog\LinkSignalFileLogger.cs" />
+    <Compile Include="30. Log\SignalLog\SignalLog.cs" />
+    <Compile Include="30. Log\SignalLog\UcrlSgianlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="30. Log\SignalLog\UcrlSgianlView.Designer.cs">
+      <DependentUpon>UcrlSgianlView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="30. Log\SignalLog\UcrlSignalItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="30. Log\SignalLog\UcrlSignalItem.Designer.cs">
+      <DependentUpon>UcrlSignalItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="30. Log\SimpleFileLogger.cs" />
+    <Compile Include="30. Log\SimpleFileLoggerMark5.cs" />
+    <Compile Include="30. Log\SimpleFileLoggerMark6.cs" />
+    <Compile Include="30. Log\TactTimeFileLogger.cs" />
+    <Compile Include="50. PLC\IVirtualMem.cs" />
+    <Compile Include="50. PLC\PlcAddr.cs" />
+    <Compile Include="50. PLC\PlcTimer.cs" />
+    <Compile Include="50. PLC\TickTimer.cs" />
+    <Compile Include="50. PLC\VirtualMem.cs" />
+    <Compile Include="50. PLC\VirtualModbus.cs" />
+    <Compile Include="50. PLC\VirtualShare.cs" />
+    <Compile Include="60. Modbus\ByteAccess.cs" />
+    <Compile Include="60. Modbus\CAscii.cs" />
+    <Compile Include="60. Modbus\CCRC16.cs" />
+    <Compile Include="60. Modbus\CModbus.cs" />
+    <Compile Include="60. Modbus\CTxRx.cs" />
+    <Compile Include="60. Modbus\ModbusCom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="60. Modbus\Modebus_Mode.cs" />
+    <Compile Include="60. Modbus\Modebus_Result.cs" />
+    <Compile Include="70. VCR\VCRReader_CODEIMAGE_V5511N_MY5070.cs" />
+    <Compile Include="70. VCR\VCRReader_SALAER_AUTOMATION.cs" />
+    <Compile Include="80. System\SystemAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="99. DLL\log4net.dll" />
+    <Content Include="99. DLL\Modbus.dll" />
+    <Content Include="99. DLL\Modbus.Extensions.dll" />
+    <Content Include="99. DLL\Unme.Common.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="20. DNet\02. DNet.cd" />
+    <None Include="10. AsSocket\01. AsSocket.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="30. Log\SignalLog\UcrlSgianlView.resx">
+      <DependentUpon>UcrlSgianlView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="30. Log\SignalLog\UcrlSignalItem.resx">
+      <DependentUpon>UcrlSignalItem.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

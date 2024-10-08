@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AlarmSolution xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Number>562</Number>
+  <Name>CST_CONFIRM_OK_BUT_ID_NOT_MATCH_RFID_READ</Name>
+  <Cause>NONE</Cause>
+  <Solution>NONE</Solution>
+</AlarmSolution>

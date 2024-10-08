@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dit.Framework.Ini.IniFileManager">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Ini\IniFileManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Ini.IniReader">
+    <Position X="13.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIgACEAApIAAEEABAAAAACAgAAAABAAAAAIAAA=</HashCode>
+      <FileName>Ini\IniReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsyncSocket.AsyncSocketClass" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAABAACQyAEAAEAAQIABAAQAAAgAIAIAAACAAgA=</HashCode>
+      <FileName>Net\AsyncSocket\AsyncSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsyncSocket.AsyncSocketClient">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAQAAAAEAAAIAAAAEAAAAQAAAAAACEAAA=</HashCode>
+      <FileName>Net\AsyncSocket\AsyncSocketClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsyncSocket.AsyncSocketServer">
+    <Position X="2.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEgAAAAAAACACIAAAAgAIAAAAAAIAAA=</HashCode>
+      <FileName>Net\AsyncSocket\AsyncSocketServer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsyncSocket.AsyncUdpSocketClient">
+    <Position X="4.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAQAAAAEAAAIAAAAEAAAAQAAAAAACEAAA=</HashCode>
+      <FileName>Net\AsyncSocket\AsyncUdpSocketClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.Deliver">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAACAAAAAAAAACAAAABAAAQA=</HashCode>
+      <FileName>Net\DNet\Deliver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.Packet">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Net\DNet\Packet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.PacketSerializer">
+    <Position X="2.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAIA=</HashCode>
+      <FileName>Net\DNet\PacketSerializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.TcpClinetSession">
+    <Position X="10" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAQYQAABECK6CAiAAACAAAABCIgDAQQAIAJAAAAAAAQ=</HashCode>
+      <FileName>Net\DNet\TcpClinetSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.TcpClinetSessionManager">
+    <Position X="16.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAWAAAAAAAAAIAQAABAAAAIAAIAAAAEAAAAA=</HashCode>
+      <FileName>Net\DNet\TcpClinetSessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.TcpServerSession">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYAAAAAACSCAOAAAAAQAARAAABgAAAAANAAAAAAAY=</HashCode>
+      <FileName>Net\DNet\TcpServerSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.ServerClinet.TcpServerSessionManager">
+    <Position X="6.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCSAIAAECAAAAAACAAAAAAAIAIAAAgBABg=</HashCode>
+      <FileName>Net\DNet\TcpServerSessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

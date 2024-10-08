@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DitSharedMemoryClient.FrmMain">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ohAARAQAAGABtBAQAACAoeD+AwACAAAgECCBAACBBAI=</HashCode>
+      <FileName>FrmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DitSharedMemoryClient.GG">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>GG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DitSharedMemoryClient.ShardMemSetting">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>ShardMemSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DitSharedMemoryClient.SMSyncClientMgr">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAIAAIAAAAAAAAAA=</HashCode>
+      <FileName>SMSyncClientMgr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DitSharedMemoryClient.SyncResult">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>SMSyncSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DitSharedMemoryClient.SMSyncSession">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAARAgAAACxQAAFIEAAAggAAKAAEAAAgIAAIAQgBgRg=</HashCode>
+      <FileName>SMSyncSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

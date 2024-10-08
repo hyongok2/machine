@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FC4623D-0622-4771-ADFB-6CA81C5705CC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EquipSimulator</RootNamespace>
+    <AssemblyName>EquipSimulator.WaferInsp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\EquipSimulatorIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dit.Framework">
+      <HintPath>..\DitFramework\Dit.Framework\bin\Debug\Dit.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.Analog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DitFramework\Dit.Framework.Analog\bin\x64\Debug\Dit.Framework.Analog.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.CCLINK">
+      <HintPath>..\DitFramework\Dit.Framework.CCLINK\bin\Debug\Dit.Framework.CCLINK.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.PMAC">
+      <HintPath>..\DitFramework\Dit.Framework.PMAC\bin\Debug\Dit.Framework.PMAC.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.UI">
+      <HintPath>..\DitFramework\Dit.Framework.UI\bin\x64\Debug\Dit.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acturator\InspPcSimul.cs" />
+    <Compile Include="Acturator\PMacSimual.cs" />
+    <Compile Include="Acturator\RevPCSimul.cs" />
+    <Compile Include="Acturator\ServoSimulUmac.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Acturator\StepMotorSimul.cs" />
+    <Compile Include="Acturator\SwitchSimul.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Acturator\SwitchSimulEx.cs" />
+    <Compile Include="Acturator\SwitchSimulNonX.cs" />
+    <Compile Include="Acturator\SylinderSimul.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Acturator\SenseSimul.cs" />
+    <Compile Include="Common\CimColor.cs" />
+    <Compile Include="Common\CimConst.cs" />
+    <Compile Include="Common\Global.cs" />
+    <Compile Include="Common\UserExtension.cs" />
+    <Compile Include="Ctrl\TransparentControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ctrl\TransparentControl.Designer.cs">
+      <DependentUpon>TransparentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ctrl\UcrlServo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ctrl\UcrlServo.Designer.cs">
+      <DependentUpon>UcrlServo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EquipSimul.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInsp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInsp.Designer.cs">
+      <DependentUpon>FrmInsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReview.Designer.cs">
+      <DependentUpon>FrmReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPcMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPcMonitor.Designer.cs">
+      <DependentUpon>FrmPcMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\BaseSetting.cs" />
+    <Compile Include="Lib\IniAttribute.cs" />
+    <Compile Include="Lib\IniFileManager.cs" />
+    <Compile Include="Lib\IniReader.cs" />
+    <Compile Include="Lib\MelsecNet.cs" />
+    <Compile Include="Lib\Memory.cs" />
+    <Compile Include="Lib\UserTimeManager.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\LoggingEventArgs.cs" />
+    <Compile Include="Log\SimpleFileLoggerMark5.cs" />
+    <Compile Include="Log\UserEnum.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\PMacSetting.cs" />
+    <Compile Include="Step\PioHandShake.cs" />
+    <Compile Include="Step\PioHotLink.cs" />
+    <Compile Include="Acturator\SylinderLiftPinSimul.cs" />
+    <Compile Include="UserCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl.Designer.cs">
+      <DependentUpon>UserCtrl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Ctrl\UcrlServo.resx">
+      <DependentUpon>UcrlServo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInsp.resx">
+      <DependentUpon>FrmInsp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReview.resx">
+      <DependentUpon>FrmReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPcMonitor.resx">
+      <DependentUpon>FrmPcMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl.resx">
+      <DependentUpon>UserCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EquipView\EquipView.csproj">
+      <Project>{8B2A7FB2-945B-4146-9F29-C0741C169354}</Project>
+      <Name>EquipView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InspX.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InspCam2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InspCam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InspCam1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InspCam2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EquipBase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EquipBase1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inspx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\revCam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inspx1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StateGlass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GentryInspY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Images\EquipBase.png" />
+    <Content Include="bin\Debug\Images\EquipBase1.png" />
+    <Content Include="bin\Debug\Images\GentryInspY.png" />
+    <Content Include="bin\Debug\Images\inspx.png" />
+    <Content Include="bin\Debug\Images\revCam.png" />
+    <Content Include="bin\Debug\Images\StateGlass.png" />
+    <Content Include="Images\EquipBase.png" />
+    <Content Include="Images\EquipBase1.png" />
+    <Content Include="Images\GentryInspY.png" />
+    <Content Include="Images\inspx.png" />
+    <Content Include="Images\revCam.png" />
+    <Content Include="Images\StateGlass.png" />
+    <None Include="Resources\EquipSimulatorIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Acturator\Detail\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AlarmSolution xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Number>109</Number>
+  <Name>RING_FRAME_VACCUM2_SOL_OFF_TIME_OUT_ERROR</Name>
+  <Cause>NONE</Cause>
+  <Solution>NONE</Solution>
+</AlarmSolution>

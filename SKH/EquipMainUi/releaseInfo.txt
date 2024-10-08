@@ -1,0 +1,232 @@
+﻿
+===========================================
+
+버전    	: AVI(230905)
+일자    	: 9월 5일
+작업자		: 김윤호SM
+설비    	: AVI1
+내용    	:
+		1. case EmEFEMLPMSeqStep.S480_HOST_DATA_COMPARE:
+                    if (GG.Equip.CheckCstMapData(Status.MappingData, _rfReadCstId, Port) == true)
+					: Port추가하여 CIM에서 "ALL" 전체검사모드 내려올때 포트별로 셋팅하도록 수정
+
+		
+===========================================
+
+버전    	: AVI(2304131942-11)
+일자    	:7월 4일
+작업자   : 홍성원AM
+설비    	: AVI1
+내용    	:
+		1. 설비 상태 Remote 변경 시 DB Data 삭제
+		
+===========================================
+버전    	: AVI(2304131942-10)
+일자    	:6월 22일
+작업자   : 홍성원AM
+설비    	: AVI1
+내용    	:
+		1. 500번 스텝 is Auto Move Out 변수 초기화 삭제
+		2. 설비 상태 변경 시 Log 추가(Remote, Local)
+		3. 무언 정지 관련 사항 수정(Slot 1개 전체 검사 투입 시 PIO 미비 사항 수정)
+		4. AL_0679_SLOT_PROCESS_COUNT_ABNORMAL 추가 : Slot 1개 전체 검사 투입 후 검사 진행 간 Process Count 맞지 않을 경우 Alarm 발생
+		5. Label Click Event Log 추가
+		
+===========================================
+버전    	: AVI(2304131942-9)
+일자    	:6월 08일
+작업자   : 홍성원AM
+설비    	: AVI2
+내용    	:
+		1. 메뉴얼 웨이퍼 복귀 명령 시 Slot 갯수 감소되도록 수정
+		2. 메뉴얼 웨이퍼 투입 명령 시 Slot 갯수 증가되도록 수정
+		
+===========================================
+버전    	: AVI(2304131942-8)
+일자    	: 5월 11일
+작업자   : 구민규AM
+설비    	: AVI1
+내용    	:
+		1. 메뉴얼 웨이퍼 복귀시 Slot 갯수 감소되도록 수정
+		
+===========================================
+
+버전    	: AVI(2304131942-7)
+일자    	: 5월 2일
+작업자   : 구민규AM
+설비    	: AVI1
+내용    	:
+		1. Review Fail, AutoMoveOut, SlotProcessCount 저장 구문 추가
+		2. 카세트, 웨이퍼 DB 초기화 시 Review Fail, AutoMoveOut, SlotProcessCount 초기화 되도록 추가
+		3. 다음장 검사 설정 갯수보다 실제 Wafer 갯수가 많을 경우 예외조건 수정
+		(다음장 검사 만큼 Wafer Unlaod했을 시 마지막 장이므로 IS LAST 2로 송신)
+		
+===========================================
+
+버전    	: AVI(2304131942-6)
+일자    	: 4월 28일
+작업자   : 구민규AM
+설비    	: AVI1
+내용    	:
+		1. 전체검사(Mapping) 모드 마지막 장에서 PIO 신호 충돌관련 수정
+		
+===========================================
+
+버전    	: AVI(2304131942-5)
+일자    	: 4월 28일
+작업자   : 구민규AM
+설비    	: AVI1
+내용    	:
+		1. 전체검사(Mapping) 모드 아닌데, 다음장 빠져나가는 현상 관련 조건추가
+		
+===========================================
+
+버전    	: AVI(2304131942-4)
+일자    	: 4월 20일
+작업자   : 구민규AM
+설비    	: AVI1
+내용    	:
+		1. 전체 다 Review Fail일 경우 Slot 정보 수정안되고 배출되도록 수정
+		2. 다음장 검사모드 아닐 때 재시도 시 진행중인 LPM Open되고 정상진행되도록 수정
+		3. Rf Read Delay 추가
+		=> 재시도 시 Rf Read 동시 진행하면서 Rf Emtpy 초기화 해주는 경우로 다른 LPM 스텝 영향
+		
+===========================================
+
+버전    	: AVI(2304131942-3)
+일자    	: 4월 20일
+작업자   : 구민규AM
+설비    	: AVI2
+내용    	:
+		1. 다음장 검사 설정 갯수보다 적게 들어왔을 경우 관련 수정
+		=> 마지막 Slot 때 CIM에 YW_WAFER_UNLOAD_IS_LAST 2로 써주도록 수정
+		2. AL_0570_CASSETTE_LOAD_CONFIRM_TIMEOVER 관련 수정
+		=> 설비 "재시도" 시 정상 진행 되도록 수정 (Confirm Load 했던 자제 안하도록 시퀀스 수정)
+
+===========================================
+
+버전    	: AVI(2304131942-2)
+일자    	: 4월 19일
+작업자   : 구민규AM
+설비    	: AVI1
+내용    	:
+		1. 상위 전체 검사 진행일 경우 Review Fail 되면 배출되는 현상 수정사항
+		=> Auto Move Out에 한장 검사 모드일 경우에만 정보 처리되도록 수정
+	
+===========================================
+
+버전    	: AVI(2303291613-3)
+일자    	: 3월 31일
+작업자    : 구민규AM
+설비    	: AVI2
+내용    	:
+	1. LPM 상태 체크 관련 수정 
+	
+===========================================
+
+버전    	: AVI(2303291613-2)
+일자    	: 3월 31일
+작업자    : 구민규AM
+설비    	: AVI2
+내용    	:
+	1. LPM 2개 있을 경우 정상 동작 되도록 수정
+	2. 다음장 검사 모드일 경우 한 장 검사 후, 다음장 검사하도록 수정
+
+===========================================
+
+버전    	: AVI(2303291613-1)
+일자    	: 3월 30일
+작업자	: 구민규AM
+설비    	: AVI2
+내용   	:
+	1. 다음장 검사 모드 Auto Move Out일 경우 배출 되도록 수정
+	2. Wafer Unload 이후 알람 발생 => 재시작 시 해당 LPM동작 되도록 시퀀스 분리
+
+===========================================
+
+dit-826@DESKTOP-1E8FOJE MINGW32 ~/Documents/waferinspector (develop_Icheon)
+$ git log
+commit 8d3b6d2ec08e5fe4d0fbbc8790953e3a22b92810 (HEAD -> develop_Icheon, origin/develop_Icheon)
+Author: kuminkyu93 <kuminkyu93@gmail.com>
+Date:   Wed Mar 29 16:13:46 2023 +0900
+
+    OHT 中 알람 발생 시 조치사항
+    - OHT 종료되고 알람 및 설비 Pause잡히도록 수정
+    - 언로딩 중 알람 발생 시 OHT종료 후 물류(Unload Complete) 완료 송신 신호 추
+가
+
+commit 07ecd3c57841160bc7894ed39ba7090c4ef66293
+Author: kuminkyu93 <kuminkyu93@gmail.com>
+Date:   Wed Mar 29 16:10:54 2023 +0900
+
+    다음장 검사 모드 관련 인털락 추가
+
+commit 3318d604d559f634286941501ebcf979c9bf01c6
+Author: kuminkyu93 <kuminkyu93@gmail.com>
+Date:   Wed Mar 29 15:15:30 2023 +0900
+
+    검사 반복성 관련 프로그램 재식작 시, 미사용 및 초기화 되도록 수정
+
+commit f18ebadfa41e60f76b542d4a6b586aee4a3403b6
+Author: kuminkyu93 <kuminkyu93@gmail.com>
+Date:   Wed Mar 29 15:11:28 2023 +0900
+
+    검사 반복성 기능추가
+
+commit 5767f8559f302dc762047f4791a636ecc4fc5df6
+Author: kuminkyu93 <kuminkyu93@gmail.com>
+Date:   Mon Mar 27 13:52:48 2023 +0900
+
+    다음장 검사 모드 관련 수정
+    - Wafer Unload 이후 리뷰 판정 대기중 알람 발생 시 다음장 검사 되도록 수정
+
+commit 5d9c9963b51a277a67c33cf8f47dc8ae0dce92ba
+Author: 구민규 <koominkyu@diteam.co.kr>
+Date:   Wed Mar 22 16:11:17 2023 +0900
+
+    다음장 검사 모드 관련 수정사항
+    1. Wafer Unload 이후 알람 발생 시, Review Fail Count 미처리(시퀀스 상 존재)
+    => Auto Move Out 이벤트에서 리뷰 판정 Review Fail 시 처리되는 구문 추가
+
+    2. 재시작 시 다음장 설정 갯수와 Review Fail Count 불일치 시 시퀀스 처리
+    => S440_START_OPEN 스텝부터 다시 시작하도록 (이전 스텝부터 진행 시 Cassete Load 다시 하게 됨)
+
+commit 35a03f8d126495983644aabb5a3247b1bd2bb938
+Author: 구민규 <koominkyu@diteam.co.kr>
+Date:   Tue Mar 21 14:51:39 2023 +0900
+
+    AVI 2호기 Cmd, Event 알람 관련 수정사항
+
+commit 932eb0a8e12b62c219b3e41a9718a061e77d4da6
+Merge: 58831bc 7d94333
+Author: 구민규 <koominkyu@diteam.co.kr>
+Date:   Fri Mar 17 10:53:15 2023 +0900
+
+    Merge branch 'release/2302201544-3' into develop_Icheon
+
+commit 7d943332a16f3a915b4b856c09358982fe0e08b8 (release/2302201544-3)
+Author: 구민규 <koominkyu@diteam.co.kr>
+Date:   Fri Mar 17 10:53:08 2023 +0900
+
+    버전    : AVI(2302201544-3)
+    일자    : 3월 16일
+    작업자    : 구민규AM
+    설비    : AVI1
+    내용    :
+
+    1. 다음장 검사 모드 관련 마지막 장에 CIMAW.YW_WAFER_UNLOAD_IS_LAST 값 2로 주도록 수정
+    2. OperOption에 다음장 검사 모드 관련 Text수정
+
+    ===========================================
+
+    버전    : AVI(2302201544-2)
+    일자    : 3월 15일
+    작업자    : 구민규AM
+    설비    : AVI1
+    내용    :
+
+    1. 다음장 검사 모드 관련 마지막 장이여도 CIMAW.YW_WAFER_UNLOAD_IS_LAST 값 1
+로 처리되게 수정
+        => 기존 : 마지막 장이 Review Fail일 경우 0값으로 CIM에서 VRS 결과 처리하기 전에 배출 되어 전산 오류발생
+
+    ===========================================
