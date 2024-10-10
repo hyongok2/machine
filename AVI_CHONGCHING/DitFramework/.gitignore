@@ -1,0 +1,58 @@
+#ignore thumbnails created by windows
+Thumbs.db
+
+#Ignore files build by Visual Studio
+*.opensdf
+
+# User-specific files
+*.suo
+*.opensdf
+*.sdf
+*.ipch
+*.exp
+*.ilk
+*.pdb
+*.iobj
+*.ipdb
+*.aps
+*.user
+*.tlog
+*.obj
+*.log
+*.res
+*.idb
+*.pch
+*.lastbuildstate
+*.manifest
+*.exe
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Directories
+ipch/
+obj/
+DitMemoryMonitor/bin/Debug/Interop.ACTMULTILib.dll
+DitMemoryMonitor/bin/Debug/Dit.Framework.PLC.dll
+DitMemoryMonitor/bin/Debug/AxInterop.ACTMULTILib.dll
+Dit.Framework.UI/bin/x64/Debug/Dit.Framwork.UI.dll
+Dit.Framework.Alalog/bin/
+AsNetTester/bin/
+Dit.Framework.PLC/bin/
+ModbusTester/bin/
+Dit.ShareMem.Viewer/bin/
+DitMemoryMonitor/bin/
+Dit.Framework/bin/Debug/Dit.Framework.dll
+Dit.Util.Switcher/bin/
+Dit.Framework/bin/
+DitSharedMemorySync/Dit.Framework.Data/bin/
+DitSharedMemorySync/DitSharedMemorySyncClient/bin/
+DitSharedMemorySync/DitSharedMemorySyncPacket/bin/
+DitSharedMemorySync/DitSharedMemorySyncSvr/bin/
+DitSharedMemorySync/DitSharedMemoryTester/bin/
+Dit.Framework.EIP/bin/
+Dit.Framework.PMAC/bin/
+Dit.Framework.CCLINK/bin/
+Dit.Framework.ACS/bin/
+Dit.Framework.UI/bin/
+Dit.Framework.RSNMC/bin/
+Dit.Framework.HWControl/bin/

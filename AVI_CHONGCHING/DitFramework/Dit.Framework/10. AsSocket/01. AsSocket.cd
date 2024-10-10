@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketClient">
+    <Position X="3.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAQAAAAEAAAIAAAAEAAAAQAAAAAACEAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketServer">
+    <Position X="6.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEgAAAAAAACACIAAAAgAIAAAAAAIAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketServer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsUdpSocketClient">
+    <Position X="9" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAQAAAAEAAAIAAAAEAAAAQAAAAAACEAAA=</HashCode>
+      <FileName>01. AsSocket\AsUdpSocketClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.StateObject" Collapsed="true">
+    <Position X="6.25" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAQAAAACAAAAAAACAAAAAAAAABAAAAAQAA=</HashCode>
+      <FileName>01. AsSocket\StateObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketClass" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAABAACQyAEAAEAAAIABAAQAAAgAIAIAAACAAgA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketErrorEventArgs" Collapsed="true">
+    <Position X="3.5" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAIAAAAAAEAAAAAAAAAAAgA=</HashCode>
+      <FileName>01. AsSocket\EventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketConnectionEventArgs" Collapsed="true">
+    <Position X="3.5" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>01. AsSocket\EventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketSendEventArgs" Collapsed="true">
+    <Position X="6.25" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAAACAAAAAAgA=</HashCode>
+      <FileName>01. AsSocket\EventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketReceiveEventArgs" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>01. AsSocket\EventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.Framework.Net.AsSocket.AsSocketAcceptEventArgs" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>01. AsSocket\EventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="Dit.Framework.Net.AsSocket.AsSocketErrorEventHandler" Collapsed="true">
+    <Position X="9" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.Framework.Net.AsSocket.AsSocketConnectEventHandler" Collapsed="true">
+    <Position X="6.25" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.Framework.Net.AsSocket.AsSocketCloseEventHandler" Collapsed="true">
+    <Position X="9" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.Framework.Net.AsSocket.AsSocketSendEventHandler" Collapsed="true">
+    <Position X="6.25" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.Framework.Net.AsSocket.AsSocketReceiveEventHandler" Collapsed="true">
+    <Position X="9" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.Framework.Net.AsSocket.AsSocketAcceptEventHandler" Collapsed="true">
+    <Position X="9" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>01. AsSocket\AsSocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

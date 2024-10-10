@@ -1,0 +1,928 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9630DB94-74FA-4F10-945E-2A6C8D303641}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EquipMainUi</RootNamespace>
+    <AssemblyName>EquipMainUi</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DIT.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="AxInterop.ACTMULTILib, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\DitFramework\Dit.Framework.CCLINK\bin\Debug\AxInterop.ACTMULTILib.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework, Version=16.8.23.1845, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\Dit.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.Analog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\Dit.Framework.Analog.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.CCLINK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\Dit.Framework.CCLINK.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.PMAC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\Dit.Framework.PMAC.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Framework.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\Dit.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Rnd.Framework, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dit.Rnd.Framework.Grabber\bin\Debug\Dit.Rnd.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Rnd.Framework.Grabber, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Git\SKH_AVI\EquipMainUi\bin\x64\Debug\Dit.Rnd.Framework.Grabber.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Rnd.Framework.Grabber.Basler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Git\SKH_AVI\EquipMainUi\bin\x64\Debug\Dit.Rnd.Framework.Grabber.Basler.dll</HintPath>
+    </Reference>
+    <Reference Include="Dit.Rnd.Framework.MapView, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\_Common\_Develop\ImageAlign\Dit.Rnd.Framework.Tester\Dit.Rnd.Framework.Grabber\Dit.Rnd.Framework.Grabber.Tester\bin\x64\Debug\Dit.Rnd.Framework.MapView.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MongoDB.Bson, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x64\Debug\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20200208\lib\net461\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20200208\lib\net461\OpenCvSharp.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20200208\lib\net461\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Struct\Detail\Adc\ADConverter_AJ65SBT2B_64TD.cs" />
+    <Compile Include="Common\CimColor.cs" />
+    <Compile Include="Common\CimConst.cs" />
+    <Compile Include="Common\Convenience\IPCtrl.cs" />
+    <Compile Include="Common\Convenience\ObservableList.cs" />
+    <Compile Include="Common\Convenience\PropertyGridEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\Global.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\Convenience\ExtensionUI.cs" />
+    <Compile Include="Common\Convenience\FileCopier.cs" />
+    <Compile Include="Common\PlcTimerEx.cs" />
+    <Compile Include="PreAligner\CWaferPreAlignerResultToPGrid.cs" />
+    <Compile Include="PreAligner\FrmPreAligner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreAligner\FrmPreAligner.Designer.cs">
+      <DependentUpon>FrmPreAligner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreAligner\PreAlignerSeqLogic.cs" />
+    <Compile Include="PreAligner\Recipe\PreAlignerRecipeDataMgr.cs" />
+    <Compile Include="PreAligner\Recipe\PreAlignerRecipe.cs" />
+    <Compile Include="PreAligner\Vision\CamParam.cs" />
+    <Compile Include="PreAligner\LightController\LightControllerProxy.cs" />
+    <Compile Include="PreAligner\LightController\LightController_EsmartK-704PPA-F.cs" />
+    <Compile Include="PreAligner\LightController\SerialCommBase.cs" />
+    <Compile Include="PreAligner\LightController\UcrlLightControllerTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PreAligner\LightController\UcrlLightControllerTest.Designer.cs">
+      <DependentUpon>UcrlLightControllerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreAligner\Vision\PreAlignerProcess.cs" />
+    <Compile Include="PreAligner\Vision\PreAlignerBundle.cs" />
+    <Compile Include="RecipeManagement\Recipe.cs" />
+    <Compile Include="RecipeManagement\RecipeDataMgr.cs" />
+    <Compile Include="RecipeManagement\FrmRecipeMgr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecipeManagement\FrmRecipeMgr.Designer.cs">
+      <DependentUpon>FrmRecipeMgr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\FrmDoorSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmDoorSetting.Designer.cs">
+      <DependentUpon>FrmDoorSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\FrmWaferHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmWaferHistory.Designer.cs">
+      <DependentUpon>FrmWaferHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmCstDataUserInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmCstDataUserInput.Designer.cs">
+      <DependentUpon>FrmCstDataUserInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmTransferDataModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmTransferDataModify.Designer.cs">
+      <DependentUpon>FrmTransferDataModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmVerifyMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmVerifyMapping.Designer.cs">
+      <DependentUpon>FrmVerifyMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\TransferData\MapArrToPGrid.cs" />
+    <Compile Include="Struct\Alarm\AlarmSolutionMgr.cs" />
+    <Compile Include="Struct\Alarm\FrmAlarmSolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Struct\Alarm\FrmAlarmSolution.Designer.cs">
+      <DependentUpon>FrmAlarmSolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Struct\BaseUnit\StepMotorEzi.cs" />
+    <Compile Include="Struct\BaseUnit\SwitchAirKnife.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\AlignerThetaEzi.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\AlignerXEzi.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\AlignerYEzi.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\EziProxy.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\Lib\LIB_EziMOTIONPlusR.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\Lib\MOTION_DEFINE.cs" />
+    <Compile Include="Struct\Detail\EziStepMotor\VirtualEziDirect.cs" />
+    <Compile Include="Struct\Detail\HSMS\FileInterface\ECIDDataSetting.cs" />
+    <Compile Include="Struct\Detail\HSMS\FileInterface\WaferMapDataSetting.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsAlarmInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsChangeOHTModeInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsCstLoadInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsEqpStatusInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsMappingInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsPortInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsRecipeInfo.cs" />
+    <Compile Include="Struct\Detail\HSMS\ReportStruct\HsmsTransWafer.cs" />
+    <Compile Include="Struct\Detail\OHT\PioOHTStep.cs" />
+    <Compile Include="Struct\Detail\PreAlignerOcrCylinder.cs" />
+    <Compile Include="Struct\Detail\PreAlignerVacuumProxy.cs" />
+    <Compile Include="Struct\Detail\TerminalMsgItem.cs" />
+    <Compile Include="Struct\MotorLongRunStep.cs" />
+    <Compile Include="Struct\Step\InitializeLogic.cs" />
+    <Compile Include="Struct\Step\TTTMStep.cs" />
+    <Compile Include="Struct\Step\WaferTransferLogic.cs" />
+    <Compile Include="Tact\EFEMTactMgr.cs" />
+    <Compile Include="Monitor\UcrlPIOSignalRecv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Monitor\UcrlPIOSignalRecv.Designer.cs">
+      <DependentUpon>UcrlPIOSignalRecv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor\UcrlPIOSignalSend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Monitor\UcrlPIOSignalSend.Designer.cs">
+      <DependentUpon>UcrlPIOSignalSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Privilege\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Privilege\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Privilege\LoginMgr.cs" />
+    <Compile Include="Privilege\UserInfo.cs" />
+    <Compile Include="Privilege\UserManager.cs" />
+    <Compile Include="Setting\TransferData\FrmTransferDataMgr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\TransferData\FrmTransferDataMgr.Designer.cs">
+      <DependentUpon>FrmTransferDataMgr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\TransferData\UcrlTransferDataKeyInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Setting\TransferData\UcrlTransferDataKeyInfo.Designer.cs">
+      <DependentUpon>UcrlTransferDataKeyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Struct\Detail\EFEM\OHTSignal.cs" />
+    <Compile Include="Struct\Detail\LightCurtain.cs" />
+    <Compile Include="Test\FrmBCRTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmBCRTest.Designer.cs">
+      <DependentUpon>FrmBCRTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FrmDBTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmDBTest.Designer.cs">
+      <DependentUpon>FrmDBTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FrmEfemTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmEfemTest.Designer.cs">
+      <DependentUpon>FrmEfemTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmExtendLogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmExtendLogView.Designer.cs">
+      <DependentUpon>FrmExtendLogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FrmEziStepMotorTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmEziStepMotorTester.Designer.cs">
+      <DependentUpon>FrmEziStepMotorTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FrmOCRTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmOCRTest.Designer.cs">
+      <DependentUpon>FrmOCRTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\ucrlHsmsTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Test\ucrlHsmsTest.Designer.cs">
+      <DependentUpon>ucrlHsmsTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucrlRobotEasyController.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucrlRobotEasyController.Designer.cs">
+      <DependentUpon>ucrlRobotEasyController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucrlRobotController.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucrlRobotController.Designer.cs">
+      <DependentUpon>ucrlRobotController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmInterLock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmInterLock.Designer.cs">
+      <DependentUpon>FrmInterLock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOperating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOperating.Designer.cs">
+      <DependentUpon>FrmOperating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmManualClose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmManualClose.Designer.cs">
+      <DependentUpon>FrmManualClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmOperatorCall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmOperatorCall.Designer.cs">
+      <DependentUpon>FrmOperatorCall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\FrmOperOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmOperOption.Designer.cs">
+      <DependentUpon>FrmOperOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FrmRFIDTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmRFIDTest.Designer.cs">
+      <DependentUpon>FrmRFIDTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FrmTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FrmTester.Designer.cs">
+      <DependentUpon>FrmTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\MelsecNet.cs" />
+    <Compile Include="Lib\Memory.cs" />
+    <Compile Include="Lib\UserTimeManager.cs" />
+    <Compile Include="LogicWorker.cs" />
+    <Compile Include="Log\EquipStatusDump.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\LoggingEventArgs.cs" />
+    <Compile Include="Log\SimpleFileLoggerMark5.cs" />
+    <Compile Include="Log\UserEnum.cs" />
+    <Compile Include="Monitor\FFUController.cs" />
+    <Compile Include="Monitor\FrmMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitor\FrmMonitor.Designer.cs">
+      <DependentUpon>FrmMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tact\FrmTactTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tact\FrmTactTime.Designer.cs">
+      <DependentUpon>FrmTactTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor\RFIDController.cs" />
+    <Compile Include="Tact\TackTimeMgr.cs" />
+    <Compile Include="Monitor\UcrlIoItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Monitor\UcrlIoItem.Designer.cs">
+      <DependentUpon>UcrlIoItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor\UcrlPtp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Monitor\UcrlPtp.Designer.cs">
+      <DependentUpon>UcrlPtp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor\UcrlTwoLampItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Monitor\UcrlTwoLampItem.Designer.cs">
+      <DependentUpon>UcrlTwoLampItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\ADCBundleToPGrid.cs" />
+    <Compile Include="Setting\BCR_DM150.cs" />
+    <Compile Include="Setting\EquipInitSetting.cs" />
+    <Compile Include="Setting\FrmAnalogSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmAnalogSetting.Designer.cs">
+      <DependentUpon>FrmAnalogSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\FrmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmSetting.Designer.cs">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\GlassInfoBackup.cs" />
+    <Compile Include="Setting\OCR_IS1741.cs" />
+    <Compile Include="Setting\PcAnalogRegulatorSetting.cs" />
+    <Compile Include="Setting\PcCtrlSetting.cs" />
+    <Compile Include="Setting\PcUsingTimeSetting.cs" />
+    <Compile Include="Setting\PMacServoSetting.cs" />
+    <Compile Include="Setting\_Dummy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\_Dummy.Designer.cs">
+      <DependentUpon>_Dummy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\PcAnalogSetting.cs" />
+    <Compile Include="Struct\Alarm\Alarm.cs" />
+    <Compile Include="Struct\Alarm\AlarmMgr.cs" />
+    <Compile Include="Struct\Alarm\AlarmSolution.cs" />
+    <Compile Include="Struct\Alarm\SolutionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Struct\Alarm\SolutionDialog.Designer.cs">
+      <DependentUpon>SolutionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Struct\BaseUnit\CustomCylinder.cs" />
+    <Compile Include="Struct\BaseUnit\DelaySensor.cs" />
+    <Compile Include="Struct\BaseUnit\OffCheckSensor.cs" />
+    <Compile Include="Struct\BaseUnit\ServoMotorPmac.cs" />
+    <Compile Include="Struct\BaseUnit\Cylinder.cs" />
+    <Compile Include="Struct\BaseUnit\StepBase.cs" />
+    <Compile Include="Struct\BaseUnit\SwitchOneWay.cs" />
+    <Compile Include="Struct\BaseUnit\UnitBase.cs" />
+    <Compile Include="Struct\BaseUnit\UsingTimeChecker.cs" />
+    <Compile Include="Struct\BaseUnit\FlickerSwitch.cs" />
+    <Compile Include="Struct\Detail\Adc\ADCBundle.cs" />
+    <Compile Include="Struct\Detail\Adc\AdcTemperature.cs" />
+    <Compile Include="Struct\Detail\BlowerProxy.cs" />
+    <Compile Include="Struct\Detail\Cylinder\LiftPinProxy.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMData.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMEnum.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMError.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMPcProxy.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMStatus.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMTcp.cs" />
+    <Compile Include="Struct\Detail\Cylinder\StandCenteringProxy.cs" />
+    <Compile Include="Struct\Detail\Lamp\TowerLampProxy.cs" />
+    <Compile Include="Struct\Detail\EFEM\EFEMUnit.cs" />
+    <Compile Include="Struct\Detail\EFEM\Step\EFEMAlignerUnit.cs" />
+    <Compile Include="Struct\Detail\EFEM\Step\EFEMLPMUnit.cs" />
+    <Compile Include="Struct\Detail\EFEM\Step\EFEMRobotUnit.cs" />
+    <Compile Include="Struct\Detail\EFEM\Step\StepDummy.cs" />
+    <Compile Include="Struct\Detail\HSMS\ADDR\CimAddrB.cs" />
+    <Compile Include="Struct\Detail\HSMS\ADDR\CimAddrW.cs" />
+    <Compile Include="Struct\Detail\HSMS\HsmsPcCmd.cs" />
+    <Compile Include="Struct\Detail\HSMS\HsmsEnum.cs" />
+    <Compile Include="Struct\Detail\HSMS\HsmsPcEvent.cs" />
+    <Compile Include="Struct\Detail\HSMS\HsmsPcProxy.cs" />
+    <Compile Include="Struct\Detail\Lamp\WorkingLightProxy.cs" />
+    <Compile Include="Struct\Detail\MCC\MccPcProxy.cs" />
+    <Compile Include="Struct\Detail\ModeSelectKey.cs" />
+    <Compile Include="Struct\Detail\PC\ADDR\IsptAddrB.cs" />
+    <Compile Include="Struct\Detail\PC\ADDR\IsptAddrW.cs" />
+    <Compile Include="Struct\Detail\PC\ADDR\RvAddrB.cs" />
+    <Compile Include="Struct\Detail\PC\ADDR\RvAddrW.cs" />
+    <Compile Include="Struct\Detail\PC\GlassAddr.cs" />
+    <Compile Include="Struct\Detail\PinIonizerProxy.cs" />
+    <Compile Include="Struct\Detail\MCC\Dictionary.cs" />
+    <Compile Include="Struct\Detail\PC\PMacProxy.cs" />
+    <Compile Include="Struct\Detail\Lamp\TowerLamp.cs" />
+    <Compile Include="Struct\Detail\Servo\ServoPositionMgr.cs" />
+    <Compile Include="Struct\Detail\Servo\ThetaServo.cs" />
+    <Compile Include="Struct\Detail\VacuumSwitch.cs" />
+    <Compile Include="Struct\GlassInfo.cs" />
+    <Compile Include="Struct\Detail\Servo\StageYServo.cs" />
+    <Compile Include="Struct\Detail\Servo\StageXServo.cs" />
+    <Compile Include="Struct\Detail\VacuumProxy.cs" />
+    <Compile Include="Struct\Equipment.cs" />
+    <Compile Include="Struct\BaseUnit\Sensor.cs" />
+    <Compile Include="Struct\BaseUnit\Switch.cs" />
+    <Compile Include="Struct\BaseUnit\DoInterLockLogic.cs" />
+    <Compile Include="Struct\Detail\PC\InspPcProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Struct\InterLockMgr.cs" />
+    <Compile Include="Struct\Step\CenteringStep.cs" />
+    <Compile Include="Struct\Step\HomingStep.cs" />
+    <Compile Include="Struct\Step\LoadingStep.cs" />
+    <Compile Include="Struct\Step\MainStep.cs" />
+    <Compile Include="Struct\Step\PioHsRecvStep.cs" />
+    <Compile Include="Struct\Step\PioHotLink.cs" />
+    <Compile Include="Struct\Detail\PC\ReviPcProxy.cs" />
+    <Compile Include="Struct\Step\PioHsSendStep.cs" />
+    <Compile Include="Struct\Step\PioSignal.cs" />
+    <Compile Include="Struct\Step\SafetyStep.cs" />
+    <Compile Include="Struct\Step\ScanningStep.cs" />
+    <Compile Include="Struct\Step\UnLoadingStep.cs" />
+    <Compile Include="Struct\Step\ReviewStep.cs" />
+    <Compile Include="Struct\TransferData\CassetteInfo.cs" />
+    <Compile Include="Struct\TransferData\TransferDataMgr.cs" />
+    <Compile Include="Struct\TransferData\WaferInfo.cs" />
+    <Compile Include="Struct\UserEnum.cs" />
+    <Compile Include="Struct\CheckMgr.cs" />
+    <Compile Include="UserMessageBoxes\FormAutoClose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormAutoClose.designer.cs">
+      <DependentUpon>FormAutoClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormMessageOkCanleBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormMessageOkCanleBox.designer.cs">
+      <DependentUpon>FormMessageOkCanleBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormPasswdBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormPasswdBox.designer.cs">
+      <DependentUpon>FormPasswdBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormPWInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormPWInput.designer.cs">
+      <DependentUpon>FormPWInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormPWNeedClose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FormPWNeedClose.Designer.cs">
+      <DependentUpon>FormPWNeedClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmPGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmPGrid.Designer.cs">
+      <DependentUpon>FrmPGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmRadioSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmRadioSelect.designer.cs">
+      <DependentUpon>FrmRadioSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmInit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmInit.Designer.cs">
+      <DependentUpon>FrmInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmRetryUserSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmRetryUserSelect.Designer.cs">
+      <DependentUpon>FrmRetryUserSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmTerminalMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmTerminalMsg.Designer.cs">
+      <DependentUpon>FrmTerminalMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmTimerMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmTimerMsg.Designer.cs">
+      <DependentUpon>FrmTimerMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmUserSelectBCRData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmUserSelectBCRData.Designer.cs">
+      <DependentUpon>FrmUserSelectBCRData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucrlLPMOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucrlLPMOption.Designer.cs">
+      <DependentUpon>ucrlLPMOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMessageBoxes\UserMessageBox.cs" />
+    <Compile Include="UserMessageBoxes\FrmCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmCheck.Designer.cs">
+      <DependentUpon>FrmCheck.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Monitor\UcrlPIOSignalRecv.resx">
+      <DependentUpon>UcrlPIOSignalRecv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor\UcrlPIOSignalSend.resx">
+      <DependentUpon>UcrlPIOSignalSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreAligner\FrmPreAligner.resx">
+      <DependentUpon>FrmPreAligner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreAligner\LightController\UcrlLightControllerTest.resx">
+      <DependentUpon>UcrlLightControllerTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Privilege\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UserMessageBoxes\FrmUserSelectReadData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMessageBoxes\FrmUserSelectReadData.Designer.cs">
+      <DependentUpon>FrmUserSelectReadData.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RecipeManagement\FrmRecipeMgr.resx">
+      <DependentUpon>FrmRecipeMgr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmDoorSetting.resx">
+      <DependentUpon>FrmDoorSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmWaferHistory.resx">
+      <DependentUpon>FrmWaferHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\TransferData\FrmTransferDataMgr.resx">
+      <DependentUpon>FrmTransferDataMgr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\TransferData\FrmCstDataUserInput.resx">
+      <DependentUpon>FrmCstDataUserInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\TransferData\FrmTransferDataModify.resx">
+      <DependentUpon>FrmTransferDataModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\TransferData\FrmVerifyMapping.resx">
+      <DependentUpon>FrmVerifyMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\TransferData\UcrlTransferDataKeyInfo.resx">
+      <DependentUpon>UcrlTransferDataKeyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmBCRTest.resx">
+      <DependentUpon>FrmBCRTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmDBTest.resx">
+      <DependentUpon>FrmDBTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmEfemTest.resx">
+      <DependentUpon>FrmEfemTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmExtendLogView.resx">
+      <DependentUpon>FrmExtendLogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmEziStepMotorTester.resx">
+      <DependentUpon>FrmEziStepMotorTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmOCRTest.resx">
+      <DependentUpon>FrmOCRTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\ucrlHsmsTest.resx">
+      <DependentUpon>ucrlHsmsTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucrlRobotEasyController.resx">
+      <DependentUpon>ucrlRobotEasyController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucrlRobotController.resx">
+      <DependentUpon>ucrlRobotController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmInterLock.resx">
+      <DependentUpon>FrmInterLock.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOperating.resx">
+      <DependentUpon>FrmOperating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmManualClose.resx">
+      <DependentUpon>FrmManualClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmOperatorCall.resx">
+      <DependentUpon>FrmOperatorCall.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmOperOption.resx">
+      <DependentUpon>FrmOperOption.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmRFIDTest.resx">
+      <DependentUpon>FrmRFIDTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\FrmTester.resx">
+      <DependentUpon>FrmTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor\FrmMonitor.resx">
+      <DependentUpon>FrmMonitor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tact\FrmTactTime.resx">
+      <DependentUpon>FrmTactTime.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor\UcrlIoItem.resx">
+      <DependentUpon>UcrlIoItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor\UcrlPtp.resx">
+      <DependentUpon>UcrlPtp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor\UcrlTwoLampItem.resx">
+      <DependentUpon>UcrlTwoLampItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmSetting.resx">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\_Dummy.resx">
+      <DependentUpon>_Dummy.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Struct\Alarm\SolutionDialog.resx">
+      <DependentUpon>SolutionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FormAutoClose.resx">
+      <DependentUpon>FormAutoClose.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FormMessageOkCanleBox.resx">
+      <DependentUpon>FormMessageOkCanleBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FormPasswdBox.resx">
+      <DependentUpon>FormPasswdBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FormPWInput.resx">
+      <DependentUpon>FormPWInput.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FormPWNeedClose.resx">
+      <DependentUpon>FormPWNeedClose.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmCheck.resx">
+      <DependentUpon>FrmCheck.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmPGrid.resx">
+      <DependentUpon>FrmPGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmRadioSelect.resx">
+      <DependentUpon>FrmRadioSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmInit.resx">
+      <DependentUpon>FrmInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmRetryUserSelect.resx">
+      <DependentUpon>FrmRetryUserSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmTerminalMsg.resx">
+      <DependentUpon>FrmTerminalMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmTimerMsg.resx">
+      <DependentUpon>FrmTimerMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmUserSelectBCRData.resx">
+      <DependentUpon>FrmUserSelectBCRData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMessageBoxes\FrmUserSelectReadData.resx">
+      <DependentUpon>FrmUserSelectReadData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucrlLPMOption.resx">
+      <DependentUpon>ucrlLPMOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InnerWork.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BACK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BACK_390_140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DIT.ico" />
+    <Content Include="Resources\EFEMStage.PNG" />
+    <None Include="Resources\innerworking_ch.png" />
+    <None Include="Resources\WaferStart.png" />
+    <None Include="Resources\WaferEnd1.png" />
+    <None Include="Resources\WaferEnd.png" />
+    <None Include="Resources\refreshing-pngrepo-com.png" />
+    <None Include="Resources\oht.png" />
+    <None Include="Resources\manualLoad.png" />
+    <None Include="Resources\hostData.png" />
+    <None Include="Resources\manualData.png" />
+    <None Include="Resources\mapData.png" />
+    <None Include="Resources\RingFrame.png" />
+    <None Include="Resources\Foup3.png" />
+    <None Include="Resources\20190628091800.png" />
+    <None Include="Resources\imgDoorLoaction.PNG" />
+    <None Include="Resources\imgDoorLocation.bmp" />
+    <None Include="Resources\hand.png" />
+    <None Include="Resources\Operator_Pause.png" />
+    <None Include="Resources\Operator_Manual.png" />
+    <None Include="Resources\Operator&amp;Engineer_Auto Run.png" />
+    <None Include="Resources\TSP 평면.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EquipView\EquipView.csproj">
+      <Project>{8B2A7FB2-945B-4146-9F29-C0741C169354}</Project>
+      <Name>EquipView</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

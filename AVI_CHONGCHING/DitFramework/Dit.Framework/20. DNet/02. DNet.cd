@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dit.Framework.Comm.ComResult" Collapsed="true">
+    <Position X="7.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEgAAgAAwAEgAAQKAAAApAAAAAAAA=</HashCode>
+      <FileName>00. Comm\ComResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetClinetSession">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQYQAABACCSCACAAACgAAABCIgDAAAAIAJAQAAAAAQ=</HashCode>
+      <FileName>02. DNet\DNetClinetSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetClinetSessionManager">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAWAAAAAAAAAIAQAABAAAAIAAIAAAAEAAAAA=</HashCode>
+      <FileName>02. DNet\DNetClinetSessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetErrorEventArgs" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAIAAAAAAEAAAAAAAAAAAgA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetConnectionEventArgs" Collapsed="true">
+    <Position X="7.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetSendEventArgs" Collapsed="true">
+    <Position X="7.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAAACAAAAAAgA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetReceiveEventArgs" Collapsed="true">
+    <Position X="7.25" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAACAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetAcceptEventArgs">
+    <Position X="7.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetPacket" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IQQAQACAAAADAAAMAAAAAAQAAAAAAEMgCAAACAAAAIA=</HashCode>
+      <FileName>02. DNet\DNetPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetServerSession">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAYAAAAAACSCAOAAAAgQAARAAABgAAAAANAQAAAAAQ=</HashCode>
+      <FileName>02. DNet\DNetServerSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dit.FrameworkSingle.Net.DNet.DNetServerSessionManager">
+    <Position X="0.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCSAIAAECAAAAAACAAAAAAAIAIAAAgBABg=</HashCode>
+      <FileName>02. DNet\DNetServerSessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="Dit.FrameworkSingle.Net.DNet.DNetErrorEventHandler" Collapsed="true">
+    <Position X="7.25" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.FrameworkSingle.Net.DNet.DNetConnectEventHandler" Collapsed="true">
+    <Position X="5" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.FrameworkSingle.Net.DNet.DNetCloseEventHandler" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.FrameworkSingle.Net.DNet.DNetSendEventHandler" Collapsed="true">
+    <Position X="5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.FrameworkSingle.Net.DNet.DNetReceiveEventHandler" Collapsed="true">
+    <Position X="5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Dit.FrameworkSingle.Net.DNet.DNetAcceptEventHandler" Collapsed="true">
+    <Position X="2.75" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>02. DNet\DNetEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
