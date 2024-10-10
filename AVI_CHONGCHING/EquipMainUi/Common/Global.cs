@@ -23,7 +23,7 @@ namespace EquipMainUi
         public static PreAlignerTypes PreAlignerType = PreAlignerTypes.DIT; //미사용
         public static bool IsDitPreAligner => PreAlignerType == PreAlignerTypes.DIT; //미사용
 
-        public const bool boChinaLanguage = true; // True = Chinese Language Use , False = Korea Language Use
+        public const bool boChinaLanguage = true; // True = Chinese Language Use , False = Korea Language Use 
         public static bool IsChungJu = true; //청주, 이천 구분
         public static bool TestMode = false;
         public static bool InspTestMode = TestMode;
@@ -75,9 +75,11 @@ namespace EquipMainUi
         public static PlcAddr Wr_Addr = new PlcAddr(PlcMemType.Wr, 0x000, 0, 128);
         public static PlcAddr Ww_Addr = new PlcAddr(PlcMemType.Ww, 0x000, 0, 128);
 
+        // 이미 실제 사용하는 있는 Address Map과 일치하지 않는다. 그래서 일단 임의로 필요한 부분은 읽어 올 수 있도록 처리 한다. 2024/10/10 문형옥, 정재엽
         public static PlcAddr ISPT_WRITE_MEM                                /**/= new PlcAddr(PlcMemType.W, 0, 0, 5000, PlcValueType.SHORT);
         public static PlcAddr ISPT_READ_MEM                                 /**/= new PlcAddr(PlcMemType.W, 5000, 0, 5000, PlcValueType.SHORT);
         public static PlcAddr HSMS_READ_MEM                                 /**/= new PlcAddr(PlcMemType.W, 10000, 0, 5000, PlcValueType.SHORT);
+        public static PlcAddr HSMS_WRITE_MEM                                 /**/= new PlcAddr(PlcMemType.W, 20000, 0, 5000, PlcValueType.SHORT); // HSMS 쓰는 영역은 이것보다 많은데, 위에 동시에 처리하고 있음. kerf Data 추가하면서, 20000번지 이상이 필요한 상황이고.. 이렇게 추가함.2024/10/10 문형옥, 정재엽 
         //public static PlcAddr RV_WRITE_MEM                                  /**/= new PlcAddr(PlcMemType.W, 10000, 0, 5000, PlcValueType.SHORT);
         //public static PlcAddr RV_READ_MEM                                   /**/= new PlcAddr(PlcMemType.W, 15000, 0, 5000, PlcValueType.SHORT);
         //public static PlcAddr CIM_WRITE_MEM                                  /**/= new PlcAddr(PlcMemType.W, 5000, 0, 5300, PlcValueType.SHORT);

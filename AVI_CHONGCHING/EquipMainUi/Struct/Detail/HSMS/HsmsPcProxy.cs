@@ -226,38 +226,7 @@ namespace EquipMainUi.Struct
             GG.MEM_DIT.VirSetAscii(CIMAW.YW_WAFER_UNLOAD_START_TIME, waferInfo.StartTime.ToString("yyyyMMddhhmmss"));
             GG.MEM_DIT.VirSetAscii(CIMAW.YW_WAFER_UNLOAD_END_TIME, waferInfo.EndTime.ToString("yyyyMMddhhmmss"));
 
-            #region KerfData
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_1, Math.Round(waferInfo.KerfDataCh1_1, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_2, Math.Round(waferInfo.KerfDataCh1_2, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_3, Math.Round(waferInfo.KerfDataCh1_3, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_4, Math.Round(waferInfo.KerfDataCh1_4, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_5, Math.Round(waferInfo.KerfDataCh1_5, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_6, Math.Round(waferInfo.KerfDataCh1_6, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_7, Math.Round(waferInfo.KerfDataCh1_7, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_8, Math.Round(waferInfo.KerfDataCh1_8, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_9, Math.Round(waferInfo.KerfDataCh1_9, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_10, Math.Round(waferInfo.KerfDataCh1_10, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_11, Math.Round(waferInfo.KerfDataCh1_11, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_12, Math.Round(waferInfo.KerfDataCh1_12, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_13, Math.Round(waferInfo.KerfDataCh1_13, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_14, Math.Round(waferInfo.KerfDataCh1_14, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_15, Math.Round(waferInfo.KerfDataCh1_15, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_1, Math.Round(waferInfo.KerfDataCh2_1, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_2, Math.Round(waferInfo.KerfDataCh2_2, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_3, Math.Round(waferInfo.KerfDataCh2_3, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_4, Math.Round(waferInfo.KerfDataCh2_4, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_5, Math.Round(waferInfo.KerfDataCh2_5, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_6, Math.Round(waferInfo.KerfDataCh2_6, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_7, Math.Round(waferInfo.KerfDataCh2_7, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_8, Math.Round(waferInfo.KerfDataCh2_8, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_9, Math.Round(waferInfo.KerfDataCh2_9, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_10, Math.Round(waferInfo.KerfDataCh2_10, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_11, Math.Round(waferInfo.KerfDataCh2_11, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_12, Math.Round(waferInfo.KerfDataCh2_12, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_13, Math.Round(waferInfo.KerfDataCh2_13, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_14, Math.Round(waferInfo.KerfDataCh2_14, 3).ToString());
-            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_15, Math.Round(waferInfo.KerfDataCh2_15, 3).ToString());
-            #endregion
+            SetMemoryKerfData(waferInfo);
 
             bool UserLastSlot = false;
             // Joo // 딥러닝 Review 진행 필요 모드: User, Only First, Last , 필요없는 모드: Mapping (전체 진행)
@@ -350,6 +319,308 @@ namespace EquipMainUi.Struct
             //Logger.CIMLog.AppendLine("WAFER UNLOAD REPORT [WAFER ID : {0}, CST ID : {1},  PORT ID : {2}, SLOT NO : {3}, START : {4} END : {5}"
             //    , waferInfo.WaferID, waferInfo.CstID, cstInfo.LoadPortNo.ToString(), waferInfo.StartTime.ToString("yyyyMMddhhmmss"), waferInfo.EndTime.ToString("yyyyMMddhhmmss"));
         }
+
+        private void SetMemoryKerfData(WaferInfo waferInfo)
+        {
+            #region KerfData (과거 Data 삭제)
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_1, Math.Round(waferInfo.KerfDataCh1_1, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_2, Math.Round(waferInfo.KerfDataCh1_2, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_3, Math.Round(waferInfo.KerfDataCh1_3, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_4, Math.Round(waferInfo.KerfDataCh1_4, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_5, Math.Round(waferInfo.KerfDataCh1_5, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_6, Math.Round(waferInfo.KerfDataCh1_6, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_7, Math.Round(waferInfo.KerfDataCh1_7, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_8, Math.Round(waferInfo.KerfDataCh1_8, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_9, Math.Round(waferInfo.KerfDataCh1_9, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_10, Math.Round(waferInfo.KerfDataCh1_10, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_11, Math.Round(waferInfo.KerfDataCh1_11, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_12, Math.Round(waferInfo.KerfDataCh1_12, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_13, Math.Round(waferInfo.KerfDataCh1_13, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_14, Math.Round(waferInfo.KerfDataCh1_14, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH1_15, Math.Round(waferInfo.KerfDataCh1_15, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_1, Math.Round(waferInfo.KerfDataCh2_1, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_2, Math.Round(waferInfo.KerfDataCh2_2, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_3, Math.Round(waferInfo.KerfDataCh2_3, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_4, Math.Round(waferInfo.KerfDataCh2_4, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_5, Math.Round(waferInfo.KerfDataCh2_5, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_6, Math.Round(waferInfo.KerfDataCh2_6, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_7, Math.Round(waferInfo.KerfDataCh2_7, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_8, Math.Round(waferInfo.KerfDataCh2_8, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_9, Math.Round(waferInfo.KerfDataCh2_9, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_10, Math.Round(waferInfo.KerfDataCh2_10, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_11, Math.Round(waferInfo.KerfDataCh2_11, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_12, Math.Round(waferInfo.KerfDataCh2_12, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_13, Math.Round(waferInfo.KerfDataCh2_13, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_14, Math.Round(waferInfo.KerfDataCh2_14, 3).ToString());
+            //GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_CH2_15, Math.Round(waferInfo.KerfDataCh2_15, 3).ToString());
+            #endregion
+
+            #region Kerf Shift Data
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_1, Math.Round(waferInfo.KerfData_Right_Col_1, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_1, Math.Round(waferInfo.KerfData_Right_Row_1, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_1, Math.Round(waferInfo.KerfData_Right_1, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_2, Math.Round(waferInfo.KerfData_Right_Col_2, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_2, Math.Round(waferInfo.KerfData_Right_Row_2, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_2, Math.Round(waferInfo.KerfData_Right_2, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_3, Math.Round(waferInfo.KerfData_Right_Col_3, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_3, Math.Round(waferInfo.KerfData_Right_Row_3, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_3, Math.Round(waferInfo.KerfData_Right_3, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_4, Math.Round(waferInfo.KerfData_Right_Col_4, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_4, Math.Round(waferInfo.KerfData_Right_Row_4, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_4, Math.Round(waferInfo.KerfData_Right_4, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_5, Math.Round(waferInfo.KerfData_Right_Col_5, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_5, Math.Round(waferInfo.KerfData_Right_Row_5, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_5, Math.Round(waferInfo.KerfData_Right_5, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_6, Math.Round(waferInfo.KerfData_Right_Col_6, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_6, Math.Round(waferInfo.KerfData_Right_Row_6, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_6, Math.Round(waferInfo.KerfData_Right_6, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_7, Math.Round(waferInfo.KerfData_Right_Col_7, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_7, Math.Round(waferInfo.KerfData_Right_Row_7, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_7, Math.Round(waferInfo.KerfData_Right_7, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_8, Math.Round(waferInfo.KerfData_Right_Col_8, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_8, Math.Round(waferInfo.KerfData_Right_Row_8, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_8, Math.Round(waferInfo.KerfData_Right_8, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_9, Math.Round(waferInfo.KerfData_Right_Col_9, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_9, Math.Round(waferInfo.KerfData_Right_Row_9, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_9, Math.Round(waferInfo.KerfData_Right_9, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_10, Math.Round(waferInfo.KerfData_Right_Col_10, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_10, Math.Round(waferInfo.KerfData_Right_Row_10, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_10, Math.Round(waferInfo.KerfData_Right_10, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_11, Math.Round(waferInfo.KerfData_Right_Col_11, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_11, Math.Round(waferInfo.KerfData_Right_Row_11, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_11, Math.Round(waferInfo.KerfData_Right_11, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_12, Math.Round(waferInfo.KerfData_Right_Col_12, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_12, Math.Round(waferInfo.KerfData_Right_Row_12, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_12, Math.Round(waferInfo.KerfData_Right_12, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_13, Math.Round(waferInfo.KerfData_Right_Col_13, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_13, Math.Round(waferInfo.KerfData_Right_Row_13, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_13, Math.Round(waferInfo.KerfData_Right_13, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_14, Math.Round(waferInfo.KerfData_Right_Col_14, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_14, Math.Round(waferInfo.KerfData_Right_Row_14, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_14, Math.Round(waferInfo.KerfData_Right_14, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_15, Math.Round(waferInfo.KerfData_Right_Col_15, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_15, Math.Round(waferInfo.KerfData_Right_Row_15, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_15, Math.Round(waferInfo.KerfData_Right_15, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_16, Math.Round(waferInfo.KerfData_Right_Col_16, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_16, Math.Round(waferInfo.KerfData_Right_Row_16, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_16, Math.Round(waferInfo.KerfData_Right_16, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_17, Math.Round(waferInfo.KerfData_Right_Col_17, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_17, Math.Round(waferInfo.KerfData_Right_Row_17, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_17, Math.Round(waferInfo.KerfData_Right_17, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_18, Math.Round(waferInfo.KerfData_Right_Col_18, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_18, Math.Round(waferInfo.KerfData_Right_Row_18, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_18, Math.Round(waferInfo.KerfData_Right_18, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_19, Math.Round(waferInfo.KerfData_Right_Col_19, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_19, Math.Round(waferInfo.KerfData_Right_Row_19, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_19, Math.Round(waferInfo.KerfData_Right_19, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Col_20, Math.Round(waferInfo.KerfData_Right_Col_20, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_Row_20, Math.Round(waferInfo.KerfData_Right_Row_20, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Right_20, Math.Round(waferInfo.KerfData_Right_20, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_1, Math.Round(waferInfo.KerfData_Bottom_Col_1, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_1, Math.Round(waferInfo.KerfData_Bottom_Row_1, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_1, Math.Round(waferInfo.KerfData_Bottom_1, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_2, Math.Round(waferInfo.KerfData_Bottom_Col_2, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_2, Math.Round(waferInfo.KerfData_Bottom_Row_2, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_2, Math.Round(waferInfo.KerfData_Bottom_2, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_3, Math.Round(waferInfo.KerfData_Bottom_Col_3, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_3, Math.Round(waferInfo.KerfData_Bottom_Row_3, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_3, Math.Round(waferInfo.KerfData_Bottom_3, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_4, Math.Round(waferInfo.KerfData_Bottom_Col_4, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_4, Math.Round(waferInfo.KerfData_Bottom_Row_4, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_4, Math.Round(waferInfo.KerfData_Bottom_4, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_5, Math.Round(waferInfo.KerfData_Bottom_Col_5, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_5, Math.Round(waferInfo.KerfData_Bottom_Row_5, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_5, Math.Round(waferInfo.KerfData_Bottom_5, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_6, Math.Round(waferInfo.KerfData_Bottom_Col_6, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_6, Math.Round(waferInfo.KerfData_Bottom_Row_6, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_6, Math.Round(waferInfo.KerfData_Bottom_6, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_7, Math.Round(waferInfo.KerfData_Bottom_Col_7, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_7, Math.Round(waferInfo.KerfData_Bottom_Row_7, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_7, Math.Round(waferInfo.KerfData_Bottom_7, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_8, Math.Round(waferInfo.KerfData_Bottom_Col_8, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_8, Math.Round(waferInfo.KerfData_Bottom_Row_8, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_8, Math.Round(waferInfo.KerfData_Bottom_8, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_9, Math.Round(waferInfo.KerfData_Bottom_Col_9, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_9, Math.Round(waferInfo.KerfData_Bottom_Row_9, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_9, Math.Round(waferInfo.KerfData_Bottom_9, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_10, Math.Round(waferInfo.KerfData_Bottom_Col_10, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_10, Math.Round(waferInfo.KerfData_Bottom_Row_10, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_10, Math.Round(waferInfo.KerfData_Bottom_10, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_11, Math.Round(waferInfo.KerfData_Bottom_Col_11, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_11, Math.Round(waferInfo.KerfData_Bottom_Row_11, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_11, Math.Round(waferInfo.KerfData_Bottom_11, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_12, Math.Round(waferInfo.KerfData_Bottom_Col_12, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_12, Math.Round(waferInfo.KerfData_Bottom_Row_12, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_12, Math.Round(waferInfo.KerfData_Bottom_12, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_13, Math.Round(waferInfo.KerfData_Bottom_Col_13, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_13, Math.Round(waferInfo.KerfData_Bottom_Row_13, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_13, Math.Round(waferInfo.KerfData_Bottom_13, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_14, Math.Round(waferInfo.KerfData_Bottom_Col_14, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_14, Math.Round(waferInfo.KerfData_Bottom_Row_14, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_14, Math.Round(waferInfo.KerfData_Bottom_14, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_15, Math.Round(waferInfo.KerfData_Bottom_Col_15, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_15, Math.Round(waferInfo.KerfData_Bottom_Row_15, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_15, Math.Round(waferInfo.KerfData_Bottom_15, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_16, Math.Round(waferInfo.KerfData_Bottom_Col_16, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_16, Math.Round(waferInfo.KerfData_Bottom_Row_16, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_16, Math.Round(waferInfo.KerfData_Bottom_16, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_17, Math.Round(waferInfo.KerfData_Bottom_Col_17, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_17, Math.Round(waferInfo.KerfData_Bottom_Row_17, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_17, Math.Round(waferInfo.KerfData_Bottom_17, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_18, Math.Round(waferInfo.KerfData_Bottom_Col_18, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_18, Math.Round(waferInfo.KerfData_Bottom_Row_18, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_18, Math.Round(waferInfo.KerfData_Bottom_18, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_19, Math.Round(waferInfo.KerfData_Bottom_Col_19, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_19, Math.Round(waferInfo.KerfData_Bottom_Row_19, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_19, Math.Round(waferInfo.KerfData_Bottom_19, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Col_20, Math.Round(waferInfo.KerfData_Bottom_Col_20, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_Row_20, Math.Round(waferInfo.KerfData_Bottom_Row_20, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KerfData_Bottom_20, Math.Round(waferInfo.KerfData_Bottom_20, 3).ToString());
+            #endregion
+
+            #region Kerf Width Data Ctrl->CIM
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_01_DIE_COL, Math.Round(waferInfo.KerfData_01_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_01_DIE_ROW, Math.Round(waferInfo.KerfData_01_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_01_WIDTH_TOP, Math.Round(waferInfo.KerfData_01_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_01_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_01_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_01_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_01_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_01_WIDTH_LEFT, Math.Round(waferInfo.KerfData_01_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_02_DIE_COL, Math.Round(waferInfo.KerfData_02_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_02_DIE_ROW, Math.Round(waferInfo.KerfData_02_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_02_WIDTH_TOP, Math.Round(waferInfo.KerfData_02_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_02_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_02_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_02_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_02_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_02_WIDTH_LEFT, Math.Round(waferInfo.KerfData_02_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_03_DIE_COL, Math.Round(waferInfo.KerfData_03_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_03_DIE_ROW, Math.Round(waferInfo.KerfData_03_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_03_WIDTH_TOP, Math.Round(waferInfo.KerfData_03_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_03_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_03_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_03_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_03_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_03_WIDTH_LEFT, Math.Round(waferInfo.KerfData_03_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_04_DIE_COL, Math.Round(waferInfo.KerfData_04_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_04_DIE_ROW, Math.Round(waferInfo.KerfData_04_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_04_WIDTH_TOP, Math.Round(waferInfo.KerfData_04_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_04_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_04_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_04_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_04_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_04_WIDTH_LEFT, Math.Round(waferInfo.KerfData_04_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_05_DIE_COL, Math.Round(waferInfo.KerfData_05_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_05_DIE_ROW, Math.Round(waferInfo.KerfData_05_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_05_WIDTH_TOP, Math.Round(waferInfo.KerfData_05_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_05_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_05_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_05_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_05_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_05_WIDTH_LEFT, Math.Round(waferInfo.KerfData_05_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_06_DIE_COL, Math.Round(waferInfo.KerfData_06_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_06_DIE_ROW, Math.Round(waferInfo.KerfData_06_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_06_WIDTH_TOP, Math.Round(waferInfo.KerfData_06_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_06_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_06_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_06_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_06_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_06_WIDTH_LEFT, Math.Round(waferInfo.KerfData_06_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_07_DIE_COL, Math.Round(waferInfo.KerfData_07_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_07_DIE_ROW, Math.Round(waferInfo.KerfData_07_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_07_WIDTH_TOP, Math.Round(waferInfo.KerfData_07_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_07_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_07_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_07_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_07_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_07_WIDTH_LEFT, Math.Round(waferInfo.KerfData_07_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_08_DIE_COL, Math.Round(waferInfo.KerfData_08_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_08_DIE_ROW, Math.Round(waferInfo.KerfData_08_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_08_WIDTH_TOP, Math.Round(waferInfo.KerfData_08_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_08_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_08_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_08_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_08_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_08_WIDTH_LEFT, Math.Round(waferInfo.KerfData_08_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_09_DIE_COL, Math.Round(waferInfo.KerfData_09_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_09_DIE_ROW, Math.Round(waferInfo.KerfData_09_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_09_WIDTH_TOP, Math.Round(waferInfo.KerfData_09_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_09_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_09_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_09_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_09_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_09_WIDTH_LEFT, Math.Round(waferInfo.KerfData_09_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_10_DIE_COL, Math.Round(waferInfo.KerfData_10_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_10_DIE_ROW, Math.Round(waferInfo.KerfData_10_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_10_WIDTH_TOP, Math.Round(waferInfo.KerfData_10_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_10_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_10_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_10_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_10_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_10_WIDTH_LEFT, Math.Round(waferInfo.KerfData_10_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_11_DIE_COL, Math.Round(waferInfo.KerfData_11_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_11_DIE_ROW, Math.Round(waferInfo.KerfData_11_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_11_WIDTH_TOP, Math.Round(waferInfo.KerfData_11_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_11_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_11_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_11_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_11_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_11_WIDTH_LEFT, Math.Round(waferInfo.KerfData_11_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_12_DIE_COL, Math.Round(waferInfo.KerfData_12_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_12_DIE_ROW, Math.Round(waferInfo.KerfData_12_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_12_WIDTH_TOP, Math.Round(waferInfo.KerfData_12_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_12_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_12_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_12_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_12_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_12_WIDTH_LEFT, Math.Round(waferInfo.KerfData_12_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_13_DIE_COL, Math.Round(waferInfo.KerfData_13_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_13_DIE_ROW, Math.Round(waferInfo.KerfData_13_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_13_WIDTH_TOP, Math.Round(waferInfo.KerfData_13_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_13_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_13_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_13_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_13_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_13_WIDTH_LEFT, Math.Round(waferInfo.KerfData_13_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_14_DIE_COL, Math.Round(waferInfo.KerfData_14_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_14_DIE_ROW, Math.Round(waferInfo.KerfData_14_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_14_WIDTH_TOP, Math.Round(waferInfo.KerfData_14_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_14_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_14_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_14_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_14_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_14_WIDTH_LEFT, Math.Round(waferInfo.KerfData_14_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_15_DIE_COL, Math.Round(waferInfo.KerfData_15_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_15_DIE_ROW, Math.Round(waferInfo.KerfData_15_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_15_WIDTH_TOP, Math.Round(waferInfo.KerfData_15_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_15_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_15_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_15_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_15_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_15_WIDTH_LEFT, Math.Round(waferInfo.KerfData_15_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_16_DIE_COL, Math.Round(waferInfo.KerfData_16_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_16_DIE_ROW, Math.Round(waferInfo.KerfData_16_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_16_WIDTH_TOP, Math.Round(waferInfo.KerfData_16_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_16_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_16_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_16_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_16_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_16_WIDTH_LEFT, Math.Round(waferInfo.KerfData_16_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_17_DIE_COL, Math.Round(waferInfo.KerfData_17_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_17_DIE_ROW, Math.Round(waferInfo.KerfData_17_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_17_WIDTH_TOP, Math.Round(waferInfo.KerfData_17_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_17_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_17_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_17_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_17_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_17_WIDTH_LEFT, Math.Round(waferInfo.KerfData_17_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_18_DIE_COL, Math.Round(waferInfo.KerfData_18_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_18_DIE_ROW, Math.Round(waferInfo.KerfData_18_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_18_WIDTH_TOP, Math.Round(waferInfo.KerfData_18_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_18_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_18_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_18_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_18_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_18_WIDTH_LEFT, Math.Round(waferInfo.KerfData_18_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_19_DIE_COL, Math.Round(waferInfo.KerfData_19_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_19_DIE_ROW, Math.Round(waferInfo.KerfData_19_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_19_WIDTH_TOP, Math.Round(waferInfo.KerfData_19_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_19_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_19_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_19_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_19_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_19_WIDTH_LEFT, Math.Round(waferInfo.KerfData_19_WIDTH_LEFT, 3).ToString());
+
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_20_DIE_COL, Math.Round(waferInfo.KerfData_20_DIE_COL, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_20_DIE_ROW, Math.Round(waferInfo.KerfData_20_DIE_ROW, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_20_WIDTH_TOP, Math.Round(waferInfo.KerfData_20_WIDTH_TOP, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_20_WIDTH_RIGHT, Math.Round(waferInfo.KerfData_20_WIDTH_RIGHT, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_20_WIDTH_BOTTOM, Math.Round(waferInfo.KerfData_20_WIDTH_BOTTOM, 3).ToString());
+            GG.MEM_DIT.VirSetAscii(CIMAW.YW_KERF_DATA_20_WIDTH_LEFT, Math.Round(waferInfo.KerfData_20_WIDTH_LEFT, 3).ToString());
+            #endregion
+        }
+
         private void OnCassetteUnload(Equipment equip, HsmsPcCmd cmd)
         {
             IsCstLoadConfirmOK = false;
