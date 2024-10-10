@@ -1799,6 +1799,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                                     // 마지막 웨이퍼이므로 오류 메시지 출력 후 배출
                                     CheckMgr.AddCheckMsg(true, "진행할 웨이퍼가 없어 자동 배출 됩니다");
                                     Logger.Log.AppendLine(LogLevel.Info, "딥러닝 컴플리트 미수신 하였지만 진행할 웨이퍼가 없어 해당 카세트 배출");
+
                                     GG.Equip.Efem.Robot.LastUnloadedWaferKey.Clear();
 
                                     // Joo // CST Unload (배출)준비

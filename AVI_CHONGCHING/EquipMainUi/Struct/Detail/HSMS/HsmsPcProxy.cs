@@ -358,10 +358,13 @@ namespace EquipMainUi.Struct
             IsCstMoveOutOK = false;
 
             CassetteInfoKey key = (CassetteInfoKey)cmd.Tag;
-            WaferInfoKey _key = (WaferInfoKey)cmd.Tag;
+            WaferInfoKey _key = GG.Equip.Efem.Robot.WaferKeyForCSTUldReport;
 
             CassetteInfo cstInfo = TransferDataMgr.GetCst(key);
             WaferInfo wfInfo = TransferDataMgr.GetWafer(_key);
+
+            if(_key != null)
+                Logger.CIMLog.AppendLine("CST UNLOAD REPORT [CST ID : {0}, LOT ID : {1}]", cstInfo.CstID, wfInfo.WaferID);
 
             List<string> slotInfo = new List<string>();
             int isptCompleteCount = 0;

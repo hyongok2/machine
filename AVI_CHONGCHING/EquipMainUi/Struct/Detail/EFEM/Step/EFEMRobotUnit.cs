@@ -111,6 +111,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
 
         public WaferInfoKey UpperWaferKey;
         public WaferInfoKey LastUnloadedWaferKey;
+        public WaferInfoKey WaferKeyForCSTUldReport;
 
         public EFEMRobotStatus Status { get { return _efem.Proxy.RobotStat; } }
 
@@ -1348,6 +1349,7 @@ namespace EquipMainUi.Struct.Detail.EFEM.Step
                             equip.IsInterlock = true;
                         }
                         LastUnloadedWaferKey = (WaferInfoKey)UpperWaferKey.Clone();
+                        WaferKeyForCSTUldReport = (WaferInfoKey)UpperWaferKey.Clone();
 
                         if (_efem.Proxy.StartTransRobot(equip, new EFEMTRANSDataSet(EmEfemRobotArm.Upper, EmEfemTransfer.PLACE, _unldPort == 2 ? EmEfemPort.LOADPORT2 : EmEfemPort.LOADPORT1, slot)) == false) return;
                         _tempWaferInfo.EndTime = DateTime.Now;
